@@ -30,6 +30,8 @@ Features:
   - visual mode: make the screen fill up throughout the day from midnight to midnight like an hourglass
   - water drinking mode: everyone should have about 3 liters of water a day, break up the screen into 3 sections and based on the time, fill up the 3 sections as a reminder of how much water to drink.
 
+![Clock idea sketches](ideas-idd-clock.png)
+
 # Prep for Part 2
 
 1. Pick up remaining parts for kit.
