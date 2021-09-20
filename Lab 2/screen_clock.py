@@ -231,23 +231,78 @@ while True:
       draw.text((0,y), "is falling still", font=font, fill=grey)
       y += line_inc
       draw.text((0,y), "As our good city lay still", font=font, fill=grey)
-      
+
+    # A Public thing by Hit Me TV
     elif cur_hour == "15":
       x = 0
+      draw.text((0,y), "Very long time since", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "I got up at", font=font, fill=grey)
+      x = set_next_x(x, "I got up at")
+      draw.text((x,y), " three PM", font=font, fill="#24f270")
+
+    # Carousel Love by warrenisyellow
     elif cur_hour == "16":
       x = 0
+      draw.text((0,y), "Let's make it to rodeo", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "On an avenue, from 8", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "till", font=font, fill=grey)
+      x = set_next_x(x, "till")
+      draw.text((x,y), " 4 in the afternoon", font=font, fill="#27f59f")
+
+    # Somewhere In The World It's Midnight by Street Sweeper Social Club
     elif cur_hour == "17":
       x = 0
+      draw.text((0,y), "Somewhere in the world", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "it's", font=font, fill=grey)
+      x = set_next_x(x, "it's")
+      draw.text((x,y), " 5pm", font=font, fill="#30f2cb")
+
+    # Beautiful Girls (Remix) by Sean Kingston
     elif cur_hour == "18":
-      x = 0
+      draw.text((0,y), "We fight all day till", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "6 at night", font=font, fill="#48e7f0")
+    
+    # Sock Drawer Blues by Glue
     elif cur_hour == "19":
-      x = 0
+      draw.text((0,y), "All of this while eating", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "dinner every night at", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "7 pm", font=font, fill="#33bbf5")
+    
+    # 8pm by sadeyes
     elif cur_hour == "20":
       x = 0
+      draw.text((0,y), "I've got 3 missed calls,", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "it's only", font=font, fill=grey)
+      x = set_next_x(x, "it's only")
+      draw.text((x,y), " 8 PM", font=font, fill="#2885f7")
+
+    # Dallas by The Flatlanders
     elif cur_hour == "21":
       x = 0
+      draw.text((0,y), "Did you ever see Dallas", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "from a DC-", font=font, fill=grey)
+      x = set_next_x(x, "from a DC-")
+      draw.text((x,y), "9 at night?", font=font, fill="#2e5bff")
+
+    # 10pm by Underscore
     elif cur_hour == "22":
       x = 0
+      draw.text((0,y), "It's", font=font, fill=grey)
+      x = set_next_x(x, "It's")
+      draw.text((x,y), " 10pm", font=font, fill="#2626fc")
+      x = set_next_x(x, " 10pm")
+      draw.text((x,y), " and I", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "haven't talked to you yet", font=font, fill=grey)
     
     # Since I've Been Loving You by Led Zeppelin
     elif cur_hour == "23":
@@ -255,9 +310,7 @@ while True:
       y += line_inc
       draw.text((0,y), "to", font=font, fill=grey)
       x = set_next_x(x, "to")
-      draw.text((x,y), " eleven", font=font, fill="#FFFFFF")
-      x = set_next_x(x, " eleven")
-      draw.text((x,y), " every night", font=font, fill=grey)
+      draw.text((x,y), " eleven every night", font=font, fill="#6823fc")
     
     x = font.getsize(" ")[0]*15
     y += line_inc*2
