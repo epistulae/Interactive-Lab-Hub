@@ -20,7 +20,15 @@ https://user-images.githubusercontent.com/14368010/134089019-7e18a2c9-3b71-4b5e-
 
 ## Part G. 
 ## Sketch and brainstorm further interactions and features you would like for your clock for Part 2.
+While finding lyrics that have the hours in them was fun, I'm prefer something different for part 2. 
 
+Features:
+- Have a set of motivational quotes and cycle through them. Change quotes when the hour changes, and also when pressing one of the buttons.
+- Have the other other toggle between 3-4 modes. Mode ideas: 
+  - lyrics mode
+  - quote mode
+  - visual mode: make the screen fill up throughout the day from midnight to midnight like an hourglass
+  - water drinking mode: everyone should have about 3 liters of water a day, break up the screen into 3 sections and based on the time, fill up the 3 sections as a reminder of how much water to drink.
 
 # Prep for Part 2
 
