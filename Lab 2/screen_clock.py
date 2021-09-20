@@ -84,7 +84,7 @@ while True:
     y += line_inc*2
 
     #test
-    cur_hour = "5"
+    cur_hour = "6"
     # Musical Lyrics: A new lyric for every hour of the day
     x = 0
 
@@ -152,22 +152,83 @@ while True:
     # Mafia by SCH
     elif cur_hour == "6":
       x = 0
+      draw.text((0,y), "Demain, les bleus pètent", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "la porte vers", font=font, fill=grey)
+      x = set_next_x(x, "la porte vers")
+      draw.text((x,y), "six AM", font=font, fill="#f5336d")
+
+    # Transformation by Hey-Zooz
     elif cur_hour == "7":
       x = 0
+      draw.text((0,y), "7 o'clock", font=font, fill="#fa2a3f")
+      x = set_next_x(x, "7 o'clock")
+      draw.text((x,y), "on the dot", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "Like you got it bad", font=font, fill=grey)
+
+    # I Asked God by Quelle Chris
     elif cur_hour == "8":
-      x = 0
+      draw.text((0,y), "8 in the morning", font=font, fill="#fa4d2a")
+      y += line_inc
+      draw.text((0,y), "woke up prayed for the lord", font=font, fill=grey)
+
+    # Charged Up by Always Never
     elif cur_hour == "9":
       x = 0
+      draw.text((0,y), "Push to start and I hear me", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "on the radio", font=font, fill=grey)
+      x = set_next_x(x, "on the radio")
+      draw.text((x,y), "9 AM", font=font, fill="#f76d28")
+
+    # Bands by White Dave
     elif cur_hour == "10":
-      x = 0
+      draw.text((0,y), "And I've been on 10 since", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "10 in the morning", font=font, fill="#fc9d28")
+
+    # Mornings Eleven by The Magic Numbers
     elif cur_hour == "11":
       x = 0
+      draw.text((0,y), "Mornings eleven", font=font, fill="#facc28")
+      x = set_next_x(x, "Mornings eleven")
+      draw.text((x,y), ", the feelings", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "are severed", font=font, fill=grey)
+      draw.text((0,y), "I can't feel anything at all", font=font, fill=grey)
+
+    # Noon by Estère
     elif cur_hour == "12":
       x = 0
+      draw.text((0,y), "And crumple at the", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "height of", font=font, fill=grey)
+      x = set_next_x(x, "height of")
+      draw.text((x,y), " noon", font=font, fill="#fcf526")
+
+    # Sunday morning by Wolficide
     elif cur_hour == "13":
       x = 0
+      draw.text((0,y), "1 pm", font=font, fill="#72ff26")
+      x = set_next_x(x, "1 pm")
+      draw.text((x,y), " it's about time", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "to clock in", font=font, fill=grey)
+
+    # Hooray by Minus the Bear
     elif cur_hour == "14":
       x = 0
+      draw.text((0,y), "It's", font=font, fill=grey)
+      x = set_next_x(x, "It's")
+      draw.text((x,y), " 2pm", font=font, fill="#19e01c")
+      x = set_next_x(x, " 2pm")
+      draw.text((x,y), " and our snow", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "is falling still", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "As our good city lay still", font=font, fill=grey)
+      
     elif cur_hour == "15":
       x = 0
     elif cur_hour == "16":
@@ -184,9 +245,17 @@ while True:
       x = 0
     elif cur_hour == "22":
       x = 0
+    
+    # Since I've Been Loving You by Led Zeppelin
     elif cur_hour == "23":
-      x = 0
-
+      draw.text((0,y), "I've been working from 7", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "to", font=font, fill=grey)
+      x = set_next_x(x, "to")
+      draw.text((x,y), " eleven", font=font, fill="#FFFFFF")
+      x = set_next_x(x, " eleven")
+      draw.text((x,y), " every night", font=font, fill=grey)
+    
     x = font.getsize(" ")[0]*15
     y += line_inc*2
     draw.text((x,y), cur_min_sec, font=font, fill=grey)
