@@ -84,7 +84,7 @@ while True:
     y += line_inc*2
 
     #test
-    cur_hour = "6"
+    cur_hour = "23"
     # Musical Lyrics: A new lyric for every hour of the day
     x = 0
 
@@ -156,14 +156,14 @@ while True:
       y += line_inc
       draw.text((0,y), "la porte vers", font=font, fill=grey)
       x = set_next_x(x, "la porte vers")
-      draw.text((x,y), "six AM", font=font, fill="#f5336d")
+      draw.text((x,y), " six AM", font=font, fill="#f5336d")
 
     # Transformation by Hey-Zooz
     elif cur_hour == "7":
       x = 0
       draw.text((0,y), "7 o'clock", font=font, fill="#fa2a3f")
       x = set_next_x(x, "7 o'clock")
-      draw.text((x,y), "on the dot", font=font, fill=grey)
+      draw.text((x,y), " on the dot", font=font, fill=grey)
       y += line_inc
       draw.text((0,y), "Like you got it bad", font=font, fill=grey)
 
@@ -171,7 +171,9 @@ while True:
     elif cur_hour == "8":
       draw.text((0,y), "8 in the morning", font=font, fill="#fa4d2a")
       y += line_inc
-      draw.text((0,y), "woke up prayed for the lord", font=font, fill=grey)
+      draw.text((0,y), "woke up prayed for", font=font, fill=grey)
+      y += line_inc
+      draw.text((0,y), "the lord", font=font, fill=grey)
 
     # Charged Up by Always Never
     elif cur_hour == "9":
@@ -180,7 +182,7 @@ while True:
       y += line_inc
       draw.text((0,y), "on the radio", font=font, fill=grey)
       x = set_next_x(x, "on the radio")
-      draw.text((x,y), "9 AM", font=font, fill="#f76d28")
+      draw.text((x,y), " 9 AM", font=font, fill="#f76d28")
 
     # Bands by White Dave
     elif cur_hour == "10":
@@ -193,9 +195,10 @@ while True:
       x = 0
       draw.text((0,y), "Mornings eleven", font=font, fill="#facc28")
       x = set_next_x(x, "Mornings eleven")
-      draw.text((x,y), ", the feelings", font=font, fill=grey)
+      draw.text((x,y), ", the", font=font, fill=grey)
       y += line_inc
-      draw.text((0,y), "are severed", font=font, fill=grey)
+      draw.text((0,y), "feelings are severed", font=font, fill=grey)
+      y += line_inc
       draw.text((0,y), "I can't feel anything at all", font=font, fill=grey)
 
     # Noon by Estère
