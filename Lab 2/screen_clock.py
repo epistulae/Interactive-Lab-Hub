@@ -82,12 +82,9 @@ while True:
     draw.text((x,y), cur_date, font=font, fill=grey)
     line_inc = font.getsize(cur_date)[1]
     y += line_inc*2
-
-    #test
-    cur_hour = "23"
-    # Musical Lyrics: A new lyric for every hour of the day
     x = 0
 
+    # Musical Lyrics: A new lyric for every hour of the day
     # Style by Taylor Swift
     if cur_hour == "0":
       draw.text((x,y), "Midnight,", font=font, fill="#8ca7ff")
@@ -266,7 +263,7 @@ while True:
       draw.text((0,y), "We fight all day till", font=font, fill=grey)
       y += line_inc
       draw.text((0,y), "6 at night", font=font, fill="#48e7f0")
-    
+
     # Sock Drawer Blues by Glue
     elif cur_hour == "19":
       draw.text((0,y), "All of this while eating", font=font, fill=grey)
@@ -274,7 +271,7 @@ while True:
       draw.text((0,y), "dinner every night at", font=font, fill=grey)
       y += line_inc
       draw.text((0,y), "7 pm", font=font, fill="#33bbf5")
-    
+
     # 8pm by sadeyes
     elif cur_hour == "20":
       x = 0
@@ -303,7 +300,7 @@ while True:
       draw.text((x,y), " and I", font=font, fill=grey)
       y += line_inc
       draw.text((0,y), "haven't talked to you yet", font=font, fill=grey)
-    
+
     # Since I've Been Loving You by Led Zeppelin
     elif cur_hour == "23":
       draw.text((0,y), "I've been working from 7", font=font, fill=grey)
@@ -311,7 +308,7 @@ while True:
       draw.text((0,y), "to", font=font, fill=grey)
       x = set_next_x(x, "to")
       draw.text((x,y), " eleven every night", font=font, fill="#6823fc")
-    
+
     x = font.getsize(" ")[0]*15
     y += line_inc*2
     draw.text((x,y), cur_min_sec, font=font, fill=grey)
