@@ -1,5 +1,6 @@
 # Interactive Prototyping: The Clock of Pi
 
+
 ## Part E.
 ### Modify the barebones clock to make it your own
 
@@ -34,7 +35,8 @@ Features:
 
 # Prep for Part 2
 
-1. Pick up remaining parts for kit.
+1. Pick up remaining parts for kit on Thursday lab class. Check the updated [parts list inventory](partslist.md) and let the TA know if there is any part missing.
+  
 
 2. Look at and give feedback on the Part G. for at least 2 other people in the class (and get 2 people to comment on your Part G!)
 
