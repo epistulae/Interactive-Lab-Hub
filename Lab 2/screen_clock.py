@@ -142,6 +142,7 @@ def main_screen():
     disp.image(image, rotation)
     
 def inspiration():
+    draw.text((x,y), "INSPIRATION", font=font, fill="#FF2E80")
     print(randrange(10))
         
 while True:
@@ -161,17 +162,18 @@ while True:
     elif state == 1:
         inspiration()
         print("inspiration")
+        
+        # Bottom: return to main
+        if not buttonB.value and buttonA.value:
+            state = 0
 
     # Mental health break (static)
     elif state == 2:
+        draw.text((x,y), "BREAK TIME", font=font, fill="#FF2E80")
         print("break")
-    
-    # Top
-    if buttonB.value and not buttonA.value:
-        if state == 0:
-           print("hello")
-           state = 1
-        else:
-           state = 0
-           print("there")
+        
+        # Both: return to main
+        if buttonB.value and buttonA.value:
+            state = 0
+
     time.sleep(1)
