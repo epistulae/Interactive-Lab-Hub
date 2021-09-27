@@ -71,18 +71,46 @@ def set_next_x(x, string):
     x += font.getsize(string)[0]
     return x
 
-setting = 0
+# Clock states:
+# State = 0 -> Base welcome screen (Non-exact time)
+#              Buckets (7): Midnight to 6 am, 6 am to 9 am, 9 am to noon
+#              noon to 3 pm, 3 pm to 6 pm, 6 pm to 9 pm, 9 pm to midnight.
+# State = 1 -> Top button from state 0, show exact time. With random
+#              inspirational quote. (Selected from set of 10.)
+#              Use top button refresh quote.
+#              Botton button to return to main.
+# State = 2 -> Bottom button from state 0, mental health break.
+#              Top button to adjust how long: 1 to 5 minutes.
+#              Bottom button to return to main.
+#              Top and bottom button to start mental break countdown.
+
+
+# TODO: maybe brighten and dim following breaths. 
+
+#"All the world's asleep. Zzz."
+state = 0
 
 while True:
+    
+    # Main screen
+    if state == 0:
+        disp.fill(color565(255, 255, 255))
+    elif state == 1:
+        disp.fill(color565(255, 255, 255))
+    elif state == 2:
+        disp.fill(color565(255, 255, 255))
+    elif state == 3:
+        disp.fill(color565(255, 255, 255))
+    
     if buttonB.value and not buttonA.value:
         if setting == 0:
            print("hello")
-           setting = 1
+           state = 1
         else:
-           setting = 0
+           state = 0
            print("there")
 
-    if setting == 0:
+    if state == 0:
         # Draw a black filled box to clear the image.
         draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
