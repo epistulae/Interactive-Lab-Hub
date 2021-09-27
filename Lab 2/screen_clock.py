@@ -104,7 +104,7 @@ def main_screen():
     x = 0
     
     # Testing all buckets
-    cur_hour = input("Enter hour value: ")
+    cur_hour = int(input("Enter hour value: "))
     
     # Enumerate the 7 buckets.
     if (cur_hour == 24) or ((cur_hour >= 1) and (cur_hour < 6)):
