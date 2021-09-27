@@ -145,7 +145,7 @@ def inspiration():
     y = top
     x = font.getsize(" ")[0]*12
     draw.text((x,y), cur_min_sec, font=date_font, fill=grey)
-    line_inc = font.getsize(cur_date)[1]
+    line_inc = font.getsize(cur_min_sec)[1]
     y += line_inc*1.7
     x = 0
     
