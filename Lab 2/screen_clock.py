@@ -92,7 +92,6 @@ def set_next_x(x, string):
 state = 0
 
 def main_screen():
-    draw.rectangle((0, 0, width, height), outline=0, fill=0)
     cur_date = time.strftime("%m/%d/%Y")
     cur_hour = time.localtime()[3]
     
@@ -143,12 +142,12 @@ def main_screen():
     disp.image(image, rotation)
     
 def inspiration():
-    draw.rectangle((0, 0, width, height), outline=0, fill=0)
-    
     y = top
     x = 0
     draw.text((x,y), "INSPIRATION", font=font, fill="#FF2E80")
     print(randrange(10))
+    # Display image.
+    disp.image(image, rotation)
         
 while True:
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
@@ -174,12 +173,12 @@ while True:
 
     # Mental health break (static)
     elif state == 2:
-        draw.rectangle((0, 0, width, height), outline=0, fill=0)
-        
         y = top
         x = 0
         draw.text((x,y), "BREAK TIME", font=font, fill="#FF2E80")
         print("break")
+        # Display image.
+        disp.image(image, rotation)
         
         # Both: return to main
         if buttonB.value and buttonA.value:
