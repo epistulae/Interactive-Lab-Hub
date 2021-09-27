@@ -69,11 +69,6 @@ buttonB = digitalio.DigitalInOut(board.D24)
 buttonA.switch_to_input()
 buttonB.switch_to_input()
 
-# Lab 2 Clock Formatting function
-def set_next_x(x, string):
-    x += font.getsize(string)[0]
-    return x
-
 # Clock states:
 # State = 0 -> Base welcome screen (Non-exact time)
 #              Buckets (7): Midnight to 6 am, 6 am to 9 am, 9 am to noon
@@ -91,6 +86,9 @@ def set_next_x(x, string):
 # Initial state on main
 state = 0
 
+# Common vars
+grey = "#E5E5E5"
+
 def main_screen():
     cur_date = time.strftime("%m/%d/%Y")
     cur_hour = time.localtime()[3]
@@ -98,7 +96,6 @@ def main_screen():
     # Print day
     y = top
     x = font.getsize(" ")[0]*11
-    grey = "#e8e8e8"
     draw.text((x,y), cur_date, font=date_font, fill=grey)
     line_inc = font.getsize(cur_date)[1]
     y += line_inc*1.7
@@ -134,18 +131,27 @@ def main_screen():
         y += line_inc
         draw.text((x,y), "Enjoy your evening :)", font=font, fill="#FF2E80")
     y += line_inc*2.3
-    draw.text((x,y), "↑ inspiration and time", font=menu_font, fill="#E5E5E5")
+    draw.text((x,y), "↑ inspiration and time", font=menu_font, fill=grey)
     y += line_inc*0.7
-    draw.text((x,y), "↓ take a break", font=menu_font, fill="#E5E5E5")
+    draw.text((x,y), "↓ take a break", font=menu_font, fill=grey)
    
     # Display image.
     disp.image(image, rotation)
     
 def inspiration():
+    cur_min_sec = time.strftime("%M:%S")
+
+    # Print time
     y = top
+    x = font.getsize(" ")[0]*12
+    draw.text((x,y), cur_min_sec, font=date_font, fill=grey)
+    line_inc = font.getsize(cur_date)[1]
+    y += line_inc*1.7
     x = 0
+    
     draw.text((x,y), "INSPIRATION", font=font, fill="#FF2E80")
     print(randrange(10))
+    
     # Display image.
     disp.image(image, rotation)
         
@@ -180,8 +186,8 @@ while True:
         # Display image.
         disp.image(image, rotation)
         
-        # Both: return to main
-        if buttonB.value and buttonA.value:
+        # Bottom: return to main
+        if not buttonB.value and buttonA.value:
             state = 0
 
     time.sleep(1)
