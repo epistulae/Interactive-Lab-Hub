@@ -102,31 +102,31 @@ def main_screen():
     x = 0
     
     # Enumerate the 7 buckets.
-    if (cur_hour == 24) || ((cur_hour >= 1) && (cur_hour < 6)):
+    if (cur_hour == 24) or ((cur_hour >= 1) and (cur_hour < 6)):
         draw.text((x,y), "All the world's asleep.", font=font, fill="#5981D5")
         y += line_inc
         draw.text((x,y), "You should sleep too! Zzz.", font=font, fill="#5981D5")
-    elif (cur_hour >= 6) && (cur_hour < 9):
+    elif (cur_hour >= 6) and (cur_hour < 9):
         draw.text((x,y), "Early bird gets the worm.", font=font, fill="#59D5AF")
         y += line_inc
         draw.text((x,y), "Go you!", font=font, fill="#59D5AF")
-    elif (cur_hour >= 9) && (cur_hour < 12):
+    elif (cur_hour >= 9) and (cur_hour < 12):
         draw.text((x,y), "I need coffee...", font=font, fill="#5DD559")
         y += line_inc
         draw.text((x,y), "☕ ☕ ☕", font=font, fill="#5DD559")
-    elif (cur_hour >= 12) && (cur_hour < 15):
+    elif (cur_hour >= 12) and (cur_hour < 15):
         draw.text((x,y), "Food time! Go eat!", font=font, fill="#FD9106")
         y += line_inc
         draw.text((x,y), "Seriously, go!", font=font, fill="#FD9106")
-    elif (cur_hour >= 15) && (cur_hour < 18):
+    elif (cur_hour >= 15) and (cur_hour < 18):
         draw.text((x,y), "Let's get some afternoon tea.", font=font, fill="#BDFD06")
         y += line_inc
         draw.text((x,y), "Matcha or earl grey?", font=font, fill="#BDFD06")
-    elif (cur_hour >= 18) && (cur_hour < 21):
+    elif (cur_hour >= 18) and (cur_hour < 21):
         draw.text((x,y), "Dinner time!", font=font, fill="#FF3E2E")
         y += line_inc
         draw.text((x,y), "Let's get cookin'!", font=font, fill="#FF3E2E")
-    elif (cur_hour >= 21) && (cur_hour < 24):
+    elif (cur_hour >= 21) and (cur_hour < 24):
         draw.text((x,y), "The day is almost done...", font=font, fill="#FF2E80")
         y += line_inc
         draw.text((x,y), "Enjoy your evening :)", font=font, fill="#FF2E80")
