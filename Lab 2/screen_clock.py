@@ -5,6 +5,7 @@ import board
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_rgb_display.st7789 as st7789
 from adafruit_rgb_display.rgb import color565
+from random import randrange
 
 # Configuration for CS and DC pins (these are FeatherWing defaults on M0/M4):
 cs_pin = digitalio.DigitalInOut(board.CE0)
@@ -103,9 +104,6 @@ def main_screen():
     y += line_inc*1.7
     x = 0
     
-    # Testing all buckets
-    cur_hour = int(input("Enter hour value: "))
-    
     # Enumerate the 7 buckets.
     if (cur_hour == 24) or ((cur_hour >= 1) and (cur_hour < 6)):
         draw.text((x,y), "All the world's asleep.", font=font, fill="#5981D5")
@@ -136,13 +134,15 @@ def main_screen():
         y += line_inc
         draw.text((x,y), "Enjoy your evening :)", font=font, fill="#FF2E80")
     y += line_inc*2.3
-    draw.text((x,y), "↑ inspiration", font=menu_font, fill="#E5E5E5")
+    draw.text((x,y), "↑ inspiration and time", font=menu_font, fill="#E5E5E5")
     y += line_inc*0.7
     draw.text((x,y), "↓ take a break", font=menu_font, fill="#E5E5E5")
    
     # Display image.
     disp.image(image, rotation)
-        
+    
+def inspiration():
+    print(randrange(10))
         
 while True:
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
@@ -150,17 +150,25 @@ while True:
     # Main screen
     if state == 0:
         main_screen()
+        # Top: state 1 inspiration
+        if buttonB.value and not buttonA.value:
+            state = 1
+        # Bottom: state 2 break
+        elif not buttonB.value and buttonA.value:
+            state = 2
 
     # Inspiration screen (static)
     elif state == 1:
-        disp.fill(color565(255, 255, 255))
+        inspiration()
+        print("inspiration")
 
     # Mental health break (static)
     elif state == 2:
-        disp.fill(color565(255, 255, 255))
+        print("break")
     
+    # Top
     if buttonB.value and not buttonA.value:
-        if setting == 0:
+        if state == 0:
            print("hello")
            state = 1
         else:
