@@ -4,6 +4,7 @@ import digitalio
 import board
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_rgb_display.st7789 as st7789
+from adafruit_rgb_display.rgb import color565
 
 # Configuration for CS and DC pins (these are FeatherWing defaults on M0/M4):
 cs_pin = digitalio.DigitalInOut(board.CE0)
@@ -74,8 +75,13 @@ setting = 0
 
 while True:
     if buttonB.value and not buttonA.value:
-        setting = 1
-        
+        if setting == 0:
+           print("hello")
+           setting = 1
+        else:
+           setting = 0
+           print("there")
+
     if setting == 0:
         # Draw a black filled box to clear the image.
         draw.rectangle((0, 0, width, height), outline=0, fill=0)
@@ -327,5 +333,5 @@ while True:
         # Display image.
         disp.image(image, rotation)
     else:
-        display.fill(color565(255, 255, 255))
+        disp.fill(color565(255, 255, 255))
     time.sleep(1)
