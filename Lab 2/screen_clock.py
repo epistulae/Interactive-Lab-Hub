@@ -55,8 +55,8 @@ x = 0
 # same directory as the python script!
 # Some other nice fonts to try: http://www.dafont.com/bitmap.php
 date_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 16)
-font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 24)
-menu_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 12)
+font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 20)
+menu_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 16)
 
 # Turn on the backlight
 backlight = digitalio.DigitalInOut(board.D22)
@@ -103,6 +103,9 @@ def main_screen():
     y += line_inc
     x = 0
     
+    # Testing all buckets
+    cur_hour = input("Enter hour value: ")
+    
     # Enumerate the 7 buckets.
     if (cur_hour == 24) or ((cur_hour >= 1) and (cur_hour < 6)):
         draw.text((x,y), "All the world's asleep.", font=font, fill="#5981D5")
@@ -132,9 +135,9 @@ def main_screen():
         draw.text((x,y), "The day is almost done...", font=font, fill="#FF2E80")
         y += line_inc
         draw.text((x,y), "Enjoy your evening :)", font=font, fill="#FF2E80")
-    y += line_inc
+    y += line_inc*1.5
     draw.text((x,y), "↑ inspiration", font=menu_font, fill="#E5E5E5")
-    y += line_inc
+    y += line_inc*0.7
     draw.text((x,y), "↓ take a break", font=menu_font, fill="#E5E5E5")
    
     # Display image.
