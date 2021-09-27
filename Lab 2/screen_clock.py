@@ -100,7 +100,7 @@ def main_screen():
     grey = "#e8e8e8"
     draw.text((x,y), cur_date, font=date_font, fill=grey)
     line_inc = font.getsize(cur_date)[1]
-    y += line_inc*2
+    y += line_inc
     x = 0
     
     # Enumerate the 7 buckets.
@@ -134,6 +134,7 @@ def main_screen():
         draw.text((x,y), "Enjoy your evening :)", font=font, fill="#FF2E80")
     y += line_inc
     draw.text((x,y), "↑ inspiration", font=menu_font, fill="#E5E5E5")
+    y += line_inc
     draw.text((x,y), "↓ take a break", font=menu_font, fill="#E5E5E5")
    
     # Display image.
