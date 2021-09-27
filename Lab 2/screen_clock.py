@@ -90,7 +90,7 @@ state = 0
 
 def main_screen():
     cur_date = time.strftime("%m/%d/%Y")
-    cur_hour = time.strftime("%H")
+    cur_hour = time.localtime()[tm_hour]
     
     # Print day
     y = top
