@@ -54,7 +54,9 @@ x = 0
 # Alternatively load a TTF font.  Make sure the .ttf font file is in the
 # same directory as the python script!
 # Some other nice fonts to try: http://www.dafont.com/bitmap.php
-font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
+date_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 16)
+font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 24)
+menu_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 12)
 
 # Turn on the backlight
 backlight = digitalio.DigitalInOut(board.D22)
@@ -96,7 +98,7 @@ def main_screen():
     y = top
     x = font.getsize(" ")[0]*11
     grey = "#e8e8e8"
-    draw.text((x,y), cur_date, font=font, fill=grey)
+    draw.text((x,y), cur_date, font=date_font, fill=grey)
     line_inc = font.getsize(cur_date)[1]
     y += line_inc*2
     x = 0
@@ -131,7 +133,9 @@ def main_screen():
         y += line_inc
         draw.text((x,y), "Enjoy your evening :)", font=font, fill="#FF2E80")
     y += line_inc
-    draw.text((x,y), "↑ inspiration; ↓ take a break", font=font, fill="#E5E5E5")
+    draw.text((x,y), "↑ inspiration", font=menu_font, fill="#E5E5E5")
+    draw.text((x,y), "↓ take a break", font=menu_font, fill="#E5E5E5")
+   
     # Display image.
     disp.image(image, rotation)
         
