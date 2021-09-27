@@ -6,6 +6,7 @@ from PIL import Image, ImageDraw, ImageFont
 import adafruit_rgb_display.st7789 as st7789
 from adafruit_rgb_display.rgb import color565
 from random import randrange
+import numpy as np
 
 # Configuration for CS and DC pins (these are FeatherWing defaults on M0/M4):
 cs_pin = digitalio.DigitalInOut(board.CE0)
@@ -138,6 +139,12 @@ def main_screen():
     # Display image.
     disp.image(image, rotation)
     
+# Preselect a quote in the beginning.
+selected_quote = randrange(10)
+
+# Populated quote array
+quotes = np.array("Hello", "World", "It", "Is", "nice", "to", "see", "this", "happy", "time")
+
 def inspiration():
     cur_min_sec = time.strftime("%M:%S")
 
@@ -149,7 +156,7 @@ def inspiration():
     y += line_inc*1.7
     x = 0
     
-    draw.text((x,y), "INSPIRATION", font=font, fill="#FF2E80")
+    draw.text((x,y), quotes[selected_quote], font=font, fill="#FF2E80")
     print(randrange(10))
     
     # Display image.
