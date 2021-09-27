@@ -135,7 +135,7 @@ def main_screen():
         draw.text((x,y), "The day is almost done.", font=font, fill="#FF2E80")
         y += line_inc
         draw.text((x,y), "Enjoy your evening :)", font=font, fill="#FF2E80")
-    y += line_inc*2.5
+    y += line_inc*2.3
     draw.text((x,y), "↑ inspiration", font=menu_font, fill="#E5E5E5")
     y += line_inc*0.7
     draw.text((x,y), "↓ take a break", font=menu_font, fill="#E5E5E5")
