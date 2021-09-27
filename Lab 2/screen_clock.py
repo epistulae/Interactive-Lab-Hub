@@ -142,6 +142,8 @@ def main_screen():
     disp.image(image, rotation)
     
 def inspiration():
+    y = top
+    x = 0
     draw.text((x,y), "INSPIRATION", font=font, fill="#FF2E80")
     print(randrange(10))
         
@@ -169,6 +171,8 @@ while True:
 
     # Mental health break (static)
     elif state == 2:
+        y = top
+        x = 0
         draw.text((x,y), "BREAK TIME", font=font, fill="#FF2E80")
         print("break")
         
