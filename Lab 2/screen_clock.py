@@ -272,10 +272,8 @@ def breathe_minute(seconds):
     disp.image(image, rotation)
     while seconds > 0:
         i = seconds % 10
-        print(i)
         draw.rectangle((0, 0, width, height), outline=0, fill=(brightness[i], brightness[i], brightness[i]))
         disp.image(image, rotation)
-        #disp.fill(color565(bright, bright, bright))
         time.sleep(1)
         seconds -= 1
 
