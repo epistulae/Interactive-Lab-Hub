@@ -172,20 +172,20 @@ def inspiration():
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
 
     # Print time
-    y = top
+    y = top + 5
     x = font.getsize(" ")[0]*12
     draw.text((x,y), cur_min_sec, font=date_font, fill=grey)
     line_inc = font.getsize(cur_min_sec)[1]
-    y += line_inc*2.2
+    y += line_inc*3
     x = 0
     
     # Print quote
     draw.text((x,y), quotes[selected_quote], font=font, fill=colors[selected_color])
     
     # Menu
-    y += line_inc*2.3
+    y += line_inc*3
     draw.text((x,y), "↑ randomize!", font=menu_font, fill=grey)
-    y += line_inc*0.7
+    y += line_inc*1
     draw.text((x,y), "↓ back to main", font=menu_font, fill=grey)
     
     # Display image.
@@ -197,10 +197,10 @@ while True:
     # Main screen
     if state == 0:
         main_screen()
-        # Top: state 1 inspiration
+        # Top: state 1: inspiration
         if buttonB.value and not buttonA.value:
             state = 1
-        # Bottom: state 2 break
+        # Bottom: state 2: mental break
         elif not buttonB.value and buttonA.value:
             state = 2
 
@@ -208,10 +208,13 @@ while True:
     elif state == 1:
         selected_quote = int(input("Which quote? "))
         inspiration()
-        print("inspiration")
         
+        # Top: randomize
+        if buttonB.value and not buttonA.value:
+            selected_quote = randrange(10)
+            selected_color = randrange(10)
         # Bottom: return to main
-        if not buttonB.value and buttonA.value:
+        elif not buttonB.value and buttonA.value:
             state = 0
 
     # Mental health break (static)
