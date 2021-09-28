@@ -193,16 +193,16 @@ def inspiration():
     
     
 # Brightness array black to white to black in 10 steps
-brightness = [5]
-brightness.append(63)
-brightness.append(127)
+brightness = [60]
+brightness.append(100)
+brightness.append(140)
 brightness.append(190)
 brightness.append(245)
 brightness.append(245)
 brightness.append(190)
-brightness.append(127)
-brightness.append(63)
-brightness.append(5)
+brightness.append(140)
+brightness.append(100)
+brightness.append(60)
  
 def mental_minute_menu():
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
@@ -221,6 +221,11 @@ def mental_minute_menu():
     # Display image.
     disp.image(image, rotation)
     
+def mental_minute():
+    mental_minute_starting()
+    breathe_minute(60)
+    mental_minute_complete()  
+    
 # Ready for mental minute?
 def mental_minute_starting():
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
@@ -238,7 +243,6 @@ def mental_minute_starting():
     disp.image(image, rotation)
     
     time.sleep(10)
-    mental_minute(60)
 
 # Mental minute complete
 def mental_minute_complete():
@@ -252,16 +256,16 @@ def mental_minute_complete():
     
     y += line_inc*2.5
     draw.text((x,y), "Returning to main...", font=menu_font, fill=grey)
+    time.sleep(5)
     
-def mental_minute(seconds):
+def breathe_minute(seconds):
     while seconds > 0:
-        
+        bright = seconds % 10
+        disp.fill(color565(bright, bright, bright))
         time.sleep(1)
         seconds -= 1
-    
 
-    
-    
+# Lab 2 Clock
 while True:
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
     
@@ -287,16 +291,14 @@ while True:
         elif not buttonB.value and buttonA.value:
             state = 0
 
-    # Mental health break (static)
+    # Mental health break
     elif state == 2:
-        bright = randrange(10)
-        disp.fill(color565(bright, bright, bright))
-        #mental_minute_menu()
+        mental_minute_menu()
         
-        # Top: start mental minute
+        # Top: start mental minute and return to main when complete
         if buttonB.value and not buttonA.value:
-            mental_minute_starting()
-            mental_minute_complete()
+            mental_minute()
+            state = 0
         # Bottom: return to main
         elif not buttonB.value and buttonA.value:
             state = 0
