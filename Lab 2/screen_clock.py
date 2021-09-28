@@ -141,18 +141,31 @@ def main_screen():
     
 # Preselect a quote in the beginning.
 selected_quote = randrange(10)
+selected_color = randrange(10)
 
-# Populated quotes list of size 10
+# Populated 10 quotes
 quotes = ["No pressure, no diamonds."]
 quotes.append("Stay foolish to stay sane.")
 quotes.append("Dream big and dare to fail.")
 quotes.append("Leave no stone unturned.")
 quotes.append("No guts, no story.")
-quotes.append("Be a rainbow in someone’s cloud.")
-quotes.append("Try Again. Fail again. Fail better.")
-quotes.append("You can if you think you can.")
-quotes.append("You never fail until you stop trying.")
 quotes.append("Begin anywhere.")
+quotes.append("Live your dreams.")
+quotes.append("You get what you give.")
+quotes.append("What we think, we become.")
+quotes.append("And still, I rise.")
+
+# Populated 10 color options
+colors = ["#FB5F4C"]
+colors.append("#FBB34C")
+colors.append("#DBFB4C")
+colors.append("#71FB4C")
+colors.append("#4CFBAB")
+colors.append("#4CE3FB")
+colors.append("#4C9EFB")
+colors.append("#727DFC")
+colors.append("#AF72FC")
+colors.append("#FE53CA")
 
 def inspiration():
     cur_min_sec = time.strftime("%M:%S")
@@ -163,11 +176,17 @@ def inspiration():
     x = font.getsize(" ")[0]*12
     draw.text((x,y), cur_min_sec, font=date_font, fill=grey)
     line_inc = font.getsize(cur_min_sec)[1]
-    y += line_inc*1.7
+    y += line_inc*2.2
     x = 0
     
-    draw.text((x,y), quotes[selected_quote], font=font, fill="#FF2E80")
-    print(randrange(10))
+    # Print quote
+    draw.text((x,y), quotes[selected_quote], font=font, fill=colors[selected_color])
+    
+    # Menu
+    y += line_inc*2.3
+    draw.text((x,y), "↑ randomize!", font=menu_font, fill=grey)
+    y += line_inc*0.7
+    draw.text((x,y), "↓ back to main", font=menu_font, fill=grey)
     
     # Display image.
     disp.image(image, rotation)
