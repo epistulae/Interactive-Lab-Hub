@@ -261,10 +261,13 @@ def mental_minute_complete():
     time.sleep(5)
     
 def breathe_minute(seconds):
+    draw.rectangle((0, 0, width, height), outline=0, fill=0)
+    disp.image(image, rotation)
     while seconds > 0:
         bright = seconds % 10
         print(bright)
         draw.rectangle((0, 0, width, height), outline=0, fill=(bright, bright, bright))
+        disp.image(image, rotation)
         #disp.fill(color565(bright, bright, bright))
         time.sleep(1)
         seconds -= 1
