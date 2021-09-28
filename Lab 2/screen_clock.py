@@ -142,11 +142,21 @@ def main_screen():
 # Preselect a quote in the beginning.
 selected_quote = randrange(10)
 
-# Populated quote array
-quotes = np.array("Hello", "World", "It", "Is", "nice", "to", "see", "this", "happy", "time")
+# Populated quotes list of size 10
+quotes = ["No pressure, no diamonds."]
+quotes.append("Stay foolish to stay sane.")
+quotes.append("Dream big and dare to fail.")
+quotes.append("Leave no stone unturned.")
+quotes.append("No guts, no story.")
+quotes.append("Be a rainbow in someone’s cloud.")
+quotes.append("Try Again. Fail again. Fail better.")
+quotes.append("You can if you think you can.")
+quotes.append("You never fail until you stop trying.")
+quotes.append("Begin anywhere.")
 
 def inspiration():
     cur_min_sec = time.strftime("%M:%S")
+    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
 
     # Print time
     y = top
@@ -177,6 +187,7 @@ while True:
 
     # Inspiration screen (static)
     elif state == 1:
+        selected_quote = int(input("Which quote? "))
         inspiration()
         print("inspiration")
         
