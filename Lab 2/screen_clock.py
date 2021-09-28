@@ -173,17 +173,17 @@ def inspiration():
 
     # Print time
     y = top + 5
-    x = font.getsize(" ")[0]*12
+    x = font.getsize(" ")[0]*15
     draw.text((x,y), cur_min_sec, font=date_font, fill=grey)
     line_inc = font.getsize(cur_min_sec)[1]
-    y += line_inc*3
+    y += line_inc*2.5
     x = 0
     
     # Print quote
     draw.text((x,y), quotes[selected_quote], font=font, fill=colors[selected_color])
     
     # Menu
-    y += line_inc*3
+    y += line_inc*2
     draw.text((x,y), "↑ randomize!", font=menu_font, fill=grey)
     y += line_inc*1
     draw.text((x,y), "↓ back to main", font=menu_font, fill=grey)
@@ -204,9 +204,8 @@ while True:
         elif not buttonB.value and buttonA.value:
             state = 2
 
-    # Inspiration screen (static)
+    # Inspiration screen
     elif state == 1:
-        selected_quote = int(input("Which quote? "))
         inspiration()
         
         # Top: randomize
