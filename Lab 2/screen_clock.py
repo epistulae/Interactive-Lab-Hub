@@ -193,16 +193,16 @@ def inspiration():
     
     
 # Brightness array black to white to black in 10 steps
-brightness = ["#000000"]
-brightness.append("#4F4F4F")
-brightness.append("#818181")
-brightness.append("#BEBEBE")
-brightness.append("#F5F5F5")
-brightness.append("#F5F5F5")
-brightness.append("#BEBEBE")
-brightness.append("#818181")
-brightness.append("#4F4F4F")
-brightness.append("#000000")
+brightness = [5]
+brightness.append(63)
+brightness.append(127)
+brightness.append(190)
+brightness.append(245)
+brightness.append(245)
+brightness.append(190)
+brightness.append(127)
+brightness.append(63)
+brightness.append(5)
  
 def mental_minute_menu():
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
@@ -289,7 +289,8 @@ while True:
 
     # Mental health break (static)
     elif state == 2:
-        disp.fill(brightness[randrange(10)])
+        bright = randrange(10)
+        disp.fill(color565(bright, bright, bright)
         #mental_minute_menu()
         
         # Top: start mental minute
