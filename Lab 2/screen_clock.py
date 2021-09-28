@@ -168,12 +168,12 @@ colors.append("#AF72FC")
 colors.append("#FE53CA")
 
 def inspiration():
-    cur_min_sec = time.strftime("%M:%S", time.localtime())
+    cur_min_sec = time.strftime("%H:%M:%S", time.localtime())
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
 
     # Print time
     y = top + 8
-    x = font.getsize(" ")[0]*15
+    x = font.getsize(" ")[0]*12
     draw.text((x,y), cur_min_sec, font=date_font, fill=grey)
     line_inc = font.getsize(cur_min_sec)[1]
     y += line_inc*2.5
