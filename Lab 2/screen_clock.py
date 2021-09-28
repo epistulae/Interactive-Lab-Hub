@@ -238,12 +238,13 @@ def mental_minute_starting():
     draw.text((x,y), "Let's take a minute...", font=font, fill=colors[selected_color])
     y += line_inc
     draw.text((x,y), "Breathe as the light", font=font, fill=grey)
+    y += line_inc
     draw.text((x,y), "brightens and dims", font=font, fill=grey)
     
     # Display image.
     disp.image(image, rotation)
     
-    time.sleep(10)
+    time.sleep(5)
 
 # Mental minute complete
 def mental_minute_complete():
@@ -263,7 +264,7 @@ def breathe_minute(seconds):
     while seconds > 0:
         bright = seconds % 10
         print(bright)
-        disp.fill(color565(bright, bright, bright))
+        draw.rectangle((0, 0, width, height), outline=0, fill=0.2)
         time.sleep(1)
         seconds -= 1
 
