@@ -133,7 +133,7 @@ def main_screen():
         draw.text((x,y), "Enjoy your evening :)", font=font, fill="#FF2E80")
     y += line_inc*2.3
     draw.text((x,y), "↑ inspiration and time", font=menu_font, fill=grey)
-    y += line_inc*0.7
+    y += line_inc*1
     draw.text((x,y), "↓ take a break", font=menu_font, fill=grey)
    
     # Display image.
@@ -201,9 +201,9 @@ def mental_minute():
     
     # Menu
     y += line_inc*2.5
-    draw.text((x,y), "↑ take that break~", font=menu_font, fill=grey)
+    draw.text((0,y), "↑ take that break~", font=menu_font, fill=grey)
     y += line_inc*1
-    draw.text((x,y), "↓ back to main", font=menu_font, fill=grey)
+    draw.text((0,y), "↓ back to main", font=menu_font, fill=grey)
        
     # Display image.
     disp.image(image, rotation)
