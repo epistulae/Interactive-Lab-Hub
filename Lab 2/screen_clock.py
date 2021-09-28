@@ -172,7 +172,7 @@ def inspiration():
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
 
     # Print time
-    y = top + 5
+    y = top + 8
     x = font.getsize(" ")[0]*15
     draw.text((x,y), cur_min_sec, font=date_font, fill=grey)
     line_inc = font.getsize(cur_min_sec)[1]
@@ -183,7 +183,7 @@ def inspiration():
     draw.text((x,y), quotes[selected_quote], font=font, fill=colors[selected_color])
     
     # Menu
-    y += line_inc*2
+    y += line_inc*2.5
     draw.text((x,y), "↑ randomize!", font=menu_font, fill=grey)
     y += line_inc*1
     draw.text((x,y), "↓ back to main", font=menu_font, fill=grey)
