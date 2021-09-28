@@ -192,10 +192,10 @@ def inspiration():
     disp.image(image, rotation)
  
 def mental_minute():
+    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
     line_inc = font.getsize(" ")[1]
     y = line_inc*2
     x = font.getsize(" ")[0]*2
-    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
     
     draw.text((x,y), "Shall we take a break?", font=font, fill=colors[selected_color])
     
