@@ -193,14 +193,14 @@ def inspiration():
     
     
 # Brightness array black to white to black in 10 steps
-brightness = [60]
+brightness = [20]
+brightness.append(60)
 brightness.append(100)
-brightness.append(150)
-brightness.append(195)
+brightness.append(165)
+brightness.append(225)
 brightness.append(245)
-brightness.append(245)
-brightness.append(195)
-brightness.append(150)
+brightness.append(225)
+brightness.append(165)
 brightness.append(100)
 brightness.append(60)
  
@@ -237,9 +237,9 @@ def mental_minute_starting():
     
     draw.text((x,y), "Let's take a minute...", font=font, fill=colors[selected_color])
     y += line_inc*2
-    draw.text((x,y), "Breathe as the light", font=font, fill=grey)
+    draw.text((x,y), "Breathe in as the light", font=font, fill=grey)
     y += line_inc
-    draw.text((x,y), "brightens and dims", font=font, fill=grey)
+    draw.text((x,y), "brightens and out as it dims", font=font, fill=grey)
     
     # Display image.
     disp.image(image, rotation)
