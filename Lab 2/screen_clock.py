@@ -190,8 +190,21 @@ def inspiration():
     
     # Display image.
     disp.image(image, rotation)
+    
+    
+# Brightness array black to white to black in 10 steps
+brightness = ["#000000"]
+brightness.append("#4F4F4F")
+brightness.append("#818181")
+brightness.append("#BEBEBE")
+brightness.append("#F5F5F5")
+brightness.append("#F5F5F5")
+brightness.append("#BEBEBE")
+brightness.append("#818181")
+brightness.append("#4F4F4F")
+brightness.append("#000000")
  
-def mental_minute():
+def mental_minute_menu():
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
     line_inc = font.getsize(" ")[1]
     y = line_inc*2
@@ -207,6 +220,47 @@ def mental_minute():
        
     # Display image.
     disp.image(image, rotation)
+    
+# Ready for mental minute?
+def mental_minute_starting():
+    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
+    line_inc = font.getsize(" ")[1]
+    y = line_inc*2
+    x = font.getsize(" ")[0]*2
+    selected_color = randrange(10)
+    
+    draw.text((x,y), "Let's take a minute...", font=font, fill=colors[selected_color])
+    y += line_inc
+    draw.text((x,y), "Breathe as the light", font=font, fill=grey)
+    draw.text((x,y), "brightens and dims", font=font, fill=grey)
+    
+    # Display image.
+    disp.image(image, rotation)
+    
+    time.sleep(10)
+    mental_minute(60)
+
+# Mental minute complete
+def mental_minute_complete():
+    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
+    line_inc = font.getsize(" ")[1]
+    y = line_inc*2
+    x = font.getsize(" ")[0]*2
+    selected_color = randrange(10)
+    
+    draw.text((x,y), "Great job!", font=font, fill=colors[selected_color])
+    
+    y += line_inc*2.5
+    draw.text((x,y), "Returning to main...", font=menu_font, fill=grey)
+    
+def mental_minute(seconds):
+    while seconds > 0:
+        
+        time.sleep(1)
+        seconds -= 1
+    
+
+    
     
 while True:
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
@@ -235,10 +289,15 @@ while True:
 
     # Mental health break (static)
     elif state == 2:
-        mental_minute()
+        disp.fill(brightness[randrange(10)])
+        #mental_minute_menu()
         
+        # Top: start mental minute
+        if buttonB.value and not buttonA.value:
+            mental_minute_starting()
+            mental_minute_complete()
         # Bottom: return to main
-        if not buttonB.value and buttonA.value:
+        elif not buttonB.value and buttonA.value:
             state = 0
 
     time.sleep(1)
