@@ -193,16 +193,16 @@ def inspiration():
     
     
 # Brightness array black to white to black in 10 steps
-brightness = [130]
-brightness.append(180)
-brightness.append(220)
+brightness = [60]
+brightness.append(100)
+brightness.append(150)
+brightness.append(195)
 brightness.append(245)
-brightness.append(255)
-brightness.append(255)
 brightness.append(245)
-brightness.append(220)
-brightness.append(180)
-brightness.append(130)
+brightness.append(195)
+brightness.append(150)
+brightness.append(100)
+brightness.append(60)
  
 def mental_minute_menu():
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
@@ -264,9 +264,9 @@ def breathe_minute(seconds):
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
     disp.image(image, rotation)
     while seconds > 0:
-        bright = seconds % 10
-        print(bright)
-        draw.rectangle((0, 0, width, height), outline=0, fill=(bright, bright, bright))
+        i = seconds % 10
+        print(i)
+        draw.rectangle((0, 0, width, height), outline=0, fill=(brightness[i], brightness[i], brightness[i]))
         disp.image(image, rotation)
         #disp.fill(color565(bright, bright, bright))
         time.sleep(1)
