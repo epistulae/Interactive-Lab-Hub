@@ -228,6 +228,7 @@ def mental_minute():
     
 # Ready for mental minute?
 def mental_minute_starting():
+    draw.rectangle((0, 0, width, height), outline=0, fill=0)
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
     line_inc = font.getsize(" ")[1]
     y = line_inc*2
@@ -261,6 +262,7 @@ def mental_minute_complete():
 def breathe_minute(seconds):
     while seconds > 0:
         bright = seconds % 10
+        print(bright)
         disp.fill(color565(bright, bright, bright))
         time.sleep(1)
         seconds -= 1
