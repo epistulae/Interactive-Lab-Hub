@@ -91,7 +91,7 @@ state = 0
 grey = "#E5E5E5"
 
 def main_screen():
-    cur_date = time.strftime("%m/%d/%Y", localtime())
+    cur_date = time.strftime("%m/%d/%Y", time.localtime())
     cur_hour = time.localtime()[3]
     
     # Print day
@@ -168,7 +168,7 @@ colors.append("#AF72FC")
 colors.append("#FE53CA")
 
 def inspiration():
-    cur_min_sec = time.strftime("%M:%S", localtime())
+    cur_min_sec = time.strftime("%M:%S", time.localtime())
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
 
     # Print time
