@@ -190,7 +190,24 @@ def inspiration():
     
     # Display image.
     disp.image(image, rotation)
-        
+ 
+def mental_minute():
+    line_inc = font.getsize(" ")[1]
+    y = line_inc*2
+    x = font.getsize(" ")[0]*2
+    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
+    
+    draw.text((x,y), "Shall we take a break?", font=font, colors[selected_color])
+    
+    # Menu
+    y += line_inc*2.5
+    draw.text((x,y), "↑ take that break~", font=menu_font, fill=grey)
+    y += line_inc*1
+    draw.text((x,y), "↓ back to main", font=menu_font, fill=grey)
+       
+    # Display image.
+    disp.image(image, rotation)
+    
 while True:
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
     
@@ -218,12 +235,7 @@ while True:
 
     # Mental health break (static)
     elif state == 2:
-        y = top
-        x = 0
-        draw.text((x,y), "BREAK TIME", font=font, fill="#FF2E80")
-        print("break")
-        # Display image.
-        disp.image(image, rotation)
+        mental_minute()
         
         # Bottom: return to main
         if not buttonB.value and buttonA.value:
