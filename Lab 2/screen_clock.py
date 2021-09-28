@@ -197,7 +197,7 @@ def mental_minute():
     x = font.getsize(" ")[0]*2
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
     
-    draw.text((x,y), "Shall we take a break?", font=font, colors[selected_color])
+    draw.text((x,y), "Shall we take a break?", font=font, fill=colors[selected_color])
     
     # Menu
     y += line_inc*2.5
