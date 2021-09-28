@@ -290,7 +290,7 @@ while True:
     # Mental health break (static)
     elif state == 2:
         bright = randrange(10)
-        disp.fill(color565(bright, bright, bright)
+        disp.fill(color565(bright, bright, bright))
         #mental_minute_menu()
         
         # Top: start mental minute
