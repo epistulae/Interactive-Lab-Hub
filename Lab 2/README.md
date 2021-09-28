@@ -58,6 +58,8 @@ F) [Make a short video of your modified barebones PiClock](#part-f)
 
 G) [Sketch and brainstorm further interactions and features you would like for your clock for Part 2.](#part-g)
 
+[Part 2 Submission](#submission}
+
 ## The Report
 This readme.md page in your own repository should be edited to include the work you have done. You can delete everything but the headers and the sections between the \*\*\***stars**\*\*\*. Write the answers to the questions under the starred sentences. Include any material that explains what you did in this lab hub folder, and link it in the readme.
 
@@ -216,6 +218,7 @@ As always, make sure you document contributions and ideas from others explicitly
 
 You are permitted (but not required) to work in groups and share a turn in; you are expected to make equal contribution on any group work you do, and N people's group project should look like N times the work of a single person's lab. What each person did should be explicitly documented. Make sure the page for the group turn in is linked to your Interactive Lab Hub page. 
 
+# Submission
 ## Lab 2 Part 2 Design
 I worked alone for this lab.
 
