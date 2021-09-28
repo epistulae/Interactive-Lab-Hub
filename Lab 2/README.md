@@ -204,8 +204,6 @@ Features:
 # Prep for Part 2
 
 1. Pick up remaining parts for kit on Thursday lab class. Check the updated [parts list inventory](partslist.md) and let the TA know if there is any part missing.
-  
-
 2. Look at and give feedback on the Part G. for at least 2 other people in the class (and get 2 people to comment on your Part G!)
 
 # Lab 2 Part 2
@@ -217,5 +215,21 @@ Modify the code from last week's lab to make a new visual interface for your new
 As always, make sure you document contributions and ideas from others explicitly in your writeup.
 
 You are permitted (but not required) to work in groups and share a turn in; you are expected to make equal contribution on any group work you do, and N people's group project should look like N times the work of a single person's lab. What each person did should be explicitly documented. Make sure the page for the group turn in is linked to your Interactive Lab Hub page. 
+
+## Lab 2 Part 2 Design
+I worked alone for this lab.
+
+I took bits of my original goal for a non-stressful clock, the initial design of a lyric clock and some suggestions I got for my multi-mode design in part G and created this Mindfulness Watch. (Or Mindfulness Clock, but 'Watch' makes it kind of punny even though it's not technically a watch.) One great critique I got for part G was that it seemed too busy. The clock was trying to do too much. That's why I pivoted back to focus on the idea of a non-stressful clock.
+
+There are three states to this clock. The first one, the main state, shows the date and gives you a general idea of what time it is with a cute sentence. For example, from noon to 2:59pm, the clock tells you to go get some food and eat. And, from midnight to 5:59 am, it tells you to get some Zzzs. This state doesn't show the actual time to minimize the stress that comes with seeing the actual time. If there's nothing pressing, or there's no appointment to get to, knowing roughly what time it is is enough.
+
+The second state is the inspiration state. The user gets here by pressing the top button while in the main state. This state chooses a random inspirational quote and displays it in a random color. You'll get a new quote (from a pre-selected 10 of my favorites) in a different color every time. The top of this screen also shows the actual time. This way, the clock can show the full, detailed time, but it will (hopefully) counter the possible stress associated with an inspirational quote. You can also press the top button for a new random quote while in this state. The user can use the bottom button to get back to the main state.
+
+The third state is my favorite. It's a mental health break. The user gets to this by clicking the bottom button while in the main state. The mental health break asks if you'd like to take a break. If you say yes, the clock will guide you through 1 minute of deep breathing, signaling when to inhale and exhale by the brightness of the screen. After the minute is up, it returns you to the main state. Sometimes, all we need to destress is to take a minute and let the mind go blank. 
+
+Please see the video below for a demonstration.
+
+https://user-images.githubusercontent.com/14368010/135010173-45fa22ec-d05b-4916-bd18-0dede633f128.mov
+
 
 
