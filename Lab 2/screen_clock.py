@@ -236,10 +236,12 @@ def mental_minute_starting():
     selected_color = randrange(10)
     
     draw.text((x,y), "Let's take a minute...", font=font, fill=colors[selected_color])
-    y += line_inc*2
-    draw.text((x,y), "Breathe in as the light", font=font, fill=grey)
+    y += line_inc*1.7
+    draw.text((x,y), "Breathe in", font=font, fill=grey)
     y += line_inc
-    draw.text((x,y), "brightens and out as it dims", font=font, fill=grey)
+    draw.text((x,y), "as the light brightens", font=font, fill=grey)
+    y += line_inc
+    draw.text((x,y), "and out as it dims.", font=font, fill=grey)
     
     # Display image.
     disp.image(image, rotation)
@@ -248,6 +250,7 @@ def mental_minute_starting():
 
 # Mental minute complete
 def mental_minute_complete():
+    draw.rectangle((0, 0, width, height), outline=0, fill=0)
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
     line_inc = font.getsize(" ")[1]
     y = line_inc*2
@@ -258,6 +261,10 @@ def mental_minute_complete():
     
     y += line_inc*2.5
     draw.text((x,y), "Returning to main...", font=menu_font, fill=grey)
+    
+    # Display image.
+    disp.image(image, rotation)
+    
     time.sleep(5)
     
 def breathe_minute(seconds):
