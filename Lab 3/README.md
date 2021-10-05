@@ -107,11 +107,27 @@ Write out what you imagine the dialogue to be. Use cards, post-its, or whatever 
 
 \*\***Please describe and document your process.**\*\*
 
+I used a notepad and some sticku notes to create responses for my speech-enabled vaccum cleaner. I expect dialogue to be like:
+- Schedule a cleaning for 9AM. "Done. Cleaning scheduled for 9AM." and other scheduling commands.
+- Clean the kitchen. "Going to clean the kitchen." and other similar cleaning commands.
+- How dirty was the house today? "Cleaning this floor resulted in 10 grams of debris." and other questions relating to metric. (Maybe even comparisons between dates/time periods.)
+- Cancel current cleaning. "Stopping vaccum of the study. Returning to port." and other interruption commands.
+
 ### Acting out the dialogue
 
 Find a partner, and *without sharing the script with your partner* try out the dialogue you've designed, where you (as the device designer) act as the device you are designing.  Please record this interaction (for example, using Zoom's record feature).
 
 \*\***Describe if the dialogue seemed different than what you imagined when it was acted out, and how.**\*\*
+
+It was very different from what I expected. My partner specifically broke down parts of the vaccuming process. Specifically, she said:
+- Vaccum the floor.
+- Dump the trash.
+- Go to your home.
+- Charge yourself. 
+
+All of these diaglog options were much simpler than I brainstormed. Please see a clip of that interaction below. The full recording had trouble being uploaded to Github.
+
+https://user-images.githubusercontent.com/14368010/135969405-e876d42a-fa09-4041-8f87-d0ba649bdc07.mov
 
 ### Wizarding with the Pi (optional)
 In the [demo directory](./demo), you will find an example Wizard of Oz project. In that project, you can see how audio and sensor data is streamed from the Pi to a wizard controller that runs in the browser.  You may use this demo code as a template. By running the `app.py` script, you can see how audio and sensor data (Adafruit MPU-6050 6-DoF Accel and Gyro Sensor) is streamed from the Pi to a wizard controller that runs in the browser `http://<YouPiIPAddress>:5000`. You can control what the system says from the controller as well!
