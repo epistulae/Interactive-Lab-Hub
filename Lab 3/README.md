@@ -246,7 +246,7 @@ The tech behind word disambiguation could be much better. This way, a more natur
 
 Part of my design included keeping track of when interactions occur to offer a routine, and making the system even more autonomous. 
 
-Particularly for pet owners, tracking things like how much debris did you vacuum up over time can give insight into specific shedding times, which helps pet owners plan for seasonal grooming. Also, irregular shedding could have underlying health issues, so this might be good for pet owners in that sense too.
+Particularly for pet owners, tracking things like how much debris did you vacuum up over time can give insight into specific shedding times, which helps pet owners plan for seasonal grooming. (For example, my very fluffy American Eskimo sheds in the Spring and Autumn, but not always at the same time periods. And when he sheds more, I also should be brushing him more frequently, and I had to plan for that accordingly.) Also, irregular shedding could have underlying health issues, so this might be good informationfor pet owners to know as well.
 
 I think it might be cool to track visuals and have the cleaning robot double as a security robot when it's on the move. Also, it could have something like a water sensor attached. On ground floors, it could help send advanced warning for water damage. 
 
