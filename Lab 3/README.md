@@ -232,7 +232,7 @@ Something that didn't work well is how slow the back and forth interactions are.
 
 ### What worked well about the controller and what didn't?
 
-I reused the makeshift "dock" from the demo video, and worked pretty with with the webcam audio output during testing. Ideally, the robot would be able to communicate even away from the dock, but all the interactions were with the robot on the dock so that interactions felt very natural. 
+I reused the makeshift "dock" from the demo video, and it worked pretty well with the webcam audio output during testing. Ideally, the robot would be able to communicate even away from the dock, but all the interactions were with the robot on the dock so that interactions felt very natural. 
 
 However, the testers had to speak very close to the usb microphone on the Pi. This meant they had to test holding the Pi in their hands. Otherwise, the speech to text is likely to miss key words. I noticed both testers naturally slowed down their speech and enunciated more, which helped, but it's a negative if you want natural conversation flow with the device.
 
