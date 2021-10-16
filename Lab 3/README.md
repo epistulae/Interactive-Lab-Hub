@@ -194,11 +194,17 @@ The system should:
 * require participants to speak to it. 
 
 *Document how the system works*
+I made a mini model wizard of my device in a tabletop setting. The audio sensor takes in the commands and the "vacuum" Sweep responds out loud and goes to complete whatever task the user asked it to do. One issue was how it wasn't clear how to start interacting with the device, so I added a "Start" button to the design. At startup, this will initiate the introduction. Afterwards, it will be a "clean everything" manual button. 
+
+While vacuum robots exist, i.e. iRobot, I noticed while using it that some things it can do are not clear, and only explained in the manual. But, honestly, who reads the manual? So, I took inspiration from Alexa, and from peer feedback, to include automatic suggestions and a clear introduction for the device. Here's a sample interaction (video):
 
 *Include videos or screencaptures of both the system and the controller.*
 
+Video on Youtube: https://youtu.be/Ff1PvFMi4Fs
+
+
 ## Test the system
-Try to get at least two people to interact with your system. (Ideally, you would inform them that there is a wizard _after_ the interaction, but we recognize that can be hard.)
+Try to get at least two people to interact with your system. (Ideally, you would inform them that there is a wizard _after_ the interaction, but we recognize that can be hard.) 
 
 Answer the following:
 
