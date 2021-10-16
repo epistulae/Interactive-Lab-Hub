@@ -23,6 +23,5 @@ while True:
     if len(data) == 0:
         break
     if rec.AcceptWaveform(data):
-        print(rec.Result()['result'][0]['word'])
         print(rec.Result())
         break
