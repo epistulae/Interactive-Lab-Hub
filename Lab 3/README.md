@@ -68,17 +68,6 @@ One thing you might need to pay attention to is the audio input setting of Pi. S
 
 \*\***Write your own shell file that verbally asks for a numerical based input (such as a phone number, zipcode, number of pets, etc) and records the answer the respondent provides.**\*\*
 
-Bonus Activity:
-
-If you are really excited about Speech to Text, you can try out [Mozilla DeepSpeech](https://github.com/mozilla/DeepSpeech) and [voice2json](http://voice2json.org/install.html)
-There is an included [dspeech](./dspeech) demo  on the Pi. If you're interested in trying it out, we suggest you create a seperarate virutal environment for it . Create a new Python virtual environment by typing the following commands.
-
-```
-pi@ixe00:~ $ virtualenv dspeechexercise
-pi@ixe00:~ $ source dspeechexercise/bin/activate
-(dspeechexercise) pi@ixe00:~ $ 
-```
-
 ### Serving Pages
 
 In Lab 1, we served a webpage with flask. In this lab, you may find it useful to serve a webpage for the controller on a remote device. Here is a simple example of a webserver.
@@ -105,13 +94,14 @@ Storyboard and/or use a Verplank diagram to design a speech-enabled device. (Stu
 
 <img width="565" alt="Screen Shot 2021-10-06 at 6 43 24 AM" src="https://user-images.githubusercontent.com/14368010/136188309-1b5ea29a-cc5e-4246-8218-be18b8978a96.png">
 
-
 Write out what you imagine the dialogue to be. Use cards, post-its, or whatever method helps you develop alternatives or group responses. 
 
 
 \*\***Please describe and document your process.**\*\*
+I used a notepad to brainstorm and I used some sticky notes to create a speech flowchart for my speech-enabled vaccum cleaner. 
+<img width="1406" alt="flow" src="https://user-images.githubusercontent.com/14368010/137573332-51648f1f-8af4-4b93-bdc1-caaddf73dcd7.png">
 
-I used a notepad and some sticku notes to create responses for my speech-enabled vaccum cleaner. I expect dialogue to be like:
+I expect dialogue to be like:
 - Schedule a cleaning for 9AM. "Done. Cleaning scheduled for 9AM." and other scheduling commands.
 - Clean the kitchen. "Going to clean the kitchen." and other similar cleaning commands.
 - How dirty was the house today? "Cleaning this floor resulted in 10 grams of debris." and other questions relating to metric. (Maybe even comparisons between dates/time periods.)
@@ -129,7 +119,9 @@ It was very different from what I expected. My partner specifically broke down p
 - Go to your home.
 - Charge yourself. 
 
-All of these diaglog options were much simpler than I brainstormed. Please see a clip of that interaction below. The full recording had trouble being uploaded to Github.
+All of these diaglog options were much simpler than I brainstormed. I was thinking the vaccum would be directed the same way you might as a roommate to do a chore. Also, it was hard to initialize the conversation/interaction as my partner didn't know what I was supposed to be. I said something along the lines of: "Good morning (assuming it just reached 9 AM), it's 9AM. Starting scheduled cleaning." 
+
+Please see a clip of that interaction below. The full recording had trouble being uploaded to Github.
 
 https://user-images.githubusercontent.com/14368010/135969405-e876d42a-fa09-4041-8f87-d0ba649bdc07.mov
 
@@ -137,6 +129,8 @@ https://user-images.githubusercontent.com/14368010/135969405-e876d42a-fa09-4041-
 In the [demo directory](./demo), you will find an example Wizard of Oz project. In that project, you can see how audio and sensor data is streamed from the Pi to a wizard controller that runs in the browser.  You may use this demo code as a template. By running the `app.py` script, you can see how audio and sensor data (Adafruit MPU-6050 6-DoF Accel and Gyro Sensor) is streamed from the Pi to a wizard controller that runs in the browser `http://<YouPiIPAddress>:5000`. You can control what the system says from the controller as well!
 
 \*\***Describe if the dialogue seemed different than what you imagined, or when acted out, when it was wizarded, and how.**\*\*
+I did not wizard with the Pi.
+
 
 # Lab 3 Part 2
 
