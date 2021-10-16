@@ -140,8 +140,45 @@ For Part 2, you will redesign the interaction with the speech-enabled device usi
 ## Prep for Part 2
 
 1. What are concrete things that could use improvement in the design of your device? For example: wording, timing, anticipation of misunderstandings...
+- I could include an introduction message when my device starts up, i.e. for the first time out of the box, since afterwards the user would be already familiar, it doesn't need to do the spiel every time. 
+- I should also add a command where the user can ask the device "what can you do", and what commands it can follow. This will clear up misunderstandings of what level of granularity commands need to be. For perhaps, after some simple commands, the device can offer futher functionality, i.e. "I see you've asked me to clean the kitchen every other day, should I schedule in a cleaning routine?"
+- Following one point a fellow student brought up, having a robot voice randomly start announcing something, i.e. "job complete" is very jarring. Having something like music to prelude the voice, or even replace the voice may make it more user friendly. This reminded me of my rice cooker, which plays a cheerful tune when it's complete. I think having this at the start of umprompted statements from the device would be nice.
+
+
 2. What are other modes of interaction _beyond speech_ that you might also use to clarify how to interact?
+
+**Device to User Interaction Signal**
+I would use something like light and different light colors to show different states of readiness for interactions. For example, if the vacuum is low on battery, it might have a battery light that can turn red. 
+
+This would signal to the user immediate action commands can't be carried out right now. E.g. the user wouldn't need to go through this kind of interaction:
+- User: "Go clean the kitchen."
+- Vacuum: "Sorry, I'm low on battery, want me to schedule cleaning for once I'm at least 20% charged?"
+- User: "No. :( "
+
+**User to Device Interaction Signal**
+I would have 1-3 pressable buttons that when pressed, will do some common commands, i.e. 'empty the trash', 'go clean everywhere', or 'map out the room floorplan'.
+
+
 3. Make a new storyboard, diagram and/or script based on these reflections.
+
+<img width="889" alt="Screen Shot 2021-10-16 at 1 43 56 AM" src="https://user-images.githubusercontent.com/14368010/137575400-ad6b1218-c3c1-49f6-9b09-a90a9d7c147d.png">
+
+**Indroduction script:**
+
+Vacuum: *Jingle jingle* Hello! I am Sweep, your new cleaning companion. I can help you keep your home super clean all the time! On my first cleaning through your home, I will map out the floor plan so you can assign room names and tell me to clean specific rooms. I can also schedule cleaning routines to make spotless floors a bleeze. To get started, just say "Sweep, clean my house."
+
+User: "Sweep, clean my house."
+
+Vacuum (Sweep): "Beginning first cleaning of the house. Creating the floorplan."
+
+**Suggestion script:**
+
+Sweep: *Jingle jingle*, job complete. I've finished cleaning your kitchen! I noticed you like having the kitchen cleaned every other day in the evenings between 7 and 9 PM. Should I make this a routine?
+
+User: Yes! Please do.
+
+Sweep: OK! Routine saved.
+
 
 ## Prototype your system
 
