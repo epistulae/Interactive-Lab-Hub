@@ -196,10 +196,9 @@ The system should:
 *Document how the system works*
 I made a mini model wizard of my device in a tabletop setting. The audio sensor takes in the commands and the "vacuum" Sweep responds out loud and goes to complete whatever task the user asked it to do. The Pi controls the webcam which sit on top of the pseudo "dock" for Sweep.
 
-Individual responses as part of this demo are hard coded, with three sets of full back and forth interactions that have varied responses based on audio input. Specifically:
+Individual responses as part of this demo are hard coded, with 2 sets of full back and forth interactions that have varied responses based on audio input. Specifically:
 - *sweep_introduction_sequence.sh* Introduction sequence -> maybe start cleaning.
-- *simple_clean_interaction.sh* Immediate cleaning command -> confirmation of command acknowledged. 
-- *routine_suggestion.sh* Suggestion for routine -> possible saving of routine.
+- *low_battery_schedule.sh* Low battery -> should Sweep schedule? -> schedules/no nothing.
 
 One issue was how it wasn't clear how to start interacting with the device, so I added a "Start" button to the mock design. Upon "startup", this initiates the introduction. The idea is, afterwards, it will be a "clean everything" manual button. 
 
@@ -209,20 +208,14 @@ While vacuum robots exist, i.e. iRobot, I noticed while using it that some thing
 
 Full demo video on Youtube: https://youtu.be/Ff1PvFMi4Fs
 
-*sweep_introduction_sequence.sh* Interaction, both branches:
+*sweep_introduction_sequence.sh* interaction: a single round of interaction. Both branches hard coded.:
+
+https://user-images.githubusercontent.com/14368010/137580231-e6d78234-bdcf-41e9-b7b8-cfd23fa7aa41.mp4
 
 
-https://user-images.githubusercontent.com/14368010/137579914-f2e8af94-6548-44f9-8a00-64ac2892e6b2.MOV
+*low_battery_schedule.sh* interaction: a multiple back and forth demo. This only shows one, but all the options are able to be selected. Again, responses are hard coded.
 
-
-https://user-images.githubusercontent.com/14368010/137579921-a385a444-9d71-4fd8-a1d2-f3b0adf391bb.MOV
-
-
-
-
-*simple_clean_interaction.sh* Interaction, both branches:
-
-*routine_suggestion.sh* Interaction, both branches:
+https://user-images.githubusercontent.com/14368010/137580640-30f26b6f-0eaa-40dc-8966-66c4f1f13a6d.mp4
 
 
 ## Test the system
@@ -231,18 +224,29 @@ Try to get at least two people to interact with your system. (Ideally, you would
 Answer the following:
 
 ### What worked well about the system and what didn't?
-\*\**your answer here*\*\*
+The introduction was super helpful in facilitating the interaction. As intended, it also overcame the awkward hurdle of not knowing how to start the interaction! Having the system give a sample command in the introduction was also good.
+
+Also, I was pleasantly surprised that the three key words I populated in the speech-to-text was sufficient for most variations of commands. (Clean, yes, no.) I should have also added vacuum as a baseline, which seems obvious in hindsight. (It's now there.) Luckily, both peers who helped me test used the word clean. 
+
+Something that didn't work well is how slow the back and forth interactions are. There's a big pause while the speech to text processing works to get the key words in the sentence/command.
 
 ### What worked well about the controller and what didn't?
 
-\*\**your answer here*\*\*
+I reused the makeshift "dock" from the demo video, and worked pretty with with the webcam audio output during testing. Ideally, the robot would be able to communicate even away from the dock, but all the interactions were with the robot on the dock so that interactions felt very natural. 
+
+However, the testers had to speak very close to the usb microphone on the Pi. This meant they had to test holding the Pi in their hands. Otherwise, the speech to text is likely to miss key words. I noticed both testers naturally slowed down their speech and enunciated more, which helped, but it's a negative if you want natural conversation flow with the device.
+
 
 ### What lessons can you take away from the WoZ interactions for designing a more autonomous version of the system?
 
-\*\**your answer here*\*\*
+The tech behind word disambiguation could be much better. This way, a more natural conversation or interaction can happen between the user and the device. Also this way things like accents or speech speed won't lead to a misinterpreted command. On a similar vein, the system will feel more autonomous with the speech-to-text aspect was faster.
 
 
 ### How could you use your system to create a dataset of interaction? What other sensing modalities would make sense to capture?
 
-\*\**your answer here*\*\*
+Part of my design included keeping track of when interactions occur to offer a routine, and making the system even more autonomous. 
+
+Particularly for pet owners, tracking things like how much debris did you vacuum up over time can give insight into specific shedding times, which helps pet owners plan for seasonal grooming. Also, irregular shedding could have underlying health issues, so this might be good for pet owners in that sense too.
+
+I think it might be cool to track visuals and have the cleaning robot double as a security robot when it's on the move. Also, it could have something like a water sensor attached. On ground floors, it could help send advanced warning for water damage. 
 
