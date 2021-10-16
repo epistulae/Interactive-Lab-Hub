@@ -148,6 +148,7 @@ For Part 2, you will redesign the interaction with the speech-enabled device usi
 2. What are other modes of interaction _beyond speech_ that you might also use to clarify how to interact?
 
 **Device to User Interaction Signal**
+
 I would use something like light and different light colors to show different states of readiness for interactions. For example, if the vacuum is low on battery, it might have a battery light that can turn red. 
 
 This would signal to the user immediate action commands can't be carried out right now. E.g. the user wouldn't need to go through this kind of interaction:
@@ -156,6 +157,7 @@ This would signal to the user immediate action commands can't be carried out rig
 - User: "No. :( "
 
 **User to Device Interaction Signal**
+
 I would have 1-3 pressable buttons that when pressed, will do some common commands, i.e. 'empty the trash', 'go clean everywhere', or 'map out the room floorplan'.
 
 
