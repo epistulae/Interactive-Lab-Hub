@@ -194,11 +194,30 @@ The system should:
 * require participants to speak to it. 
 
 *Document how the system works*
+I made a mini model wizard of my device in a tabletop setting. The audio sensor takes in the commands and the "vacuum" Sweep responds out loud and goes to complete whatever task the user asked it to do. The Pi controls the webcam which sit on top of the pseudo "dock" for Sweep.
+
+Individual responses as part of this demo are hard coded, with three sets of full back and forth interactions that have varied responses based on audio input. Specifically:
+- *sweep_introduction_sequence.sh* Introduction sequence -> maybe start cleaning.
+- *simple_clean_interaction.sh* Immediate cleaning command -> confirmation of command acknowledged. 
+- *routine_suggestion.sh* Suggestion for routine -> possible saving of routine.
+
+One issue was how it wasn't clear how to start interacting with the device, so I added a "Start" button to the mock design. Upon "startup", this initiates the introduction. The idea is, afterwards, it will be a "clean everything" manual button. 
+
+While vacuum robots exist, i.e. iRobot, I noticed while using it that some things it can do are not clear, and only explained in the manual. But, honestly, who reads the manual? So, I took inspiration from Alexa, and from peer feedback, to include automatic suggestions and a clear introduction for the device. Here's a sample interaction (video):
 
 *Include videos or screencaptures of both the system and the controller.*
 
+Full demo video on Youtube: https://youtu.be/Ff1PvFMi4Fs
+
+*sweep_introduction_sequence.sh* Interaction, both branches:
+
+*simple_clean_interaction.sh* Interaction, both branches:
+
+*routine_suggestion.sh* Interaction, both branches:
+
+
 ## Test the system
-Try to get at least two people to interact with your system. (Ideally, you would inform them that there is a wizard _after_ the interaction, but we recognize that can be hard.)
+Try to get at least two people to interact with your system. (Ideally, you would inform them that there is a wizard _after_ the interaction, but we recognize that can be hard.) 
 
 Answer the following:
 
