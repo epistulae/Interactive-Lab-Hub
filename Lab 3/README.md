@@ -211,6 +211,15 @@ Full demo video on Youtube: https://youtu.be/Ff1PvFMi4Fs
 
 *sweep_introduction_sequence.sh* Interaction, both branches:
 
+
+https://user-images.githubusercontent.com/14368010/137579914-f2e8af94-6548-44f9-8a00-64ac2892e6b2.MOV
+
+
+https://user-images.githubusercontent.com/14368010/137579921-a385a444-9d71-4fd8-a1d2-f3b0adf391bb.MOV
+
+
+
+
 *simple_clean_interaction.sh* Interaction, both branches:
 
 *routine_suggestion.sh* Interaction, both branches:
