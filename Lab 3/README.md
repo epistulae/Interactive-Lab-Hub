@@ -58,7 +58,6 @@ You can also play audio files directly with `aplay filename`. Try typing `aplay 
 My shell file is greetings.sh. I used the GoogleTTS because it's the least robotic sounding.
 
 
-
 ### Speech to Text
 
 Now examine the `speech2text` folder. We are using a speech recognition engine, [Vosk](https://alphacephei.com/vosk/), which is made by researchers at Carnegie Mellon University. Vosk is amazing because it is an offline speech recognition engine; that is, all the processing for the speech recognition is happening onboard the Raspberry Pi. 
@@ -103,6 +102,7 @@ Write out what you imagine the dialogue to be. Use cards, post-its, or whatever 
 
 
 \*\***Please describe and document your process.**\*\*
+
 I used a notepad to brainstorm and I used some sticky notes to create a speech flowchart for my speech-enabled vacuum cleaner. 
 <img width="1406" alt="flow" src="https://user-images.githubusercontent.com/14368010/137573332-51648f1f-8af4-4b93-bdc1-caaddf73dcd7.png">
 
@@ -111,6 +111,7 @@ I expect dialogue to be like:
 - Clean the kitchen. "Going to clean the kitchen." and other similar cleaning commands.
 - How dirty was the house today? "Cleaning this floor resulted in 10 grams of debris." and other questions relating to metric. (Maybe even comparisons between dates/time periods.)
 - Cancel current cleaning. "Stopping vacuum of the study. Returning to port." and other interruption commands.
+
 
 ### Acting out the dialogue
 
@@ -130,11 +131,16 @@ Please see a clip of that interaction below. The full recording had trouble bein
 
 https://user-images.githubusercontent.com/14368010/135969405-e876d42a-fa09-4041-8f87-d0ba649bdc07.mov
 
+
 ### Wizarding with the Pi (optional)
 In the [demo directory](./demo), you will find an example Wizard of Oz project. In that project, you can see how audio and sensor data is streamed from the Pi to a wizard controller that runs in the browser.  You may use this demo code as a template. By running the `app.py` script, you can see how audio and sensor data (Adafruit MPU-6050 6-DoF Accel and Gyro Sensor) is streamed from the Pi to a wizard controller that runs in the browser `http://<YouPiIPAddress>:5000`. You can control what the system says from the controller as well!
 
 \*\***Describe if the dialogue seemed different than what you imagined, or when acted out, when it was wizarded, and how.**\*\*
+
+
 I did not wizard with the Pi.
+
+
 
 
 # Lab 3 Part 2
@@ -144,6 +150,7 @@ For Part 2, you will redesign the interaction with the speech-enabled device usi
 ## Prep for Part 2
 
 1. What are concrete things that could use improvement in the design of your device? For example: wording, timing, anticipation of misunderstandings...
+
 - I could include an introduction message when my device starts up, i.e. for the first time out of the box, since afterwards the user would be already familiar, it doesn't need to do the spiel every time. 
 - I should also add a command where the user can ask the device "what can you do", and what commands it can follow. This will clear up misunderstandings of what level of granularity commands need to be. For perhaps, after some simple commands, the device can offer futher functionality, i.e. "I see you've asked me to clean the kitchen every other day, should I schedule in a cleaning routine?"
 - Following one point a fellow student brought up, having a robot voice randomly start announcing something, i.e. "job complete" is very jarring. Having something like music to prelude the voice, or even replace the voice may make it more user friendly. This reminded me of my rice cooker, which plays a cheerful tune when it's complete. I think having this at the start of umprompted statements from the device would be nice.
@@ -194,6 +201,7 @@ The system should:
 * require participants to speak to it. 
 
 *Document how the system works*
+
 I made a mini model wizard of my device in a tabletop setting. The audio sensor takes in the commands and the "vacuum" Sweep responds out loud and goes to complete whatever task the user asked it to do. The Pi controls the webcam which sit on top of the pseudo "dock" for Sweep.
 
 Individual responses as part of this demo are hard coded, with 2 sets of full back and forth interactions that have varied responses based on audio input. Specifically:
@@ -218,12 +226,15 @@ https://user-images.githubusercontent.com/14368010/137580231-e6d78234-bdcf-41e9-
 https://user-images.githubusercontent.com/14368010/137580640-30f26b6f-0eaa-40dc-8966-66c4f1f13a6d.mp4
 
 
+
 ## Test the system
-Try to get at least two people to interact with your system. (Ideally, you would inform them that there is a wizard _after_ the interaction, but we recognize that can be hard.) 
+Try to get at least two people to interact with your system. (Ideally, you would inform them that there is a wizard _after_ the interaction, but we recognize that can be hard.)
+
 
 Answer the following:
 
 ### What worked well about the system and what didn't?
+
 The introduction was super helpful in facilitating the interaction. As intended, it also overcame the awkward hurdle of not knowing how to start the interaction! Having the system give a sample command in the introduction was also good.
 
 Also, I was pleasantly surprised that the three key words I populated in the speech-to-text was sufficient for most variations of commands. (Clean, yes, no.) I should have also added vacuum as a baseline, which seems obvious in hindsight. (It's now there.) Luckily, both peers who helped me test used the word clean. 
@@ -244,9 +255,11 @@ The tech behind word disambiguation could be much better. This way, a more natur
 
 ### How could you use your system to create a dataset of interaction? What other sensing modalities would make sense to capture?
 
+
 Part of my design included keeping track of when interactions occur to offer a routine, and making the system even more autonomous. 
 
 Particularly for pet owners, tracking things like how much debris did you vacuum up over time can give insight into specific shedding times, which helps pet owners plan for seasonal grooming. (For example, my very fluffy American Eskimo sheds in the Spring and Autumn, but not always at the same time periods. And when he sheds more, I also should be brushing him more frequently, and I had to plan for that accordingly.) Also, irregular shedding could have underlying health issues, so this might be good informationfor pet owners to know as well.
 
 I think it might be cool to track visuals and have the cleaning robot double as a security robot when it's on the move. Also, it could have something like a water sensor attached. On ground floors, it could help send advanced warning for water damage. 
+
 
