@@ -174,6 +174,12 @@ You can go to the [SparkFun GitHub Page](https://github.com/sparkfun/Qwiic_VL53L
 Usually, sensors need to positioned in specific locations or orientations to make them useful for their application. Now that you've tried a bunch of the sensors, pick one that you would like to use, and an application where you use the output of that sensor for an interaction. For example, you can use a distance sensor to measure someone's height if you position it overhead and get them to stand under it.
 
 **\*\*\*Draw 5 sketches of different ways you might use your sensor, and how the larger device needs to be shaped in order to make the sensor useful.\*\*\***
+<img width="485" alt="Screen Shot 2021-10-21 at 11 29 16 AM" src="https://user-images.githubusercontent.com/14368010/138309891-42c21151-eb5a-4c08-8956-ac92e01d94fc.png">
+
+
+<img width="493" alt="Screen Shot 2021-10-21 at 11 29 24 AM" src="https://user-images.githubusercontent.com/14368010/138309804-0e113440-9b8a-4c14-ae4e-d379ed327182.png">
+
+
 
 **\*\*\*What are some things these sketches raise as questions? What do you need to physically prototype to understand how to anwer those questions?\*\*\***
 
