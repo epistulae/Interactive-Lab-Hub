@@ -174,16 +174,19 @@ You can go to the [SparkFun GitHub Page](https://github.com/sparkfun/Qwiic_VL53L
 Usually, sensors need to positioned in specific locations or orientations to make them useful for their application. Now that you've tried a bunch of the sensors, pick one that you would like to use, and an application where you use the output of that sensor for an interaction. For example, you can use a distance sensor to measure someone's height if you position it overhead and get them to stand under it.
 
 **\*\*\*Draw 5 sketches of different ways you might use your sensor, and how the larger device needs to be shaped in order to make the sensor useful.\*\*\***
-<img width="485" alt="Screen Shot 2021-10-21 at 11 29 16 AM" src="https://user-images.githubusercontent.com/14368010/138309891-42c21151-eb5a-4c08-8956-ac92e01d94fc.png">
 
-
-<img width="493" alt="Screen Shot 2021-10-21 at 11 29 24 AM" src="https://user-images.githubusercontent.com/14368010/138309804-0e113440-9b8a-4c14-ae4e-d379ed327182.png">
-
-
+<img width="462" alt="Screen Shot 2021-10-21 at 12 16 07 PM" src="https://user-images.githubusercontent.com/14368010/138317105-901de325-081c-444e-8746-d6800d33eb77.png">
+<img width="637" alt="Screen Shot 2021-10-21 at 12 16 23 PM" src="https://user-images.githubusercontent.com/14368010/138317156-5e111cbd-a4cc-4eb9-9250-607aa3b255e0.png">
+<img width="569" alt="Screen Shot 2021-10-21 at 12 17 11 PM" src="https://user-images.githubusercontent.com/14368010/138317256-42280a89-db49-4042-ab1d-ce6255b2cd20.png">
+<img width="865" alt="Screen Shot 2021-10-21 at 12 17 28 PM" src="https://user-images.githubusercontent.com/14368010/138317298-8c7e983e-8488-49ad-b827-7f55c18d7c65.png">
 
 **\*\*\*What are some things these sketches raise as questions? What do you need to physically prototype to understand how to anwer those questions?\*\*\***
 
+Some of the questions are written as notes in the design sketches above. I'll reiterate and add onto them here.
+
 **\*\*\*Pick one of these designs to prototype.\*\*\***
+
+I will be building the touch based music box.
 
 
 ### Part D
