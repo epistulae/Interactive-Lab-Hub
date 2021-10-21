@@ -184,6 +184,24 @@ Usually, sensors need to positioned in specific locations or orientations to mak
 
 Some of the questions are written as notes in the design sketches above. I'll reiterate and add onto them here.
 
+**Design 1: Picture Frame**
+- Should the touch actions result in randomized results or it is a set of pre-loaded pictures, specifically for each sensor? This is just a thought question that I don't need a physical protoype to figure out.
+
+**Design 2: Mini Piano**
+- What keys can I fit into 12 sensors? Should I include flats/sharps or is playing two notes at once sufficient? From a physical point of view, would a physical display without the black keys (if I'm going for a true piano looking physical prototype), be as automatically recognizable? Likely not, but testing a physical wizard with people would answer this.
+- Would a musical sheet style button design be convenient to use? This would be aimed at musicians who already know notes on a staff, but adding the names of the notes (A, B, C, D, etc.) should solve that issue. I would need a physical prototype to answer if this layout feels comfortable to use.
+
+**Design 3: Music Box**
+- Is it better to use a design with integrated sensors into the design itself or have a central design surrounded by more obvious sensors? This is a purely design question on whether I want this to be a more incognito device or if I want it to obviously be interactive. I prefer something more incognito.
+- As I drew the design, I also noticed it may be difficult to have the box open and be actually useful while hiding the Pi/wires. The box lid can be closed off, hiding wires and the Pi can also be hidden in the botton, but the connecting wires could be difficult with a hinge style box. I would need to text this physically. That, or I can avoid this issue by making it a drawer style box rather than having it open up on top.
+
+**Design 4: Mirror Mirror on the Wall (Light sensor, not touch sensor)**
+- The design wasn't thought of with a touch sensor in mind. However, I could add an LED strip around the mirror which will make it more like a makeup mirror. Then, this light can be activated via touch sensors around the frame. There would be an on-off sensor and two more for brightening and dimming.
+- The light sensor can detect guestures, but only in close proximity, at a level which could feel awkward, but I can't be too sure until I prototype it to test. I wouldn't have to stand too closely to trigger it, but my hands would need to be close to the sensor, so the positioning on the frame would need some testing.
+
+**Design 5: Physical Chess Coach**
+
+
 **\*\*\*Pick one of these designs to prototype.\*\*\***
 
 I will be building the touch based music box.
