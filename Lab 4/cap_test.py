@@ -1,6 +1,7 @@
 import time
 import board
 import busio
+import os
 
 import adafruit_mpr121
 
@@ -12,4 +13,6 @@ while True:
     for i in range(12):
         if mpr121[i].value:
             print(f"Twizzler {i} touched!")
-    time.sleep(0.25)  # Small delay to keep from spamming output messages.
+        if mpr121[1].value:
+            os.system("mpg123 rex-incognito.wav")
+    time.sleep(1)  # Small delay to keep from spamming output messages.
