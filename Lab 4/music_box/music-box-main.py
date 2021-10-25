@@ -18,6 +18,7 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 manager = multiprocessing.Manager()
 Current = manager.Namespace()
 Current.pid = ""
+Current.name = ""
 Current.paused = False
 
 # Helper Functions
@@ -31,7 +32,12 @@ def cancel_current_song():
     subprocess.run(["kill " + Current.pid], capture_output=False, shell=True)
     # Show that song is now empty
     Current.pid = ""
+    Current.name = ""
+    Current.paused = False
     logging.info("Stopped song with pid: " + Current.pid)
+
+def same_song(song):
+    return Current.name is song
 
 def pause_current_song():
     subprocess.run(["kill -STOP " + Current.pid], capture_output=False, shell=True)
@@ -42,9 +48,10 @@ def resume_current_song():
     Current.paused = False
 
 def play_music(song):
-    music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
-    Current.pid = get_pid(music.stdout.readline())
-    logging.info("Started playing " + song + " at pid " + Current.pid)
+    if !same_song(song):
+        music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
+        Current.pid = get_pid(music.stdout.readline())
+        logging.info("Started playing " + song + " at pid " + Current.pid)
 
 # Get song list. There will always be 11 songs available
 songs = os.listdir('music_files/')
@@ -69,4 +76,5 @@ while True:
                 pause_current_song()
         else:
             music = multiprocessing.Process(target=play_music, args=(songs[random.randint(0,4)],))
+            music.start()
     time.sleep(0.25)  # Small delay to keep from spamming output messages.
