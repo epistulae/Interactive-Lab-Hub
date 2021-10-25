@@ -19,7 +19,7 @@ Process = manager.Namespace()
 Process.music_process = 0
 
 def get_pid(pid):
-    return str(re.sub("[^0-9]", "", pid))
+    return re.sub("[^0-9]", "", str(pid))
 
 def play_music(song_name):
     print(f"music thread " + song_name)
