@@ -20,7 +20,7 @@ Process.music_process = ""
 def play_music(song_name):
     print(f"music thread " + song_name)
     # Process.music_process_id = os.getpid()
-    Process.music_process = subprocess.run(["echo '$!' | aplay music_files/let-the-living-beware.wav &"], capture_output=True, shell=True)
+    Process.music_process = subprocess.run(["aplay music_files/let-the-living-beware.wav &"], capture_output=True, shell=True)
     print(Process.music_process.Popen.pid())
 
 while True:
@@ -36,7 +36,8 @@ while True:
         music.start()
         print(f"Thread started living")
     if mpr121[11].value:
-        print(Process.music_process)
+        pid = subprocess.run(["echo '$!'"], capture_output=True, shell=True)
+        print(pid.Popen.pid())
         if (Process.music_process.Popen.pid() is not 0):
             print(f"hello")
             subprocess.run(["kill " + str(Process.music_process_id)], capture_output=False, shell=True)
