@@ -22,7 +22,7 @@ while True:
         if mpr121[i].value:
             print(f"Twizzler {i} touched!")
     if mpr121[1].value:
-        music = Process(target=play_music, args=("cynthia,))
+        music = Process(target=play_music, args=("cynthia",))
         music.start()
         print(f"Thread started")
     if mpr121[9].value:
