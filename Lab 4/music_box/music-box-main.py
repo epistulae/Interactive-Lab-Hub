@@ -22,7 +22,7 @@ def play_music(song_name):
     # Process.music_process_id = os.getpid()
     music = subprocess.Popen(["aplay music_files/let-the-living-beware.wav & echo\"$!\""], shell=True)
     Process.music_process = music.pid
-    print("pid " + music.pid + "\n")
+    print("pid " + str(music.pid) + "\n")
     print("stdout " +music.stdout)
 
 while True:
