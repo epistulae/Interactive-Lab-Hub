@@ -48,7 +48,7 @@ def resume_current_song():
     Current.paused = False
 
 def play_music(song):
-    if !same_song(song):
+    if not same_song(song):
         music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
         Current.pid = get_pid(music.stdout.readline())
         logging.info("Started playing " + song + " at pid " + Current.pid)
