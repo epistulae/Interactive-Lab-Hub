@@ -1,7 +1,7 @@
 import time
 import board
 import busio
-import os
+import subprocess
 import multiprocessing, signal
 
 import adafruit_mpr121
@@ -19,7 +19,8 @@ def play_music(song_name):
     print(f"music thread " + song_name)
     Global.music_process_id = os.getpid()
     print(Global.music_process_id)
-    os.system ("aplay music_files/" + song_name)
+    Global.music_process_id = subproccess.run("aplay music_files/" + song_name, capture_output=True, shell=True)
+    print(Global.music_process_id)
 
 while True:
     for i in range(12):
@@ -37,7 +38,6 @@ while True:
         print(Global.music_process_id)
         if (Global.music_process_id is not 0):
             print(f"hello")
-            os.kill(Global.music_process_id, signal.SIGINT)
         else:
             print(f"there")
     time.sleep(0.5)  # Small delay to keep from spamming output messages.
