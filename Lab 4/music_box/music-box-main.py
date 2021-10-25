@@ -14,8 +14,8 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 def play_music(name):
     print(f"music thread" + name)
     process_id = os.getpid()
+    print(f""+process_id)
     os.system ('aplay music_files/rex-incognito.wav')
-    printf(process_id)
 
 global process_id
 process_id = ""
