@@ -23,10 +23,10 @@ while True:
         if mpr121[i].value:
             print(f"Twizzler {i} touched!")
     if mpr121[1].value:
-        music = threading.Thread(target=play_music, args=("song",))
-        threads.append(music)
+        music = Process(target=play_music, args=("cynthia,))
         music.start()
         print(f"Thread started")
     if mpr121[9].value:
-        interrupt_thread = true
+        if (len(processes) is not 0):
+            print(f"hello")
     time.sleep(0.5)  # Small delay to keep from spamming output messages.
