@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import adafruit_mpr121
 import board
 import busio
 import logging
@@ -7,14 +8,9 @@ import re
 import subprocess
 import time
 
-import adafruit_mpr121
-
 i2c = busio.I2C(board.SCL, board.SDA)
 
 mpr121 = adafruit_mpr121.MPR121(i2c)
-
-# Debugging Logs
-log = logging.getLogger("music-box-logs")
 
 # Global process variable control.
 manager = multiprocessing.Manager()
@@ -31,17 +27,12 @@ def stop_current_song():
     subprocess.run(["kill " + Current.pid], capture_output=False, shell=True)
     # Show that song is now empty
     Current.pid = ""
-    log.info("Stopped song with pid: " + Current.pid)
+    logging.info("Stopped song with pid: " + Current.pid)
     
-
-def play_music(song_name):
-    print(f"music thread " + song_name)
-    music = subprocess.Popen(["aplay music_files/let-the-living-beware.wav & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
-    print("pid " + str(music.pid) + "\n")
-    pid = music.stdout.readline()
-    print("music pid " + get_pid(pid))
-    Current.pid = get_pid(pid)
-    print("stdout already in? " + str(Current.pid))
+def play_music(song):
+    music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
+    Current.pid = get_pid(music.stdout.readline())
+    logging.info("Started playing " + song + " at pid " + Current.pid)
 
 while True:
     for i in range(12):
