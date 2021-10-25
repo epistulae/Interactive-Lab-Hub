@@ -16,7 +16,7 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 # Global process variable control.
 manager = multiprocessing.Manager()
 Process = manager.Namespace()
-Process.music_process = ""
+Process.current_music_pid = ""
 
 def get_pid(pid):
     return re.sub("[^0-9]", "", str(pid))
@@ -28,7 +28,7 @@ def play_music(song_name):
     print("pid " + str(music.pid) + "\n")
     pid = music.stdout.readline()
     print("music pid " + get_pid(pid))
-    Process.music_process = get_pid(pid)
+    Process.current_music_pid = get_pid(pid)
     print("stdout already in? " + str(Process.music_process))
 
 while True:
@@ -44,8 +44,8 @@ while True:
         music.start()
         print(f"Thread started living")
     if mpr121[11].value:
-        print(Process.music_process)
-        if (Process.music_process is not ""):
+        print(Process.current_music_pid)
+        if (Process.current_music_pid is not ""):
             print(f"hello")
             subprocess.run(["kill " + Process.music_process], capture_output=False, shell=True)
         else:
