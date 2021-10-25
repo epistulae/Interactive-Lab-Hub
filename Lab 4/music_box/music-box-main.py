@@ -4,6 +4,7 @@ import board
 import busio
 import logging
 import multiprocessing
+import os
 import re
 import subprocess
 import time
@@ -34,6 +35,9 @@ def play_music(song):
     Current.pid = get_pid(music.stdout.readline())
     logging.info("Started playing " + song + " at pid " + Current.pid)
 
+# Get song list
+songs = os.listdir('music_files/')
+print(str(songs))
 while True:
     for i in range(12):
         if mpr121[i].value:
