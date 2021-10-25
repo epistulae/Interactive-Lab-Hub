@@ -34,6 +34,7 @@ while True:
         print(Process.music_process_id)
     if mpr121[9].value:
         music = multiprocessing.Process(target=play_music, args=("let-the-living-beware.wav",))
+        music.start()
         print(f"Thread started living")
     if mpr121[11].value:
         print(Process.music_process_id)
