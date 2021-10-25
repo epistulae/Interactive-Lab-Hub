@@ -18,7 +18,7 @@ Global.music_process_id = 0
 def play_music(song_name):
     print(f"music thread " + song_name)
     Global.music_process_id = os.getpid()
-    print(process_id)
+    print(Global.music_process_id)
     os.system ("aplay music_files/" + song_name)
 
 while True:
@@ -34,6 +34,7 @@ while True:
         music.start()
         print(f"Thread started living")
     if mpr121[11].value:
+        print(Global.music_process_id)
         if (Global.music_process_id is not 0):
             print(f"hello")
             os.kill(process_id, signal.SIGINT)
