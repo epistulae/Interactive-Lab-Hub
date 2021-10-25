@@ -32,8 +32,8 @@ while True:
         Global.music_process_id = subprocess.run(["aplay music_files/rex-incognito.wav &"], capture_output=True, shell=True)
         print(f"Thread started rex")
     if mpr121[9].value:
-        music = multiprocessing.Process(target=play_music, args=("let-the-living-beware.wav",))
-        music.start()
+        #music = multiprocessing.Process(target=play_music, args=("let-the-living-beware.wav",))
+        play_music("let-the-living-beware.wav")
         print(f"Thread started living")
     if mpr121[11].value:
         print(Process.music_process_id)
