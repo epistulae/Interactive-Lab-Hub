@@ -29,7 +29,7 @@ while True:
         if mpr121[i].value:
             print(f"Twizzler {i} touched!")
     if mpr121[7].value:
-        Global.music_process_id = subprocess.run(["aplay music_files/rex-incognito.wav", "&"], capture_output=True, shell=True)
+        Process.music_process_id = subprocess.run(["aplay music_files/rex-incognito.wav", "&"], capture_output=True, shell=True)
         print(f"Thread started rex")
     if mpr121[9].value:
         music = multiprocessing.Process(target=play_music, args=("let-the-living-beware.wav",))
