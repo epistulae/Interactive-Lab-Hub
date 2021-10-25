@@ -327,9 +327,16 @@ Unfortunately, I didn't get any feedback from Canvas (the one comment said there
 
 My initial design only had sensors for specific songs and a stop button. The stop button stops and cancels whatever song was playing previously. A friend noted that maybe they only want to pause the song. I implemented this, and it also inspired me to add a random song button, for when you don't care about what song you want the box to play. Based on this, I also though having an endless shuffle mode and an endless repeat mode could be fun, so I implemented that as well.
 
-While some were intruiged by the incognito design idea, a couple people disliked not being able to know what buttons did what. So, I did some sketching and decided that the underside of the music box lid is valuable retain space that is wasted. I added a diagram showing exactly which sensors controlled what actions, i.e. shuffle, pause, resume, specific songs, etc. 
+While some were intrigued by the incognito design idea, a couple people disliked not being able to know what buttons did what. So, I did some sketching and decided that the underside of the music box lid is valuable retail space that is not being used. I added a diagram showing exactly which sensors controlled what actions, i.e. shuffle, pause, resume, specific songs, etc. 
 
-Based on the feedback on not having enough clarity with the buttons, I already realized the lack of clarity about the current state of the music box isn't idea. So, I added status updates to the Pi display. Given how I've added more functionality, not having direct feedback on current state would be too confusing. So, the display will show the current song, if the box is in single song, shuffle or repeat mode, and if the box is currently paused.
+Based on the feedback on not having enough clarity with the buttons, I realized the box also lacked clarity about its current state. So, I added status updates to the Pi display. Given how I've added more functionality, not having direct feedback on current state would be too confusing. So, the display will show the current song, if the box is in single song, shuffle or repeat mode, and if the box is currently paused.
 
 As I was iterating, I left out the overall stop everything button, and a friend testing my device reminded me to put it back in.
 
+#### Design Sketches
+
+#### Looks Like
+
+#### Works Like
+
+#### Acts Like
