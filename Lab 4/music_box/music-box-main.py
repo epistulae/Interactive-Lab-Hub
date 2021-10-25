@@ -31,6 +31,7 @@ while True:
     if mpr121[11].value:
         if (process_id is not 0):
             print(f"hello")
+            os.system ('aplay music_files/let-the-living-beware.wav')
             os.kill(process_id, signal.SIGINT)
             processes[0].terminate()
         else:
