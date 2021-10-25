@@ -5,7 +5,6 @@ import busio
 import os
 import multiprocessing
 import subprocess
-import string
 
 import adafruit_mpr121
 
@@ -20,7 +19,7 @@ Process.music_process_id = 0
 
 def play_music(song_name):
     print(f"music thread " + song_name)
-    Process.music_process_id = os.getpid()
+    # Process.music_process_id = os.getpid()
     print(Process.music_process_id)
     Process.music_process_id = subprocess.run(["aplay music_files/" + song_name + " &"], capture_output=True, shell=True)
     print(Process.music_process_id)
@@ -40,7 +39,7 @@ while True:
         print(Process.music_process_id)
         if (Process.music_process_id is not 0):
             print(f"hello")
-            subprocess.run(["kill " + string(Process.music_process_id)], capture_output=false, shell=True)
+            subprocess.run(["kill " + str(Process.music_process_id)], capture_output=false, shell=True)
         else:
             print(f"there")
     time.sleep(0.5)  # Small delay to keep from spamming output messages.
