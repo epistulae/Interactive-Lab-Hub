@@ -37,7 +37,7 @@ while True:
         print(f"Thread started living")
     if mpr121[11].value:
         pid = subprocess.run(["echo '$!'"], capture_output=True, shell=True)
-        print(pid.stdout())
+        print(pid.stdout)
         if (Process.music_process.Popen.pid() is not 0):
             print(f"hello")
             subprocess.run(["kill " + str(Process.music_process_id)], capture_output=False, shell=True)
