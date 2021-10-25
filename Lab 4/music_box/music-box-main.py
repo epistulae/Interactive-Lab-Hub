@@ -17,7 +17,8 @@ def play_music(name):
     os.system ('aplay music_files/rex-incognito.wav')
     print(f"thread complete")
 
-global process_id = ""
+global process_id
+process_id = ""
 
 while True:
     for i in range(12):
