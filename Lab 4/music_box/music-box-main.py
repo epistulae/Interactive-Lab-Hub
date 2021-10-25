@@ -18,6 +18,7 @@ manager = multiprocessing.Manager()
 Current = manager.Namespace()
 Current.pid = ""
 
+# Helper Functions
 def get_pid(pid):
     return re.sub("[^0-9]", "", str(pid))
 
@@ -29,32 +30,28 @@ def stop_current_song():
     # Show that song is now empty
     Current.pid = ""
     logging.info("Stopped song with pid: " + Current.pid)
-    
+
 def play_music(song):
     music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
     Current.pid = get_pid(music.stdout.readline())
     logging.info("Started playing " + song + " at pid " + Current.pid)
 
-# Get song list
+# Get song list. There will always be 11 songs available
 songs = os.listdir('music_files/')
-print(str(songs))
+logging.info("All songs: " + str(songs))
+
+# Music Box Functionality
 while True:
-    for i in range(12):
+    for i in range(5):
+        # Play song buttons
         if mpr121[i].value:
-            print(f"Twizzler {i} touched!")
-    if mpr121[7].value:
-        Process.music_process_id = subprocess.run(["aplay music_files/rex-incognito.wav", "&"], capture_output=True, shell=True)
-        print(f"Thread started rex")
-        print(Current.pid)
-    if mpr121[9].value:
-        music = multiprocessing.Process(target=play_music, args=("let-the-living-beware.wav",))
-        music.start()
-        print(f"Thread started living")
+            if ongoing_song():
+                stop_current_song()
+            music = multiprocessing.Process(target=play_music, args=(songs[i],))
+            music.start()
+            
+    # Stop everything button
     if mpr121[11].value:
-        print(Current.pid)
-        if (ongoing_song()):
-            print(f"hello")
+        if ongoing_song():
             stop_current_song()
-        else:
-            print(f"there")
     time.sleep(0.5)  # Small delay to keep from spamming output messages.
