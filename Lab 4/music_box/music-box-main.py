@@ -20,7 +20,7 @@ Process.music_process = ""
 def play_music(song_name):
     print(f"music thread " + song_name)
     # Process.music_process_id = os.getpid()
-    music = subprocess.run(["aplay music_files/let-the-living-beware.wav &"], capture_output=True, shell=True)
+    music = subprocess.Popen(["aplay music_files/let-the-living-beware.wav &"], capture_output=True, shell=True)
     time.sleep(1)
     print(music.pid)
     print(Process.music_process.Popen.pid())
