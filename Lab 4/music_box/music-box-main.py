@@ -13,10 +13,11 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 
 def play_music(name):
     print(f"music thread" + name)
+    process_id = os.getpid()
     os.system ('aplay music_files/rex-incognito.wav')
     print(f"thread complete")
 
-processes = list()
+global process_id = ""
 
 while True:
     for i in range(12):
@@ -28,8 +29,9 @@ while True:
         music.start()
         print(f"Thread started")
     if mpr121[11].value:
-        if (len(processes) is not 0):
+        if (process_id is not ""):
             print(f"hello")
+            os.kill(process_id, signal.SIGINT)
             processes[0].terminate()
         else:
             print(f"there")
