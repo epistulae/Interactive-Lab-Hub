@@ -3,7 +3,7 @@ import time
 import board
 import busio
 import os
-import multiprocessing, signal
+import multiprocessing
 import subprocess
 
 import adafruit_mpr121
