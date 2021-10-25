@@ -189,7 +189,7 @@ Some of the questions are written as notes in the design sketches above. I'll re
 
 **Design 2: Mini Piano**
 - What keys can I fit into 12 sensors? Should I include flats/sharps or is playing two notes at once sufficient? From a physical point of view, would a physical display without the black keys (if I'm going for a true piano looking physical prototype), be as automatically recognizable? Likely not, but testing a physical wizard with people would answer this.
-- Would a musical sheet style button design be convenient to use? This would be aimed at musicians who already know notes on a staff, but adding the names of the notes (A, B, C, D, etc.) should solve that issue. I would need a physical prototype to answer if this layout feels comfortable to use.
+- Would a musical sheet style button design be convenient to use? This would be aimed at musicians who already know notes on a staff, but adding the names of the notes (A, B, C, D, etc.) should solve that issue. I would need to physically prototype this layout, to see if it feels comfortable to use.
 
 **Design 3: Music Box**
 - Is it better to use a design with integrated sensors into the design itself or have a central design surrounded by more obvious sensors? This is a purely design question on whether I want this to be a more incognito device or if I want it to obviously be interactive. I prefer something more incognito.
@@ -197,10 +197,11 @@ Some of the questions are written as notes in the design sketches above. I'll re
 
 **Design 4: Mirror Mirror on the Wall (Light sensor, not touch sensor)**
 - The design wasn't thought of with a touch sensor in mind. However, I could add an LED strip around the mirror which will make it more like a makeup mirror. Then, this light can be activated via touch sensors around the frame. There would be an on-off sensor and two more for brightening and dimming.
-- The light sensor can detect guestures, but only in close proximity, at a level which could feel awkward, but I can't be too sure until I prototype it to test. I wouldn't have to stand too closely to trigger it, but my hands would need to be close to the sensor, so the positioning on the frame would need some testing.
+- The light sensor can detect guestures, but only in close proximity, at a level which could feel awkward, but I can't be too sure until I prototype it to test. I wouldn't have to stand too closely to trigger it, but my hands would need to be close to the sensor, so the positioning on the frame would need some testing. I need to physically prototype with sensors in varying locations on the mirror frame to get an idea of where the most comfortable and intuitive locations to place them are.
 
 **Design 5: Physical Chess Coach**
-
+- This design uses a touch based grid, one that would use 64 sensors. While there are some interesting technical questions on how to implement the chess coach and how to detect piece movement without adding unnecessary sensor identifiers, there is very little to physically prototype, or are there questions answerable with physical prototyping, other than, how will we make the the sensors detect when a piece has been placed on them? Would the user need to tap the starting and ending squares? 
+- The lack of questions mostly stem from the fact the design is just a classic chessboard.
 
 **\*\*\*Pick one of these designs to prototype.\*\*\***
 
@@ -247,11 +248,30 @@ Think about how you want to present the information about what your sensor is se
  
 **\*\*\*Sketch 5 designs for how you would physically position your display and any buttons or knobs needed to interact with it.\*\*\***
 
+<img width="729" alt="Screen Shot 2021-10-25 at 1 39 40 AM" src="https://user-images.githubusercontent.com/14368010/138640283-3ca0b648-cc86-4c29-b2e6-b02fab304d53.png">
+
+<img width="487" alt="Screen Shot 2021-10-25 at 1 39 52 AM" src="https://user-images.githubusercontent.com/14368010/138640299-98faff70-cae5-4a4f-82e6-76fa9495826a.png">
+
+<img width="833" alt="Screen Shot 2021-10-25 at 1 40 01 AM" src="https://user-images.githubusercontent.com/14368010/138640313-2bdaa39b-b0e5-4517-9e5e-d2516f7e09af.png">
+
+
 **\*\*\*What are some things these sketches raise as questions? What do you need to physically prototype to understand how to anwer those questions?\*\*\***
+
+The first and possibly most worrying question is will the user know this is meant to be a music box. All of my display designs, except the first option, are focused on a minimalistic design that integrates the interactive elements into the artistic design of the music box lid. However, ultimately, I decided that I want the casual observer to not even know this is a music box, until they actually interact with it.
+
+A major thing these design bring up is spacing. Some of the components this needs to succeed that I currently have take up quite a bit of space, i.e. the webcam speaker. Perhaps in the future I will order some parts and make this more streamlined for practical use/building a more permanent unit.
+
 
 **\*\*\*Pick one of these display designs to integrate into your prototype.\*\*\***
 
+I will be using Option 3, the display that is a box which can open up to show the internal pi and mechanisms. This way, the music box can be incognito, but the user can still appreciate the inner workings, much like how most music boxes show you the drum that actually create the music.
+
+
 **\*\*\*Explain the rationale for the design.\*\*\*** (e.g. Does it need to be a certain size or form or need to be able to be seen from a certain distance?)
+
+As explained above, I want this box to be a good displayable size, perhaps smaller than a 10in cube. Also, the display must be incognito. I want it to look like a normal pretty box, and blend in with normal decor. The user will know it's interactive after the first time they interact with it. This is a purely physical/sensory device, and has no digital displays (again hiding the fact there's anything electronic going on, unless you see the external power cord, though perhaps in the future I will build a version with a chargable power bank).
+
+Something about having a thing be more then just pretty, but surprisingly so, is very appealing to me.
 
 Build a cardbord prototype of your design.
 
@@ -300,4 +320,16 @@ Document all the prototypes and iterations you have designed and worked on! Agai
 * "Looks like": shows how the device should look, feel, sit, weigh, etc.
 * "Works like": shows what the device can do
 * "Acts like": shows how a person would interact with the device
+
+#### Reflecting on Feedback
+
+Unfortunately, I didn't get any feedback from Canvas (the one comment said there wasn't anything on my github, which is possible, I submitted part 1 a little after the Monday deadline). However, I approached my friends about my design and got some actionable feedback. 
+
+My initial design only had sensors for specific songs and a stop button. The stop button stops and cancels whatever song was playing previously. A friend noted that maybe they only want to pause the song. I implemented this, and it also inspired me to add a random song button, for when you don't care about what song you want the box to play. Based on this, I also though having an endless shuffle mode and an endless repeat mode could be fun, so I implemented that as well.
+
+While some were intruiged by the incognito design idea, a couple people disliked not being able to know what buttons did what. So, I did some sketching and decided that the underside of the music box lid is valuable retain space that is wasted. I added a diagram showing exactly which sensors controlled what actions, i.e. shuffle, pause, resume, specific songs, etc. 
+
+Based on the feedback on not having enough clarity with the buttons, I already realized the lack of clarity about the current state of the music box isn't idea. So, I added status updates to the Pi display. Given how I've added more functionality, not having direct feedback on current state would be too confusing. So, the display will show the current song, if the box is in single song, shuffle or repeat mode, and if the box is currently paused.
+
+As I was iterating, I left out the overall stop everything button, and a friend testing my device reminded me to put it back in.
 
