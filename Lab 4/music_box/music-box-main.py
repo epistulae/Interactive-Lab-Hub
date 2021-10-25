@@ -38,7 +38,6 @@ while True:
         if (Global.music_process_id is not 0):
             print(f"hello")
             os.kill(Global.music_process_id, signal.SIGINT)
-            processes[0].terminate()
         else:
             print(f"there")
     time.sleep(0.5)  # Small delay to keep from spamming output messages.
