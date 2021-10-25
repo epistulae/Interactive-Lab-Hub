@@ -18,7 +18,7 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 manager = multiprocessing.Manager()
 Current = manager.Namespace()
 Current.pid = ""
-Current.paused = false
+Current.paused = False
 
 # Helper Functions
 def get_pid(pid):
@@ -35,9 +35,11 @@ def cancel_current_song():
 
 def pause_current_song():
     subprocess.run(["kill -STOP " + Current.pid], capture_output=False, shell=True)
+    Current.paused = True
     
 def resume_current_song():
     subprocess.run(["kill -CONT " + Current.pid], capture_output=False, shell=True)
+    Current.paused = False
 
 def play_music(song):
     music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
