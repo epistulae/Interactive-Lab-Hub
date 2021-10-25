@@ -26,7 +26,6 @@ while True:
             print(f"Twizzler {i} touched!")
     if mpr121[9].value:
         music = multiprocessing.Process(target=play_music, args=("cynthia",))
-        processes.append(music)
         music.start()
         print(f"Thread started")
     if mpr121[11].value:
