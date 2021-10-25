@@ -37,7 +37,7 @@ while True:
         print(Global.music_process_id)
         if (Global.music_process_id is not 0):
             print(f"hello")
-            os.kill(process_id, signal.SIGINT)
+            os.kill(Global.music_process_id, signal.SIGINT)
             processes[0].terminate()
         else:
             print(f"there")
