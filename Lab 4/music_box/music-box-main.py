@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-import time
 import board
 import busio
-import os
+import logging
 import multiprocessing
-import subprocess
 import re
+import subprocess
+import time
 
 import adafruit_mpr121
 
@@ -13,23 +13,35 @@ i2c = busio.I2C(board.SCL, board.SDA)
 
 mpr121 = adafruit_mpr121.MPR121(i2c)
 
+# Debugging Logs
+log = logging.getLogger("music-box-logs")
+
 # Global process variable control.
 manager = multiprocessing.Manager()
-Process = manager.Namespace()
-Process.current_music_pid = ""
+Current = manager.Namespace()
+Current.pid = ""
 
 def get_pid(pid):
     return re.sub("[^0-9]", "", str(pid))
 
+def ongoing_song():
+    return Current.pid is not ""
+
+def stop_current_song():
+    subprocess.run(["kill " + Current.pid], capture_output=False, shell=True)
+    # Show that song is now empty
+    Current.pid = ""
+    log.info("Stopped song with pid: " + Current.pid)
+    
+
 def play_music(song_name):
     print(f"music thread " + song_name)
-    # Process.music_process_id = os.getpid()
     music = subprocess.Popen(["aplay music_files/let-the-living-beware.wav & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
     print("pid " + str(music.pid) + "\n")
     pid = music.stdout.readline()
     print("music pid " + get_pid(pid))
-    Process.current_music_pid = get_pid(pid)
-    print("stdout already in? " + str(Process.current_music_pid))
+    Current.pid = get_pid(pid)
+    print("stdout already in? " + str(Current.pid))
 
 while True:
     for i in range(12):
@@ -38,16 +50,16 @@ while True:
     if mpr121[7].value:
         Process.music_process_id = subprocess.run(["aplay music_files/rex-incognito.wav", "&"], capture_output=True, shell=True)
         print(f"Thread started rex")
-        print(Process.current_music_pid)
+        print(Current.pid)
     if mpr121[9].value:
         music = multiprocessing.Process(target=play_music, args=("let-the-living-beware.wav",))
         music.start()
         print(f"Thread started living")
     if mpr121[11].value:
-        print(Process.current_music_pid)
-        if (Process.current_music_pid is not ""):
+        print(Current.pid)
+        if (ongoing_song()):
             print(f"hello")
-            subprocess.run(["kill " + Process.current_music_pid], capture_output=False, shell=True)
+            stop_current_song()
         else:
             print(f"there")
     time.sleep(0.5)  # Small delay to keep from spamming output messages.
