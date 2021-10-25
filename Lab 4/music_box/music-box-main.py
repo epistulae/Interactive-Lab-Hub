@@ -15,6 +15,7 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 # Global process variable control.
 manager = multiprocessing.Manager()
 Process = manager.Namespace()
+Process.music_process = ""
 
 def play_music(song_name):
     print(f"music thread " + song_name)
