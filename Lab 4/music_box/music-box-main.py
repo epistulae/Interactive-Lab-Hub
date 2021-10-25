@@ -21,7 +21,7 @@ def play_music(song_name):
     print(f"music thread " + song_name)
     # Process.music_process_id = os.getpid()
     print(Process.music_process_id)
-    Process.music_process_id = subprocess.run(["echo '$!' | aplay music_files/let-the-living-beware.wav &"], capture_output=True, shell=True)
+    Process.music_process_id = subprocess.run(["aplay", "music_files/let-the-living-beware.wav", "&"], capture_output=True, shell=True)
     print(Process.music_process_id)
 
 while True:
