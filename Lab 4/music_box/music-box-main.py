@@ -69,4 +69,4 @@ while True:
                 pause_current_song()
         else:
             music = multiprocessing.Process(target=play_music, args=(songs[random.randint(0,4)],))
-    time.sleep(0.5)  # Small delay to keep from spamming output messages.
+    time.sleep(0.25)  # Small delay to keep from spamming output messages.
