@@ -18,7 +18,7 @@ def play_music(name):
     os.system ('aplay music_files/rex-incognito.wav')
 
 global process_id
-process_id = ""
+process_id = 0
 
 while True:
     for i in range(12):
@@ -29,7 +29,7 @@ while True:
         music.start()
         print(f"Thread started")
     if mpr121[11].value:
-        if (process_id is not ""):
+        if (process_id is not 0):
             print(f"hello")
             os.kill(process_id, signal.SIGINT)
             processes[0].terminate()
