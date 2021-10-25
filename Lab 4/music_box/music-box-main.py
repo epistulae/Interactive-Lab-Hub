@@ -15,7 +15,7 @@ def play_music(name):
     print(f"music thread" + name)
     process_id = os.getpid()
     os.system ('aplay music_files/rex-incognito.wav')
-    print(f"thread complete")
+    printf(process_id)
 
 global process_id
 process_id = ""
