@@ -68,6 +68,7 @@ while True:
                 cancel_current_song()
             music = multiprocessing.Process(target=play_music, args=(songs[i],))
             music.start()
+            break
             
     # Stop everything button
     if mpr121[11].value:
