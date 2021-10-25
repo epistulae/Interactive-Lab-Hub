@@ -5,6 +5,7 @@ import busio
 import logging
 import multiprocessing
 import os
+import random
 import re
 import subprocess
 import time
@@ -17,6 +18,7 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 manager = multiprocessing.Manager()
 Current = manager.Namespace()
 Current.pid = ""
+Current.paused = false
 
 # Helper Functions
 def get_pid(pid):
@@ -25,11 +27,17 @@ def get_pid(pid):
 def ongoing_song():
     return Current.pid is not ""
 
-def stop_current_song():
+def cancel_current_song():
     subprocess.run(["kill " + Current.pid], capture_output=False, shell=True)
     # Show that song is now empty
     Current.pid = ""
     logging.info("Stopped song with pid: " + Current.pid)
+
+def pause_current_song():
+    subprocess.run(["kill -STOP " + Current.pid], capture_output=False, shell=True)
+    
+def resume_current_song():
+    subprocess.run(["kill -CONT " + Current.pid], capture_output=False, shell=True)
 
 def play_music(song):
     music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
@@ -46,12 +54,17 @@ while True:
         # Play song buttons
         if mpr121[i].value:
             if ongoing_song():
-                stop_current_song()
+                cancel_current_song()
             music = multiprocessing.Process(target=play_music, args=(songs[i],))
             music.start()
             
     # Stop everything button
     if mpr121[11].value:
         if ongoing_song():
-            stop_current_song()
+            if Current.paused:
+                resume_current_song()
+            else:
+                pause_current_song()
+        else:
+            music = multiprocessing.Process(target=play_music, args=(songs[random.randint(0,4)],))
     time.sleep(0.5)  # Small delay to keep from spamming output messages.
