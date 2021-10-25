@@ -15,15 +15,14 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 # Global process variable control.
 manager = multiprocessing.Manager()
 Process = manager.Namespace()
-Process.music_process = ""
+Process.music_process = 0
 
 def play_music(song_name):
     print(f"music thread " + song_name)
     # Process.music_process_id = os.getpid()
     music = subprocess.Popen(["aplay music_files/let-the-living-beware.wav &"], shell=True)
-    time.sleep(1)
+    Process.music_process = music.pid
     print(music.pid)
-    print(Process.music_process.Popen.pid())
 
 while True:
     for i in range(12):
