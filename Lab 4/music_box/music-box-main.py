@@ -52,6 +52,7 @@ def play_music(song):
         music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
         Current.pid = get_pid(music.stdout.readline())
         Current.name = song
+        Current.paused = False
         logging.info("Started playing " + song + " at pid " + Current.pid)
 
 # Get song list. There will always be 11 songs available
