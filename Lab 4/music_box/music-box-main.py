@@ -40,7 +40,7 @@ while True:
         print(Process.music_process_id)
         if (Process.music_process_id is not 0):
             print(f"hello")
-            subprocess.run(["kill " + string(Process.music_process_id]), capture_output=false, shell=True)
+            subprocess.run(["kill " + string(Process.music_process_id)], capture_output=false, shell=True)
         else:
             print(f"there")
     time.sleep(0.5)  # Small delay to keep from spamming output messages.
