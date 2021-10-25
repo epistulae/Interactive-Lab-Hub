@@ -29,7 +29,7 @@ def play_music(song_name):
     pid = music.stdout.readline()
     print("music pid " + get_pid(pid))
     Process.current_music_pid = get_pid(pid)
-    print("stdout already in? " + str(Process.music_process))
+    print("stdout already in? " + str(Process.current_music_pid))
 
 while True:
     for i in range(12):
