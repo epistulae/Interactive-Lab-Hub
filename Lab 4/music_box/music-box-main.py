@@ -12,7 +12,7 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 
 def play_music(name):
     print(f"music thread" + name)
-    time.sleep(10)
+    os.system ('aplay rex-incognito.wav')
     print(f"thread complete")
 
 processes = list()
