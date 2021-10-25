@@ -1,9 +1,9 @@
 import time
 import board
 import busio
-import subprocess
 import os
 import multiprocessing, signal
+import subprocess
 
 import adafruit_mpr121
 
