@@ -21,11 +21,14 @@ while True:
     for i in range(12):
         if mpr121[i].value:
             print(f"Twizzler {i} touched!")
-    if mpr121[1].value:
-        music = Process(target=play_music, args=("cynthia",))
+    if mpr121[9].value:
+        music = multiprocessing.Process(target=play_music, args=("cynthia",))
         music.start()
         print(f"Thread started")
-    if mpr121[9].value:
+    if mpr121[11].value:
         if (len(processes) is not 0):
             print(f"hello")
+            processes[0].terminate()
+        else:
+            print(f"there")
     time.sleep(0.5)  # Small delay to keep from spamming output messages.
