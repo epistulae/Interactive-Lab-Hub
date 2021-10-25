@@ -5,6 +5,7 @@ import busio
 import os
 import multiprocessing
 import subprocess
+import re
 
 import adafruit_mpr121
 
@@ -17,12 +18,15 @@ manager = multiprocessing.Manager()
 Process = manager.Namespace()
 Process.music_process = 0
 
+def get_pid(pid):
+    return re.sub("[^0-9]", "", pid)
+
 def play_music(song_name):
     print(f"music thread " + song_name)
     # Process.music_process_id = os.getpid()
     music = subprocess.Popen(["aplay music_files/let-the-living-beware.wav & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
     print("pid " + str(music.pid) + "\n")
-    print(str(music.stdout.readline()))
+    print("music pid " + get_pid(music.stdout.readline()))
     print("stdout already in? " + str(Process.music_process))
 
 while True:
