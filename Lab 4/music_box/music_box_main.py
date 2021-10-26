@@ -155,7 +155,7 @@ def play_music(song):
         Box.current_song_pid = get_pid(music.stdout.readline())
         Box.current_song_name = song
         logging.info("Started playing " + song + " at pid " + Box.current_song_pid)    
-        update_display()
+    update_display()
 
 def shuffle():
     Box.shuffle = not Box.shuffle
