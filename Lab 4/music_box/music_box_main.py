@@ -48,22 +48,32 @@ def cancel_current_song():
 def same_song(song):
     return Box.current_song_name is song
 
+def wait_for_current():
+    try:
+        os.kill(Box.current_song.pid, 0)
+    except OSError:
+        return True
+    else:
+        return False
+
 def play_music(song):
     # Looping
     if Box.mode is not 0:
-        if Box.shuffle: 
-            # Allowing repeats
-            Box.current_song_index = random.randint(0,6)
-            song = songs[Box.current_song_index]
-        else:
-            if Box.mode is 1:
-                # Single song loop
-                song = Box.current_song_name
-            if Box.mode is 2:
-                # Multi song loop, linear
-                song = songs[Box.current_song_index+1]
+        play_next = wait_for_current()
+        if play_next:
+            if Box.shuffle: 
+                # Allowing repeats
+                Box.current_song_index = random.randint(0,6)
+                song = songs[Box.current_song_index]
+            else:
+                if Box.mode is 1:
+                    # Single song loop
+                    song = Box.current_song_name
+                if Box.mode is 2:
+                    # Multi song loop, linear
+                    song = songs[Box.current_song_index+1]
     
-    if not same_song(song) or Box.mode is 1:
+    if not same_song(song) or play_next:
         music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
         Box.current_song_pid = get_pid(music.stdout.readline())
         Box.current_song_name = song
@@ -112,7 +122,6 @@ while True:
                     cancel_current_song()
                 music = multiprocessing.Process(target=play_music, args=(songs[i],))
                 Box.current_song_index = i
-                Box.song_process = music
                 music.start()
                 # Ensure we only register one touch at a time
                 break
