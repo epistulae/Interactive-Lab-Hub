@@ -277,6 +277,8 @@ Build a cardbord prototype of your design.
 
 **\*\*\*Document your rough prototype.\*\*\***
 
+My rough prototype was literally the box our Pi kit came in. I put in in there with the webcam speaker, and had a bundle of wires coming out the box to use the capacity sensor.
+
 
 LAB PART 2
 
@@ -321,19 +323,21 @@ Document all the prototypes and iterations you have designed and worked on! Agai
 * "Works like": shows what the device can do
 * "Acts like": shows how a person would interact with the device
 
-#### Reflecting on Feedback
+### Music Box Demo
+
+### Reflecting on Feedback
 
 Unfortunately, I didn't get any feedback from Canvas (the one comment said there wasn't anything on my github, which is possible, I submitted part 1 a little after the Monday deadline). However, I approached my friends about my design and got some actionable feedback. 
 
-My initial design only had sensors for specific songs and a stop button. The stop button stops and cancels whatever song was playing previously. A friend noted that maybe they only want to pause the song. I implemented this, and it also inspired me to add a random song button, for when you don't care about what song you want the box to play. Based on this, I also though having an endless shuffle mode and an endless repeat mode could be fun, so I implemented that as well.
+My initial design only had sensors for specific songs and a stop button. The stop button stops and cancels whatever song was playing previously. A friend noted that maybe they only want keep the music going without interacting every time. I implemented a loop mode for this, and it also inspired me to add a shuffle song button, for when you don't care about what song you want the box to play. This way, the music box can also be quite useful during study sessions.
 
-While some were intrigued by the incognito design idea, a couple people disliked not being able to know what buttons did what. So, I did some sketching and decided that the underside of the music box lid is valuable retail space that is not being used. I added a diagram showing exactly which sensors controlled what actions, i.e. shuffle, pause, resume, specific songs, etc. 
+While some were intrigued by the incognito design idea, a couple people disliked not being able to know what buttons did what. So, I did some sketching and decided that the inner lid showing the Pi/box internals has valuable retail space that is not being used. I decided the non-specific song sensors should be placed here. I made sure the sensors all had labels.
 
-Based on the feedback on not having enough clarity with the buttons, I realized the box also lacked clarity about its current state. So, I added status updates to the Pi display. Given how I've added more functionality, not having direct feedback on current state would be too confusing. So, the display will show the current song, if the box is in single song, shuffle or repeat mode, and if the box is currently paused.
+Based on the feedback on not having enough clarity with the buttons, I realized the box also lacked clarity about its current state. So, I added status updates to the Pi display. Given how I've added more functionality, not having direct feedback on current state would be too confusing. So, the display will show the current song, if the box is in select/shuffle or loop mode.
 
-As I was iterating, I left out the overall stop everything button, and a friend testing my device reminded me to put it back in.
+As I was iterating, I accidentally left out the reset button, and a friend testing my device reminded me to put it back in.
 
-#### Design Sketches
+#### Design Sketches and In progress Shots
 
 #### Looks Like
 
