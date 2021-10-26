@@ -72,6 +72,7 @@ def play_music(song):
 
 def shuffle():
     Box.shuffle = not Box.shuffle
+    print(f"shuffle state " + str(Box.shuffle))
     if not ongoing_song:
         Box.current_song_index = random.randint(0,6)
         music = multiprocessing.Process(target=play_music, args=(songs[Box.current_song_index],))
@@ -84,6 +85,7 @@ def mode_change():
     # - Loop single (1)
     # - Loop playlist (2)
     Box.mode = (Box.mode + 1) % 3
+    print(f"box mode " + str(Box.mode))
     
 # Unused pausing functionality. Perhaps I can add something for this if I iterate on the physical design.
 # def pause_current_song():
@@ -94,8 +96,13 @@ def mode_change():
 #     subprocess.run(["kill -CONT " + Box.current_song_pid], capture_output=False, shell=True)
 #     Current.paused = False
 
+def update_display():
+    
+
 # Music Box Functionality (10 sensors)
 while True:
+    update_display()
+
     # Loop off
     if Box.mode is 0: 
         # Play one song
