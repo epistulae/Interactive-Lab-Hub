@@ -41,7 +41,9 @@ def cancel_current_song():
     Box.current_song_pid = ""
     Box.current_song_name = ""
     Box.current_song_index = -1
-    logging.info("Stopped song with pid: " + Box.current_song_pid)
+    logging.info("Stopped song with pid: " + Box.current_song_pid "\nBox reset.")
+    Box.shuffle = False
+    Box.mode = 0
 
 def same_song(song):
     return Box.current_song_name is song
@@ -64,7 +66,7 @@ def play_music(song):
     else:
         input_check = True
     
-    if input_check and not same_song(song):
+    if not input_check and not same_song(song):
         music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
         Box.current_song_pid = get_pid(music.stdout.readline())
         Box.current_song_name = song
