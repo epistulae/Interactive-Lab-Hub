@@ -50,7 +50,7 @@ def same_song(song):
 
 def wait_for_current():
     try:
-        os.kill(Box.current_song_pid, 0)
+        os.kill(int(Box.current_song_pid), 0)
     except OSError:
         return True
     else:
