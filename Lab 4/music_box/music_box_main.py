@@ -180,7 +180,7 @@ def update_display():
         song = "Nothing playing"
     
     mode = "Mode: "
-    if Box.mode = 0:
+    if Box.mode is 0:
         mode += "Single Song"
     elif Box.mode = 1:
         mode += "Loop one song"
