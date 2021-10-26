@@ -145,6 +145,8 @@ def play_music(song):
                 if Box.mode is 2:
                     # Multi song loop, linear
                     song = songs[Box.current_song_index+1]
+        if song is not "loop":
+            play = True
     else:
         play = not same_song(song)
         
