@@ -126,6 +126,8 @@ def play_music(song):
     play = False
     # Looping
     if Box.mode is not 0:
+        if Box.current_song_pid is "":
+            return
         play = wait_for_current()
         if play:
             if Box.shuffle: 
