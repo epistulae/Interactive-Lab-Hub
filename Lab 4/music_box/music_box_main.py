@@ -116,6 +116,9 @@ def same_song(song):
     return Box.current_song_name is song
 
 def current_done():
+    # Nothing to check
+    if Box.current_song_pid is "":
+            return
     try:
         os.kill(int(Box.current_song_pid), 0)
     except OSError:
@@ -129,8 +132,6 @@ def play_music(song):
     play = False
     # Looping
     if Box.mode is not 0:
-        if Box.current_song_pid is "":
-            return
         play = current_done()
         if play:
             if Box.shuffle: 
