@@ -81,10 +81,7 @@ def play_music(song):
 
 def shuffle():
     Box.shuffle = not Box.shuffle
-    print(f"shuffle state " + str(Box.shuffle))
-    print(ongoing_song)
-    if not ongoing_song:
-        print(f"inside")
+    if not ongoing_song():
         Box.current_song_index = random.randint(0,6)
         print(Box.current_song_index)
         music = multiprocessing.Process(target=play_music, args=(songs[Box.current_song_index],))
