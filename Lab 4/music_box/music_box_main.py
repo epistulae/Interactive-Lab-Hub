@@ -27,7 +27,6 @@ Box.current_song_pid = ""
 Box.current_song_index = -1
 Box.shuffle = False
 Box.mode = 0
-Box.song_process
 
 # Helper Functions
 def get_pid(pid):
@@ -113,6 +112,7 @@ while True:
                     cancel_current_song()
                 music = multiprocessing.Process(target=play_music, args=(songs[i],))
                 Box.current_song_index = i
+                Box.song_process = music
                 music.start()
                 # Ensure we only register one touch at a time
                 break
