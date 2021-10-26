@@ -111,6 +111,7 @@ def cancel_current_song():
     logging.info("Stopped song with pid: " + Box.current_song_pid + "\nBox reset.")
     Box.shuffle = False
     Box.mode = 0
+    update_display()
 
 def same_song(song):
     return Box.current_song_name is song
