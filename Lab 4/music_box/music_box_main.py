@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# Box Imports
 import adafruit_mpr121
 import board
 import busio
@@ -10,10 +11,76 @@ import re
 import subprocess
 import time
 
+#Display Imports
+import digitalio
+import board
+from PIL import Image, ImageDraw, ImageFont
+import adafruit_rgb_display.st7789 as st7789
+from adafruit_rgb_display.rgb import color565
+from random import randrange
+import numpy as np
+
 # Setup
 i2c = busio.I2C(board.SCL, board.SDA)
 
 mpr121 = adafruit_mpr121.MPR121(i2c)
+
+# Display
+grey = "#E5E5E5"
+cyan = "#5efff4"
+blue = "#2e9aff"
+
+font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 20)
+
+# Configuration for CS and DC pins (these are FeatherWing defaults on M0/M4):
+cs_pin = digitalio.DigitalInOut(board.CE0)
+dc_pin = digitalio.DigitalInOut(board.D25)
+reset_pin = None
+
+# Config for display baudrate (default max is 24mhz):
+BAUDRATE = 64000000
+
+# Setup SPI bus using hardware SPI:
+spi = board.SPI()
+
+# Create the ST7789 display:
+disp = st7789.ST7789(
+    spi,
+    cs=cs_pin,
+    dc=dc_pin,
+    rst=reset_pin,
+    baudrate=BAUDRATE,
+    width=135,
+    height=240,
+    x_offset=53,
+    y_offset=40,
+)
+
+# Create blank image for drawing.
+# Make sure to create image with mode 'RGB' for full color.
+height = disp.width  # we swap height/width to rotate it to landscape!
+width = disp.height
+image = Image.new("RGB", (width, height))
+rotation = 90
+
+# Get drawing object to draw on image.
+draw = ImageDraw.Draw(image)
+
+# Draw a black filled box to clear the image.
+draw.rectangle((0, 0, width, height), outline=0, fill=(0, 0, 0))
+disp.image(image, rotation)
+# Draw some shapes.
+# First define some constants to allow easy resizing of shapes.
+padding = -2
+top = padding
+bottom = height - padding
+# Move left to right keeping track of the current x position for drawing shapes.
+x = 0
+
+# Turn on the backlight
+backlight = digitalio.DigitalInOut(board.D22)
+backlight.switch_to_output()
+backlight.value = True
 
 # Load songs
 songs = os.listdir('music_files/')
@@ -108,13 +175,37 @@ def mode_change():
 #     Current.paused = False
 
 def update_display():
-    x = 1
+    song = Box.current_song_name.split(".",1)[0].replace("-", " ").title()
+    if song is "" song = "Nothing playing"
     
+    mode = "Mode: "
+    if Box.mode = 0:
+        mode += "Single Song"
+    elif Box.mode = 1:
+        mode += "Loop one song"
+    elif Box.mode = 2:
+        mode += "Loop playlist"
+    
+    shuffle = "Shuffle "
+    if Box.shuffle:
+        shuffle += "on"
+    else:
+        shuffle += "off"
+    
+    # Screen
+    line_inc = font.getsize(song)[1]
+    y = top
+    draw.text((0,y), song, font=font, fill=grey)
+    y += line_inc*1.7
+    draw.text((0,y), mode, font=font, fill=cyan)
+    y += line_inc*1.7
+    draw.text((0,y), shuffle, font=font, fill=blue)
+    
+    disp.image(image, rotation)
 
 # Music Box Functionality (10 sensors)
+update_display()
 while True:
-    update_display()
-
     # Loop off
     if Box.mode is 0: 
         # Play one song
