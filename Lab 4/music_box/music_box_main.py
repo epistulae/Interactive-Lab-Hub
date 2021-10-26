@@ -50,7 +50,7 @@ def same_song(song):
 
 def wait_for_current():
     try:
-        os.kill(Box.current_song.pid, 0)
+        os.kill(Box.current_song_pid, 0)
     except OSError:
         return True
     else:
@@ -83,8 +83,9 @@ def shuffle():
     Box.shuffle = not Box.shuffle
     print(f"shuffle state " + str(Box.shuffle))
     if not ongoing_song:
+        print(f"inside")
         Box.current_song_index = random.randint(0,6)
-        printf(Box.current_song_index)
+        print(Box.current_song_index)
         music = multiprocessing.Process(target=play_music, args=(songs[Box.current_song_index],))
         music.start()
 
