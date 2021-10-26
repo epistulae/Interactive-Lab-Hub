@@ -196,7 +196,7 @@ def update_display():
     
     # Screen
     line_inc = font.getsize(song)[1]
-    y = top + line_inc
+    y = top + line_inc*0.6
     draw.text((0,y), song, font=font, fill=grey)
     y += line_inc*1.7
     draw.text((0,y), mode, font=font, fill=cyan)
