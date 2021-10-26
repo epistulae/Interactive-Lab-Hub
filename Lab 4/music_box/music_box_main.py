@@ -56,12 +56,11 @@ def wait_for_current():
     return False
 
 def play_music(song):
-    play = True
+    play = False
     # Looping
     if Box.mode is not 0:
         play = wait_for_current()
-        print(play)
-        if play_next:
+        if play:
             if Box.shuffle: 
                 # Allowing repeats
                 Box.current_song_index = random.randint(0,6)
