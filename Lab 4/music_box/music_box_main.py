@@ -176,6 +176,8 @@ def mode_change():
 #     Current.paused = False
 
 def update_display():
+    draw.rectangle((0, 0, width, height), outline=0, fill=0)
+    
     song = Box.current_song_name.split(".",1)[0].replace("-", " ").title()
     if song is "":
         song = "Nothing playing"
