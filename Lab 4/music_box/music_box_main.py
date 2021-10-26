@@ -53,8 +53,7 @@ def wait_for_current():
         os.kill(int(Box.current_song_pid), 0)
     except OSError:
         return True
-    else:
-        return False
+    return False
 
 def play_music(song):
     # Looping
