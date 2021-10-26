@@ -72,7 +72,7 @@ def play_music(song):
 
 def shuffle():
     Box.shuffle = not Box.shuffle
-    if not ongoing_song
+    if not ongoing_song:
         Box.current_song_index = random.randint(0,6)
         music = multiprocessing.Process(target=play_music, args=(songs[Box.current_song_index],))
         music.start()
