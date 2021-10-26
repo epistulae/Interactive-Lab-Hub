@@ -27,6 +27,7 @@ Box.current_song_pid = ""
 Box.current_song_index = -1
 Box.shuffle = False
 Box.mode = 0
+Box.song_process
 
 # Helper Functions
 def get_pid(pid):
