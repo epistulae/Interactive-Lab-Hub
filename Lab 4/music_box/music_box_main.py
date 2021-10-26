@@ -126,8 +126,6 @@ def play_music(song):
     play = False
     # Looping
     if Box.mode is not 0:
-        if Box.current_song_pid is "":
-            return
         play = wait_for_current()
         if play:
             if Box.shuffle: 
@@ -177,6 +175,29 @@ def mode_change():
 #     subprocess.run(["kill -CONT " + Box.current_song_pid], capture_output=False, shell=True)
 #     Current.paused = False
 
+def check_input():
+    # Play one song
+    for i in range(7):
+        if mpr121[i].value:
+            if ongoing_song():
+                cancel_current_song()
+            music = multiprocessing.Process(target=play_music, args=(songs[i],))
+            Box.current_song_index = i
+            music.start()
+            # Ensure we only register one touch at a time
+            break
+
+    if mpr121[9].value:
+        shuffle()
+
+    if mpr121[10].value:
+        mode_change()
+
+    # Reset box
+    if mpr121[11].value:
+        if ongoing_song():
+            cancel_current_song()
+
 def update_display():
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
     
@@ -212,30 +233,9 @@ def update_display():
 # Music Box Functionality (10 sensors)
 update_display()
 while True:
-    # Loop off
-    if Box.mode is 0: 
-        # Play one song
-        for i in range(7):
-            if mpr121[i].value:
-                if ongoing_song():
-                    cancel_current_song()
-                music = multiprocessing.Process(target=play_music, args=(songs[i],))
-                Box.current_song_index = i
-                music.start()
-                # Ensure we only register one touch at a time
-                break
-
-        if mpr121[9].value:
-            shuffle()
-
-        if mpr121[10].value:
-            mode_change()
-
-        # Reset box
-        if mpr121[11].value:
-            if ongoing_song():
-                cancel_current_song()
-    else:
+    check_input()
+    # Loop
+    if Box.mode is not 0: 
         music = multiprocessing.Process(target=play_music, args=("loop",))
         music.start()
                 
