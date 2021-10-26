@@ -49,7 +49,6 @@ def same_song(song):
     return Box.current_song_name is song
 
 def play_music(song):
-    input_check = False
     # Looping
     if Box.mode is not 0:
         if Box.shuffle: 
@@ -63,10 +62,8 @@ def play_music(song):
             if Box.mode is 2:
                 # Multi song loop, linear
                 song = songs[Box.current_song_index+1]
-    else:
-        input_check = True
     
-    if not input_check and not same_song(song):
+    if not same_song(song) or Box.mode is 1:
         music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
         Box.current_song_pid = get_pid(music.stdout.readline())
         Box.current_song_name = song
