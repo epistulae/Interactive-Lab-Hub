@@ -27,7 +27,7 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 
 # Display
 grey = "#E5E5E5"
-cyan = "#5efff4"
+cyan = "#47d6be"
 blue = "#2e9aff"
 
 font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 20)
