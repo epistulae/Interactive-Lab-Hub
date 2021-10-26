@@ -97,6 +97,7 @@ def mode_change():
 #     Current.paused = False
 
 def update_display():
+    x = 1
     
 
 # Music Box Functionality (10 sensors)
