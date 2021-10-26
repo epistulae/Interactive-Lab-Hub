@@ -146,15 +146,16 @@ def play_music(song):
         music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
         Box.current_song_pid = get_pid(music.stdout.readline())
         Box.current_song_name = song
-        logging.info("Started playing " + song + " at pid " + Box.current_song_pid)         
+        logging.info("Started playing " + song + " at pid " + Box.current_song_pid)    
+        update_display()
 
 def shuffle():
     Box.shuffle = not Box.shuffle
     if not ongoing_song():
         Box.current_song_index = random.randint(0,6)
-        print(Box.current_song_index)
         music = multiprocessing.Process(target=play_music, args=(songs[Box.current_song_index],))
         music.start()
+    update_display()
 
 def mode_change():
     # Modes available: 
@@ -163,7 +164,7 @@ def mode_change():
     # - Loop single (1)
     # - Loop playlist (2)
     Box.mode = (Box.mode + 1) % 3
-    print(f"box mode " + str(Box.mode))
+    update_display()
     
 # Unused pausing functionality. Perhaps I can add something for this if I iterate on the physical design.
 # def pause_current_song():
@@ -195,7 +196,7 @@ def update_display():
     
     # Screen
     line_inc = font.getsize(song)[1]
-    y = top
+    y = top + line_inc
     draw.text((0,y), song, font=font, fill=grey)
     y += line_inc*1.7
     draw.text((0,y), mode, font=font, fill=cyan)
