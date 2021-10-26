@@ -41,7 +41,7 @@ def cancel_current_song():
     Box.current_song_pid = ""
     Box.current_song_name = ""
     Box.current_song_index = -1
-    logging.info("Stopped song with pid: " + Box.current_song_pid "\nBox reset.")
+    logging.info("Stopped song with pid: " + Box.current_song_pid + "\nBox reset.")
     Box.shuffle = False
     Box.mode = 0
 
