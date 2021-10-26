@@ -154,16 +154,16 @@ def play_music(song):
         music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
         Box.current_song_pid = get_pid(music.stdout.readline())
         Box.current_song_name = song
-        logging.info("Started playing " + song + " at pid " + Box.current_song_pid)    
         update_display()
+        logging.info("Started playing " + song + " at pid " + Box.current_song_pid)    
 
 def shuffle():
     Box.shuffle = not Box.shuffle
+    update_display()
     if not ongoing_song():
         Box.current_song_index = random.randint(0,6)
         music = multiprocessing.Process(target=play_music, args=(songs[Box.current_song_index],))
         music.start()
-    update_display()
 
 def mode_change():
     # Modes available: 
