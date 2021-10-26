@@ -176,7 +176,8 @@ def mode_change():
 
 def update_display():
     song = Box.current_song_name.split(".",1)[0].replace("-", " ").title()
-    if song is "" song = "Nothing playing"
+    if song is "":
+        song = "Nothing playing"
     
     mode = "Mode: "
     if Box.mode = 0:
