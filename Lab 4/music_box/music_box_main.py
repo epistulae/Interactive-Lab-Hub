@@ -25,7 +25,7 @@ Box = manager.Namespace()
 Box.current_song_name = ""
 Box.current_song_pid = ""
 Box.current_song_index = -1
-Box.shuffle = false
+Box.shuffle = False
 Box.mode = 0
 
 # Helper Functions
