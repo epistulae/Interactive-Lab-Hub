@@ -126,6 +126,8 @@ def play_music(song):
     play = False
     # Looping
     if Box.mode is not 0:
+        if Box.current_song_pid is "":
+            return
         play = wait_for_current()
         if play:
             if Box.shuffle: 
@@ -234,7 +236,7 @@ while True:
             if ongoing_song():
                 cancel_current_song()
     else:
-        music = multiprocessing.Process(target=play_music, args=("song",))
+        music = multiprocessing.Process(target=play_music, args=("loop",))
         music.start()
                 
     time.sleep(0.25)  # Small delay to keep from spamming output messages.
