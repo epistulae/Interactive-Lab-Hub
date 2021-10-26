@@ -56,10 +56,11 @@ def wait_for_current():
     return False
 
 def play_music(song):
+    play = True
     # Looping
     if Box.mode is not 0:
-        play_next = wait_for_current()
-        print(play_next)
+        play = wait_for_current()
+        print(play)
         if play_next:
             if Box.shuffle: 
                 # Allowing repeats
@@ -72,8 +73,10 @@ def play_music(song):
                 if Box.mode is 2:
                     # Multi song loop, linear
                     song = songs[Box.current_song_index+1]
-    
-    if not same_song(song) or play_next:
+    else:
+        play = not same_song(song)
+        
+    if play:
         music = subprocess.Popen(["aplay music_files/" + song + " & echo \"$!\""], stdout=subprocess.PIPE, shell=True)
         Box.current_song_pid = get_pid(music.stdout.readline())
         Box.current_song_name = song
