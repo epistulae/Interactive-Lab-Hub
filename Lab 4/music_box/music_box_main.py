@@ -59,6 +59,7 @@ def play_music(song):
     # Looping
     if Box.mode is not 0:
         play_next = wait_for_current()
+        print(play_next)
         if play_next:
             if Box.shuffle: 
                 # Allowing repeats
