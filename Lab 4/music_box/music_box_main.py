@@ -84,6 +84,7 @@ def shuffle():
     print(f"shuffle state " + str(Box.shuffle))
     if not ongoing_song:
         Box.current_song_index = random.randint(0,6)
+        printf(Box.current_song_index)
         music = multiprocessing.Process(target=play_music, args=(songs[Box.current_song_index],))
         music.start()
 
@@ -137,7 +138,7 @@ while True:
             if ongoing_song():
                 cancel_current_song()
     else:
-        music = multiprocessing.Process(target=play_music, args=("",))
+        music = multiprocessing.Process(target=play_music, args=("song",))
         music.start()
                 
     time.sleep(0.25)  # Small delay to keep from spamming output messages.
