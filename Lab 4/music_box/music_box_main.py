@@ -115,10 +115,13 @@ def cancel_current_song():
 def same_song(song):
     return Box.current_song_name is song
 
-def wait_for_current():
+def current_done():
     try:
         os.kill(int(Box.current_song_pid), 0)
     except OSError:
+        Box.current_song_pid = ""
+        Box.current_song_name = ""
+        Box.current_song_index = -1
         return True
     return False
 
@@ -128,7 +131,7 @@ def play_music(song):
     if Box.mode is not 0:
         if Box.current_song_pid is "":
             return
-        play = wait_for_current()
+        play = current_done()
         if play:
             if Box.shuffle: 
                 # Allowing repeats
@@ -235,6 +238,7 @@ def update_display():
 # Music Box Functionality (10 sensors)
 update_display()
 while True:
+    current_done()
     check_input()
     # Loop
     if Box.mode is not 0: 
