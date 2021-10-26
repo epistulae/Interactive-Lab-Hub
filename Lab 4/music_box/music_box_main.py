@@ -182,9 +182,9 @@ def update_display():
     mode = "Mode: "
     if Box.mode is 0:
         mode += "Single Song"
-    elif Box.mode = 1:
+    elif Box.mode is 1:
         mode += "Loop one song"
-    elif Box.mode = 2:
+    elif Box.mode is 2:
         mode += "Loop playlist"
     
     shuffle = "Shuffle "
