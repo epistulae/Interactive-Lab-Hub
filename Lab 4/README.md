@@ -323,7 +323,7 @@ Document all the prototypes and iterations you have designed and worked on! Agai
 * "Works like": shows what the device can do
 * "Acts like": shows how a person would interact with the device
 
-***Note: code for my prototype is in the music_box file ***
+*Note: code for my prototype is in the music_box file*
 
 ### Reflecting on Feedback
 
