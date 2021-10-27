@@ -347,6 +347,9 @@ As I was iterating, I accidentally left out the reset button, and a friend testi
 
 
 ### Looks Like
+
+This is a cardboard prototype with acrylic parts. All sensors are acrylic with copper tape. The lid has the individual song sensors and the inner lid has control buttons. The Pi display shows the current setup of the box.
+
 <img width="503" alt="Screen Shot 2021-10-27 at 9 19 48 AM" src="https://user-images.githubusercontent.com/14368010/139073683-a8feac30-2df6-4b45-b270-abc7c9c0d8aa.png">
 <img width="462" alt="Screen Shot 2021-10-27 at 9 19 57 AM" src="https://user-images.githubusercontent.com/14368010/139073722-4fc7f268-9acb-4dbd-8f88-f453893063ae.png">
 <img width="482" alt="Screen Shot 2021-10-27 at 9 20 07 AM" src="https://user-images.githubusercontent.com/14368010/139073749-e4a1ddfd-41d5-4e53-923c-d262d5215257.png">
@@ -355,8 +358,18 @@ As I was iterating, I accidentally left out the reset button, and a friend testi
 
 ### Works Like and Acts Like (Music Box Demo)
 
-https://user-images.githubusercontent.com/14368010/139073420-0db607e6-2545-4b3c-a7f3-aa10901a4f88.MOV
+**Feature List**
+- Play individual song (lid sensors)
+- Control buttons for loop mode, shuffle and reset (inner lid sensors)
+- Box status (from the Pi screen, viewable from the inner lid window
 
-https://user-images.githubusercontent.com/14368010/139073455-5841cf1d-6170-48e8-9879-3528458d8b77.MOV
+
+https://user-images.githubusercontent.com/14368010/139075186-9d0f3301-e31d-4478-adff-68a3bcaba503.mp4
+
+
+
+https://user-images.githubusercontent.com/14368010/139075208-7326158d-9399-4cb4-917c-8fbcfcede60f.mp4
+
+
 
 
