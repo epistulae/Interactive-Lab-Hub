@@ -323,7 +323,6 @@ Document all the prototypes and iterations you have designed and worked on! Agai
 * "Works like": shows what the device can do
 * "Acts like": shows how a person would interact with the device
 
-### Music Box Demo
 
 ### Reflecting on Feedback
 
@@ -337,10 +336,27 @@ Based on the feedback on not having enough clarity with the buttons, I realized 
 
 As I was iterating, I accidentally left out the reset button, and a friend testing my device reminded me to put it back in.
 
-#### Design Sketches and In progress Shots
 
-#### Looks Like
+### Design Sketches and In progress Shots
 
-#### Works Like
+<img width="602" alt="Screen Shot 2021-10-27 at 9 21 32 AM" src="https://user-images.githubusercontent.com/14368010/139074021-a758f871-7e23-4526-9457-6f7628bb00fe.png">
+<img width="605" alt="Screen Shot 2021-10-27 at 9 21 53 AM" src="https://user-images.githubusercontent.com/14368010/139074050-c31c4710-f5f5-4385-878f-db571f7851fa.png">
+<img width="719" alt="Screen Shot 2021-10-27 at 9 18 40 AM" src="https://user-images.githubusercontent.com/14368010/139073549-1feeb872-b162-4d7d-b438-fdf1f626cb73.png">
+<img width="628" alt="Screen Shot 2021-10-27 at 9 18 49 AM" src="https://user-images.githubusercontent.com/14368010/139073557-5bd7daf0-707d-4c48-a574-6864fa18dee2.png">
+<img width="898" alt="Screen Shot 2021-10-27 at 9 19 27 AM" src="https://user-images.githubusercontent.com/14368010/139073628-3ab0e092-c571-4f40-a764-bedd27a240c9.png">
 
-#### Acts Like
+
+### Looks Like
+<img width="503" alt="Screen Shot 2021-10-27 at 9 19 48 AM" src="https://user-images.githubusercontent.com/14368010/139073683-a8feac30-2df6-4b45-b270-abc7c9c0d8aa.png">
+<img width="462" alt="Screen Shot 2021-10-27 at 9 19 57 AM" src="https://user-images.githubusercontent.com/14368010/139073722-4fc7f268-9acb-4dbd-8f88-f453893063ae.png">
+<img width="482" alt="Screen Shot 2021-10-27 at 9 20 07 AM" src="https://user-images.githubusercontent.com/14368010/139073749-e4a1ddfd-41d5-4e53-923c-d262d5215257.png">
+<img width="936" alt="Screen Shot 2021-10-27 at 9 20 26 AM" src="https://user-images.githubusercontent.com/14368010/139073801-58277db6-47d3-4d49-9d2e-66e0f2c35c96.png">
+
+
+### Works Like and Acts Like (Music Box Demo)
+
+https://user-images.githubusercontent.com/14368010/139073420-0db607e6-2545-4b3c-a7f3-aa10901a4f88.MOV
+
+https://user-images.githubusercontent.com/14368010/139073455-5841cf1d-6170-48e8-9879-3528458d8b77.MOV
+
+
