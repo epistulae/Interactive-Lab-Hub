@@ -46,10 +46,37 @@ General ideas on how to use these:
 
 <img width="474" alt="Screen Shot 2021-11-01 at 1 43 12 AM" src="https://user-images.githubusercontent.com/14368010/139626864-0169a396-65b8-44e8-825b-99224ea32dbd.png"> <img width="479" alt="Screen Shot 2021-11-01 at 1 43 32 AM" src="https://user-images.githubusercontent.com/14368010/139626877-6a79bbff-0185-4ae0-85b4-a669bd4e2395.png">
 
-<img width="400" alt="Screen Shot 2021-11-01 at 2 02 13 AM" src="https://user-images.githubusercontent.com/14368010/139628382-d4b9dea5-056b-4d76-adb9-737c242f3a53.png">
+<img align="left" width="400" alt="Screen Shot 2021-11-01 at 2 02 13 AM" src="https://user-images.githubusercontent.com/14368010/139628382-d4b9dea5-056b-4d76-adb9-737c242f3a53.png"> 
+
+\
+&nbsp;
+\
+&nbsp;
+\
+&nbsp;
+\
+&nbsp;
+\
+&nbsp;
+
+The prototypes will be a section of the left/right side of the frame. The structure is so we can somewhat imagine what it'd be like to interact with these input options against a wall.
+
+\
+&nbsp;
+\
+&nbsp;
+\
+&nbsp;
+\
+&nbsp;
+\
+&nbsp;
+\
+&nbsp;
+
+<img align="right" width="500" alt="Screen Shot 2021-11-01 at 2 20 31 AM" src="https://user-images.githubusercontent.com/14368010/139630027-18d81964-3df2-4397-b0ec-4c96a0503c2f.png">
 
 ### OLED Display + Number Pad
-<img width="500" alt="Screen Shot 2021-11-01 at 2 20 31 AM" src="https://user-images.githubusercontent.com/14368010/139630027-18d81964-3df2-4397-b0ec-4c96a0503c2f.png">
 
 The display will show the inputs in real time as the user inputs them. The number pad gives a lot of versatility. We can have a codebook and have the number pad control all interactions in general (outside of the on/off sleep).
 
@@ -84,9 +111,27 @@ TODO
 
 
 ### Tactile Buttons
-<img width="500" alt="Screen Shot 2021-11-01 at 2 19 57 AM" src="https://user-images.githubusercontent.com/14368010/139629968-02a6650d-9855-440e-b4c9-406feacad56b.png">
+<img width="500" align="left" alt="Screen Shot 2021-11-01 at 2 19 57 AM" src="https://user-images.githubusercontent.com/14368010/139629968-02a6650d-9855-440e-b4c9-406feacad56b.png">
+
+\
+&nbsp;
+\
+&nbsp;
+\
+&nbsp;
+\
+&nbsp;
 
 These are two connected LED tactile buttons on a Sparkfun QWIIC button breakout. The breakout boards have the addresses set up on the back side to use different addresses (Note: breakout board has 4 addresses, so I can do 4 of these (maybe 5?), matching how the capacitor sensor layout), so I can chain them together. This version of input only allows for daily tracking.
+
+\
+&nbsp;
+\
+&nbsp;
+\
+&nbsp;
+\
+&nbsp;
 
 <img width="828" alt="Screen Shot 2021-11-01 at 2 43 45 AM" src="https://user-images.githubusercontent.com/14368010/139632140-cec2dc71-fbc3-45a4-903a-42fb43bf9486.png">
 
