@@ -119,10 +119,10 @@ TODO
 &nbsp;
 \
 &nbsp;
-\
-&nbsp;
 
 These are two connected LED tactile buttons on a Sparkfun QWIIC button breakout. The breakout boards have the addresses set up on the back side to use different addresses (Note: breakout board has 4 addresses, so I can do 4 of these (maybe 5?), matching how the capacitor sensor layout), so I can chain them together. This version of input only allows for daily tracking.
+
+If I also use tactile buttons for brightness, perhaps just one button to cycle through the modes would be sufficient.
 
 \
 &nbsp;
@@ -154,3 +154,11 @@ TODO
 
 **Use in final? TODO **
 
+### Capacitive Buttons
+** TODO **
+
+### Capacitive Buttons with OLED Display
+** TODO **
+
+### Rotary Encoder with OLED display
+** TODO **
