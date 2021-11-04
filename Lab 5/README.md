@@ -154,7 +154,10 @@ TODO
 
 **Use in final? TODO **
 
-### Capacitive Buttons
+### Capacitive Buttons (Frame)
+** TODO **
+
+### Capacitive Buttons (Constellation)
 ** TODO **
 
 ### Capacitive Buttons with OLED Display
