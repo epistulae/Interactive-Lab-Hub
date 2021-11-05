@@ -43,11 +43,11 @@ draw.rectangle((0,0,width,height), outline=0, fill=0)
 
 # Draw some shapes.
 # First define some constants to allow easy resizing of shapes.
-padding = -2
+padding = -5
 top = padding
 bottom = height-padding
 # Move left to right keeping track of the current x position for drawing shapes.
-x = 20
+x = 10
 
 # Load default font.
 font = ImageFont.load_default()
@@ -78,7 +78,8 @@ def display_stats():
         habit_b_status = "complete"
 
     draw.text((x, top+8),      "Tracking Day: " + str(tracking_day),  font=font, fill=255)
-    draw.text((x, top+16),     "Habit A: " + habit_a_status + ", Habit B: " + habit_b_status, font=font, fill=255)
+    draw.text((x, top+16),     "Habit A: " + habit_a_status, font=font, fill=255)
+    draw.text((x, top+24),     "Habit B: " + habit_b_status, font=font, fill=255)
 
     # Display image.
     disp.image(image)
