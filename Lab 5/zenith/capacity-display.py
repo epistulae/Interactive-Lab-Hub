@@ -83,6 +83,7 @@ def display_stats():
     else:
         habit_b_status = "complete"
 
+    print(habit_a_status)
     draw.text((x, top+8),      "Tracking Day: " + str(tracking_day),  font=font, fill=255)
     draw.text((x, top+16),     "Habit A: " + habit_a_status, font=font, fill=255)
     draw.text((x, top+24),     "Habit B: " + habit_b_status, font=font, fill=255)
