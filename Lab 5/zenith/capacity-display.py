@@ -52,55 +52,52 @@ x = 20
 # Load default font.
 font = ImageFont.load_default()
 
-# Display day to track
+# Display tracking.
 # Note: In final, will store and read in external file
 tracking_day = 1
+habit_a = [0] * 30
+habit_b = [0] * 30
 
+habit_a_status = "incomplete"
+habit_b_status = "incomplete"
+     
 # Helper Functions
 def display_stats():
      # Draw a black filled box to clear the image.
     draw.rectangle((0,0,width,height), outline=0, fill=0)
     
-    # Write two lines of text.
+    # Write stats.
+    if habit_a[tracking_day-1] is 0:
+        habit_a_status = "incomplete"
+    else:
+        habit_a_status = "complete"
+     
+    if habit_b[tracking_day-1] is 0:
+        habit_b_status = "incomplete"
+    else:
+        habit_b_status = "complete"
 
-    draw.text((x, top+8),      "Tracking Day: ",  font=font, fill=255)
-    draw.text((x, top+16),     str(tracking_day), font=font, fill=255)
+    draw.text((x, top+8),      "Tracking Day: " + str(tracking_day),  font=font, fill=255)
+    draw.text((x, top+16),     "Habit A: " + habit_a_status + ", Habit B: " + habit_b_status, font=font, fill=255)
 
     # Display image.
     disp.image(image)
     disp.show()
     time.sleep(.1)
 
+def inc_track():
+    return true
+
+def dec_track():
+    return true
+
+def flip_habit_a():
+    return true
+     
+def flip_habit_b():
+    return true
+
 while True:
     
     display_stats()
   
-#     # undraw the previous circle
-#     draw_circle(center_x, center_y, radius, col=0)
-
-#     # if bouncing off right
-#     if center_x + radius >= oled.width:
-#         # start moving to the left
-#         x_inc = -1
-#     # if bouncing off left
-#     elif center_x - radius < 0:
-#         # start moving to the right
-#         x_inc = 1
-
-#     # if bouncing off top
-#     if center_y + radius >= oled.height:
-#         # start moving down
-#         y_inc = -1
-#     # if bouncing off bottom
-#     elif center_y - radius < 0:
-#         # start moving up
-#         y_inc = 1
-
-#     # go more in the current direction
-#     center_x += x_inc
-#     center_y += y_inc
-
-#     # draw the new circle
-#     draw_circle(center_x, center_y, radius)
-#     # show all the changes we just made
-#     oled.show()
