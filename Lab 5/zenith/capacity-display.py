@@ -75,7 +75,8 @@ def display_stats():
         habit_a_status = "incomplete"
     else:
         habit_a_status = "complete"
-     
+    print(' '.join([str(day) for day in habit_a]))
+    print(' '.join([str(day) for day in habit_b]))
     if habit_b[tracking_day-1] is 0:
         habit_b_status = "incomplete"
     else:
