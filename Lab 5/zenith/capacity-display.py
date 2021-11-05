@@ -113,8 +113,7 @@ while True:
         # Write to file only when program exits to limit file writes.
         tracking_file = open("tracking.txt","w")
         tracking_file.write(str(tracking_day)+"\n")
-        tracking_file.write(' '.join([str(day) for day in habit_a]))
-        tracking_file.write("")
+        tracking_file.write(' '.join([str(day) for day in habit_a])+"\n")
         tracking_file.write(' '.join([str(day) for day in habit_b]))
         sys.exit()
 
