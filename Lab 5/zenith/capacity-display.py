@@ -56,20 +56,24 @@ font = ImageFont.load_default()
 # Note: In final, will store and read in external file
 tracking_day = 1
 
-while True:
-    
-    # Draw a black filled box to clear the image.
+# Helper Functions
+def display_stats():
+     # Draw a black filled box to clear the image.
     draw.rectangle((0,0,width,height), outline=0, fill=0)
     
     # Write two lines of text.
 
-    draw.text((x, top+8),       "Tracking Day: ",  font=font, fill=255)
+    draw.text((x, top+8),      "Tracking Day: ",  font=font, fill=255)
     draw.text((x, top+16),     str(tracking_day), font=font, fill=255)
 
     # Display image.
     disp.image(image)
     disp.show()
     time.sleep(.1)
+
+while True:
+    
+    display_stats()
   
 #     # undraw the previous circle
 #     draw_circle(center_x, center_y, radius, col=0)
