@@ -97,8 +97,10 @@ while True:
                 tracking_day += 1
             print(f"Twizzler 1 touched!")
         elif mpr121[2].value:
+            habit_a[tracking_day] = (habit_a[tracking_day]+1)%2
             print(f"Twizzler 2 touched!")
         elif mpr121[3].value:
+            habit_b[tracking_day] = (habit_b[tracking_day]+1)%2
             print(f"Twizzler 3 touched!")
         break
     display_stats()
