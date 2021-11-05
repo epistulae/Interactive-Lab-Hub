@@ -30,11 +30,14 @@ disp = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c)
 # oled.show()
 
 # Initialize library.
-disp.begin()
+# disp.begin()
 
-# Clear display.
-disp.clear()
-disp.display()
+# # Clear display.
+# disp.clear()
+# disp.display()
+
+disp.fill(0)
+disp.show()
 
 # Create blank image for drawing.
 # Make sure to create image with mode '1' for 1-bit color.
@@ -75,7 +78,7 @@ while True:
 
     # Display image.
     disp.image(image)
-    disp.display()
+    disp.show()
     time.sleep(.1)
   
 #     # undraw the previous circle
