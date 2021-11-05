@@ -56,6 +56,7 @@ font = ImageFont.load_default()
 tracking_file = open("tracking.txt","r")
 
 tracking_day = int(tracking_file.readline())
+print(str(tracking_day))
 habit_a = tracking_file.readline().split(" ")
 habit_b = tracking_file.readline().split(" ")
 
