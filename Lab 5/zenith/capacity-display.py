@@ -87,11 +87,13 @@ def display_stats():
     time.sleep(.1)
 
 def inc_track():
+    nonlocal tracking_day
     if tracking_day is 30:
         return
     tracking_day += 1
 
 def dec_track():
+    nonlocal tracking_day
     if tracking_day is 1:
         return
     tracking_day -= 1
