@@ -3,7 +3,7 @@
 
 import board
 import busio
-import time
+import time, sys
 import multiprocessing, signal
 
 import adafruit_ssd1306
@@ -111,4 +111,5 @@ while True:
         tracking_file.write(str(tracking_day)+"\n")
         tracking_file.write(' '.join([str(day) for day in habit_a])+"\n")
         tracking_file.write(' '.join([str(day) for day in habit_a])+"\n")
+        sys.exit()
 
