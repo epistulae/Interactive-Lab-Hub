@@ -110,6 +110,6 @@ while True:
         tracking_file = open("tracking.txt","w")
         tracking_file.write(str(tracking_day)+"\n")
         tracking_file.write(' '.join([str(day) for day in habit_a])+"\n")
-        tracking_file.write(' '.join([str(day) for day in habit_a])+"\n")
+        tracking_file.write(' '.join([str(day) for day in habit_b])+"\n")
         sys.exit()
 
