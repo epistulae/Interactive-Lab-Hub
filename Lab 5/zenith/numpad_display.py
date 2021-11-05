@@ -82,6 +82,9 @@ def display_stats():
     disp.show()
     time.sleep(.1)
 
+# Note: in retrospec, not going to keep spending time on this. I don't have a display big enough 
+# to really do this properly as I envisioned. Otherwise, it's just a bit confusing to use.
+
 while True:
     try:
         display_stats()
