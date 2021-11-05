@@ -99,6 +99,14 @@ def flip_habit_b():
     return true
 
 while True:
-    
+    for i in range(4):
+        if mpr121[0].value:
+            print(f"Twizzler {i} touched!")
+        if mpr121[1].value:
+            print(f"Twizzler {i} touched!")
+        if mpr121[2].value:
+            print(f"Twizzler {i} touched!")
+        if mpr121[3].value:
+            print(f"Twizzler {i} touched!")
     display_stats()
   
