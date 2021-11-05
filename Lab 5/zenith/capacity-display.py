@@ -25,17 +25,7 @@ i2c = busio.I2C(board.SCL, board.SDA)
 # to the right size for your display!
 disp = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c)
 
-# # Screen setup
-# oled.fill(0)
-# oled.show()
-
-# Initialize library.
-# disp.begin()
-
-# # Clear display.
-# disp.clear()
-# disp.display()
-
+# Screen setup
 disp.fill(0)
 disp.show()
 
@@ -57,7 +47,7 @@ padding = -2
 top = padding
 bottom = height-padding
 # Move left to right keeping track of the current x position for drawing shapes.
-x = 0
+x = 20
 
 # Load default font.
 font = ImageFont.load_default()
