@@ -53,10 +53,13 @@ x = 10
 font = ImageFont.load_default()
 
 # Display tracking.
-# Note: In final, will store and read in external file
+#tracking_file = open("tracking.txt","r")
+
 tracking_day = 1
 habit_a = [0] * 30
 habit_b = [0] * 30
+
+#tracking_file.close()
 
 habit_a_status = "incomplete"
 habit_b_status = "incomplete"
@@ -87,22 +90,25 @@ def display_stats():
     time.sleep(.1)
 
 while True:
-    for i in range(4):
-        if mpr121[0].value:
-            if tracking_day is not 1:
-                tracking_day -= 1
-            print(f"Twizzler 0 touched!")
-        elif mpr121[1].value:
-            if tracking_day is not 30:
-                tracking_day += 1
-            print(f"Twizzler 1 touched!")
-        elif mpr121[2].value:
-            habit_a[tracking_day-1] = (habit_a[tracking_day-1]+1)%2
-            print(f"Twizzler 2 touched!")
-        elif mpr121[3].value:
-            habit_b[tracking_day-1] = (habit_b[tracking_day-1]+1)%2
-            print(f"Twizzler 3 touched!")
-        break
-    display_stats()
-    time.sleep(0.5)
-  
+    try:
+        for i in range(4):
+            if mpr121[0].value:
+                if tracking_day is not 1:
+                    tracking_day -= 1
+            elif mpr121[1].value:
+                if tracking_day is not 30:
+                    tracking_day += 1
+            elif mpr121[2].value:
+                habit_a[tracking_day-1] = (habit_a[tracking_day-1]+1)%2
+            elif mpr121[3].value:
+                habit_b[tracking_day-1] = (habit_b[tracking_day-1]+1)%2
+            break
+        display_stats()
+        time.sleep(0.5)
+    except KeyboardInterrupt:
+        # Write to file only when program exits to limit file writes.
+        tracking_file = open("tracking.txt","w")
+        tracking_file.write(str(tracking_day+"\n"))
+        tracking_file.write(' '.join([str(day) for day in habit_a])+"\n")
+        tracking_file.write(' '.join([str(day) for day in habit_a])+"\n")
+
