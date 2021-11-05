@@ -87,10 +87,14 @@ def display_stats():
     time.sleep(.1)
 
 def inc_track():
-    return true
+    if tracking_day is 30:
+        return
+    tracking_day += 1
 
 def dec_track():
-    return true
+    if tracking_day is 1:
+        return
+    tracking_day -= 1
 
 def flip_habit_a():
     return true
@@ -101,12 +105,15 @@ def flip_habit_b():
 while True:
     for i in range(4):
         if mpr121[0].value:
+            dec_track()
             print(f"Twizzler 0 touched!")
         if mpr121[1].value:
+            inc_track()
             print(f"Twizzler 1 touched!")
         if mpr121[2].value:
             print(f"Twizzler 2 touched!")
         if mpr121[3].value:
             print(f"Twizzler 3 touched!")
     display_stats()
+    time.sleep(0.5)
   
