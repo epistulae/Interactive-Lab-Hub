@@ -6,6 +6,10 @@ import busio
 import time, sys
 import multiprocessing, signal
 
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
+
 import adafruit_ssd1306
 
 i2c = busio.I2C(board.SCL, board.SDA)
