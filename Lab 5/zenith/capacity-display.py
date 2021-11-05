@@ -86,24 +86,6 @@ def display_stats():
     disp.show()
     time.sleep(.1)
 
-def inc_track():
-    nonlocal tracking_day
-    if tracking_day is 30:
-        return
-    tracking_day += 1
-
-def dec_track():
-    nonlocal tracking_day
-    if tracking_day is 1:
-        return
-    tracking_day -= 1
-
-def flip_habit_a():
-    return true
-     
-def flip_habit_b():
-    return true
-
 while True:
     for i in range(4):
         if mpr121[0].value:
