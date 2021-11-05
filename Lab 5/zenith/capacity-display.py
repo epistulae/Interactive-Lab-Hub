@@ -107,10 +107,12 @@ def flip_habit_b():
 while True:
     for i in range(4):
         if mpr121[0].value:
-            dec_track()
+            if tracking_day is not 1:
+                tracking_day -= 1
             print(f"Twizzler 0 touched!")
         if mpr121[1].value:
-            inc_track()
+            if tracking_day is not 30:
+                tracking_day += 1
             print(f"Twizzler 1 touched!")
         if mpr121[2].value:
             print(f"Twizzler 2 touched!")
