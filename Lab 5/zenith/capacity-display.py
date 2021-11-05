@@ -92,18 +92,15 @@ while True:
             if tracking_day is not 1:
                 tracking_day -= 1
             print(f"Twizzler 0 touched!")
-            break
-        if mpr121[1].value:
+        elif mpr121[1].value:
             if tracking_day is not 30:
                 tracking_day += 1
             print(f"Twizzler 1 touched!")
-            break
-        if mpr121[2].value:
+        elif mpr121[2].value:
             print(f"Twizzler 2 touched!")
-            break
-        if mpr121[3].value:
+        elif mpr121[3].value:
             print(f"Twizzler 3 touched!")
-            break
+        break
     display_stats()
     time.sleep(0.5)
   
