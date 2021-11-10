@@ -176,6 +176,7 @@ Notes from prototyping:
 - Trying to precisely wrap the copper tape was a nightmare. The adhesive is not too strong, and the tape itself tears easily, which is very unfortunate when working on a sharp opject (stars).
 
 **Use in final?**
+
 No. I could barely get the prototype to even connect to the capacitive sensor board, and it look very unappealing. Inputs were also only logged about 20% of the time.
 
 
@@ -194,6 +195,11 @@ All inputs are saved so this is a stateful system. This is because the tracker w
 
 #### Demo
 
+
+https://user-images.githubusercontent.com/14368010/141211988-3e875576-6550-4115-8887-8e8597c4b0d9.mp4
+
+
 **Use in final?**
+
 Yes. But, just the capacitive buttons without OLED. It's not great to test without the screen in a demo if I don't have the LEDs responding to inputs, but the screen becomes redundant in the final product. Also, while it's nice to be able to backfill, and perhaps this is a functionality for the phone app, the device itself is meant for direct, daily, in person use. Thus, just 3 capacitive buttons (Habit A, Habit B, Mode change cycle) plus a tactile button (on-off) is sufficient.
 
