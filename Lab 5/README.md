@@ -35,6 +35,7 @@ Key takeaways from sketch brainstorming:
 - Rather than just modes of lighting (i.e. tracking vs mood vs audio-reactive), I should also have brightness adjustments and add a sleep/off functionality for night time. The latter will be good for both the user and the Raspberry Pi and the LEDs' longevity. Light is a major disruptor for sleep and I for one cannot sleep with an eye mask on.
 - There is very little real estate on the side of the frames and it should be used carefully, without overcrowding. It's also important to not make the frame width too large, as that will look awkward.
 - Consider height! Tactile buttons general have low profile, same with displays, around 1/8 inch or lower. Some physical component may not make sense if they protrude too much from the frame. Test these in prototypes to be sure before moving too far with the design.
+- I added several possible functionalities as thing went on, inluding playing around with the light sensor to detect daylight and the proximity sensor to do gesture controlled actions, possibly with audio output. However, I took a step back and realized it was straying away from the point of the product I want to make and overloading it. Ultimately, Zenith is wall art that functions as a habit tracker with added creative lighting, and the best way to do that with is more obvious inputs. Also, my chosen LEDs require I turn off the microphone speaker.
 
 ## Prototyping
 ### Sensors to try protoyping with
@@ -102,13 +103,11 @@ Notes from prototyping:
 
 #### Programing
 Notes from initial implementation:
-- TODO
+- This was incredibly ugly looking, essentially a very large switch statement (which does not exist in Python). After playng around a little, I decided to not completely implelent it.
 
-#### Demo
-TODO
+**Use in final?**
 
-**Use in final? TODO **
-
+Most certainly not. I thought it might make sense to even tie in the on-off button for the Pi, but that wants to be wired to a different GPIO pin than the QWIIC pins. The numpad makes the frame far too big and it's a very large, and frankly, ugly component to live on the frame. Given aestetics is a big component of the project, this is not the best choice. It also needs a codebook to operate. I want everything to be as simple as possible on the product itself.
 
 ### Tactile Buttons
 <img width="500" align="left" alt="Screen Shot 2021-11-01 at 2 19 57 AM" src="https://user-images.githubusercontent.com/14368010/139629968-02a6650d-9855-440e-b4c9-406feacad56b.png">
@@ -122,7 +121,7 @@ TODO
 
 These are two connected LED tactile buttons on a Sparkfun QWIIC button breakout. The breakout boards have the addresses set up on the back side to use different addresses (Note: breakout board has 4 addressable bits, so I can chain 16 max), so I can chain them together. This version of input only allows for daily tracking.
 
-If I also use tactile buttons for brightness, perhaps just one button to cycle through the modes would be sufficient.
+If I also use tactile buttons for brightness, and perhaps just one button to cycle through the modes would be sufficient.
 
 \
 &nbsp;
@@ -147,21 +146,54 @@ Notes from prototyping:
 
 #### Programing
 Notes from initial implementation:
-- TODO
+- This implementation was extended in the capacitive version. Overall, having simplicity in the button makes sense, because, again, while more functionality, even in inputting habit on different dates may seem desirable, the goal is to do everything *the day of*. 
 
 #### Demo
-TODO
+Please see capacitive with OLED demo. This demo was very uninteresting since it just printed on terminal, and the capacitive demo includes the same functionality.
 
-**Use in final? TODO **
+**Use in final?**
 
-### Capacitive Buttons (Frame)
-** TODO **
-
-### Capacitive Buttons (Constellation)
-** TODO **
-
-### Capacitive Buttons with OLED Display
-** TODO **
+No. If I could get blue buttons it would be different but the colors don't fit the aestetic. I may use one of the button as an on off switch, without turning on the LED in the button since when Zenith is on, all the other LED lights would be on for the constellations.
 
 ### Rotary Encoder with OLED display
-** TODO **
+This is a rotary encoder with a display that shows the value for the encoder. At different turns, it shows what thing is being acted on if the encoder is pressed. It's broken up into Habit A, Habit B, and 3 brightness levels split up between 360 degrees.
+
+Notes from prototyping:
+- The general shape is difficult to ork with, and there is no good, clean way to prevent a user from overturning, though the coding can just mod everything.
+- Tracking two habit with the encoder is non-intuitive.
+- The encoder extends very far from the frame.
+- Ideally this is best for the brightness adjustment only, but I see very little need for this to be on the frame if it is this unaestetic and is not multifuncitonal.
+
+**Use in final?**
+
+No. It is not only ugly but it is also unintuitive. At this point I've ruled out the OLED screen in general, and the rotary encoder cannot work without a screen to show what you're reacting on.
+
+### Capacitive Buttons (Constellation)
+General capacitive buttons but directly using the stars on the contellation display.
+
+Notes from prototyping:
+- Copper tape blocks light so to compensate for the same size of light, the stars and lines needed to be larger and overall, it was not the design I'm looking for.
+- Trying to precisely wrap the copper tape was a nightmare. The adhesive is not too strong, and the tape itself tears easily, which is very unfortunate when working on a sharp opject (stars).
+
+**Use in final?**
+No. I could barely get the prototype to even connect to the capacitive sensor board, and it look very unappealing. Inputs were also only logged about 20% of the time.
+
+
+### Capacitive Buttons with OLED Display
+Capacitive buttons against the frame. In this iteration, 4 buttons, 2 for habit input and 2 for shifting the dates up and down. This iteration has the OLED screen displaying what the inputs are. There is another iteration of this prototype without the OLED screen, but since it's just the same functionality as the tactile buttons and the 2 habit input buttons here, I'm not going to explicitly document it separately.
+
+Notes from prototyping:
+- Tape is still hard to use around an irregular shape (star), but worked much better on the arrow. Perhaps consider other simple shapes for input buttons. 
+- The copper is bright but not too eye catching unless under direct light.
+- Without the OLED, the buttons themselves take up very, very little space.
+
+#### Programing
+The initial version of this includes saving to an on-disk (SD Card) file. This will be directly pushed to Github. I'm experimenting with directly connecting my gmail account, but that seems like a problematic security issue, so perhaps a text file to Github is sufficient. The Pi can be programmed to export to github on turndown.
+
+All inputs are saved so this is a stateful system. This is because the tracker wouldn't really function well if it refreshed every time. However, this reminded me that perhaps I want to include a refresh function in a future mobile application for non-necessary functions.
+
+#### Demo
+
+**Use in final?**
+Yes. But, just the capacitive buttons without OLED. It's not great to test without the screen in a demo if I don't have the LEDs responding to inputs, but the screen becomes redundant in the final product. Also, while it's nice to be able to backfill, and perhaps this is a functionality for the phone app, the device itself is meant for direct, daily, in person use. Thus, just 3 capacitive buttons (Habit A, Habit B, Mode change cycle) plus a tactile button (on-off) is sufficient.
+
