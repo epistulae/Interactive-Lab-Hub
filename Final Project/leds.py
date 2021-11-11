@@ -10,7 +10,7 @@ from rpi_ws281x import *
 import argparse
 
 # LED strip configuration:
-LED_COUNT      = 10      # Number of LED pixels.
+LED_COUNT      = 15      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
 #LED_PIN        = 10      # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
@@ -70,6 +70,12 @@ def testing(strip):
     strip.setPixelColor(7, Color(20, 164, 217))
     strip.setPixelColor(8, Color(20, 164, 217))
     strip.setPixelColor(9, Color(20, 164, 217))
+    strip.setPixelColor(10, Color(207, 107, 0))
+    strip.setPixelColor(11, Color(207, 107, 0))
+    strip.setPixelColor(12, Color(207, 107, 0))
+    strip.setPixelColor(13, Color(207, 107, 0))
+    strip.setPixelColor(14, Color(207, 107, 0))
+    
     strip.show()
         
 def rainbowCycle(strip, wait_ms=20, iterations=5):
