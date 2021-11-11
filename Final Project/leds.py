@@ -60,16 +60,16 @@ def rainbow(strip, wait_ms=20, iterations=1):
         time.sleep(wait_ms/1000.0)
 
 def testing(strip):
-    strip.setPixelColor(0, Color(248, 189, 3))
-    strip.setPixelColor(1, Color(248, 189, 3))
-    strip.setPixelColor(2, Color(248, 189, 3))
-    strip.setPixelColor(3, Color(241, 133, 4))
-    strip.setPixelColor(4, Color(241, 133, 4))
-    strip.setPixelColor(5, Color(241, 133, 4))
-    strip.setPixelColor(6, Color(74, 246, 254))
-    strip.setPixelColor(7, Color(74, 246, 254))
-    strip.setPixelColor(8, Color(66, 220, 238))
-    strip.setPixelColor(9, Color(66, 220, 238))
+    strip.setPixelColor(0, Color(237, 108, 2))
+    strip.setPixelColor(1, Color(237, 108, 2))
+    strip.setPixelColor(2, Color(237, 108, 2))
+    strip.setPixelColor(3, Color(237, 108, 2))
+    strip.setPixelColor(4, Color(237, 108, 2))
+    strip.setPixelColor(5, Color(237, 108, 2))
+    strip.setPixelColor(6, Color(61, 187, 255))
+    strip.setPixelColor(7, Color(61, 187, 255))
+    strip.setPixelColor(8, Color(61, 187, 255))
+    strip.setPixelColor(9, Color(61, 187, 255))
     strip.show()
         
 def rainbowCycle(strip, wait_ms=20, iterations=5):
