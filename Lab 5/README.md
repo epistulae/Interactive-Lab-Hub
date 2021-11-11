@@ -20,6 +20,7 @@ In this lab, I am prototyping interactions with key components of the product. M
 - Manual light adjustment
 
 ## Interaction Planning
+
 Initial thoughts were to use a total of 60 capacitive sensors (use an 8-way muxer with five 12-touch capacitive sensors), one tied to each day/habit.
 
 Some initial feedback from just talking through rough sketches of the product design. 
@@ -163,6 +164,8 @@ No. If I could get blue buttons it would be different but the colors don't fit t
 
 
 This is a rotary encoder with a display that shows the value for the encoder. At different turns, it shows what thing is being acted on if the encoder is pressed. It's broken up into Habit A, Habit B, and 3 brightness levels split up between 360 degrees.
+
+![Screen Shot 2021-11-10 at 7 03 53 PM](https://user-images.githubusercontent.com/14368010/141213026-13add02d-e0cc-4efc-ae49-26f9fda0b6a8.png)
 
 Notes from prototyping:
 - The general shape is difficult to ork with, and there is no good, clean way to prevent a user from overturning, though the coding can just mod everything.
