@@ -10,7 +10,7 @@ from rpi_ws281x import *
 import argparse
 
 # LED strip configuration:
-LED_COUNT      = 5      # Number of LED pixels.
+LED_COUNT      = 10      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
 #LED_PIN        = 10      # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
@@ -59,6 +59,19 @@ def rainbow(strip, wait_ms=20, iterations=1):
         strip.show()
         time.sleep(wait_ms/1000.0)
 
+def testing(strip)
+    strip.setPixelColor(0, 248, 189, 3)
+    strip.setPixelColor(1, 248, 189, 3)
+    strip.setPixelColor(2, 248, 189, 3)
+    strip.setPixelColor(3, 241, 133, 4)
+    strip.setPixelColor(4, 241, 133, 4)
+    strip.setPixelColor(5, 241, 133, 4)
+    strip.setPixelColor(6, 74, 246, 254)
+    strip.setPixelColor(7, 74, 246, 254)
+    strip.setPixelColor(8, 66, 220, 238)
+    strip.setPixelColor(9, 66, 220, 238)
+    strip.show()
+        
 def rainbowCycle(strip, wait_ms=20, iterations=5):
     """Draw rainbow that uniformly distributes itself across all pixels."""
     for j in range(256*iterations):
@@ -98,18 +111,10 @@ if __name__ == '__main__':
     try:
 
         while True:
-            print ('Color wipe animations.')
-            colorWipe(strip, Color(255, 0, 0))  # Red wipe
-            colorWipe(strip, Color(0, 255, 0))  # Blue wipe
-            colorWipe(strip, Color(0, 0, 255))  # Green wipe
-            print ('Theater chase animations.')
-            theaterChase(strip, Color(127, 127, 127))  # White theater chase
-            theaterChase(strip, Color(127,   0,   0))  # Red theater chase
-            theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
             print ('Rainbow animations.')
-            rainbow(strip)
-            rainbowCycle(strip)
-            theaterChaseRainbow(strip)
+            #rainbow(strip)
+            print ('Testing habit colors')
+            testing(strip)
 
     except KeyboardInterrupt:
         if args.clear:
