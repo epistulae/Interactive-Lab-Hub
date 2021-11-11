@@ -102,8 +102,11 @@ Notes from prototyping:
     - Alternatively, I can have a pad on both sides, but that would be even less aestetically pleasing. 
 
 #### Programing
+
+<img width="361" alt="Screen Shot 2021-11-10 at 6 56 24 PM" src="https://user-images.githubusercontent.com/14368010/141212374-3bdd5afd-d17e-44ed-8a2b-b72151def20d.png">
+
 Notes from initial implementation:
-- This was incredibly ugly looking, essentially a very large switch statement (which does not exist in Python). After playng around a little, I decided to not completely implelent it.
+- This was incredibly ugly looking, essentially a very large switch statement (which does not exist in Python). After playing around a little, I decided to not completely implement it.
 
 **Use in final?**
 
@@ -156,6 +159,9 @@ Please see capacitive with OLED demo. This demo was very uninteresting since it 
 No. If I could get blue buttons it would be different but the colors don't fit the aestetic. I may use one of the button as an on off switch, without turning on the LED in the button since when Zenith is on, all the other LED lights would be on for the constellations.
 
 ### Rotary Encoder with OLED display
+![Screen Shot 2021-11-10 at 6 55 33 PM](https://user-images.githubusercontent.com/14368010/141212288-8cebd4cb-8dd1-416a-ae19-7176a9c1ba75.png)
+
+
 This is a rotary encoder with a display that shows the value for the encoder. At different turns, it shows what thing is being acted on if the encoder is pressed. It's broken up into Habit A, Habit B, and 3 brightness levels split up between 360 degrees.
 
 Notes from prototyping:
@@ -169,6 +175,8 @@ Notes from prototyping:
 No. It is not only ugly but it is also unintuitive. At this point I've ruled out the OLED screen in general, and the rotary encoder cannot work without a screen to show what you're reacting on.
 
 ### Capacitive Buttons (Constellation)
+![Screen Shot 2021-11-10 at 6 55 00 PM](https://user-images.githubusercontent.com/14368010/141212235-12e85f89-8a67-4401-9b47-e55790968858.png)
+
 General capacitive buttons but directly using the stars on the contellation display.
 
 Notes from prototyping:
@@ -180,7 +188,13 @@ Notes from prototyping:
 No. I could barely get the prototype to even connect to the capacitive sensor board, and it look very unappealing. Inputs were also only logged about 20% of the time.
 
 
-### Capacitive Buttons with OLED Display
+### Capacitive Buttons with (and without) OLED Display
+
+![Screen Shot 2021-11-10 at 7 02 13 PM](https://user-images.githubusercontent.com/14368010/141212895-89dff6dd-658d-4f32-9b96-6accabeb6627.png)
+
+![Screen Shot 2021-11-10 at 7 01 46 PM](https://user-images.githubusercontent.com/14368010/141212859-98e6f6cf-7018-42cd-9c99-bd32af74d42b.png)
+
+
 Capacitive buttons against the frame. In this iteration, 4 buttons, 2 for habit input and 2 for shifting the dates up and down. This iteration has the OLED screen displaying what the inputs are. There is another iteration of this prototype without the OLED screen, but since it's just the same functionality as the tactile buttons and the 2 habit input buttons here, I'm not going to explicitly document it separately.
 
 Notes from prototyping:
@@ -201,5 +215,5 @@ https://user-images.githubusercontent.com/14368010/141211988-3e875576-6550-4115-
 
 **Use in final?**
 
-Yes. But, just the capacitive buttons without OLED. It's not great to test without the screen in a demo if I don't have the LEDs responding to inputs, but the screen becomes redundant in the final product. Also, while it's nice to be able to backfill, and perhaps this is a functionality for the phone app, the device itself is meant for direct, daily, in person use. Thus, just 3 capacitive buttons (Habit A, Habit B, Mode change cycle) plus a tactile button (on-off) is sufficient.
+Yes! But, just the capacitive buttons without OLED. It's not great to test without the screen in a demo if I don't have the LEDs responding to inputs, but the screen becomes redundant in the final product. Also, while it's nice to be able to backfill, and perhaps this is a functionality for the phone app, the device itself is meant for direct, daily, in person use. Thus, just 3 capacitive buttons (Habit A, Habit B, Mode change cycle) plus a tactile button (on-off) is sufficient.
 
