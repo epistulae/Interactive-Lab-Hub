@@ -59,7 +59,7 @@ def rainbow(strip, wait_ms=20, iterations=1):
         strip.show()
         time.sleep(wait_ms/1000.0)
 
-def testing(strip)
+def testing(strip):
     strip.setPixelColor(0, 248, 189, 3)
     strip.setPixelColor(1, 248, 189, 3)
     strip.setPixelColor(2, 248, 189, 3)
