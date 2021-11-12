@@ -72,8 +72,8 @@ hourglass_4.prior_stars.append((hourglass_3, connector_34))
 
 hourglass_5 = Star(19, Star_Type.END)
 hourglass_4.next_star = hourglass_5
-connector_35 = Connector([15, 16, 17, 18])
-connector_45 = Connector([20, 21, 22])
+connector_35 = Connector([20, 21, 22])
+connector_45 = Connector([15, 16, 17, 18])
 hourglass_5.prior_stars.append((hourglass_3, connector_35))
 hourglass_5.prior_stars.append((hourglass_4, connector_45))
 
