@@ -94,14 +94,13 @@ habit_b = [hourglass, teapot, triangle, orion, butterfly]
 def displayHabitConstellation(strip, star):
     # All stars
     while True:
-        led_color = Colors.INCOMPLETE.value
-        if star.complete:
-            led_color = Colors.COMPLETE.value
+        led_color = Colors.INCOMPLETE.value if star.complete else Colors.INCOMPLETE.value
         # Star
         strip.setPixelColor(star.index, led_color)
+        update = star.complete 
         # Connectors
         for prior in star.prior_stars:
-            if star.complete:
+            if update:
                 led_color = Colors.COMPLETE.value if prior[0].complete else Colors.INCOMPLETE.value
             leds = prior[1].leds
             for led in leds:
