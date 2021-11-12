@@ -71,7 +71,7 @@ def testing(strip):
     strip.setPixelColor(4, COMPLETE)
     strip.setPixelColor(5, COMPLETE)
     strip.setPixelColor(6, COMPLETE)
-    strip.fill(7, INCOMPLETE)
+    strip.fill(INCOMPLETE, 7)
     strip.show()
         
 def rainbowCycle(strip, wait_ms=20, iterations=5):
