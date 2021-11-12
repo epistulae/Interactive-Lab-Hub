@@ -81,6 +81,7 @@ hourglass_2.complete = True
 hourglass.complete = True
 hourglass_5.complete = True
 hourglass_4.complete = True
+hourglass_3.complete = True
 
 # Teapot
 teapot = Star(0)
