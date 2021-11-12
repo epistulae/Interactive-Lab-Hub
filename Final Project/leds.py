@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-# rpi_ws281x library strandtest example
-# Author: Tony DiCola (tony@tonydicola.com)
-#
-# Direct port of the Arduino NeoPixel library strandtest example.  Showcases
-# various animations on a strip of NeoPixels.
 
 import time
 from rpi_ws281x import *
+import adafruit_mpr121
+import board
+import busio
 import argparse
 from enum import Enum
 
@@ -191,10 +189,13 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-c', '--clear', action='store_true', help='clear the display on exit')
 args = parser.parse_args()
 
- # Create NeoPixel object with appropriate configuration.
+ # Setup
 strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
-# Intialize the library (must be called once before other functions).
 strip.begin()
+
+i2c = busio.I2C(board.SCL, board.SDA)
+mpr121 = adafruit_mpr121.MPR121(i2c)
+
 
 print ('Press Ctrl-C to quit.')
 if not args.clear:
