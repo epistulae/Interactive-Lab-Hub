@@ -99,7 +99,7 @@ def displayHabitConstellation(strip, star):
         # Connectors
         for prior in star.prior_stars:
             led_color = Colors.COMPLETE.value if prior[0].complete else Colors.INCOMPLETE.value
-            connection = prior[1]
+            connections = prior[1]
             for led in connections:
                 strip.setPixelColor(led, led_color)
         if star.type is Star_Type.END:
