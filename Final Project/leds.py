@@ -169,31 +169,25 @@ def testing(strip):
 #             for i in range(0, strip.numPixels(), 3):
 #                 strip.setPixelColor(i+q, 0)
 
-# Main program logic follows:
-if __name__ == '__main__':
-    # Process arguments
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-c', '--clear', action='store_true', help='clear the display on exit')
-    args = parser.parse_args()
 
-    # Create NeoPixel object with appropriate configuration.
-    strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
-    # Intialize the library (must be called once before other functions).
-    strip.begin()
+# Process arguments
+parser = argparse.ArgumentParser()
+parser.add_argument('-c', '--clear', action='store_true', help='clear the display on exit')
+args = parser.parse_args()
 
-    print ('Press Ctrl-C to quit.')
-    if not args.clear:
-        print('Use "-c" argument to clear LEDs on exit')
+ # Create NeoPixel object with appropriate configuration.
+strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+# Intialize the library (must be called once before other functions).
+strip.begin()
 
-    try:
+print ('Press Ctrl-C to quit.')
+if not args.clear:
+    print('Use "-c" argument to clear LEDs on exit')
 
-        while True:
-#             print ('Rainbow animations.')
-#             #rainbow(strip)
-#             print ('Testing habit colors')
-#             testing(strip)
-            displayHabitConstellation(strip, hourglass)
+try:
+    while True:
+        displayHabitConstellation(strip, hourglass)
 
-    except KeyboardInterrupt:
-        if args.clear:
-            colorWipe(strip, Color(0,0,0), 10)
+except KeyboardInterrupt:
+    if args.clear:
+        colorWipe(strip, Color(0,0,0), 10)
