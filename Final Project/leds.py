@@ -82,8 +82,7 @@ habit_a = [narwhale, serpens, draco, shield]
 habit_b = [hourglass, teapot, triangle, orion, butterfly]
 
 # Show state of one constellation (habit)
-def displayHabitConstellation(strip, constellation):
-    star = constellation
+def displayHabitConstellation(strip, star):
 
     # All stars
     while True:
