@@ -75,7 +75,16 @@ def testing(strip):
     strip.setPixelColor(12, Color(207, 107, 0))
     strip.setPixelColor(13, Color(207, 107, 0))
     strip.setPixelColor(14, Color(207, 107, 0))
-    
+    strip.setPixelColor(15, Color(207, 107, 0))
+    strip.setPixelColor(16, Color(207, 107, 0))
+    strip.setPixelColor(17, Color(207, 107, 0))
+    strip.setPixelColor(18, Color(207, 107, 0))
+    strip.setPixelColor(19, Color(207, 107, 0))
+    strip.setPixelColor(20, Color(207, 107, 0))
+    strip.setPixelColor(21, Color(207, 107, 0))
+    strip.setPixelColor(22, Color(207, 107, 0))
+    strip.setPixelColor(23, Color(207, 107, 0))
+    strip.setPixelColor(24, Color(207, 107, 0))
     strip.show()
         
 def rainbowCycle(strip, wait_ms=20, iterations=5):
