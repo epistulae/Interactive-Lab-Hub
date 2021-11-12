@@ -86,7 +86,9 @@ def displayHabitConstellation(strip, constellation):
     star = constellation
     # All stars
     while True:
-        led_color = Colors.INCOMPLETE 
+        led_color = Colors.INCOMPLETE
+        print(led_color.name)
+        print(str(star.index))
         if star.complete:
             led_color = Colors.COMPLETE
         # Star
