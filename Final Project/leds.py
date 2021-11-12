@@ -19,6 +19,10 @@ LED_BRIGHTNESS = 200     # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
+# Constants
+INCOMPLETE = Color(237, 108, 2)
+COMPLETE = Color(20, 164, 217)
+BACKGROUND = Color(255, 245, 222)
 
 
 # Define functions which animate LEDs in various ways.
@@ -60,31 +64,14 @@ def rainbow(strip, wait_ms=20, iterations=1):
         time.sleep(wait_ms/1000.0)
 
 def testing(strip):
-    strip.setPixelColor(0, Color(255, 245, 222))
-    strip.setPixelColor(1, Color(237, 108, 2))
-    strip.setPixelColor(2, Color(237, 108, 2))
-    strip.setPixelColor(3, Color(207, 107, 0))
-    strip.setPixelColor(4, Color(207, 107, 0))
-    strip.setPixelColor(5, Color(207, 107, 0))
-    strip.setPixelColor(6, Color(20, 164, 217))
-    strip.setPixelColor(7, Color(20, 164, 217))
-    strip.setPixelColor(8, Color(20, 164, 217))
-    strip.setPixelColor(9, Color(20, 164, 217))
-    strip.setPixelColor(10, Color(207, 107, 0))
-    strip.setPixelColor(11, Color(207, 107, 0))
-    strip.setPixelColor(12, Color(207, 107, 0))
-    strip.setPixelColor(13, Color(207, 107, 0))
-    strip.setPixelColor(14, Color(207, 107, 0))
-    strip.setPixelColor(15, Color(207, 107, 0))
-    strip.setPixelColor(16, Color(207, 107, 0))
-    strip.setPixelColor(17, Color(207, 107, 0))
-    strip.setPixelColor(18, Color(207, 107, 0))
-    strip.setPixelColor(19, Color(207, 107, 0))
-    strip.setPixelColor(20, Color(207, 107, 0))
-    strip.setPixelColor(21, Color(207, 107, 0))
-    strip.setPixelColor(22, Color(207, 107, 0))
-    strip.setPixelColor(23, Color(207, 107, 0))
-    strip.setPixelColor(24, Color(207, 107, 0))
+    strip.setPixelColor(0, BACKGROUND)
+    strip.setPixelColor(1, COMPLETE)
+    strip.setPixelColor(2, COMPLETE)
+    strip.setPixelColor(3, COMPLETE)
+    strip.setPixelColor(4, COMPLETE)
+    strip.setPixelColor(5, COMPLETE)
+    strip.setPixelColor(6, COMPLETE)
+    strip.fill(7, INCOMPLETE)
     strip.show()
         
 def rainbowCycle(strip, wait_ms=20, iterations=5):
