@@ -63,11 +63,12 @@ hourglass_2.next = hourglass_3
 
 connector_34 = Connector([11, 12, 13])
 hourglass_4 = Star(14, Star_Type.MIDDLE)
-hourglass_4.next = hourglass_5
+hourglass_3.next = hourglass_4
 
 connector_35 = Connector([15, 16, 17, 18])
 connector_45 = Connector([20, 21, 22])
 hourglass_5 = Star(19, Star_Type.END)
+hourglass_4.next = hourglass_5
 
 # Teapot
 teapot = Star(0)
