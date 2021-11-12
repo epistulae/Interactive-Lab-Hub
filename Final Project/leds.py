@@ -79,6 +79,7 @@ hourglass_5.prior_stars.append((hourglass_4, connector_45))
 
 hourglass_3.complete = True
 hourglass.complete = True
+hourglass_5.complete = True
 
 # Teapot
 teapot = Star(0)
