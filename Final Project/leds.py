@@ -36,10 +36,10 @@ class Connector:
         self.leds = leds
 
 class Star:
-    def __init__(self, index, next=None, type=Star_Type.START):
+    def __init__(self, index, type=Star_Type.START, complete=False):
         self.index = index
-        self.complete = False
-        self.next_star = next
+        self.complete = complete
+        self.next_star = None
         self.type = type
         # Previous stars: (star, connector)
         self.prior_stars = []
@@ -83,7 +83,8 @@ habit_b = [hourglass, teapot, triangle, orion, butterfly]
 
 # Show state of one constellation (habit)
 def displayHabitConstellation(strip, star):
-
+    print(star.complete)
+    print("complete)
     # All stars
     while True:
         led_color = Colors.INCOMPLETE.value
