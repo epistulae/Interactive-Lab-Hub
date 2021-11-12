@@ -84,7 +84,7 @@ habit_b = [hourglass, teapot, triangle, orion, butterfly]
 # Show state of one constellation (habit)
 def displayHabitConstellation(strip, star):
     print(star.complete)
-    print("complete)
+    print("complete")
     # All stars
     while True:
         led_color = Colors.INCOMPLETE.value
