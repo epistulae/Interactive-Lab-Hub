@@ -50,17 +50,20 @@ draco = Star(0)
 shield = Star(0)
 
 # Hourglass
-hourglass = Star(1)
+hourglass = Star(1, Star_Type.START)
 
 connector_12 = Connector([2, 3, 4, 5])
 hourglass_2 = Star(6, Star_Type.MIDDLE)
+hourglass.next = hourglass_2
 
 connector_13 = Connector([23, 24])
 connector_23 = Connector([7, 8, 9])
 hourglass_3 = Star(10, Star_Type.MIDDLE)
+hourglass_2.next = hourglass_3
 
 connector_34 = Connector([11, 12, 13])
-hourglass_4 = Star(Star_Type.MIDDLE, 14)
+hourglass_4 = Star(14, Star_Type.MIDDLE)
+hourglass_4.next = hourglass_5
 
 connector_35 = Connector([15, 16, 17, 18])
 connector_45 = Connector([20, 21, 22])
@@ -91,10 +94,9 @@ def displayHabitConstellation(strip, constellation):
             connection = prior(1)
             for led in connections:
                 strip.setPixelColor(led, led_color)
-
-        star = star.next_star
         if star.type is Star_Type.END:
             break
+        star = star.next_star
 
     # Send to display
     strip.show()
