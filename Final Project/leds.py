@@ -21,9 +21,10 @@ LED_INVERT     = False   # True to invert the signal (when using NPN transistor 
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
 # Colors
-INCOMPLETE = Color(237, 108, 2)
-COMPLETE = Color(20, 164, 217)
-BACKGROUND = Color(255, 245, 222)
+class Colors(Enum):
+    INCOMPLETE = Color(237, 108, 2)
+    COMPLETE = Color(20, 164, 217)
+    BACKGROUND = Color(255, 245, 222)
 
 class Star_Type(Enum):
     START = 1
@@ -86,12 +87,12 @@ def displayHabitConstellation(strip, constellation):
     
     # All stars
     while True:
-        led_color = COMPLETE if star.complete else INCOMPLETE
+        led_color = Colors.COMPLETE if star.complete else Colors.INCOMPLETE
         # Star
         strip.setPixelColor(star.index, led_color)
         # Connectors
         for prior in star.prior_stars:
-            led_color = COMPLETE if prior(0).complete else INCOMPLETE
+            led_color = Colors.COMPLETE if prior(0).complete else Colors.INCOMPLETE
             connection = prior(1)
             for led in connections:
                 strip.setPixelColor(led, led_color)
@@ -140,17 +141,17 @@ def rainbow(strip, wait_ms=20, iterations=1):
         strip.show()
         time.sleep(wait_ms/1000.0)
 
-def testing(strip):
-    strip.setPixelColor(0, BACKGROUND)
-    strip.setPixelColor(1, COMPLETE)
-    strip.setPixelColor(2, COMPLETE)
-    strip.setPixelColor(3, COMPLETE)
-    strip.setPixelColor(4, COMPLETE)
-    strip.setPixelColor(5, COMPLETE)
-    strip.setPixelColor(6, COMPLETE)
-    for i in range(7, 25):
-        strip.setPixelColor(i, INCOMPLETE)
-    strip.show()
+# def testing(strip):
+#     strip.setPixelColor(0, BACKGROUND)
+#     strip.setPixelColor(1, COMPLETE)
+#     strip.setPixelColor(2, COMPLETE)
+#     strip.setPixelColor(3, COMPLETE)
+#     strip.setPixelColor(4, COMPLETE)
+#     strip.setPixelColor(5, COMPLETE)
+#     strip.setPixelColor(6, COMPLETE)
+#     for i in range(7, 25):
+#         strip.setPixelColor(i, INCOMPLETE)
+#     strip.show()
         
 # def rainbowCycle(strip, wait_ms=20, iterations=5):
 #     """Draw rainbow that uniformly distributes itself across all pixels."""
