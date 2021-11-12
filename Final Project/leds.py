@@ -53,23 +53,29 @@ shield = Star(0)
 # Hourglass
 hourglass = Star(1, Star_Type.START)
 
-connector_12 = Connector([2, 3, 4, 5])
 hourglass_2 = Star(6, Star_Type.MIDDLE)
 hourglass.next_star = hourglass_2
+connector_12 = Connector([2, 3, 4, 5])
+hourglass_2.prior_stars.append((hourglass, connector_12))
 
-connector_13 = Connector([23, 24])
-connector_23 = Connector([7, 8, 9])
 hourglass_3 = Star(10, Star_Type.MIDDLE)
 hourglass_2.next_star = hourglass_3
+connector_13 = Connector([23, 24])
+connector_23 = Connector([7, 8, 9])
+hourglass_3.prior_stars.append((hourglass, connector_13))
+hourglass_3.prior_stars.append((hourglass_2, connector_23))
 
-connector_34 = Connector([11, 12, 13])
 hourglass_4 = Star(14, Star_Type.MIDDLE)
 hourglass_3.next_star = hourglass_4
+connector_34 = Connector([11, 12, 13])
+hourglass_4.prior_stars.append((hourglass_3, connector_34))
 
-connector_35 = Connector([15, 16, 17, 18])
-connector_45 = Connector([20, 21, 22])
 hourglass_5 = Star(19, Star_Type.END)
 hourglass_4.next_star = hourglass_5
+connector_35 = Connector([15, 16, 17, 18])
+connector_45 = Connector([20, 21, 22])
+hourglass_3.prior_stars.append((hourglass_3, connector_35))
+hourglass_3.prior_stars.append((hourglass_4, connector_43))
 
 # Teapot
 teapot = Star(0)
