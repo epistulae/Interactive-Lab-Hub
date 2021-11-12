@@ -8,6 +8,7 @@
 import time
 from rpi_ws281x import *
 import argparse
+from enum import Enum
 
 # LED strip configuration:
 LED_COUNT      = 25      # Number of LED pixels.
@@ -19,11 +20,84 @@ LED_BRIGHTNESS = 200     # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
-# Constants
+# Colors
 INCOMPLETE = Color(237, 108, 2)
 COMPLETE = Color(20, 164, 217)
 BACKGROUND = Color(255, 245, 222)
 
+class Star_Type(Enum):
+    START = 1
+    MIDDLE = 2
+    END = 3
+
+class Connector:
+    def __init__(self, leds):
+        self.leds = leds
+
+class Star:
+    def __init__(self, index, next=None, type=Star_Type.START):
+        self.index = index
+        self.complete = False
+        self.next_star = next
+        self.type = type
+        # Previous stars: (star, connector)
+        self.prior_stars = []
+
+# Constellation Trees
+narwhale = Star(0)
+serpens = Star(0)
+draco = Star(0)
+shield = Star(0)
+
+# Hourglass
+hourglass = Star(1)
+
+connector_12 = Connector([2, 3, 4, 5])
+hourglass_2 = Star(6, Star_Type.MIDDLE)
+
+connector_13 = Connector([23, 24])
+connector_23 = Connector([7, 8, 9])
+hourglass_3 = Star(10, Star_Type.MIDDLE)
+
+connector_34 = Connector([11, 12, 13])
+hourglass_4 = Star(Star_Type.MIDDLE, 14)
+
+connector_35 = Connector([15, 16, 17, 18])
+connector_45 = Connector([20, 21, 22])
+hourglass_5 = Star(19, Star_Type.END)
+
+# Teapot
+teapot = Star(0)
+triangle = Star(0)
+orion = Star(0)
+butterfly = Star(0)
+
+# Habit Lists in fill order
+habit_a = [narwhale, serpens, draco, shield]
+habit_b = [hourglass, teapot, triangle, orion, butterfly]
+
+# Show state of one constellation (habit)
+def displayHabitConstellation(strip, constellation):
+    star = constellation
+    
+    # All stars
+    while True:
+        led_color = star.COMPLETE if star.complete else INCOMPLETE
+        # Star
+        strip.setPixelColor(star.index, led_color)
+        # Connectors
+        for prior in star.prior_stars:
+            led_color = star.COMPLETE if prior(0).complete else INCOMPLETE
+            connection = prior(1)
+            for led in connections:
+                strip.setPixelColor(led, led_color)
+
+        star = star.next_star
+        if star.type is Star_Type.END:
+            break
+
+    # Send to display
+    strip.show()
 
 # Define functions which animate LEDs in various ways.
 def colorWipe(strip, color, wait_ms=50):
@@ -114,10 +188,11 @@ if __name__ == '__main__':
     try:
 
         while True:
-            print ('Rainbow animations.')
-            #rainbow(strip)
-            print ('Testing habit colors')
-            testing(strip)
+#             print ('Rainbow animations.')
+#             #rainbow(strip)
+#             print ('Testing habit colors')
+#             testing(strip)
+            displayHabitConstellation(strip, hourglass)
 
     except KeyboardInterrupt:
         if args.clear:
