@@ -22,7 +22,7 @@ LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 class Colors(Enum):
     INCOMPLETE = Color(237, 108, 2)
     COMPLETE = Color(20, 164, 217)
-    BACKGROUND = Color(255, 245, 222)
+    PINPRICK = Color(255, 245, 222)
 
 class Star_Type(Enum):
     START = 1
@@ -203,7 +203,9 @@ if not args.clear:
 
 try:
     while True:
+        
         displayHabitConstellation(strip, hourglass)
+        strip.setPixelColor(0, Colors.PINPRICK.value)
 
 except KeyboardInterrupt:
     if args.clear:
