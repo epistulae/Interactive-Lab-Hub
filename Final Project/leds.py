@@ -2,7 +2,7 @@
 
 import time
 from rpi_ws281x import *
-import adafruit_mpr121
+#import adafruit_mpr121
 import board
 import busio
 import argparse
@@ -193,8 +193,8 @@ args = parser.parse_args()
 strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 strip.begin()
 
-i2c = busio.I2C(board.SCL, board.SDA)
-mpr121 = adafruit_mpr121.MPR121(i2c)
+#     i2c = busio.I2C(board.SCL, board.SDA)
+#     mpr121 = adafruit_mpr121.MPR121(i2c)
 
 
 print ('Press Ctrl-C to quit.')
