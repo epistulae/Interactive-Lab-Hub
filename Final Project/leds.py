@@ -39,6 +39,8 @@ class Star:
         # Previous stars: (star, connector)
         self.prior_stars = []
 
+pinpricks = [0, 58, 59, 60] 
+
 # Constellation Trees
 narwhale = Star(0)
 serpens = Star(0)
@@ -133,6 +135,10 @@ def displayHabitConstellation(strip, star):
     # Send to display
     strip.show()
 
+def displayPinpricks(strip):
+    for led in pinpricks:
+        strip.setPixelColor(led, Colors.PINPRICK.value)
+    
 def fillRemaining(strip, index):
     while index < LED_COUNT:
         strip.setPixelColor(index, Colors.RED.value)
@@ -230,10 +236,11 @@ hourglass_2.complete = True
 hourglass.complete = True
 hourglass_5.complete = True
 hourglass_3.complete = True
+
 # Leds
+displayPinpricks(strip)
 displayHabitConstellation(strip, hourglass)
 displayHabitConstellation(strip, teapot)
-strip.setPixelColor(0, Colors.PINPRICK.value)
 fillRemaining(strip, 59)
 
 try:
