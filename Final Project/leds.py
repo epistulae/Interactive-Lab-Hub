@@ -23,6 +23,7 @@ class Colors(Enum):
     INCOMPLETE = Color(237, 108, 2)
     COMPLETE = Color(20, 164, 217)
     PINPRICK = Color(255, 245, 222)
+    RED = Color(235, 52, 52)
 
 class Star_Type(Enum):
     START = 1
@@ -53,27 +54,21 @@ hourglass = Star(1, Star_Type.START)
 
 hourglass_2 = Star(6, Star_Type.MIDDLE)
 hourglass.next_star = hourglass_2
-connector_12 = Connector([2, 3, 4, 5])
-hourglass_2.prior_stars.append((hourglass, connector_12))
+hourglass_2.prior_stars.append((hourglass, [2, 3, 4, 5]))
 
 hourglass_3 = Star(10, Star_Type.MIDDLE)
 hourglass_2.next_star = hourglass_3
-connector_13 = Connector([23, 24])
-connector_23 = Connector([7, 8, 9])
-hourglass_3.prior_stars.append((hourglass, connector_13))
-hourglass_3.prior_stars.append((hourglass_2, connector_23))
+hourglass_3.prior_stars.append((hourglass, [23, 24]))
+hourglass_3.prior_stars.append((hourglass_2, [7, 8, 9]))
 
 hourglass_4 = Star(14, Star_Type.MIDDLE)
 hourglass_3.next_star = hourglass_4
-connector_34 = Connector([11, 12, 13])
-hourglass_4.prior_stars.append((hourglass_3, connector_34))
+hourglass_4.prior_stars.append((hourglass_3, [11, 12, 13]))
 
 hourglass_5 = Star(19, Star_Type.END)
 hourglass_4.next_star = hourglass_5
-connector_35 = Connector([20, 21, 22])
-connector_45 = Connector([15, 16, 17, 18])
-hourglass_5.prior_stars.append((hourglass_3, connector_35))
-hourglass_5.prior_stars.append((hourglass_4, connector_45))
+hourglass_5.prior_stars.append((hourglass_3, [20, 21, 22]))
+hourglass_5.prior_stars.append((hourglass_4, [15, 16, 17, 18]))
 
 hourglass_2.complete = True
 hourglass.complete = True
@@ -81,7 +76,42 @@ hourglass_5.complete = True
 hourglass_3.complete = True
 
 # Teapot
-teapot = Star(0)
+teapot = Star(50, Star_Type.START)
+
+teapot_2 = Star(46, Star_Type.MIDDLE)
+teapot.next_star = teapot_2
+teapot_2.prior_stars.append((teapot, [47, 48, 49]))
+
+teapot_3 = Star(44, Star_Type.MIDDLE)
+teapot_2.next_star = teapot_3
+teapot_3.prior_stars.append((teapot, [25,26]))
+teapot_3.prior_stars.append((teapot_2, [45]))
+
+teapot_4 = Star(30, Star_Type.MIDDLE)
+teapot_3.next_star = teapot_4
+teapot_4.prior_stars.append((teapot_3, [27, 28, 29]))
+
+teapot_5 = Star(33, Star_Type.MIDDLE)
+teapot_4.next_star = teapot_5
+teapot_5.prior_stars.append((teapot_3, [41, 42, 43]))
+teapot_5.prior_stars.append((teapot_4, [31, 32]))
+
+teapot_6 = Star(35, Star_Type.MIDDLE)
+teapot_5.next_star = teapot_6
+teapot_6.prior_stars.append((teapot_5, [34]))
+
+teapot_7 = Star(37, Star_Type.MIDDLE)
+teapot_6.next_star = teapot_7
+teapot_7.prior_stars.append((teapot_6, [36]))
+
+teapot_8 = Star(57, Star_Type.END)
+teapot_7.next_star = teapot_8
+teapot_8.prior_stars.append((teapot, [51, 52, 53, 54, 55, 56]))
+teapot_8.prior_stars.append((teapot_5, [39, 40]))
+teapot_8.prior_stars.append((teapot_7, [38]))
+
+
+
 triangle = Star(0)
 orion = Star(0)
 butterfly = Star(0)
@@ -114,7 +144,7 @@ def displayHabitConstellation(strip, star):
 
 def fillRemaining(strip, index):
     while index < LED_COUNT:
-        strip.setPixelColor(index, Colors.PINPRICK.value)
+        strip.setPixelColor(index, Colors.RED.value)
         index += 1
     
 # Define functions which animate LEDs in various ways.
@@ -209,8 +239,9 @@ try:
     while True:
         
         displayHabitConstellation(strip, hourglass)
+        displayHabitConstellation(strip, teapot)
         strip.setPixelColor(0, Colors.PINPRICK.value)
-        fillRemaining(strip, 24)
+        fillRemaining(strip, 59)
 
 except KeyboardInterrupt:
     if args.clear:
