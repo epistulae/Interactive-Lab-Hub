@@ -132,7 +132,7 @@ def displayHabitConstellation(strip, star):
         for prior in star.prior_stars:
             if update:
                 led_color = Colors.COMPLETE.value if prior[0].complete else Colors.INCOMPLETE.value
-            leds = prior[1].leds
+            leds = prior[1]
             for led in leds:
                 strip.setPixelColor(led, led_color)
         if star.type is Star_Type.END:
