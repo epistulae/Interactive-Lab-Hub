@@ -9,7 +9,7 @@ from rpi_ws281x import *
 import time
 
 # LED strip configuration:
-LED_COUNT      = 100      # Number of LED pixels.
+LED_COUNT      = 60      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
 #LED_PIN        = 10      # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
@@ -234,11 +234,22 @@ hourglass_3.complete = True
 try:
     while True:
         
+        # Leds
         displayHabitConstellation(strip, hourglass)
         displayHabitConstellation(strip, teapot)
         strip.setPixelColor(0, Colors.PINPRICK.value)
         fillRemaining(strip, 59)
-
+        
+        # Inputs
+        if mpr121[0].value:
+            print("Lights on off")
+        elif mpr121[5].value:
+            print("Mode cycle")
+        elif mpr121[2].value:
+            print("Habit A")
+        elif mpr121[8].value:
+            print("Habit B")
+        
 except KeyboardInterrupt:
     if args.clear:
         colorWipe(strip, Color(0,0,0), 10)
