@@ -25,17 +25,12 @@ class Colors(Enum):
     PINPRICK = Color(255, 245, 222)
     RED = Color(235, 52, 52)
 
-class Star_Type(Enum):
-    START = 1
-    MIDDLE = 2
-    END = 3
-
 class Star:
-    def __init__(self, index, type=Star_Type.START, complete=False):
+    def __init__(self, index, complete=False):
         self.index = index
         self.complete = complete
         self.next_star = None
-        self.type = type
+        self.final = False
         # Previous stars: (star, connector)
         self.prior_stars = []
 
@@ -48,56 +43,58 @@ draco = Star(0)
 shield = Star(0)
 
 # Hourglass
-hourglass = Star(1, Star_Type.START)
+hourglass = Star(1)
 
-hourglass_2 = Star(6, Star_Type.MIDDLE)
+hourglass_2 = Star(6)
 hourglass.next_star = hourglass_2
 hourglass_2.prior_stars.append((hourglass, [2, 3, 4, 5]))
 
-hourglass_3 = Star(10, Star_Type.MIDDLE)
+hourglass_3 = Star(10)
 hourglass_2.next_star = hourglass_3
 hourglass_3.prior_stars.append((hourglass, [23, 24]))
 hourglass_3.prior_stars.append((hourglass_2, [7, 8, 9]))
 
-hourglass_4 = Star(14, Star_Type.MIDDLE)
+hourglass_4 = Star(14)
 hourglass_3.next_star = hourglass_4
 hourglass_4.prior_stars.append((hourglass_3, [11, 12, 13]))
 
-hourglass_5 = Star(19, Star_Type.END)
+hourglass_5 = Star(19)
+hourglass_5.final = True
 hourglass_4.next_star = hourglass_5
 hourglass_5.prior_stars.append((hourglass_3, [20, 21, 22]))
 hourglass_5.prior_stars.append((hourglass_4, [15, 16, 17, 18]))
 
 # Teapot
-teapot = Star(50, Star_Type.START)
+teapot = Star(50)
 
-teapot_2 = Star(46, Star_Type.MIDDLE)
+teapot_2 = Star(46)
 teapot.next_star = teapot_2
 teapot_2.prior_stars.append((teapot, [47, 48, 49]))
 
-teapot_3 = Star(44, Star_Type.MIDDLE)
+teapot_3 = Star(44)
 teapot_2.next_star = teapot_3
 teapot_3.prior_stars.append((teapot, [25,26]))
 teapot_3.prior_stars.append((teapot_2, [45]))
 
-teapot_4 = Star(30, Star_Type.MIDDLE)
+teapot_4 = Star(30)
 teapot_3.next_star = teapot_4
 teapot_4.prior_stars.append((teapot_3, [27, 28, 29]))
 
-teapot_5 = Star(33, Star_Type.MIDDLE)
+teapot_5 = Star(33)
 teapot_4.next_star = teapot_5
 teapot_5.prior_stars.append((teapot_3, [41, 42, 43]))
 teapot_5.prior_stars.append((teapot_4, [31, 32]))
 
-teapot_6 = Star(35, Star_Type.MIDDLE)
+teapot_6 = Star(35)
 teapot_5.next_star = teapot_6
 teapot_6.prior_stars.append((teapot_5, [34]))
 
-teapot_7 = Star(37, Star_Type.MIDDLE)
+teapot_7 = Star(37)
 teapot_6.next_star = teapot_7
 teapot_7.prior_stars.append((teapot_6, [36]))
 
-teapot_8 = Star(57, Star_Type.END)
+teapot_8 = Star(57)
+teapot_8.final = True
 teapot_7.next_star = teapot_8
 teapot_8.prior_stars.append((teapot, [51, 52, 53, 54, 55, 56]))
 teapot_8.prior_stars.append((teapot_5, [39, 40]))
@@ -128,7 +125,7 @@ def displayHabitConstellation(strip, star):
             leds = prior[1]
             for led in leds:
                 strip.setPixelColor(led, led_color)
-        if star.type is Star_Type.END:
+        if star.final:
             break
         star = star.next_star
 
