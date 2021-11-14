@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
-import time
-from rpi_ws281x import *
-#import adafruit_mpr121
+import adafruit_mpr121
+import argparse
 import board
 import busio
-import argparse
 from enum import Enum
+from rpi_ws281x import *
+import time
 
 # LED strip configuration:
 LED_COUNT      = 100      # Number of LED pixels.
@@ -29,10 +29,6 @@ class Star_Type(Enum):
     START = 1
     MIDDLE = 2
     END = 3
-
-class Connector:
-    def __init__(self, leds):
-        self.leds = leds
 
 class Star:
     def __init__(self, index, type=Star_Type.START, complete=False):
@@ -69,11 +65,6 @@ hourglass_5 = Star(19, Star_Type.END)
 hourglass_4.next_star = hourglass_5
 hourglass_5.prior_stars.append((hourglass_3, [20, 21, 22]))
 hourglass_5.prior_stars.append((hourglass_4, [15, 16, 17, 18]))
-
-hourglass_2.complete = True
-hourglass.complete = True
-hourglass_5.complete = True
-hourglass_3.complete = True
 
 # Teapot
 teapot = Star(50, Star_Type.START)
@@ -234,6 +225,11 @@ strip.begin()
 print ('Press Ctrl-C to quit.')
 if not args.clear:
     print('Use "-c" argument to clear LEDs on exit')
+
+hourglass_2.complete = True
+hourglass.complete = True
+hourglass_5.complete = True
+hourglass_3.complete = True
 
 try:
     while True:
