@@ -230,16 +230,14 @@ hourglass_2.complete = True
 hourglass.complete = True
 hourglass_5.complete = True
 hourglass_3.complete = True
+# Leds
+displayHabitConstellation(strip, hourglass)
+displayHabitConstellation(strip, teapot)
+strip.setPixelColor(0, Colors.PINPRICK.value)
+fillRemaining(strip, 59)
 
 try:
     while True:
-        
-        # Leds
-        displayHabitConstellation(strip, hourglass)
-        displayHabitConstellation(strip, teapot)
-        strip.setPixelColor(0, Colors.PINPRICK.value)
-        fillRemaining(strip, 59)
-        
         # Inputs
         if mpr121[0].value:
             print("Lights on off")
@@ -249,6 +247,7 @@ try:
             print("Habit A")
         elif mpr121[8].value:
             print("Habit B")
+        time.sleep(0.5)
         
 except KeyboardInterrupt:
     if args.clear:
