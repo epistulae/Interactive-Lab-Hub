@@ -345,7 +345,7 @@ try:
 
         nextDay()
         time.sleep(0.5)
-    print(STATE.color)
+    print("outside" + STATE.color)
         
 except KeyboardInterrupt:
     sub.terminate()
