@@ -257,7 +257,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
 	print("topic: " + str(msg.topic) + "msg: " + str(msg.payload.decode('UTF-8')))
 	# you can filter by topics
-	if msg.topic is "Colors":
+	if msg.topic is "Colors/":
 		STATE.color = str(msg.payload.decode('UTF-8'))
 		print(STATE.color)
 
