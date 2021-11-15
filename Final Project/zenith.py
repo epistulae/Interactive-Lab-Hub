@@ -326,6 +326,8 @@ def nextDay():
     # Debugging
     day = input("Enter test date: ")
     
+    print("Cur day " + str(DAY))
+    
     if day is not DAY:
         # Habit A
         if HABIT_A.cur_star + 1 is len(HABIT_A.constellations[HABIT_A.cur_constellation]):
