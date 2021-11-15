@@ -448,11 +448,13 @@ try:
         if mpr121[0].value:
             print("Lights on off")
             if LIGHTS:
+                print("Closing lights")
                 # Close lights
                 colorWipe(STRIP, Color(0,0,0), 10)
                 LIGHTS = False
             else:
                 # Turn on lights
+                print("turning on lights")
                 LIGHTS = True
                 MODE = 0 # Always turn lights on to habit mode
                 displayHabits(STRIP)
@@ -462,6 +464,7 @@ try:
             # Mode change
             MODE = MODE + 1 % MODE_COUNT
             displayMood(STRIP)
+            print("Mode: " + str(MODE))
         elif mpr121[2].value:
             print("Habit A")
             HABIT_A.constellations[cur_constellation][cur_star].complete = not HABIT_A.constellations[cur_constellation][cur_star].complete
