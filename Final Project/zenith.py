@@ -9,6 +9,9 @@ from rpi_ws281x import *
 import time
 import stars as Stars
 
+import paho.mqtt.client as mqtt
+import uuid
+
 # LED strip configuration:
 LED_COUNT      = 200      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
@@ -232,6 +235,41 @@ def debugHabits():
             print("Star " + str(count_s) + " complete: " + str(star.complete))
             count_s += 1
         count_c += 1
+
+# the # wildcard means we subscribe to all subtopics of IDD
+topic = 'Colors/#'
+
+def on_connect(client, userdata, flags, rc):
+	print(f"connected with result code {rc}")
+	client.subscribe(topic)
+	# you can subsribe to as many topics as you'd like
+	# client.subscribe('some/other/topic')
+
+
+# this is the callback that gets called each time a message is recived
+def on_message(client, userdata, msg):
+	print(f"topic: {msg.topic} msg: {msg.payload.decode('UTF-8')}")
+	# you can filter by topics
+	# if msg.topic == 'IDD/some/other/topic': do thing
+
+
+# Every client needs a random ID
+client = mqtt.Client(str(uuid.uuid1()))
+# configure network encryption etc
+# client.tls_set()
+# this is the username and pw we have setup for the class
+client.username_pw_set('cynthia', 'RoomOfRequirement')
+client.on_connect = on_connect
+client.connect(
+    '100.64.1.201',
+    port=7827)
+
+def subscribing():
+    client.on_message = on_message
+    client.loop_forever()
+
+sub=threading.Thread(target=subscribing)
+sub.start()
 
 # Process arguments
 parser = argparse.ArgumentParser()
