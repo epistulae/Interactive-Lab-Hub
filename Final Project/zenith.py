@@ -406,6 +406,7 @@ def rainbow(strip, wait_ms=20, iterations=1):
 #             for i in range(0, strip.numPixels(), 3):
 #                 strip.setPixelColor(i+q, 0)
 def debugHabits():
+    print("========================================")
     print("Habits debugging")
     count_c = 0
     for constellation in HABIT_A.constellations:
