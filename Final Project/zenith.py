@@ -412,14 +412,14 @@ def debugHabits():
         print("Habit A Constellation " + str(count_c))
         count_s = 0
         for star in constellation:
-            print("Star " + str(count_s) " complete: " + str(star.complete))
+            print("Star " + str(count_s) + " complete: " + str(star.complete))
             count_s += 1
         count_c += 1
     for constellation in HABIT_B.constellations:
         print("Habit B Constellation " + str(count_c))
         count_s = 0
         for star in constellation:
-            print("Star " + str(count_s) " complete: " + str(star.complete))
+            print("Star " + str(count_s) + " complete: " + str(star.complete))
             count_s += 1
         count_c += 1
 
