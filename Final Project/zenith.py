@@ -78,6 +78,7 @@ def displayHabits(strip):
     # Habit A
     for constellation in Stars.HABIT_A.constellations:
         for star in constellation:
+	    print("displayed star")
             led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
             # Star
             strip.setPixelColor(star.index, led_color)
@@ -93,6 +94,7 @@ def displayHabits(strip):
     # Habit B
     for constellation in Stars.HABIT_B.constellations:
         for star in constellation:
+	    print("displayed star")
             led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
             # Star
             strip.setPixelColor(star.index, led_color)
