@@ -34,6 +34,7 @@ class State:
         # Fire mood = 4
         self.mode = 0 
         self.mode_count = 5
+        self.color = "white"
 
 STATE = State()
 
@@ -79,8 +80,8 @@ def displayHabits(strip):
     # Habit A
     for constellation in Stars.HABIT_A.constellations:
         for star in constellation:
-            print("displayed star: " + str(star_count))
-            star_count += 1
+#             print("displayed star: " + str(star_count))
+#             star_count += 1
             led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
             # Star
             strip.setPixelColor(star.index, led_color)
@@ -96,8 +97,8 @@ def displayHabits(strip):
     # Habit B
     for constellation in Stars.HABIT_B.constellations:
         for star in constellation:
-            print("displayed star: " + str(star_count))
-            star_count += 1
+#             print("displayed star: " + str(star_count))
+#             star_count += 1
             led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
             # Star
             strip.setPixelColor(star.index, led_color)
@@ -256,6 +257,10 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
 	print("topic: " + str(msg.topic) + "msg: " + str(msg.payload.decode('UTF-8')))
 	# you can filter by topics
+	if msg.topic is "Colors":
+        STATE.color = str(msg.payload.decode('UTF-8')
+        print(STATE.color)
+		
 	# if msg.topic == 'IDD/some/other/topic': do thing
 
 
