@@ -343,7 +343,7 @@ try:
 
         nextDay()
         time.sleep(0.5)
-	print(STATE.color)
+    print(STATE.color)
         
 except KeyboardInterrupt:
     sub.terminate()
