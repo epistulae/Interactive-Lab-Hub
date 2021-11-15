@@ -246,7 +246,7 @@ shield_5 = Star(0)
 SHIELD = [shield_1, shield_2, shield_3, shield_4, shield_5]
 
 # Habit Constants
-HABIT_A = Habit([SERPENS]) # narwhale, serpens, draco, shield
+HABIT_A = Habit([SERPENS, BUTTERFLY]) # narwhale, serpens, draco, shield
 HABIT_B = Habit([HOURGLASS, TEAPOT, TRIANGLE, ORION, BUTTERFLY])
 MONTH = time.localtime()[1]
 DAY = time.localtime()[2]
@@ -333,7 +333,7 @@ def nextDay():
             HABIT_A.cur_constellation += 1
         else:
             # Next star
-            Habit.cur_star += 1
+            Habit_A.cur_star += 1
 
         # Habit B
         if HABIT_B.cur_star + 1 is len(HABIT_B.constellations[HABIT_B.cur_constellation]):
@@ -341,7 +341,7 @@ def nextDay():
             HABIT_B.cur_constellation += 1
         else:
             # Next star
-            Habit.cur_star += 1
+            Habit_B.cur_star += 1
     
 # Define functions which animate LEDs in various ways.
 def colorWipe(strip, color, wait_ms=50):
