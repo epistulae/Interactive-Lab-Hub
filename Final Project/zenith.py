@@ -486,4 +486,4 @@ try:
         
 except KeyboardInterrupt:
     if args.clear:
-        colorWipe(strip, Color(0,0,0), 10)
+        colorWipe(STRIP, Color(0,0,0), 10)
