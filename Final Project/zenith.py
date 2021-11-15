@@ -326,7 +326,7 @@ def nextDay():
     # Debugging
     day = int(input("Enter test date: "))
     
-    print("Cur day " + str(DAY))
+    print("Cur day " + str(day))
     
     if day is not DAY:
         DAY = day
