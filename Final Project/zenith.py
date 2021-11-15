@@ -11,6 +11,7 @@ import stars as Stars
 
 import paho.mqtt.client as mqtt
 import uuid
+import threading
 
 # LED strip configuration:
 LED_COUNT      = 200      # Number of LED pixels.
