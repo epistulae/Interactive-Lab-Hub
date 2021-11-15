@@ -320,17 +320,17 @@ def displayMode(strip):
         # Fire
         print("Fire")
 
-def nextDay():
+def nextDay(d, m):
     day = time.localtime()[2]
     
     # Debugging
     day = int(input("Enter test date: "))
     
-    print("Cur day " + str(day))
+    print("Cur day " + str(d))
     
-    if day is not DAY:
-        DAY = day
-        MONTH = time.localtime()[1]
+    if day is not d:
+        d = day
+        m = time.localtime()[1]
         # Habit A
         if HABIT_A.cur_star + 1 is len(HABIT_A.constellations[HABIT_A.cur_constellation]):
             # Next constellation (assumes final final star overall, if it was, I'd wipe the state)
@@ -492,9 +492,9 @@ try:
             updateStar(STRIP, HABIT_A.constellations[constellation][star])
             debugHabits()
 
-        #nextDay()
+        #nextDay(DAY, MONTH)
         if mpr121[11].value:
-            nextDay()
+            nextDay(DAY, MONTH)
             
         time.sleep(0.5)
         
