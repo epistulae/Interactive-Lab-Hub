@@ -248,7 +248,7 @@ SHIELD = [shield_1, shield_2, shield_3, shield_4, shield_5]
 # Habit Constants
 HABIT_A = Habit([SERPENS, BUTTERFLY]) # narwhale, serpens, draco, shield
 HABIT_B = Habit([HOURGLASS, TEAPOT, TRIANGLE, ORION, BUTTERFLY])
-global Day = time.localtime()[2]
+DAY = time.localtime()[2]
 
 def updateStar(strip, star):
     led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
@@ -327,8 +327,8 @@ def nextDay():
     
     print("Cur day " + str(d))
     
-    if day is not Day:
-        Day = day
+    if day is not DAY:
+        global DAY = day
         # Habit A
         if HABIT_A.cur_star + 1 is len(HABIT_A.constellations[HABIT_A.cur_constellation]):
             # Next constellation (assumes final final star overall, if it was, I'd wipe the state)
