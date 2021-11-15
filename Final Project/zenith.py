@@ -334,16 +334,18 @@ def nextDay():
         print("New day " + str(STATE.day))
         # Habit A
         if HABIT_A.cur_star + 1 is len(HABIT_A.constellations[HABIT_A.cur_constellation]):
-            # Next constellation (assumes final final star overall, if it was, I'd wipe the state)
+            # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
             HABIT_A.cur_constellation += 1
+            HABIT_A.cur_star = 0
         else:
             # Next star
             HABIT_A.cur_star += 1
 
         # Habit B
         if HABIT_B.cur_star + 1 is len(HABIT_B.constellations[HABIT_B.cur_constellation]):
-            # Next constellation (assumes final final star overall, if it was, I'd wipe the state)
+            # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
             HABIT_B.cur_constellation += 1
+            HABIT_B.cur_star = 0
         else:
             # Next star
             HABIT_B.cur_star += 1
