@@ -2,7 +2,7 @@ import paho.mqtt.client as mqtt
 import uuid
 
 # the # wildcard means we subscribe to all subtopics of IDD
-topic = 'IDD/#'
+topic = 'Colors/#'
 
 # some other examples
 # topic = 'IDD/a/fun/topic'
@@ -26,9 +26,9 @@ def on_message(client, userdata, msg):
 # Every client needs a random ID
 client = mqtt.Client(str(uuid.uuid1()))
 # configure network encryption etc
-client.tls_set()
+# client.tls_set()
 # this is the username and pw we have setup for the class
-client.username_pw_set('idd', 'device@theFarm')
+client.username_pw_set('cynthia', 'RoomOfRequirement')
 
 # attach out callbacks to the client
 client.on_connect = on_connect
@@ -36,8 +36,8 @@ client.on_message = on_message
 
 #connect to the broker
 client.connect(
-    'farlab.infosci.cornell.edu',
-    port=8883)
+    '100.64.1.201',
+    port=7827)
 
 # this is blocking. to see other ways of dealing with the loop
 #  https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php#network-loop
