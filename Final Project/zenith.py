@@ -240,7 +240,7 @@ def debugHabits():
 topic = 'Colors/#'
 
 def on_connect(client, userdata, flags, rc):
-	print(f"connected with result code {rc}")
+	print("connected with result code " + str(rc))
 	client.subscribe(topic)
 	# you can subsribe to as many topics as you'd like
 	# client.subscribe('some/other/topic')
@@ -248,7 +248,7 @@ def on_connect(client, userdata, flags, rc):
 
 # this is the callback that gets called each time a message is recived
 def on_message(client, userdata, msg):
-	print(f"topic: {msg.topic} msg: {msg.payload.decode('UTF-8')}")
+	print("topic: " + str(msg.topic) + "msg: " + str(msg.payload.decode('UTF-8'))")
 	# you can filter by topics
 	# if msg.topic == 'IDD/some/other/topic': do thing
 
