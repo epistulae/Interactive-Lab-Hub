@@ -7,7 +7,7 @@ import busio
 from enum import Enum
 from rpi_ws281x import *
 import time
-import ./data/stars as Stars
+import data/stars as Stars
 
 # LED strip configuration:
 LED_COUNT      = 200      # Number of LED pixels.
