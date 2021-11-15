@@ -306,12 +306,16 @@ def displayMood(strip):
     # All modes have white pinpricks
     if MODE is 1:
         # Rainbow
+        print("Rainbow")
     elif MODE is 2:
         # Ocean
+        print("Ocean")
     elif MODE is 3:
         # Cool
+        print("Cool")
     elif MODE is 4:
         # Fire
+        print("Fire")
 
 def nextDay():
     day = time.localtime()[2]
