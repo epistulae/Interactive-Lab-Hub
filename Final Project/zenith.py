@@ -324,7 +324,7 @@ def nextDay():
     day = time.localtime()[2]
     
     # Debugging
-    day = input("Enter test date: ")
+    day = int(input("Enter test date: "))
     
     print("Cur day " + str(DAY))
     
