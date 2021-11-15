@@ -57,7 +57,7 @@ hourglass_2 = Star(6)
 hourglass_2.prior_stars.append((hourglass_1, [2, 3, 4, 5]))
 
 hourglass_3 = Star(10)
-hourglass_3.prior_stars.append((hourglass, [23, 24]))
+hourglass_3.prior_stars.append((hourglass_1, [23, 24]))
 hourglass_3.prior_stars.append((hourglass_2, [7, 8, 9]))
 
 hourglass_4 = Star(14)
