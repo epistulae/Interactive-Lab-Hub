@@ -18,8 +18,13 @@ LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
-# True = on, False = off
-LIGHTS = True
+class State:
+    def __init__(self):
+        # True = on, False = off
+        self.lights = True
+        self.day = time.localtime()[2]
+
+STATE = State()
 
 class Colors(Enum):
     INCOMPLETE = Color(237, 108, 2)
@@ -248,7 +253,6 @@ SHIELD = [shield_1, shield_2, shield_3, shield_4, shield_5]
 # Habit Constants
 HABIT_A = Habit([SERPENS, BUTTERFLY]) # narwhale, serpens, draco, shield
 HABIT_B = Habit([HOURGLASS, TEAPOT, TRIANGLE, ORION, BUTTERFLY])
-DAY = time.localtime()[2]
 
 def updateStar(strip, star):
     led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
@@ -325,11 +329,11 @@ def nextDay():
     # Debugging
     day = int(input("Enter test date: "))
     
-    print("Cur day " + str(d))
+    print("Cur day " + str(STATE.day))
     
     if day is not DAY:
-        global global DAY
-        DAY = day
+        STATE.day = day
+        print("New day " + str(STATE.day))
         # Habit A
         if HABIT_A.cur_star + 1 is len(HABIT_A.constellations[HABIT_A.cur_constellation]):
             # Next constellation (assumes final final star overall, if it was, I'd wipe the state)
@@ -458,15 +462,17 @@ try:
         # Inputs
         if mpr121[0].value:
             print("Lights on off")
-            if LIGHTS:
+            if STATE.lights:
                 print("Closing lights")
                 # Close lights
                 colorWipe(STRIP, Color(0,0,0), 10)
-                LIGHTS = False
+                STATE.lights = False
+                print("New state: " + str(STATE.lights))
             else:
                 # Turn on lights
                 print("turning on lights")
-                LIGHTS = True
+                STATE.lights = True
+                print("New state: " + str(STATE.lights))
                 MODE = 0 # Always turn lights on to habit mode
                 displayHabits(STRIP)
                 
