@@ -20,9 +20,15 @@ LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
 class State:
     def __init__(self):
-        # True = on, False = off
-        self.lights = True
+        self.lights = True # True = on, False = off
         self.day = time.localtime()[2]
+        # Habit = 0
+        # Rainbow mood = 1
+        # Ocean mood = 2
+        # Cool mood = 3
+        # Fire mood = 4
+        self.mode = 0 
+        self.mode_count = 5
 
 STATE = State()
 
@@ -31,14 +37,6 @@ class Colors(Enum):
     COMPLETE = Color(20, 164, 217)
     PINPRICK = Color(255, 245, 222)
     RED = Color(235, 52, 52)
-
-# Habit = 0
-# Rainbow mood = 1
-# Ocean mood = 2
-# Cool mood = 3
-# Fire mood = 4
-MODE_COUNT = 5
-MODE = 0 # Always start habit on startup
     
 class Star:
     def __init__(self, index, complete=False):
@@ -307,19 +305,19 @@ def displayHabits(strip):
 def displayMode(strip):
     print("Show display mood")
     # All modes have white pinpricks
-    if MODE is 0:
+    if STATE.mode is 0:
         print("Habits Mode")
         displayHabits(strip)
-    elif MODE is 1:
+    elif STATE.mode is 1:
         # Rainbow
         print("Rainbow")
-    elif MODE is 2:
+    elif STATE.mode is 2:
         # Ocean
         print("Ocean")
-    elif MODE is 3:
+    elif STATE.mode is 3:
         # Cool
         print("Cool")
-    elif MODE is 4:
+    elif STATE.modeE is 4:
         # Fire
         print("Fire")
 
@@ -331,7 +329,7 @@ def nextDay():
     
     print("Cur day " + str(STATE.day))
     
-    if day is not State.day:
+    if day is not STATE.day:
         STATE.day = day
         print("New day " + str(STATE.day))
         # Habit A
@@ -473,15 +471,15 @@ try:
                 print("turning on lights")
                 STATE.lights = True
                 print("New state: " + str(STATE.lights))
-                MODE = 0 # Always turn lights on to habit mode
+                STATE.mode = 0 # Always turn lights on to habit mode
                 displayHabits(STRIP)
                 
         # Assume lights are on
         elif mpr121[5].value:
             # Mode change
-            MODE = (MODE + 1) % MODE_COUNT
+            STATE.mode = (STATE.mode + 1) % STATE.mode_count
             displayMode(STRIP)
-            print("Mode: " + str(MODE))
+            print("Mode: " + str(STATE.mode))
         elif mpr121[2].value:
             print("Habit A")
             constellation = HABIT_A.cur_constellation
