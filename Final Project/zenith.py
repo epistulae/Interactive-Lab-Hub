@@ -54,7 +54,7 @@ pinpricks = [0, 58, 59, 60, 76, 77, 98, 99, 100, 101, 122, 123, 124, 125, 130, 1
 hourglass_1 = Star(1)
 
 hourglass_2 = Star(6)
-hourglass_2.prior_stars.append((hourglass, [2, 3, 4, 5]))
+hourglass_2.prior_stars.append((hourglass_1, [2, 3, 4, 5]))
 
 hourglass_3 = Star(10)
 hourglass_3.prior_stars.append((hourglass, [23, 24]))
@@ -74,7 +74,7 @@ HOURGLASS = [hourglass_1, hourglass_2, hourglass_3, hourglass_4, hourglass_5]
 teapot_1 = Star(50)
 
 teapot_2 = Star(46)
-teapot_2.prior_stars.append((teapot, [47, 48, 49]))
+teapot_2.prior_stars.append((teapot_1, [47, 48, 49]))
 
 teapot_3 = Star(44)
 teapot_3.prior_stars.append((teapot, [25,26]))
@@ -105,10 +105,10 @@ TEAPOT = [teapot_1, teapot_2, teapot_3, teapot_4, teapot_5, teapot_6, teapot_7, 
 triangle_1 = Star(65)
 
 triangle_2 = Star(61)
-triangle_2.prior_stars.append((triangle, [62, 63]))
+triangle_2.prior_stars.append((triangle_1, [62, 63]))
 
 triangle_3 = Star(68)
-triangle_3.prior_stars.append((triangle, [66, 67]))
+triangle_3.prior_stars.append((triangle_1, [66, 67]))
 triangle_3.prior_stars.append((triangle_2, [69, 70, 71]))
 
 TRIANGLE = [triangle_1, triangle_2, triangle_3]
@@ -118,7 +118,7 @@ TRIANGLE = [triangle_1, triangle_2, triangle_3]
 butterfly_1 = Star(72)
 
 butterfly_2 = Star(97)
-butterfly_2.prior_stars.append((butterfly, [73]))
+butterfly_2.prior_stars.append((butterfly_1, [73]))
 
 butterfly_3 = Star(75)
 butterfly_3.prior_stars.append((butterfly_2, [74]))
@@ -140,7 +140,7 @@ BUTTERFLY = [butterfly_1, butterfly_2, butterfly_3, butterfly_4, butterfly_5, bu
 orion_1 = Star(102)
 
 orion_2 = Star(105)
-orion_2.prior_stars.append((orion, [103, 104]))
+orion_2.prior_stars.append((orion_1, [103, 104]))
 
 orion_3 = Star(108)
 orion_3.prior_stars.append((orion_2, [106, 107]))
@@ -148,7 +148,7 @@ orion_3.prior_stars.append((orion_2, [106, 107]))
 orion_4 = Star(109)
 
 orion_5 = Star(112)
-orion_5.prior_stars.append((orion, [110, 111]))
+orion_5.prior_stars.append((orion_1, [110, 111]))
 
 orion_6 = Star(114)
 orion_6.prior_stars.append((orion_5, [113]))
@@ -167,10 +167,10 @@ ORION = [orion_1, orion_2, orion_3, orion_4, orion_5, orion_6, orion_7, orion_8]
 serpens_1 = Star(40)
 
 serpens_2 = Star(37)
-serpens_2.prior_stars.append((serpens, [138, 139]))
+serpens_2.prior_stars.append((serpens_1, [138, 139]))
 
 serpens_3 = Star(35)
-serpens_3.prior_stars.append((serpens, [141]))
+serpens_3.prior_stars.append((serpens_1, [141]))
 serpens_3.prior_stars.append((serpens_2, [136]))
 
 serpens_4 = Star(33)
