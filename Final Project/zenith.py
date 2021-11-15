@@ -11,7 +11,7 @@ import stars as Stars
 
 import paho.mqtt.client as mqtt
 import uuid
-import threading
+import multiprocessing
 
 # LED strip configuration:
 LED_COUNT      = 200      # Number of LED pixels.
@@ -269,7 +269,7 @@ def subscribing():
     client.on_message = on_message
     client.loop_forever()
 
-sub=threading.Thread(target=subscribing)
+sub = multiprocessing.Process(target=subscribing, args=())
 sub.start()
 
 # Process arguments
@@ -335,5 +335,6 @@ try:
         time.sleep(0.5)
         
 except KeyboardInterrupt:
+    sub.terminate()
     if args.clear:
         colorWipe(STRIP, Color(0,0,0), 10)
