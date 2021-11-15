@@ -77,7 +77,7 @@ teapot_2 = Star(46)
 teapot_2.prior_stars.append((teapot_1, [47, 48, 49]))
 
 teapot_3 = Star(44)
-teapot_3.prior_stars.append((teapot, [25,26]))
+teapot_3.prior_stars.append((teapot_1, [25,26]))
 teapot_3.prior_stars.append((teapot_2, [45]))
 
 teapot_4 = Star(30)
@@ -94,7 +94,7 @@ teapot_7 = Star(37)
 teapot_7.prior_stars.append((teapot_6, [36]))
 
 teapot_8 = Star(57)
-teapot_8.prior_stars.append((teapot, [51, 52, 53, 54, 55, 56]))
+teapot_8.prior_stars.append((teapot_1, [51, 52, 53, 54, 55, 56]))
 teapot_8.prior_stars.append((teapot_5, [39, 40]))
 teapot_8.prior_stars.append((teapot_7, [38]))
 
