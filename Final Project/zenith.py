@@ -259,7 +259,7 @@ def on_message(client, userdata, msg):
 	# you can filter by topics
 	print(str(msg.topic))
 	print(str(str(msg.topic) is "Colors/"))
-	if str(msg.topic) is "Colors/":
+	if str(msg.topic) is not "Colors/":
 		STATE.color = str(msg.payload.decode('UTF-8'))
 		print(STATE.color)
 
