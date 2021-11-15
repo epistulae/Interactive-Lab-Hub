@@ -331,7 +331,7 @@ def nextDay():
     
     print("Cur day " + str(STATE.day))
     
-    if day is not DAY:
+    if day is not State.day:
         STATE.day = day
         print("New day " + str(STATE.day))
         # Habit A
