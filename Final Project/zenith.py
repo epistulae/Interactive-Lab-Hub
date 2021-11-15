@@ -321,7 +321,7 @@ def nextDay():
     day = time.localtime()[2]
     if day is not DAY:
         # Habit A
-        if HABIT_A.cur_star + 1 is len(HABIT_A.constellations[cur_constellation]):
+        if HABIT_A.cur_star + 1 is len(HABIT_A.constellations[HABIT_A.cur_constellation]):
             # Next constellation (assumes final final star overall, if it was, I'd wipe the state)
             HABIT_A.cur_constellation += 1
         else:
@@ -329,7 +329,7 @@ def nextDay():
             Habit.cur_star += 1
 
         # Habit B
-        if HABIT_B.cur_star + 1 is len(HABIT_B.constellations[cur_constellation]):
+        if HABIT_B.cur_star + 1 is len(HABIT_B.constellations[HABIT_B.cur_constellation]):
             # Next constellation (assumes final final star overall, if it was, I'd wipe the state)
             HABIT_B.cur_constellation += 1
         else:
@@ -467,13 +467,17 @@ try:
             print("Mode: " + str(MODE))
         elif mpr121[2].value:
             print("Habit A")
-            HABIT_A.constellations[cur_constellation][cur_star].complete = not HABIT_A.constellations[cur_constellation][cur_star].complete
-            updateStar(STRIP, HABIT_A.constellations[cur_constellation][cur_star])
+            constellation = HABIT_A.cur_constellation
+            star = HABIT_A.cur_star
+            HABIT_A.constellations[constellation][star].complete = not HABIT_A.constellations[constellation][star].complete
+            updateStar(STRIP, HABIT_A.constellations[constellation][star])
             debugHabits()
         elif mpr121[8].value:
             print("Habit B")
-            HABIT_B.constellations[cur_constellation][cur_star].complete = not HABIT_B.constellations[cur_constellation][cur_star].complete
-            updateStar(STRIP, HABIT_A.constellations[cur_constellation][cur_star])
+            constellation = HABIT_B.cur_constellation
+            star = HABIT_B.cur_star
+            HABIT_B.constellations[constellation][star].complete = not HABIT_B.constellations[constellation][star].complete
+            updateStar(STRIP, HABIT_A.constellations[constellation][star])
             debugHabits()
 
         nextDay()
