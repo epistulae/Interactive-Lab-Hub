@@ -301,10 +301,13 @@ def displayHabits(strip):
                     strip.setPixelColor(led, led_color)
     strip.show()
 
-def displayMood(strip):
+def displayMode(strip):
     print("Show display mood")
     # All modes have white pinpricks
-    if MODE is 1:
+    if MODE is 0:
+        print("Habits Mode")
+        displayHabits(strip)
+    elif MODE is 1:
         # Rainbow
         print("Rainbow")
     elif MODE is 2:
@@ -463,8 +466,8 @@ try:
         # Assume lights are on
         elif mpr121[5].value:
             # Mode change
-            MODE = MODE + 1 % MODE_COUNT
-            displayMood(STRIP)
+            MODE = (MODE + 1) % MODE_COUNT
+            displayMode(STRIP)
             print("Mode: " + str(MODE))
         elif mpr121[2].value:
             print("Habit A")
