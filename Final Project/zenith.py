@@ -328,7 +328,8 @@ def nextDay():
     print("Cur day " + str(d))
     
     if day is not DAY:
-        global DAY = day
+        global DAY
+        DAY = day
         # Habit A
         if HABIT_A.cur_star + 1 is len(HABIT_A.constellations[HABIT_A.cur_constellation]):
             # Next constellation (assumes final final star overall, if it was, I'd wipe the state)
