@@ -322,6 +322,10 @@ def displayMode(strip):
 
 def nextDay():
     day = time.localtime()[2]
+    
+    # Debugging
+    day = input("Enter test date: ")
+    
     if day is not DAY:
         # Habit A
         if HABIT_A.cur_star + 1 is len(HABIT_A.constellations[HABIT_A.cur_constellation]):
@@ -484,7 +488,10 @@ try:
             updateStar(STRIP, HABIT_A.constellations[constellation][star])
             debugHabits()
 
-        nextDay()
+        #nextDay()
+        if mpr121[11].value:
+            nextDay()
+            
         time.sleep(0.5)
         
 except KeyboardInterrupt:
