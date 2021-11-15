@@ -7,6 +7,7 @@ import busio
 from enum import Enum
 from rpi_ws281x import *
 import time
+import ./data/stars 
 
 # LED strip configuration:
 LED_COUNT      = 200      # Number of LED pixels.
@@ -51,7 +52,7 @@ class Habit:
         self.cur_constellation = 0
         self.cur_star = 0
         
-pinpricks = [0, 58, 59, 60, 76, 77, 98, 99, 100, 101, 122, 123, 124, 125, 130, 142, 143] 
+PINPRICKS = [0, 58, 59, 60, 76, 77, 98, 99, 100, 101, 122, 123, 124, 125, 130, 142, 143] 
 
 # Constellation Graphs
 hourglass_1 = Star(1)
@@ -268,7 +269,7 @@ def updateStar(strip, star):
 
 # Show state of habits
 def displayHabits(strip):
-    for led in pinpricks:
+    for led in PINPRICKS:
         strip.setPixelColor(led, Colors.PINPRICK.value)
 
     # Habit A
