@@ -96,7 +96,7 @@ def displayHabits(strip, habits, debug=False):
 # COLORING FUNCTIONS
 #
 # Define functions which light LEDs in various ways.
-def solidColor(strip):
+def solidColor(strip, leds):
     color = Colors[leds.color].value
     for i in range(strip.numPixels()):
         if i not in Stars.PINPRICKS:
@@ -174,7 +174,7 @@ def displayMode(strip, leds, habits, debug=False):
     if leds.mode is 0:
         displayHabits(strip, habits)
     elif leds.mode is 1:
-        solidColor(strip)
+        solidColor(strip, leds)
     elif leds.mode is 2:
         A = 1
 
