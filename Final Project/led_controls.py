@@ -197,7 +197,7 @@ def initDisplay(strip, leds, habits, debug=False):
 def lightFlip(strip, leds, habits, debug=False):
     if leds.lights:
         # Close lights
-        fastClearDisplay(strip)
+        fastClearDisplay(strip, leds)
     else:
         # Turn on lights
         initDisplay(strip, leds, habits, debug)
