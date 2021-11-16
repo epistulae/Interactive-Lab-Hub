@@ -116,6 +116,11 @@ def rainbow(strip, wait_ms=20, iterations=1):
         strip.show()
         time.sleep(wait_ms/1000.0)
 
+def initDisplay(strip):
+	# Display always inits to display habits.
+    displayHabits(strip)
+    STATE.lights = True
+    
 def slowClearDisplay(strip):
     blank = Color(0,0,0)
     for i in range(strip.numPixels()):
