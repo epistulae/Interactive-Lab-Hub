@@ -97,12 +97,12 @@ try:
                 # Close lights
                 Leds.colorWipe(STRIP, Color(0,0,0), 10)
                 Habits.STATE.lights = False
-                print("New state: " + str(STATE.lights))
+                print("New state: " + str(Habits.STATE.lights))
             else:
                 # Turn on lights
                 print("turning on lights")
                 Habits.STATE.lights = True
-                print("New state: " + str(STATE.lights))
+                print("New state: " + str(Habits.STATE.lights))
                 Habits.STATE.mode = 0 # Always turn lights on to habit mode
                 Leds.displayHabits(STRIP)
                 
