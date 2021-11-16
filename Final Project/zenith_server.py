@@ -66,7 +66,7 @@ def on_message(client, userdata, msg):
     # Habits
     # Any message to the topic means to turn on habits.
     elif incoming_topic == topics[2]:
-        if Leds.leds.mode is not 0
+        if Leds.leds.mode is not 0:
             Leds.leds.mode = 0
             Leds.displayHabits(STRIP)
         print(Leds.leds.mode)
