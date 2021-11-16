@@ -4,6 +4,7 @@ import adafruit_mpr121
 import argparse
 import board
 import busio
+import habit_controls as Habits
 import led_controls as Leds
 from rpi_ws281x import *
 import time
@@ -12,17 +13,6 @@ import stars as Stars
 import paho.mqtt.client as mqtt
 import uuid
 import multiprocessing
-
-class State:
-    def __init__(self):
-        self.lights = True # True = on, False = off
-        self.day = time.localtime()[2]
-        # Habit = 0
-	# Mood lighting = 1
-	# More can be added. Update mode_count to match and add appropriate handlers.
-        self.mode = 0 
-        self.mode_count = 2
-        self.color = "Rainbow"
 
 # Configs and inits
 LED_COUNT      = 200      # Number of LED pixels.
@@ -35,69 +25,16 @@ LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
 STRIP = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 STRIP.begin()
-STATE = State()
 
 def displayMode(strip):
     print("Show display mood")
     # All modes have white pinpricks
-    if STATE.mode is 0:
+    if Habits.STATE.mode is 0:
         print("Habits Mode")
         Leds.displayHabits(strip)
-    elif STATE.mode is 1:
+    elif Habits.STATE.mode is 1:
         # Rainbow
         print("Rainbow")
-    elif STATE.mode is 2:
-        # Ocean
-        print("Ocean")
-    elif STATE.mode is 3:
-        # Cool
-        print("Cool")
-    elif STATE.modeE is 4:
-        # Fire
-        print("Fire")
-
-def nextDay():
-    day = time.localtime()[2]
-    
-    if day is not STATE.day:
-        STATE.day = day
-        # Habit A
-        if Stars.HABIT_A.cur_star + 1 is len(Stars.HABIT_A.constellations[Stars.HABIT_A.cur_constellation]):
-            # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
-            Stars.HABIT_A.cur_constellation += 1
-            Stars.HABIT_A.cur_star = 0
-        else:
-            # Next star
-            Stars.HABIT_A.cur_star += 1
-
-        # Habit B
-        if Stars.HABIT_B.cur_star + 1 is len(Stars.HABIT_B.constellations[Stars.HABIT_B.cur_constellation]):
-            # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
-            Stars.HABIT_B.cur_constellation += 1
-            Stars.HABIT_B.cur_star = 0
-        else:
-            # Next star
-            Stars.HABIT_B.cur_star += 1
-
-def debugHabits():
-    print("========================================")
-    print("Habits debugging")
-    count_c = 0
-    for constellation in Stars.HABIT_A.constellations:
-        print("Habit A Constellation " + str(count_c))
-        count_s = 0
-        for star in constellation:
-            print("Star " + str(count_s) + " complete: " + str(star.complete))
-            count_s += 1
-        count_c += 1
-    count_c = 0
-    for constellation in Stars.HABIT_B.constellations:
-        print("Habit B Constellation " + str(count_c))
-        count_s = 0
-        for star in constellation:
-            print("Star " + str(count_s) + " complete: " + str(star.complete))
-            count_s += 1
-        count_c += 1
 
 topic = 'Colors/#'
 topic_color = 'Colors/'
@@ -117,8 +54,8 @@ def on_message(client, userdata, msg):
 	print(str(msg.topic))
 	print(str(str(msg.topic) is "Colors/"))
 	if str(msg.topic) is not "Colors/":
-		STATE.color = str(msg.payload.decode('UTF-8'))
-		print(STATE.color)
+		Habits.STATE.color = str(msg.payload.decode('UTF-8'))
+		print(Habits.STATE.color)
 
 	# if msg.topic == 'IDD/some/other/topic': do thing
 
@@ -155,24 +92,24 @@ try:
         # Inputs
         if mpr121[0].value:
             print("Lights on off")
-            if STATE.lights:
+            if Habits.STATE.lights:
                 print("Closing lights")
                 # Close lights
                 Leds.colorWipe(STRIP, Color(0,0,0), 10)
-                STATE.lights = False
+                Habits.STATE.lights = False
                 print("New state: " + str(STATE.lights))
             else:
                 # Turn on lights
                 print("turning on lights")
-                STATE.lights = True
+                Habits.STATE.lights = True
                 print("New state: " + str(STATE.lights))
-                STATE.mode = 0 # Always turn lights on to habit mode
+                Habits.STATE.mode = 0 # Always turn lights on to habit mode
                 Leds.displayHabits(STRIP)
                 
         # Assume lights are on
         elif mpr121[5].value:
             # Mode change
-            STATE.mode = (STATE.mode + 1) % STATE.mode_count
+            Habits.STATE.mode = (Habits.STATE.mode + 1) % Habits.STATE.mode_count
             displayMode(STRIP)
             print("Mode: " + str(STATE.mode))
         elif mpr121[2].value:
@@ -190,9 +127,9 @@ try:
             Leds.updateStar(STRIP, Stars.HABIT_B.constellations[constellation][star])
             debugHabits()
 
-        nextDay()
+        Habits.nextDay()
         time.sleep(0.5)
-    print("outside" + STATE.color)
+    print("outside" + Habits.STATE.color)
         
 except KeyboardInterrupt:
     sub.terminate()
