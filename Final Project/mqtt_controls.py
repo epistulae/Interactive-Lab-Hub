@@ -23,14 +23,14 @@ def on_message(client, userdata, msg):
     if incoming_topic == topics[0]:
         Globals.leds.mode = 1
         Globals.leds.color = str(msg.payload.decode('UTF-8'))
-        Leds.displayMode(Globals.STRIP, Globals.leds, Globals.DEBUG)
+        Leds.displayMode(Globals.STRIP, Globals.leds, Globals.pinpricks, Globals.DEBUG)
 
     # Animation
     # Directly goes to animated mood mode.
     elif incoming_topic == topics[1]:
         Globals.leds.mode = 2
         Globals.leds.animation = str(msg.payload.decode('UTF-8'))
-        Leds.displayMode(Globals.STRIP, Globals.leds, Globals.DEBUG)
+        Leds.displayMode(Globals.STRIP, Globals.leds, Globals.pinpricks, Globals.DEBUG)
 	
     # Lights
     # Any message to the topic means to flip lights.
@@ -42,7 +42,7 @@ def on_message(client, userdata, msg):
     elif incoming_topic == topics[3]:
         if Leds.leds.mode is not 0:
             Globals.leds.mode = 0
-            Leds.displayMode(Globals.STRIP, Globals.leds, Globals.DEBUG)
+            Leds.displayMode(Globals.STRIP, Globals.leds, Globals.pinpricks, Globals.DEBUG)
         
     # Flip first habit (any message)
     elif incoming_topic == topics[4]:
