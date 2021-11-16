@@ -2,7 +2,7 @@
 
 from enum import Enum
 from rpi_ws281x import *
-import stars as Stars
+import global_vars as Globals
 import time
 
 # Tracks state of LED lights
@@ -59,7 +59,7 @@ def updateStar(strip, star):
 def displayHabits(strip, debug=False):
 
     # First
-    for constellation in Stars.FIRST.constellations:
+    for constellation in Globals.stars1.constellations:
         for star in constellation:
             led_color = Colors.complete.value if star.complete else Colors.incomplete.value
             # Star
@@ -74,7 +74,7 @@ def displayHabits(strip, debug=False):
                     strip.setPixelColor(led, led_color)
 
     # Second habit
-    for constellation in Stars.SECOND.constellations:
+    for constellation in Globals.stars2.constellations:
         for star in constellation:
             led_color = Colors.complete.value if star.complete else Colors.incomplete.value
             # Star
@@ -99,7 +99,7 @@ def displayHabits(strip, debug=False):
 def solidColor(strip):
     color = Colors[leds.color].value
     for i in range(strip.numPixels()):
-        if i not in Stars.PINPRICKS:
+        if i not in Globals.pinpricks:
             strip.setPixelColor(i, color)
     strip.show()
 
@@ -145,7 +145,7 @@ def rainbow(strip, wait_ms=20, iterations=1):
 #
 # Display just the pinpricks.
 def displayPinpricks(strip, leds):
-    for led in Stars.PINPRICKS:
+    for led in Globals.pinpricks:
         strip.setPixelColor(led, Colors.pinprick.value)
     strip.show()
 
