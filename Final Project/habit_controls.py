@@ -53,7 +53,7 @@ def debugHabits():
     print("========================================")
     print("Habits debugging")
     count_c = 0
-    for constellation in habits.second.constellations:
+    for constellation in habits.first.constellations:
         print("Habit A Constellation " + str(count_c))
         count_s = 0
         for star in constellation:
