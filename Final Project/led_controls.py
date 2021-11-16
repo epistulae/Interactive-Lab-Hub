@@ -2,6 +2,7 @@
 
 from enum import Enum
 from rpi_ws281x import *
+import stars as Stars
 import time
 
 # Tracks state of LED lights
