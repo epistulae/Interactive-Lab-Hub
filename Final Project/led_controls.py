@@ -43,8 +43,6 @@ def updateStar(strip, star):
             for led in leds:
                 strip.setPixelColor(led, led_color)
     strip.show()
-    Habits.debugHabits()
-    print("Current star status: " + str(update))
 
 # Show state of habits
 def displayHabits(strip):
