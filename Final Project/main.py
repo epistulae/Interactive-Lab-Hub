@@ -50,10 +50,10 @@ try:
         elif mpr121[5].value:
             Leds.cycleMode(Globals.STRIP, Globals.leds, Globals.DEBUG)
         elif mpr121[2].value:
-            Habits.flipFirstHabit(Globals.STRIP, Globals.habits, Globals.DEBUG)
+            Habits.flipFirstHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
             Mqtt.client.publish('remote/habits/first', "0")
         elif mpr121[8].value:
-            Habits.flipSecondHabit(Globals.STRIP, Globals.habits, Globals.DEBUG)
+            Habits.flipSecondHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
             Mqtt.client.publish('remote/habits/second', "0")
 
         Habits.nextDay(Globals.habits)
