@@ -10,11 +10,14 @@ class State:
         self.day = time.localtime()[2]
         self.first = Stars.FIRST
         self.second = Stars.SECOND
+        self.first_complete = False
+        self.second_complete = False
 
 habits = State()
 
 # Flip completeness for today's tracking of the first habit.
 def flipFirstHabit(strip, debug=False):
+    habits.first_complete = not habits.first_complete
     constellation = habits.first.cur_constellation
     star = habits.first.cur_star
     habits.first.constellations[constellation][star].complete = not habits.first.constellations[constellation][star].complete
@@ -30,6 +33,7 @@ def flipFirstHabit(strip, debug=False):
 
 # Flip completeness for today's tracking of the second habit.
 def flipSecondHabit(strip, debug=False):
+    habits.second_complete = not habits.second_complete
     constellation = habits.second.cur_constellation
     star = habits.second.cur_star
     habits.second.constellations[constellation][star].complete = not habits.second.constellations[constellation][star].complete
