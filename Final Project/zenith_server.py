@@ -27,13 +27,13 @@ STRIP = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, 
 STRIP.begin()
 
 topic = 'Colors/#'
-topic_color = 'Colors/'
-topic_mode = 'Mode/'
-topic_lights = 'Lights/'
+
+topics = ["Color/", "Mode/", "Lights/"]
 
 def on_connect(client, userdata, flags, rc):
 	print("connected with result code " + str(rc))
-	client.subscribe(topic)
+	for topic in topics:
+	    client.subscribe(topic)
 	# you can subsribe to as many topics as you'd like
 	# client.subscribe('some/other/topic')
 
@@ -42,8 +42,8 @@ def on_message(client, userdata, msg):
 	print("topic: " + str(msg.topic) + "msg: " + str(msg.payload.decode('UTF-8')))
 	# you can filter by topics
 	print(str(msg.topic))
-	print(str(str(msg.topic) is "Colors/"))
-	if str(msg.topic) is not "Colors/":
+	print(str(str(msg.topic) is "Color/"))
+	if str(msg.topic) is not "Color/":
 		Leds.leds.color = str(msg.payload.decode('UTF-8'))
 		print(Leds.led.color)
 
