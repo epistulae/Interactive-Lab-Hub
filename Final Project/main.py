@@ -4,6 +4,7 @@ import adafruit_mpr121
 import argparse
 import board
 import busio
+import global_vars as Globals
 import habit_controls as Habits
 import led_controls as Leds
 import mqtt_controls as Mqtt
