@@ -37,29 +37,28 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 topics = ["Color/", "Animation", "Mode/", "Lights/"]
 
 def on_connect(client, userdata, flags, rc):
-	print("connected with result code " + str(rc))
-	for topic in topics:
-		client.subscribe(topic)
+    print("connected with result code " + str(rc))
+    for topic in topics:
+        client.subscribe(topic)
 
 # this is the callback that gets called each time a message is recived
 def on_message(client, userdata, msg):
-	print("topic: " + str(msg.topic) + " msg: " + str(msg.payload.decode('UTF-8')))
-	# you can filter by topics
-	print(str(msg.topic))
-	print(str(str(msg.topic) == topics[0]))
-	incoming_topic = str(msg.topic)
+    print("topic: " + str(msg.topic) + " msg: " + str(msg.payload.decode('UTF-8')))
+    print(str(msg.topic))
+    print(str(str(msg.topic) == topics[0]))
+    incoming_topic = str(msg.topic)
     
     # Color 
     # Input is the same Leds module's Colors enum. 
-	if incoming_topic == topics[0]:
-		Leds.leds.color = str(msg.payload.decode('UTF-8'))
-		print(Leds.leds.color)
+    if incoming_topic == topics[0]:
+        Leds.leds.color = str(msg.payload.decode('UTF-8'))
+        print(Leds.leds.color)
 
     # Animation
     # Input is the same Leds module's Animations enum. 
     elif incoming_topic == topics[1]:
         Leds.leds.animation = str(msg.payload.decode('UTF-8'))
-		print(Leds.leds.animation)
+        print(Leds.leds.animation)
 
     # Mode
     # Input range is from 0 to (number of modes - 1)
