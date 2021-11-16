@@ -14,15 +14,18 @@ import paho.mqtt.client as mqtt
 import uuid
 import multiprocessing
 
-# LED strip configuration:
+# Configs and inits
 LED_COUNT      = 200      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
-#LED_PIN        = 10      # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
-LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
+LED_BRIGHTNESS = 200     # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
+
+STRIP = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+STRIP.begin()
+STATE = State()
 
 class State:
     def __init__(self):
@@ -34,8 +37,6 @@ class State:
         self.mode = 0 
         self.mode_count = 2
         self.color = "Rainbow"
-
-STATE = State()
 
 class Colors(Enum):
     INCOMPLETE = Color(237, 108, 2)
@@ -296,7 +297,7 @@ try:
             if STATE.lights:
                 print("Closing lights")
                 # Close lights
-                colorWipe(STRIP, Color(0,0,0), 10)
+                Leds.colorWipe(STRIP, Color(0,0,0), 10)
                 STATE.lights = False
                 print("New state: " + str(STATE.lights))
             else:
@@ -305,7 +306,7 @@ try:
                 STATE.lights = True
                 print("New state: " + str(STATE.lights))
                 STATE.mode = 0 # Always turn lights on to habit mode
-                displayHabits(STRIP)
+                Leds.displayHabits(STRIP)
                 
         # Assume lights are on
         elif mpr121[5].value:
@@ -318,14 +319,14 @@ try:
             constellation = Stars.HABIT_A.cur_constellation
             star = Stars.HABIT_A.cur_star
             Stars.HABIT_A.constellations[constellation][star].complete = not Stars.HABIT_A.constellations[constellation][star].complete
-            updateStar(STRIP, Stars.HABIT_A.constellations[constellation][star])
+            Leds.updateStar(STRIP, Stars.HABIT_A.constellations[constellation][star])
             debugHabits()
         elif mpr121[8].value:
             print("Habit B")
             constellation = Stars.HABIT_B.cur_constellation
             star = Stars.HABIT_B.cur_star
             Stars.HABIT_B.constellations[constellation][star].complete = not Stars.HABIT_B.constellations[constellation][star].complete
-            updateStar(STRIP, Stars.HABIT_B.constellations[constellation][star])
+            Leds.updateStar(STRIP, Stars.HABIT_B.constellations[constellation][star])
             debugHabits()
 
         nextDay()
@@ -335,4 +336,4 @@ try:
 except KeyboardInterrupt:
     sub.terminate()
     if args.clear:
-        colorWipe(STRIP, Color(0,0,0), 10)
+        Leds.colorWipe(STRIP, Color(0,0,0), 10)
