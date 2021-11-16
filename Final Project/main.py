@@ -46,20 +46,20 @@ try:
     Leds.initDisplay(Globals.STRIP)
     while True:
         if mpr121[0].value:
-            Leds.lightFlip(Globals.STRIP, Globals.DEBUG)
+            Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.DEBUG)
             Mqtt.client.publish('remote/lights', "0")
         elif mpr121[5].value:
-            Leds.cycleMode(Globals.STRIP, Globals.DEBUG)
+            Leds.cycleMode(Globals.STRIP, Globals.leds, Globals.DEBUG)
         elif mpr121[2].value:
-            Habits.flipFirstHabit(Globals.STRIP, Globals.DEBUG)
+            Habits.flipFirstHabit(Globals.STRIP, Globals.habits, Globals.DEBUG)
             Mqtt.client.publish('remote/habits/first', "0")
         elif mpr121[8].value:
-            Habits.flipSecondHabit(Globals.STRIP, Globals.DEBUG)
+            Habits.flipSecondHabit(Globals.STRIP, Globals.habits, Globals.DEBUG)
             Mqtt.client.publish('remote/habits/second', "0")
 
-        Habits.nextDay()
+        Habits.nextDay(Globals.habits)
         time.sleep(0.5) # Prevent multiple triggers for one touch
         
 except KeyboardInterrupt:
     appListener.terminate()
-    Leds.fastClearDisplay(STRIP)
+    Leds.fastClearDisplay(STRIP, Globals.leds)
