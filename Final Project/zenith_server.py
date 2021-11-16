@@ -14,7 +14,9 @@ import paho.mqtt.client as mqtt
 import uuid
 import multiprocessing
 
+#
 # Configs and inits
+#
 LED_COUNT      = 200      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
@@ -26,28 +28,49 @@ LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 STRIP = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 STRIP.begin()
 
-topic = 'Colors/#'
+i2c = busio.I2C(board.SCL, board.SDA)
+mpr121 = adafruit_mpr121.MPR121(i2c)
 
-topics = ["Color/", "Mode/", "Lights/"]
+#
+# MQTT : Remote inputs
+#
+topics = ["Color/", "Animation", "Mode/", "Lights/"]
 
 def on_connect(client, userdata, flags, rc):
 	print("connected with result code " + str(rc))
 	for topic in topics:
 	    client.subscribe(topic)
-	# you can subsribe to as many topics as you'd like
-	# client.subscribe('some/other/topic')
 
 # this is the callback that gets called each time a message is recived
 def on_message(client, userdata, msg):
-	print("topic: " + str(msg.topic) + "msg: " + str(msg.payload.decode('UTF-8')))
+	print("topic: " + str(msg.topic) + " msg: " + str(msg.payload.decode('UTF-8')))
 	# you can filter by topics
 	print(str(msg.topic))
 	print(str(str(msg.topic) == topics[0]))
-	if str(msg.topic) == topics[0]:
+	# Color, input would be the same as the ones in the Leds module's Colors enum. 
+    incoming_topic = str(msg.topic)
+    # Color 
+    # Input is the same Leds module's Colors enum. 
+	if incoming_topic == topics[0]:
 		Leds.leds.color = str(msg.payload.decode('UTF-8'))
 		print(Leds.leds.color)
 
-	# if msg.topic == 'IDD/some/other/topic': do thing
+    # Animation
+    # Input is the same Leds module's Animations enum. 
+    elif incoming_topic == topics[1]:
+        Leds.leds.animation = str(msg.payload.decode('UTF-8'))
+		print(Leds.leds.animation)
+
+    # Mode
+    # Input range is from 0 to (number of modes - 1)
+    elif incoming_topic == topics[2]:
+        Leds.leds.mode = int(msg.payload.decode('UTF-8'))
+        print(Leds.leds.mode)
+        
+    # Lights
+    # Any message to the topic means to flip lights.
+    elif incoming_topic == topics[3]:
+        Leds.lightFlip(STRIP)
 
 # Every client needs a random ID
 client = mqtt.Client(str(uuid.uuid1()))
@@ -64,21 +87,17 @@ def subscribing():
     client.on_message = on_message
     client.loop_forever()
 
-sub = multiprocessing.Process(target=subscribing, args=())
-sub.start()
+appListener = multiprocessing.Process(target=subscribing, args=())
+appListener.start()
 
- # Setup
-STRIP = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
-STRIP.begin()
-
-i2c = busio.I2C(board.SCL, board.SDA)
-mpr121 = adafruit_mpr121.MPR121(i2c)
-
-# Leds
+# Turn on Leds
 Leds.initDisplay(STRIP)
 
-# Main Server, Capacity Inputs
+#
+# Main Server: Capacity Inputs
+#
 try:
+    Leds.initDisplay(STRIP)
     while True:
         if mpr121[0].value:
             print("Lights on off")
@@ -97,8 +116,7 @@ try:
             Habits.flipSecondHabit(STRIP)
 	
         Habits.nextDay()
-        time.sleep(0.5)
-    print("outside" + Leds.STATE.color)
+        time.sleep(0.5) # Prevent multiple triggers for one touch
         
 except KeyboardInterrupt:
     sub.terminate()
