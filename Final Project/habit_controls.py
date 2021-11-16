@@ -18,7 +18,12 @@ def flipFirstHabit(strip, debug=False):
     constellation = habits.first.cur_constellation
     star = habits.first.cur_star
     habits.first.constellations[constellation][star].complete = not habits.first.constellations[constellation][star].complete
-    Leds.updateStar(strip, habits.first.constellations[constellation][star])
+    if Leds.leds.lights and (Leds.leds.mode is 0):
+        # Already on habits
+        Leds.updateStar(strip, habits.first.constellations[constellation][star])
+    else:
+        Leds.leds.lights = True
+        Leds.leds.mode = 0
     if debug:
         debugHabits()
 
@@ -27,7 +32,12 @@ def flipSecondHabit(strip, debug=False):
     constellation = habits.second.cur_constellation
     star = habits.second.cur_star
     habits.second.constellations[constellation][star].complete = not habits.second.constellations[constellation][star].complete
-    Leds.updateStar(strip, habits.second.constellations[constellation][star])
+    if Leds.leds.lights and (Leds.leds.mode is 0):
+        # Already on habits
+        Leds.updateStar(strip, habits.first.constellations[constellation][star])
+    else:
+        Leds.leds.lights = True
+        Leds.leds.mode = 0
     if debug:
         debugHabits()
 
