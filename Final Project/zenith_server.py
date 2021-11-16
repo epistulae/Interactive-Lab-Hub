@@ -56,7 +56,7 @@ def on_message(client, userdata, msg):
         Leds.leds.color = str(msg.payload.decode('UTF-8'))
         displayMode(STRIP)
         print(Leds.leds.color)
-	print(Leds.leds.mode)
+        print(Leds.leds.mode)
 
     # Animation
     # Directly goes to animated mood mode.
@@ -66,7 +66,7 @@ def on_message(client, userdata, msg):
 	displayMode(STRIP)
         # TODO: CALL ANIMATION FUNCTION
         print(Leds.leds.animation)
-	print(Leds.leds.mode)
+        print(Leds.leds.mode)
 
     # Habits
     # Any message to the topic means to turn on habits.
