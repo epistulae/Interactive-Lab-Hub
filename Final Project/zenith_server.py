@@ -5,6 +5,7 @@ import argparse
 import board
 import busio
 from enum import Enum
+import led_controls as Leds
 from rpi_ws281x import *
 import time
 import stars as Stars
@@ -28,13 +29,11 @@ class State:
         self.lights = True # True = on, False = off
         self.day = time.localtime()[2]
         # Habit = 0
-        # Rainbow mood = 1
-        # Ocean mood = 2
-        # Cool mood = 3
-        # Fire mood = 4
+	# Mood lighting = 1
+	# More can be added. Update mode_count to match and add appropriate handlers.
         self.mode = 0 
-        self.mode_count = 5
-        self.color = "white"
+        self.mode_count = 2
+        self.color = "Rainbow"
 
 STATE = State()
 
@@ -43,19 +42,6 @@ class Colors(Enum):
     COMPLETE = Color(20, 164, 217)
     PINPRICK = Color(255, 245, 222)
     RED = Color(235, 52, 52)
-    
-class Star:
-    def __init__(self, index, complete=False):
-        self.index = index
-        self.complete = complete
-        # Previous stars: (star, connector)
-        self.prior_stars = []
-
-class Habit:
-    def __init__(self, constellations):
-        self.constellations = constellations
-        self.cur_constellation = 0
-        self.cur_star = 0
 
 def updateStar(strip, star):
     led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
@@ -251,7 +237,6 @@ def on_connect(client, userdata, flags, rc):
 	client.subscribe(topic)
 	# you can subsribe to as many topics as you'd like
 	# client.subscribe('some/other/topic')
-
 
 # this is the callback that gets called each time a message is recived
 def on_message(client, userdata, msg):
