@@ -46,7 +46,7 @@ STRIP.show()
 # Main Server: Capacity Inputs
 #
 try:
-    Leds.initDisplay(Globals.STRIP, Globals.leds, Globals.habits, Globals.pinpricks)
+    Leds.initDisplay(Globals.STRIP, Globals.leds, Globals.habits)
     while True:
         if mpr121[0].value:
             Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.DEBUG)
