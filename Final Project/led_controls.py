@@ -152,6 +152,7 @@ def fastClearDisplay(strip, leds):
 def displayMode(strip, leds, habits, debug=False):
     # All modes have white pinpricks.
     leds.lights = True
+    displayPinpricks(strip)
     if leds.mode is 0:
         displayHabits(strip, habits)
     elif leds.mode is 1:
