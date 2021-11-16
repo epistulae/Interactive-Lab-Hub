@@ -28,8 +28,7 @@ def flipSecondHabit(strip):
 
 def nextDay():
     day = time.localtime()[2]
-    print(str(day))
-    day = int(input("day: "))
+
     if day is not habits.day:
         habits.day = day
         # Habit A
