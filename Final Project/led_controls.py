@@ -122,9 +122,11 @@ def slowClearDisplay(strip):
         strip.setPixelColor(i, blank)
         strip.show()
         time.sleep(10/1000.0)
+    STATE.lights = False
 
 def fastClearDisplay(strip):
     blank = Color(0,0,0)
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, blank)
     strip.show()
+    STATE.lights = False
