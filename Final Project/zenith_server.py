@@ -39,7 +39,7 @@ topics = ["Color/", "Animation", "Mode/", "Lights/"]
 def on_connect(client, userdata, flags, rc):
 	print("connected with result code " + str(rc))
 	for topic in topics:
-	    client.subscribe(topic)
+		client.subscribe(topic)
 
 # this is the callback that gets called each time a message is recived
 def on_message(client, userdata, msg):
