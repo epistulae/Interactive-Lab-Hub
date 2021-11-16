@@ -218,8 +218,9 @@ def lightFlip(strip, debug=False):
 def debugLeds():
     print("========================================")
     print("LEDs Debugging")
-    print("========================================\n")
+    print("========================================")
     print("Light on: " + str(leds.lights))
     print("Mode: " + str(leds.mode))
     print("Color: " + str(leds.color))
     print("Animation: " + str(leds.animation))
+    print("\n")
