@@ -14,33 +14,33 @@ class State:
         self.second_complete = False
 
 # Flip completeness for today's tracking of the first habit.
-def flipFirstHabit(strip, habits, debug=False):
+def flipFirstHabit(strip, habits, leds, debug=False):
     habits.first_complete = not habits.first_complete
     constellation = habits.first.cur_constellation
     star = habits.first.cur_star
     habits.first.constellations[constellation][star].complete = not habits.first.constellations[constellation][star].complete
-    if Leds.leds.lights and (Leds.leds.mode is 0):
+    if leds.lights and (leds.mode is 0):
         # Already on habits
         Leds.updateStar(strip, habits.first.constellations[constellation][star])
     else:
-        Leds.leds.lights = True
-        Leds.leds.mode = 0
+        leds.lights = True
+        leds.mode = 0
         Leds.displayHabits(strip)
     if debug:
         debugHabits(habits)
 
 # Flip completeness for today's tracking of the second habit.
-def flipSecondHabit(strip, habits, debug=False):
+def flipSecondHabit(strip, habits, leds, debug=False):
     habits.second_complete = not habits.second_complete
     constellation = habits.second.cur_constellation
     star = habits.second.cur_star
     habits.second.constellations[constellation][star].complete = not habits.second.constellations[constellation][star].complete
-    if Leds.leds.lights and (Leds.leds.mode is 0):
+    if leds.lights and (leds.mode is 0):
         # Already on habits
         Leds.updateStar(strip, habits.first.constellations[constellation][star])
     else:
-        Leds.leds.lights = True
-        Leds.leds.mode = 0
+        leds.lights = True
+        leds.mode = 0
         Leds.displayHabits(strip)
     if debug:
         debugHabits(habits)
