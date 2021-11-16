@@ -46,11 +46,11 @@ def on_message(client, userdata, msg):
         
     # Flip first habit (any message)
     elif incoming_topic == topics[4]:
-        Habits.flipFirstHabit(Globals.STRIP, Globals.habits, Globals.DEBUG)
+        Habits.flipFirstHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
 
     # Flip second habit (any message)
     elif incoming_topic == topics[5]:
-        Habits.flipSecondHabit(Globals.STRIP, Globals.habits, Globals.DEBUG)
+        Habits.flipSecondHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
     
     # Request remote state data
     elif incoming_topic == topics[6]:
