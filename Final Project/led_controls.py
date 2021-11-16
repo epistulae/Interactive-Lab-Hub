@@ -5,8 +5,6 @@ from rpi_ws281x import *
 import stars as Stars
 import time
 
-import habit_controls as Habits
-
 # Tracks state of LED lights
 class State:
     def __init__(self):
