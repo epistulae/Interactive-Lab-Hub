@@ -118,8 +118,9 @@ try:
             print("Habit B")
             Habits.flipSecondHabit(STRIP)
             Habits.debugHabits()
-
-        Habits.nextDay()
+	
+        if mpr121[11].value:
+            Habits.nextDay()
         time.sleep(0.5)
     print("outside" + Leds.STATE.color)
         
