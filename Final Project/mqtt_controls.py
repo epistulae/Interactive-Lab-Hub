@@ -6,19 +6,10 @@ import led_controls as Leds
 import paho.mqtt.client as mqtt
 import uuid
 
-
-HOST = '100.64.1.201'
-PORT = 7827
-USER = 'cynthia'
-PASS = 'RoomOfRequirement'
-
-DEBUG = False
-STRIP = None
-
 topics = ["pi/color/", "pi/animation/", "pi/lights/", "pi/habits/", "pi/habits/first", "pi/habits/second", "pi/info"]
 
 def on_connect(client, userdata, flags, rc):
-    if DEBUG:
+    if Globals.DEBUG:
         print("connected with result code " + str(rc))
     for topic in topics:
         client.subscribe(topic)
@@ -32,34 +23,34 @@ def on_message(client, userdata, msg):
     if incoming_topic == topics[0]:
         Leds.leds.mode = 1
         Leds.leds.color = str(msg.payload.decode('UTF-8'))
-        Leds.displayMode(STRIP, DEBUG)
+        Leds.displayMode(Globals.STRIP, Globals.DEBUG)
 
     # Animation
     # Directly goes to animated mood mode.
     elif incoming_topic == topics[1]:
         Leds.leds.mode = 2
         Leds.leds.animation = str(msg.payload.decode('UTF-8'))
-        Leds.displayMode(STRIP, DEBUG)
+        Leds.displayMode(Globals.STRIP, Globals.DEBUG)
 	
     # Lights
     # Any message to the topic means to flip lights.
     elif incoming_topic == topics[2]:
-        Leds.lightFlip(STRIP, DEBUG)
+        Leds.lightFlip(Globals.STRIP, Globals.DEBUG)
 	
     # Habits
     # Any message to the topic means to turn on habits.
     elif incoming_topic == topics[3]:
         if Leds.leds.mode is not 0:
             Leds.leds.mode = 0
-            Leds.displayMode(STRIP, DEBUG)
+            Leds.displayMode(Globals.STRIP, Globals.DEBUG)
         
     # Flip first habit (any message)
     elif incoming_topic == topics[4]:
-        Habits.flipFirstHabit(STRIP, DEBUG)
+        Habits.flipFirstHabit(Globals.STRIP, Globals.DEBUG)
 
     # Flip second habit (any message)
     elif incoming_topic == topics[5]:
-        Habits.flipSecondHabit(STRIP, DEBUG)
+        Habits.flipSecondHabit(Globals.STRIP, Globals.DEBUG)
     
     # Request remote state data
     elif incoming_topic == topics[6]:
@@ -71,9 +62,9 @@ client = mqtt.Client(str(uuid.uuid1()))
 # configure network encryption etc
 # client.tls_set()
 # this is the username and pw we have setup for the class
-client.username_pw_set(USER, PASS)
+client.username_pw_set(Globals.USER, Globals.PASS)
 client.on_connect = on_connect
-client.connect(HOST, port=PORT)
+client.connect(Globals.HOST, port=Globals.PORT)
 
 def subscribing():
     client.on_message = on_message
