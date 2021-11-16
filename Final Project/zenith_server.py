@@ -118,14 +118,14 @@ try:
             star = Stars.HABIT_A.cur_star
             Stars.HABIT_A.constellations[constellation][star].complete = not Stars.HABIT_A.constellations[constellation][star].complete
             Leds.updateStar(STRIP, Stars.HABIT_A.constellations[constellation][star])
-            debugHabits()
+            Habits.debugHabits()
         elif mpr121[8].value:
             print("Habit B")
             constellation = Stars.HABIT_B.cur_constellation
             star = Stars.HABIT_B.cur_star
             Stars.HABIT_B.constellations[constellation][star].complete = not Stars.HABIT_B.constellations[constellation][star].complete
             Leds.updateStar(STRIP, Stars.HABIT_B.constellations[constellation][star])
-            debugHabits()
+            Habits.debugHabits()
 
         Habits.nextDay()
         time.sleep(0.5)
