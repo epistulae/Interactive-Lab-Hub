@@ -51,22 +51,30 @@ def nextDay():
 
 def debugHabits():
     print("========================================")
-    print("Habits debugging")
+    print("Habits Debugging")
+    print("========================================\n")
+    
+    print("First Habit:")
     habit_star = 0
     count_c = 0
     for constellation in habits.first.constellations:
-        print("\nHabit A Constellation " + str(count_c))
+        print("Constellation " + str(count_c))
         count_s = 0
         for star in constellation:
             print("Habit star: " + str(habit_star) + " | Constellation star: " + str(count_s) + " | Complete: " + str(star.complete))
             count_s += 1
+            habit_star += 1
         count_c += 1
+        
+    print("----------------------------------------\n")
+    print("Second Habit:")
     habit_star = 0
     count_c = 0
     for constellation in habits.second.constellations:
-        print("\nHabit B Constellation " + str(count_c))
+        print("Constellation " + str(count_c))
         count_s = 0
         for star in constellation:
             print("Habit star: " + str(habit_star) + " | Constellation star: " + str(count_s) + " | Complete: " + str(star.complete))
             count_s += 1
+            habit_star += 1
         count_c += 1
