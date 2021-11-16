@@ -24,6 +24,7 @@ def flipFirstHabit(strip, debug=False):
     else:
         Leds.leds.lights = True
         Leds.leds.mode = 0
+        Leds.displayHabits(strip)
     if debug:
         debugHabits()
 
@@ -38,6 +39,7 @@ def flipSecondHabit(strip, debug=False):
     else:
         Leds.leds.lights = True
         Leds.leds.mode = 0
+        Leds.displayHabits(strip)
     if debug:
         debugHabits()
 
