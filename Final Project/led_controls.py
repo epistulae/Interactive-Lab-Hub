@@ -19,8 +19,6 @@ class State:
         self.color = "rose"
         self.animation = "cool"
 
-leds = State()
-
 # All color values
 class Colors(Enum):
     incomplete = Color(237, 108, 2)
@@ -40,12 +38,6 @@ class Colors(Enum):
     magenta = Color(162, 4, 90)
     sakura = Color(245, 120, 189)
     blank = Color(0, 0, 0)
-
-# All animation types.
-class Animations(Enum):
-    rainbow = 0
-    cool = 1
-    fire = 2
 
 # 
 # HABIT MODE FUNCTIONS
@@ -154,13 +146,13 @@ def rainbow(strip, wait_ms=20, iterations=1):
 # GENERAL FUNCTIONS
 #
 # Display just the pinpricks.
-def displayPinpricks(strip):
+def displayPinpricks(strip, leds):
     for led in Stars.PINPRICKS:
         strip.setPixelColor(led, Colors.pinprick.value)
     strip.show()
 
 # Close LEDs in a slow snake. For aestetics.
-def slowClearDisplay(strip):
+def slowClearDisplay(strip, leds):
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, Colors.blank.value)
         strip.show()
@@ -168,7 +160,7 @@ def slowClearDisplay(strip):
     leds.lights = False
 
 # Close LEDs all at once. For debugging.6
-def fastClearDisplay(strip):
+def fastClearDisplay(strip, leds):
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, Colors.blank.value)
     strip.show()
@@ -178,7 +170,7 @@ def fastClearDisplay(strip):
 # Mood lighting: Solid = 1
 # Mood lighting: Animated = 2
 # More can be added. Update mode_count to match and add appropriate handler here.
-def displayMode(strip, debug=False):
+def displayMode(strip, leds, debug=False):
     # All modes have white pinpricks.
     leds.lights = True
     if leds.mode is 0:
@@ -189,22 +181,22 @@ def displayMode(strip, debug=False):
         A = 1
 
     if debug:
-        debugLeds()
+        debugLeds(leds)
 
 # Cycle through available modes. 
-def cycleMode(strip, debug=False):
+def cycleMode(strip, leds, debug=False):
     # All modes have white pinpricks.
     leds.mode = (leds.mode + 1) % leds.mode_count
     displayMode(strip, debug)
 
 # Start display.
-def initDisplay(strip):
+def initDisplay(strip, leds, debug=False):
     displayPinpricks(strip)
-    displayMode(strip)
+    displayMode(strip, debug)
     leds.lights = True
 
 # Switch LED display on and off.
-def lightFlip(strip, debug=False):
+def lightFlip(strip, leds, debug=False):
     if leds.lights:
         # Close lights
         fastClearDisplay(strip)
@@ -213,9 +205,9 @@ def lightFlip(strip, debug=False):
         initDisplay(strip)
         
     if debug:
-        debugLeds()
+        debugLeds(leds)
 
-def debugLeds():
+def debugLeds(leds):
     print("========================================")
     print("LEDs Debugging")
     print("========================================")
