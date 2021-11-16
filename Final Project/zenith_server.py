@@ -95,16 +95,14 @@ try:
             if Leds.STATE.lights:
                 print("Closing lights")
                 # Close lights
-                Leds.colorWipe(STRIP, Color(0,0,0), 10)
-                Leds.STATE.lights = False
+                Leds.fastClearDisplay(STRIP)
                 print("New state: " + str(Leds.STATE.lights))
             else:
                 # Turn on lights
                 print("turning on lights")
+		Leds.initDisplay(STRIP)
                 Leds.STATE.lights = True
                 print("New state: " + str(Leds.STATE.lights))
-                Leds.STATE.mode = 0 # Always turn lights on to habit mode
-                Leds.displayHabits(STRIP)
                 
         # Assume lights are on
         elif mpr121[5].value:
