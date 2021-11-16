@@ -13,10 +13,8 @@ class State:
         self.first_complete = False
         self.second_complete = False
 
-habits = State()
-
 # Flip completeness for today's tracking of the first habit.
-def flipFirstHabit(strip, debug=False):
+def flipFirstHabit(strip, habits, debug=False):
     habits.first_complete = not habits.first_complete
     constellation = habits.first.cur_constellation
     star = habits.first.cur_star
@@ -29,10 +27,10 @@ def flipFirstHabit(strip, debug=False):
         Leds.leds.mode = 0
         Leds.displayHabits(strip)
     if debug:
-        debugHabits()
+        debugHabits(habits)
 
 # Flip completeness for today's tracking of the second habit.
-def flipSecondHabit(strip, debug=False):
+def flipSecondHabit(strip, habits, debug=False):
     habits.second_complete = not habits.second_complete
     constellation = habits.second.cur_constellation
     star = habits.second.cur_star
@@ -45,10 +43,10 @@ def flipSecondHabit(strip, debug=False):
         Leds.leds.mode = 0
         Leds.displayHabits(strip)
     if debug:
-        debugHabits()
+        debugHabits(habits)
 
 # Check whether or not it's a new day and update the state if it is.
-def nextDay():
+def nextDay(habits):
     day = time.localtime()[2]
 
     if day is not habits.day:
@@ -71,7 +69,7 @@ def nextDay():
             # Next star
             habits.second.cur_star += 1
 
-def debugHabits():
+def debugHabits(habits):
     print("========================================")
     print("Habits Debugging")
     print("========================================")
