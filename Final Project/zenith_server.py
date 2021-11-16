@@ -34,7 +34,7 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 #
 # MQTT : Remote inputs
 #
-topics = ["Color/", "Animation", "Mode/", "Lights/"]
+topics = ["Color/", "Animation/", "Mode/", "Lights/"]
 
 def on_connect(client, userdata, flags, rc):
     print("connected with result code " + str(rc))
