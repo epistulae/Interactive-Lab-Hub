@@ -34,7 +34,7 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 #
 # MQTT : Remote inputs
 #
-topics = ["Color/", "Animation/", "Habits/", "Lights/"]
+topics = ["color/", "animation/", "lights/", "habits/", "habits/first", "habits/second"]
 
 def on_connect(client, userdata, flags, rc):
     print("connected with result code " + str(rc))
@@ -67,19 +67,29 @@ def on_message(client, userdata, msg):
         # TODO: CALL ANIMATION FUNCTION
         print(Leds.leds.animation)
         print(Leds.leds.mode)
-
+	
+    # Lights
+    # Any message to the topic means to flip lights.
+    elif incoming_topic == topics[2]:
+        Leds.lightFlip(STRIP)
+	
     # Habits
     # Any message to the topic means to turn on habits.
-    elif incoming_topic == topics[2]:
+    elif incoming_topic == topics[3]:
         if Leds.leds.mode is not 0:
             Leds.leds.mode = 0
             Leds.displayHabits(STRIP)
         print(Leds.leds.mode)
         
-    # Lights
-    # Any message to the topic means to flip lights.
-    elif incoming_topic == topics[3]:
-        Leds.lightFlip(STRIP)
+    # Flip first habit
+    elif incoming_topic == topics[4]:
+        print("Habit A")
+        Habits.flipFirstHabit(STRIP)
+
+    # Flip second habit
+    elif incoming_topic == topics[4]:
+        print("Habit B")
+        Habits.flipSecondHabit(STRIP)
 
 # Every client needs a random ID
 client = mqtt.Client(str(uuid.uuid1()))
@@ -99,9 +109,6 @@ def subscribing():
 appListener = multiprocessing.Process(target=subscribing, args=())
 appListener.start()
 
-# Turn on Leds
-Leds.initDisplay(STRIP)
-
 #
 # Main Server: Capacity Inputs
 #
@@ -112,7 +119,7 @@ try:
             print("Lights on off")
             Leds.lightFlip(STRIP)
 
-        # Assume lights are on
+        # Turns lights on if off
         elif mpr121[5].value:
             # Mode change
             Leds.cycleMode(STRIP)
