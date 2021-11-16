@@ -52,7 +52,7 @@ def on_message(client, userdata, msg):
     # Input is the same Leds module's Colors enum. 
     # Directly goes to solid color mood mode.
     if incoming_topic == topics[0]:
-	Leds.leds.mode = 1
+        Leds.leds.mode = 1
         Leds.leds.color = str(msg.payload.decode('UTF-8'))
         displayMode(STRIP)
         print(Leds.leds.color)
