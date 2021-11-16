@@ -178,25 +178,13 @@ def fastClearDisplay(strip):
     strip.show()
     leds.lights = False
 
-# Switch LED display on and off.
-def lightFlip(strip):
-    if leds.lights:
-        print("Closing lights")
-        # Close lights
-        fastClearDisplay(strip)
-        print("New state: " + str(leds.lights))
-    else:
-        # Turn on lights
-        print("turning on lights")
-        initDisplay(strip)
-        print("New state: " + str(leds.lights))
-
 # Habit = 0
 # Mood lighting: Solid = 1
 # Mood lighting: Animated = 2
 # More can be added. Update mode_count to match and add appropriate handler here.
 def displayMode(strip):
     # All modes have white pinpricks.
+    leds.lights = True
     print("Display mode")
     if leds.mode is 0:
         print("Habits Mode")
@@ -213,3 +201,16 @@ def cycleMode(strip):
     print("Cycle mode")
     leds.mode = (leds.mode + 1) % leds.mode_count
     displayMode(strip)
+
+# Switch LED display on and off.
+def lightFlip(strip):
+    if leds.lights:
+        print("Closing lights")
+        # Close lights
+        fastClearDisplay(strip)
+        print("New state: " + str(leds.lights))
+    else:
+        # Turn on lights
+        print("turning on lights")
+        initDisplay(strip)
+        print("New state: " + str(leds.lights))
