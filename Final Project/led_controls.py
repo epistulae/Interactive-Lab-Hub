@@ -194,13 +194,13 @@ def initDisplay(strip, leds, habits, debug=False):
     leds.lights = True
 
 # Switch LED display on and off.
-def lightFlip(strip, leds, habits, pinpricks, debug=False):
+def lightFlip(strip, leds, habits, debug=False):
     if leds.lights:
         # Close lights
         fastClearDisplay(strip)
     else:
         # Turn on lights
-        initDisplay(strip, leds, habits, pinpricks, debug)
+        initDisplay(strip, leds, habits, debug)
         
     if debug:
         debugLeds(leds)
