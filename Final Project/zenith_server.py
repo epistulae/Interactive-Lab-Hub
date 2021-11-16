@@ -26,16 +26,6 @@ LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 STRIP = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 STRIP.begin()
 
-def displayMode(strip):
-    print("Show display mood")
-    # All modes have white pinpricks
-    if Leds.STATE.mode is 0:
-        print("Habits Mode")
-        Leds.displayHabits(strip)
-    elif Leds.STATE.mode is 1:
-        # Rainbow
-        print("Rainbow")
-
 topic = 'Colors/#'
 topic_color = 'Colors/'
 topic_mode = 'Mode/'
@@ -106,8 +96,7 @@ try:
         # Assume lights are on
         elif mpr121[5].value:
             # Mode change
-            Leds.STATE.mode = (Leds.STATE.mode + 1) % Leds.STATE.mode_count
-            displayMode(STRIP)
+            Leds.cycleMode(STRIP)
             print("Mode: " + str(Leds.STATE.mode))
         elif mpr121[2].value:
             print("Habit A")
