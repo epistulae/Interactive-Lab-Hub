@@ -46,7 +46,8 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 topics = ["color/", "animation/", "lights/", "habits/", "habits/first", "habits/second"]
 
 def on_connect(client, userdata, flags, rc):
-    print("connected with result code " + str(rc))
+    if DEBUG:
+        print("connected with result code " + str(rc))
     for topic in topics:
         client.subscribe(topic)
 
@@ -60,8 +61,6 @@ def on_message(client, userdata, msg):
         Leds.leds.mode = 1
         Leds.leds.color = str(msg.payload.decode('UTF-8'))
         Leds.displayMode(STRIP, DEBUG)
-        print(Leds.leds.color)
-        print(Leds.leds.mode)
 
     # Animation
     # Directly goes to animated mood mode.
