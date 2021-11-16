@@ -112,11 +112,11 @@ try:
             print("Mode: " + str(Leds.STATE.mode))
         elif mpr121[2].value:
             print("Habit A")
-            flipFirstHabit(STRIP)
+            Habits.flipFirstHabit(STRIP)
             Habits.debugHabits()
         elif mpr121[8].value:
             print("Habit B")
-            flipSecondHabit(STRIP)
+            Habits.flipSecondHabit(STRIP)
             Habits.debugHabits()
 
         Habits.nextDay()
