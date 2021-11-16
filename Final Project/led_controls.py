@@ -11,6 +11,9 @@ import habit_controls as Habits
 class State:
     def __init__(self):
         self.lights = True # True = on, False = off
+        # Habit = 0
+        # Mood lighting: Solid = 1
+        # Mood lighting: Animated = 2
         self.mode = 0 
         self.mode_count = 3
         self.color = "rose"
@@ -192,7 +195,7 @@ def lightFlip(strip):
 # Mood lighting: Solid = 1
 # Mood lighting: Animated = 2
 # More can be added. Update mode_count to match and add appropriate handler here.
-def displayMode(strip, mode):
+def displayMode(strip):
     # All modes have white pinpricks.
     print("Display mode")
     if leds.mode is 0:
