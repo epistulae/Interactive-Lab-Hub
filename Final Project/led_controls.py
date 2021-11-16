@@ -130,6 +130,9 @@ def rainbow(strip, wait_ms=20, iterations=1):
         strip.show()
         time.sleep(wait_ms/1000.0)
 
+#
+# GENERAL DISPLAY FUNCTIONS
+#
 def initDisplay(strip):
 	# Display always inits to display habits.
     STATE.mode = 0
@@ -150,3 +153,15 @@ def fastClearDisplay(strip):
         strip.setPixelColor(i, blank)
     strip.show()
     STATE.lights = False
+
+def lightFlip(strip):
+    if STATE.lights:
+        print("Closing lights")
+        # Close lights
+        fastClearDisplay(STRIP)
+        print("New state: " + str(STATE.lights))
+    else:
+        # Turn on lights
+        print("turning on lights")
+        Leds.initDisplay(STRIP)
+        print("New state: " + str(STATE.lights))
