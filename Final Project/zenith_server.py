@@ -42,8 +42,8 @@ def on_message(client, userdata, msg):
 	print("topic: " + str(msg.topic) + "msg: " + str(msg.payload.decode('UTF-8')))
 	# you can filter by topics
 	print(str(msg.topic))
-	print(str(str(msg.topic) is "Color/"))
-	if str(msg.topic) is not "Color/":
+	print(str(str(msg.topic) is topics[0]))
+	if str(msg.topic) is topics[0]:
 		Leds.leds.color = str(msg.payload.decode('UTF-8'))
 		print(Leds.leds.color)
 
