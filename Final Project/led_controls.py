@@ -103,3 +103,16 @@ def rainbow(strip, wait_ms=20, iterations=1):
             strip.setPixelColor(i, wheel((i+j) & 255))
         strip.show()
         time.sleep(wait_ms/1000.0)
+
+def slowClearDisplay(strip):
+    blank = Color(0,0,0)
+    for i in range(strip.numPixels()):
+        strip.setPixelColor(i, blank)
+        strip.show()
+        time.sleep(10/1000.0)
+
+def fastClearDisplay(strip):
+    blank = Color(0,0,0)
+    for i in range(strip.numPixels()):
+        strip.setPixelColor(i, blank)
+    strip.show()
