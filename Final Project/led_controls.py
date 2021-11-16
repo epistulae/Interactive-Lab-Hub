@@ -188,15 +188,13 @@ def lightFlip(strip):
         initDisplay(strip)
         print("New state: " + str(leds.lights))
 
-# Cycle through available modes. 
 # Habit = 0
 # Mood lighting: Solid = 1
 # Mood lighting: Animated = 2
 # More can be added. Update mode_count to match and add appropriate handler here.
-def cycleMode(strip):
+def displayMode(strip, mode):
     # All modes have white pinpricks.
     print("Display mode")
-    leds.mode = (leds.mode + 1) % leds.mode_count
     if leds.mode is 0:
         print("Habits Mode")
         displayHabits(strip)
@@ -205,3 +203,10 @@ def cycleMode(strip):
         solidColor(strip)
     elif leds.mode is 2:
         print("Animated mood mode")
+ 
+# Cycle through available modes. 
+def cycleMode(strip):
+    # All modes have white pinpricks.
+    print("Cycle mode")
+    leds.mode = (leds.mode + 1) % leds.mode_count
+    displayMode(strip)
