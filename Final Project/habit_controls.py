@@ -6,8 +6,8 @@ import time
 class State:
     def __init__(self):
         self.day = time.localtime()[2]
-	self.habit_a = Stars.HABIT_A
-        
+        self.habit_a = Stars.HABIT_A
+
 STATE = State()
 
 def nextDay():
