@@ -58,7 +58,7 @@ def updateStar(strip, star):
 def displayHabits(strip, habits, debug=False):
 
     # First
-    for constellation in habits.stars1.constellations:
+    for constellation in habits.first.constellations:
         for star in constellation:
             led_color = Colors.complete.value if star.complete else Colors.incomplete.value
             # Star
@@ -73,7 +73,7 @@ def displayHabits(strip, habits, debug=False):
                     strip.setPixelColor(led, led_color)
 
     # Second habit
-    for constellation in habits.stars2.constellations:
+    for constellation in habits.second.constellations:
         for star in constellation:
             led_color = Colors.complete.value if star.complete else Colors.incomplete.value
             # Star
@@ -95,10 +95,10 @@ def displayHabits(strip, habits, debug=False):
 # COLORING FUNCTIONS
 #
 # Define functions which light LEDs in various ways.
-def solidColor(strip, pinpricks):
+def solidColor(strip):
     color = Colors[leds.color].value
     for i in range(strip.numPixels()):
-        if i not in pinpricks:
+        if i not in Stars.pinpricks:
             strip.setPixelColor(i, color)
     strip.show()
 
@@ -143,8 +143,8 @@ def rainbow(strip, wait_ms=20, iterations=1):
 # GENERAL FUNCTIONS
 #
 # Display just the pinpricks.
-def displayPinpricks(strip, pinpricks):
-    for led in pinpricks:
+def displayPinpricks(strip):
+    for led in Stars.pinpricks:
         strip.setPixelColor(led, Colors.pinprick.value)
     strip.show()
 
@@ -167,13 +167,13 @@ def fastClearDisplay(strip, leds):
 # Mood lighting: Solid = 1
 # Mood lighting: Animated = 2
 # More can be added. Update mode_count to match and add appropriate handler here.
-def displayMode(strip, leds, habits, pinpricks, debug=False):
+def displayMode(strip, leds, habits, debug=False):
     # All modes have white pinpricks.
     leds.lights = True
     if leds.mode is 0:
         displayHabits(strip, habits)
     elif leds.mode is 1:
-        solidColor(strip, pinpricks)
+        solidColor(strip)
     elif leds.mode is 2:
         A = 1
 
@@ -187,9 +187,9 @@ def cycleMode(strip, leds, debug=False):
     displayMode(strip, debug)
 
 # Start display.
-def initDisplay(strip, leds, habits, pinpricks, debug=False):
-    displayPinpricks(strip, pinpricks)
-    displayMode(strip, leds, habits, pinpricks, debug)
+def initDisplay(strip, leds, habits, debug=False):
+    displayPinpricks(strip)
+    displayMode(strip, leds, habits, debug)
     leds.lights = True
 
 # Switch LED display on and off.
