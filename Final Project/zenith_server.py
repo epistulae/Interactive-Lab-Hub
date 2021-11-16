@@ -61,9 +61,9 @@ def on_message(client, userdata, msg):
     # Animation
     # Directly goes to animated mood mode.
     elif incoming_topic == topics[1]:
-	Leds.leds.mode = 2
+        Leds.leds.mode = 2
         Leds.leds.animation = str(msg.payload.decode('UTF-8'))
-	displayMode(STRIP)
+        displayMode(STRIP)
         # TODO: CALL ANIMATION FUNCTION
         print(Leds.leds.animation)
         print(Leds.leds.mode)
