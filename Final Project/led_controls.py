@@ -118,6 +118,7 @@ def rainbow(strip, wait_ms=20, iterations=1):
 
 def initDisplay(strip):
 	# Display always inits to display habits.
+    STATE.mode = 0
     displayHabits(strip)
     STATE.lights = True
     
