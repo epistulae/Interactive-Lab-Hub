@@ -111,7 +111,9 @@ Plug in the capacitive sensor board with the Qwiic connector. Use the alligator 
  ```
 
 **\*\*\*Include a picture of your setup here: what did you see on MQTT Explorer?\*\*\***
+
 <img width="628" alt="Screen Shot 2021-11-16 at 12 45 21 PM" src="https://user-images.githubusercontent.com/14368010/142038024-23e06bd5-106a-4c05-a08e-c142b2b70d0b.png">
+
 Note, I was playing around with how it would look with my project so I was testing colors with the capacitive sensor.
 
 
@@ -173,6 +175,7 @@ For two users, since Zenith tracks two habits, each user can use one habit, and 
 
 
 **\*\*\*3. Build a working prototype of the system.\*\*\*** 
+
 Please see code here: [main.py](https://github.com/epistulae/Interactive-Lab-Hub/blob/Fall2021/Final%20Project/main.py) and [mqtt_controls.py](https://github.com/epistulae/Interactive-Lab-Hub/blob/Fall2021/Final%20Project/mqtt_controls.py)
 
 **\*\*\*4. Document the working prototype in use.\*\*\*** It may be helpful to record a Zoom session where you should the input in one location clearly causing response in another location.
