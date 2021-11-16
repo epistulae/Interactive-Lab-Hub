@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 from enum import Enum
-import stars as Stars
 from rpi_ws281x import *
+import stars as Stars
+import time
 
 class Colors(Enum):
     INCOMPLETE = Color(237, 108, 2)
