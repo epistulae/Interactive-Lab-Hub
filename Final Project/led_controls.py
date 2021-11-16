@@ -25,10 +25,19 @@ class Colors(Enum):
     PINPRICK = Color(255, 245, 222)
     RED = Color(235, 52, 52)
 
-#
-#    
+def cycleMode(strip):
+    # All modes have white pinpricks
+    print("Display mode")
+    STATE.mode = (STATE.mode + 1) % STATE.mode_count
+    if STATE.mode is 0:
+        print("Habits Mode")
+        displayHabits(strip)
+    elif STATE.mode is 1:
+        # Rainbow
+        print("Rainbow")
+
+# 
 # HABIT MODE FUNCTIONS
-#
 #
 def updateStar(strip, star):
     led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
@@ -49,9 +58,8 @@ def displayHabits(strip):
     for led in Stars.PINPRICKS:
         strip.setPixelColor(led, Colors.PINPRICK.value)
 
-    star_count = 1
-    # Habit A
-    for constellation in Stars.HABIT_A.constellations:
+    # First
+    for constellation in Stars.FIRST.constellations:
         for star in constellation:
             led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
             # Star
@@ -65,8 +73,8 @@ def displayHabits(strip):
                 for led in leds:
                     strip.setPixelColor(led, led_color)
 
-    # Habit B
-    for constellation in Stars.HABIT_B.constellations:
+    # Second habit
+    for constellation in Stars.SECOND.constellations:
         for star in constellation:
             led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
             # Star
@@ -81,7 +89,10 @@ def displayHabits(strip):
                     strip.setPixelColor(led, led_color)
     strip.show()
     
-    # Define functions which animate LEDs in various ways.
+#    
+# ANIMATION FUNCTIONS
+#
+# Define functions which animate LEDs in various ways.
 def colorWipe(strip, color, wait_ms=50):
     """Wipe color across display a pixel at a time."""
     for i in range(strip.numPixels()):
