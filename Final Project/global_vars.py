@@ -15,4 +15,4 @@ STRIP = None
 leds = Leds.State()
 habits = Habits.State()
 
-pinpricks = Stars.pinpricks
+pinpricks = Stars.PINPRICKS
