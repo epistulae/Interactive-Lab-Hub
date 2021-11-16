@@ -101,9 +101,10 @@ def displayHabits(strip):
 #
 # Define functions which light LEDs in various ways.
 def solidColor(strip):
+    color = Colors[leds.color].value
     for i in range(strip.numPixels()):
         if i not in Stars.PINPRICKS:
-            strip.setPixelColor(i, leds.color)
+            strip.setPixelColor(i, color)
     strip.show()
 
 def colorWipe(strip, color, wait_ms=50):
