@@ -111,9 +111,15 @@ def displayHabits(strip):
     strip.show()
     
 #    
-# ANIMATION FUNCTIONS
+# COLORING FUNCTIONS
 #
-# Define functions which animate LEDs in various ways.
+# Define functions which light LEDs in various ways.
+def solidColor(strip):
+    for i in range(strip.numPixels()):
+        if i not in Stars.PINPRICKS:
+            strip.setPixelColor(i, leds.color)
+    strip.show()
+
 def colorWipe(strip, color, wait_ms=50):
     """Wipe color across display a pixel at a time."""
     for i in range(strip.numPixels()):
