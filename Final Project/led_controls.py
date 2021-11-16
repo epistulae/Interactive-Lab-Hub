@@ -182,10 +182,10 @@ def displayMode(strip, leds, habits, debug=False):
         debugLeds(leds)
 
 # Cycle through available modes. 
-def cycleMode(strip, leds, debug=False):
+def cycleMode(strip, leds, habits, debug=False):
     # All modes have white pinpricks.
     leds.mode = (leds.mode + 1) % leds.mode_count
-    displayMode(strip, debug)
+    displayMode(strip, leds, habits, debug)
 
 # Start display.
 def initDisplay(strip, leds, habits, debug=False):
