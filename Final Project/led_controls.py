@@ -181,15 +181,12 @@ def fastClearDisplay(strip):
 def displayMode(strip, debug=False):
     # All modes have white pinpricks.
     leds.lights = True
-    print("Display mode")
     if leds.mode is 0:
-        print("Habits Mode")
         displayHabits(strip)
     elif leds.mode is 1:
-        print("Solid mood mode")
         solidColor(strip)
     elif leds.mode is 2:
-        print("Animated mood mode")
+        A = 1
 
     if debug:
         debugLeds()
