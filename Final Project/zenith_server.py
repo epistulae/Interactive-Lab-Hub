@@ -100,7 +100,7 @@ try:
             else:
                 # Turn on lights
                 print("turning on lights")
-		Leds.initDisplay(STRIP)
+		        Leds.initDisplay(STRIP)
                 Leds.STATE.lights = True
                 print("New state: " + str(Leds.STATE.lights))
                 
