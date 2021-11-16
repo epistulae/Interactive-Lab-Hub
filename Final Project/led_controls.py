@@ -66,7 +66,7 @@ def updateStar(strip, star):
     strip.show()
 
 # Light up LEDs for both habits.
-def displayHabits(strip):
+def displayHabits(strip, debug=False):
 
     # First
     for constellation in Stars.FIRST.constellations:
@@ -98,6 +98,9 @@ def displayHabits(strip):
                 for led in leds:
                     strip.setPixelColor(led, led_color)
     strip.show()
+    
+    if debug:
+        debugLeds()
     
 #    
 # COLORING FUNCTIONS
@@ -175,7 +178,7 @@ def fastClearDisplay(strip):
 # Mood lighting: Solid = 1
 # Mood lighting: Animated = 2
 # More can be added. Update mode_count to match and add appropriate handler here.
-def displayMode(strip):
+def displayMode(strip, debug=False):
     # All modes have white pinpricks.
     leds.lights = True
     print("Display mode")
@@ -187,29 +190,39 @@ def displayMode(strip):
         solidColor(strip)
     elif leds.mode is 2:
         print("Animated mood mode")
- 
-# Cycle through available modes. 
-def cycleMode(strip):
-    # All modes have white pinpricks.
-    print("Cycle mode")
-    leds.mode = (leds.mode + 1) % leds.mode_count
-    displayMode(strip)
 
-# Start display. Always inits to display habits.
+    if debug:
+        debugLeds()
+
+# Cycle through available modes. 
+def cycleMode(strip, debug=False):
+    # All modes have white pinpricks.
+    leds.mode = (leds.mode + 1) % leds.mode_count
+    displayMode(strip, debug)
+
+# Start display.
 def initDisplay(strip):
     displayPinpricks(strip)
     displayMode(strip)
     leds.lights = True
 
 # Switch LED display on and off.
-def lightFlip(strip):
+def lightFlip(strip, debug=False):
     if leds.lights:
-        print("Closing lights")
         # Close lights
         fastClearDisplay(strip)
-        print("New state: " + str(leds.lights))
     else:
         # Turn on lights
-        print("turning on lights")
         initDisplay(strip)
-        print("New state: " + str(leds.lights))
+        
+    if debug:
+        debugLeds()
+
+def debugLeds():
+    print("========================================")
+    print("LEDs Debugging")
+    print("========================================\n")
+    print("Light on: " + str(leds.lights))
+    print("Mode: " + str(leds.mode))
+    print("Color: " + str(leds.color))
+    print("Animation: " + str(leds.animation))
