@@ -2,7 +2,6 @@
 
 from enum import Enum
 from rpi_ws281x import *
-import global_vars as Globals
 import time
 
 # Tracks state of LED lights
@@ -56,10 +55,10 @@ def updateStar(strip, star):
     strip.show()
 
 # Light up LEDs for both habits.
-def displayHabits(strip, debug=False):
+def displayHabits(strip, habits, debug=False):
 
     # First
-    for constellation in Globals.stars1.constellations:
+    for constellation in habits.stars1.constellations:
         for star in constellation:
             led_color = Colors.complete.value if star.complete else Colors.incomplete.value
             # Star
@@ -74,7 +73,7 @@ def displayHabits(strip, debug=False):
                     strip.setPixelColor(led, led_color)
 
     # Second habit
-    for constellation in Globals.stars2.constellations:
+    for constellation in habits.stars2.constellations:
         for star in constellation:
             led_color = Colors.complete.value if star.complete else Colors.incomplete.value
             # Star
@@ -96,10 +95,10 @@ def displayHabits(strip, debug=False):
 # COLORING FUNCTIONS
 #
 # Define functions which light LEDs in various ways.
-def solidColor(strip):
+def solidColor(strip, pinpricks):
     color = Colors[leds.color].value
     for i in range(strip.numPixels()):
-        if i not in Globals.pinpricks:
+        if i not in pinpricks:
             strip.setPixelColor(i, color)
     strip.show()
 
@@ -144,8 +143,8 @@ def rainbow(strip, wait_ms=20, iterations=1):
 # GENERAL FUNCTIONS
 #
 # Display just the pinpricks.
-def displayPinpricks(strip, leds):
-    for led in Globals.pinpricks:
+def displayPinpricks(strip, pinpricks):
+    for led in pinpricks:
         strip.setPixelColor(led, Colors.pinprick.value)
     strip.show()
 
@@ -168,13 +167,13 @@ def fastClearDisplay(strip, leds):
 # Mood lighting: Solid = 1
 # Mood lighting: Animated = 2
 # More can be added. Update mode_count to match and add appropriate handler here.
-def displayMode(strip, leds, debug=False):
+def displayMode(strip, leds, pinpricks, debug=False):
     # All modes have white pinpricks.
     leds.lights = True
     if leds.mode is 0:
         displayHabits(strip)
     elif leds.mode is 1:
-        solidColor(strip)
+        solidColor(strip, pinpricks)
     elif leds.mode is 2:
         A = 1
 
@@ -188,8 +187,8 @@ def cycleMode(strip, leds, debug=False):
     displayMode(strip, debug)
 
 # Start display.
-def initDisplay(strip, leds, debug=False):
-    displayPinpricks(strip)
+def initDisplay(strip, leds, pinpricks, debug=False):
+    displayPinpricks(strip, pinpricks)
     displayMode(strip, debug)
     leds.lights = True
 
