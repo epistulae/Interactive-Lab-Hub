@@ -29,14 +29,14 @@ class Colors(Enum):
     candlelight = Color(230, 210, 161)
     spring = Color(168, 235, 52)
     forest = Color(27, 153, 23)
-    turquoise = Color(21 187 183)
+    turquoise = Color(21, 187, 183)
     powder = Color(161, 211, 227)
     periwinkle = Color(129, 174, 235)
     royal = Color(38, 58, 240)
     amethyst = Color(168, 57, 237)
     magenta = Color(162, 4, 90)
     sakura = Color(245, 120, 189)
-    blank = Color(0,0,0)
+    blank = Color(0, 0, 0)
 
 # All animation types.
 class Animations(Enum):
