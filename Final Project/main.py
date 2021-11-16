@@ -49,7 +49,7 @@ try:
     Leds.initDisplay(Globals.STRIP, Globals.leds, Globals.habits)
     while True:
         if mpr121[0].value:
-            Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.DEBUG)
+            Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
             Mqtt.client.publish('remote/lights', "0")
         elif mpr121[5].value:
             Leds.cycleMode(Globals.STRIP, Globals.leds, Globals.DEBUG)
