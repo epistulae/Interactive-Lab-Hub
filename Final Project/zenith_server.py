@@ -7,15 +7,12 @@ import busio
 import habit_controls as Habits
 import led_controls as Leds
 import mqtt_controls as Mqtt
-from rpi_ws281x import *
-import time
-import stars as Stars
-
 import multiprocessing
+from rpi_ws281x import *
+import stars as Stars
+import time
 
-#
 # Configs and inits
-#
 parser = argparse.ArgumentParser()
 parser.add_argument('-d', '--debug', action='store_true', help='print debugging statements')
 args = parser.parse_args()
