@@ -133,4 +133,4 @@ try:
         
 except KeyboardInterrupt:
     sub.terminate()
-    Leds.colorWipe(STRIP, Color(0,0,0), 10)
+    Leds.slowClearDisplay(STRIP)
