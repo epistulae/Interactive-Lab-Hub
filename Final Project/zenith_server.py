@@ -123,5 +123,5 @@ try:
         time.sleep(0.5) # Prevent multiple triggers for one touch
         
 except KeyboardInterrupt:
-    sub.terminate()
+    appListener.terminate()
     Leds.fastClearDisplay(STRIP)
