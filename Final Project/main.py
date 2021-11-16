@@ -38,10 +38,6 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 appListener = multiprocessing.Process(target=Mqtt.subscribing, args=())
 appListener.start()
 
-for i in range(10):
-    STRIP.setPixelColor(i, Color(235,52,52))
-STRIP.show()
-
 #
 # Main Server: Capacity Inputs
 #
@@ -52,7 +48,7 @@ try:
             Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
             Mqtt.client.publish('remote/lights', "0")
         elif mpr121[5].value:
-            Leds.cycleMode(Globals.STRIP, Globals.leds, Globals.DEBUG)
+            Leds.cycleMode(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
         elif mpr121[2].value:
             Habits.flipFirstHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
             Mqtt.client.publish('remote/habits/first', "0")
