@@ -47,8 +47,8 @@ def on_message(client, userdata, msg):
 	# you can filter by topics
 	print(str(msg.topic))
 	print(str(str(msg.topic) == topics[0]))
-	# Color, input would be the same as the ones in the Leds module's Colors enum. 
-    incoming_topic = str(msg.topic)
+	incoming_topic = str(msg.topic)
+    
     # Color 
     # Input is the same Leds module's Colors enum. 
 	if incoming_topic == topics[0]:
