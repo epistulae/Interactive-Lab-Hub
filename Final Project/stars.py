@@ -211,5 +211,5 @@ shield_5 = Star(0)
 SHIELD = [shield_1, shield_2, shield_3, shield_4, shield_5]
 
 # Habit Constants
-HABIT_A = Habit([SERPENS, BUTTERFLY]) # narwhale, serpens, draco, shield
+HABIT_A = Habit([SERPENS]) # narwhale, serpens, draco, shield
 HABIT_B = Habit([HOURGLASS, TEAPOT, TRIANGLE, ORION, BUTTERFLY])
