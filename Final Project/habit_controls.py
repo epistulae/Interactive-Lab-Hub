@@ -4,6 +4,7 @@ import led_controls as Leds
 import stars as Stars
 import time
 
+# Track state of habits
 class State:
     def __init__(self):
         self.day = time.localtime()[2]
@@ -12,6 +13,7 @@ class State:
 
 habits = State()
 
+# Flip completeness for today's tracking of the first habit.
 def flipFirstHabit(strip, debug=False):
     constellation = habits.first.cur_constellation
     star = habits.first.cur_star
@@ -19,7 +21,8 @@ def flipFirstHabit(strip, debug=False):
     Leds.updateStar(strip, habits.first.constellations[constellation][star])
     if debug:
         debugHabits()
-    
+
+# Flip completeness for today's tracking of the second habit.
 def flipSecondHabit(strip, debug=False):
     constellation = habits.second.cur_constellation
     star = habits.second.cur_star
@@ -28,6 +31,7 @@ def flipSecondHabit(strip, debug=False):
     if debug:
         debugHabits()
 
+# Check whether or not it's a new day and update the state if it is.
 def nextDay():
     day = time.localtime()[2]
 
