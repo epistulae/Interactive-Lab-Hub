@@ -99,7 +99,7 @@ def displayHabits(strip, habits, debug=False):
 def solidColor(strip):
     color = Colors[leds.color].value
     for i in range(strip.numPixels()):
-        if i not in Stars.pinpricks:
+        if i not in Stars.PINPRICKS:
             strip.setPixelColor(i, color)
     strip.show()
 
@@ -145,7 +145,7 @@ def rainbow(strip, wait_ms=20, iterations=1):
 #
 # Display just the pinpricks.
 def displayPinpricks(strip):
-    for led in Stars.pinpricks:
+    for led in Stars.PINPRICKS:
         strip.setPixelColor(led, Colors.pinprick.value)
     strip.show()
 
