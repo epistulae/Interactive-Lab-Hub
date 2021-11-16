@@ -12,19 +12,21 @@ class State:
 
 habits = State()
 
-def flipFirstHabit(strip):
+def flipFirstHabit(strip, debug=False):
     constellation = habits.first.cur_constellation
     star = habits.first.cur_star
     habits.first.constellations[constellation][star].complete = not habits.first.constellations[constellation][star].complete
     Leds.updateStar(strip, habits.first.constellations[constellation][star])
-    debugHabits()
+    if debug:
+        debugHabits()
     
-def flipSecondHabit(strip):
+def flipSecondHabit(strip, debug=False):
     constellation = habits.second.cur_constellation
     star = habits.second.cur_star
     habits.second.constellations[constellation][star].complete = not habits.second.constellations[constellation][star].complete
     Leds.updateStar(strip, habits.second.constellations[constellation][star])
-    debugHabits()
+    if debug:
+        debugHabits()
 
 def nextDay():
     day = time.localtime()[2]
