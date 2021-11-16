@@ -52,6 +52,7 @@ def on_message(client, userdata, msg):
     # Input is the same Leds module's Colors enum. 
     # Directly goes to solid color mood mode.
     if incoming_topic == topics[0]:
+	Leds.leds.mode = 1
         Leds.leds.color = str(msg.payload.decode('UTF-8'))
         Leds.solidColor(STRIP)
         print(Leds.leds.color)
@@ -59,6 +60,7 @@ def on_message(client, userdata, msg):
     # Animation
     # Directly goes to animated mood mode.
     elif incoming_topic == topics[1]:
+	Leds.leds.mode = 2
         Leds.leds.animation = str(msg.payload.decode('UTF-8'))
         # TODO: CALL ANIMATION FUNCTION
         print(Leds.leds.animation)
