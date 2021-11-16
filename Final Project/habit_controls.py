@@ -70,7 +70,7 @@ def nextDay():
 def debugHabits():
     print("========================================")
     print("Habits Debugging")
-    print("========================================\n")
+    print("========================================")
     
     print("First Habit:")
     habit_star = 0
@@ -83,8 +83,9 @@ def debugHabits():
             count_s += 1
             habit_star += 1
         count_c += 1
-        
-    print("----------------------------------------\n")
+    
+    print("\n")
+    print("----------------------------------------")
     print("Second Habit:")
     habit_star = 0
     count_c = 0
@@ -96,3 +97,4 @@ def debugHabits():
             count_s += 1
             habit_star += 1
         count_c += 1
+    print("\n")
