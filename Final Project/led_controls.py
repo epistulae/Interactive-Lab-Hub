@@ -12,21 +12,35 @@ class State:
     def __init__(self):
         self.lights = True # True = on, False = off
         self.mode = 0 
-        self.mode_count = 2
-        self.color = "Rainbow"
+        self.mode_count = 3
+        self.color = "candlelight"
 
 leds = State()
 
 # All color values
 class Colors(Enum):
-    INCOMPLETE = Color(237, 108, 2)
-    COMPLETE = Color(20, 164, 217)
-    PINPRICK = Color(255, 245, 222)
-    RED = Color(235, 52, 52)
+    incomplete = Color(237, 108, 2)
+    complete = Color(20, 164, 217)
+    pinprick = Color(255, 245, 222)
+    rose = Color(235, 52, 52)
+    sunset = Color(235, 137, 52)
+    buttercup = Color(235, 201, 52)
+    candlelight = Color(230 210 161)
+    spring = Color(168, 235, 52)
+    forest = Color(27, 153, 23)
+    turquoise = Color(21 187 183)
+    powder = Color(161, 211, 227)
+    periwinkle = Color(129, 174, 235)
+    royal = Color(38, 58, 240)
+    amethyst = Color(168, 57, 237)
+    magenta = Color(162, 4, 90)
+    sakura = Color(245, 120, 189)
+    blank = Color(0,0,0)
 
 # Cycle through available modes. 
 # Habit = 0
-# Mood lighting = 1
+# Mood lighting: Solid = 1
+# Mood lighting: Animated = 2
 # More can be added. Update mode_count to match and add appropriate handler here.
 def cycleMode(strip):
     # All modes have white pinpricks
@@ -39,19 +53,24 @@ def cycleMode(strip):
         # Rainbow
         print("Rainbow")
 
+def displayPinpricks(strip):
+    for led in Stars.PINPRICKS:
+        strip.setPixelColor(led, Colors.pinprick.value)
+    strip.show()
+
 # 
 # HABIT MODE FUNCTIONS
 #
 # Update one star in the constellation and color in connections to other stars.
 def updateStar(strip, star):
-    led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
+    led_color = Colors.complete.value if star.complete else Colors.incomplete.value
     # Star
     strip.setPixelColor(star.index, led_color)
     update = star.complete 
     # Connectors
     for prior in star.prior_stars:
         if update:
-            led_color = Colors.COMPLETE.value if prior[0].complete else Colors.INCOMPLETE.value
+            led_color = Colors.complete.value if prior[0].complete else Colors.incomplete.value
             leds = prior[1]
             for led in leds:
                 strip.setPixelColor(led, led_color)
@@ -59,20 +78,18 @@ def updateStar(strip, star):
 
 # Light up LEDs for both habits.
 def displayHabits(strip):
-    for led in Stars.PINPRICKS:
-        strip.setPixelColor(led, Colors.PINPRICK.value)
 
     # First
     for constellation in Stars.FIRST.constellations:
         for star in constellation:
-            led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
+            led_color = Colors.complete.value if star.complete else Colors.incomplete.value
             # Star
             strip.setPixelColor(star.index, led_color)
             update = star.complete 
             # Connectors
             for prior in star.prior_stars:
                 if update:
-                    led_color = Colors.COMPLETE.value if prior[0].complete else Colors.INCOMPLETE.value
+                    led_color = Colors.complete.value if prior[0].complete else Colors.incomplete.value
                 leds = prior[1]
                 for led in leds:
                     strip.setPixelColor(led, led_color)
@@ -80,14 +97,14 @@ def displayHabits(strip):
     # Second habit
     for constellation in Stars.SECOND.constellations:
         for star in constellation:
-            led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
+            led_color = Colors.complete.value if star.complete else Colors.incomplete.value
             # Star
             strip.setPixelColor(star.index, led_color)
             update = star.complete 
             # Connectors
             for prior in star.prior_stars:
                 if update:
-                    led_color = Colors.COMPLETE.value if prior[0].complete else Colors.INCOMPLETE.value
+                    led_color = Colors.complete.value if prior[0].complete else Colors.incomplete.value
                 leds = prior[1]
                 for led in leds:
                     strip.setPixelColor(led, led_color)
@@ -140,23 +157,22 @@ def rainbow(strip, wait_ms=20, iterations=1):
 # Start display. Always inits to display habits.
 def initDisplay(strip):
     leds.mode = 0
+    displayPinpricks(strip)
     displayHabits(strip)
     leds.lights = True
 
 # Close LEDs in a slow snake. For aestetics.
 def slowClearDisplay(strip):
-    blank = Color(0,0,0)
     for i in range(strip.numPixels()):
-        strip.setPixelColor(i, blank)
+        strip.setPixelColor(i, Colors.blank.value)
         strip.show()
         time.sleep(10/1000.0)
     leds.lights = False
 
 # Close LEDs all at once. For debugging.6
 def fastClearDisplay(strip):
-    blank = Color(0,0,0)
     for i in range(strip.numPixels()):
-        strip.setPixelColor(i, blank)
+        strip.setPixelColor(i, Colors.blank.value)
     strip.show()
     leds.lights = False
 
