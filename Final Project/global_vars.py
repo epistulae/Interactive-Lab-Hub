@@ -17,3 +17,4 @@ habits = Habits.State()
 
 stars1 = Stars.FIRST
 stars2 = Stars.SECOND
+pinpricks = Stars.PINPRICKS
