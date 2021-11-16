@@ -2,6 +2,7 @@
 
 import habit_controls as Habits
 import led_controls as Leds
+import stars as Stars
 
 HOST = '100.64.1.201'
 PORT = 7827
@@ -13,3 +14,6 @@ STRIP = None
 
 leds = Leds.State()
 habits = Habits.State()
+
+stars1 = Stars.FIRST
+stars2 = Stars.SECOND
