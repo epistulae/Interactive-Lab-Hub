@@ -72,7 +72,7 @@ def on_message(client, userdata, msg):
     # Lights
     # Any message to the topic means to flip lights.
     elif incoming_topic == topics[2]:
-        Leds.lightFlip(STRIP)
+        Leds.lightFlip(STRIP, DEBUG)
 	
     # Habits
     # Any message to the topic means to turn on habits.
