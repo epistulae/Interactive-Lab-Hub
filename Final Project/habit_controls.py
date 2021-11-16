@@ -5,14 +5,8 @@ import time
 
 class State:
     def __init__(self):
-        self.lights = True # True = on, False = off
         self.day = time.localtime()[2]
-        # Habit = 0
-	# Mood lighting = 1
-	# More can be added. Update mode_count to match and add appropriate handlers.
-        self.mode = 0 
-        self.mode_count = 2
-        self.color = "Rainbow"
+	self.habit_a = Stars.HABIT_A
         
 STATE = State()
 
@@ -43,7 +37,7 @@ def debugHabits():
     print("========================================")
     print("Habits debugging")
     count_c = 0
-    for constellation in Stars.HABIT_A.constellations:
+    for constellation in STATE.habit_a.constellations:
         print("Habit A Constellation " + str(count_c))
         count_s = 0
         for star in constellation:
