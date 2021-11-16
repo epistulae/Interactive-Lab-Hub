@@ -153,7 +153,7 @@ Of course not! You can go to [https://one-true-colornet.glitch.me/](https://one-
 ### Part E
 ### Make it your own
 
-Note: I did this on my own. I implemented the MQTT interaction my final project would need to be remotely controlled. Code is in my [Final Project](https://github.com/epistulae/Interactive-Lab-Hub/tree/Fall2021/Final%20Project) repom, specifically in the [main.py](https://github.com/epistulae/Interactive-Lab-Hub/blob/Fall2021/Final%20Project/main.py) and [mqtt_controls.py]() files. I also built a Swift application to control this via an application.
+Note: I did this on my own. I implemented the MQTT interaction my final project would need to be remotely controlled. Code is in my [Final Project](https://github.com/epistulae/Interactive-Lab-Hub/tree/Fall2021/Final%20Project) repo, specifically in the [main.py](https://github.com/epistulae/Interactive-Lab-Hub/blob/Fall2021/Final%20Project/main.py) and [mqtt_controls.py](https://github.com/epistulae/Interactive-Lab-Hub/blob/Fall2021/Final%20Project/mqtt_controls.py) files. I also built a Swift application to control this via an application.
 
 
 **\*\*\*1. Explain your design\*\*\*** 
@@ -165,8 +165,11 @@ General Goals of the product:
 - Highly visible reminder to stay on track of habits.
 - Aestetically pleasing addition to living space.
 
+For two users, since Zenith tracks two habits, each user can use one habit, and use the app to remotely toggle habits that way. (Though there's a lot of controls that are toggled remotely: color, animation, (eventually) music, I want Zenith to be physical interaction focused for the habit tracking part.
 
 **\*\*\*2. Diagram the architecture of the system.\*\*\*** 
+
+<img width="859" alt="Screen Shot 2021-11-16 at 1 15 48 PM" src="https://user-images.githubusercontent.com/14368010/142042344-fc96d6dd-fb0b-4cd6-a7ff-e4b36e6dc022.png">
 
 
 **\*\*\*3. Build a working prototype of the system.\*\*\*** 
