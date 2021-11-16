@@ -43,7 +43,7 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 #
 # MQTT : Remote inputs
 #
-topics = ["color/", "animation/", "lights/", "habits/", "habits/first", "habits/second"]
+topics = ["pi/color/", "pi/animation/", "pi/lights/", "pi/habits/", "pi/habits/first", "pi/habits/second", "pi/info"]
 
 def on_connect(client, userdata, flags, rc):
     if DEBUG:
@@ -88,6 +88,11 @@ def on_message(client, userdata, msg):
     # Flip second habit (any message)
     elif incoming_topic == topics[5]:
         Habits.flipSecondHabit(STRIP, DEBUG)
+    
+    # Request remote state data
+    elif incoming_topic == topics[6]:
+        val = str(int(Leds.leds.lights)) + " " + str(int(Habits.habits.first_complete)) + " " + str(int(Habits.habits.second_complete))
+        client.publish('remote/info', val)
 
 # Every client needs a random ID
 client = mqtt.Client(str(uuid.uuid1()))
@@ -115,16 +120,16 @@ try:
     while True:
         if mpr121[0].value:
             Leds.lightFlip(STRIP, DEBUG)
-
-        # Turns lights on if off
+            client.publish('remote/lights', "0")
         elif mpr121[5].value:
-            # Mode change
             Leds.cycleMode(STRIP, DEBUG)
         elif mpr121[2].value:
             Habits.flipFirstHabit(STRIP, DEBUG)
+            client.publish('remote/habits/first', "0")
         elif mpr121[8].value:
             Habits.flipSecondHabit(STRIP, DEBUG)
-	
+            client.publish('remote/habits/second', "0")
+
         Habits.nextDay()
         time.sleep(0.5) # Prevent multiple triggers for one touch
         
