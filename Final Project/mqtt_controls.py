@@ -6,6 +6,8 @@ import paho.mqtt.client as mqtt
 import uuid
 
 DEBUG = False
+STRIP = None
+
 topics = ["pi/color/", "pi/animation/", "pi/lights/", "pi/habits/", "pi/habits/first", "pi/habits/second", "pi/info"]
 
 def on_connect(client, userdata, flags, rc):
