@@ -54,16 +54,19 @@ def on_message(client, userdata, msg):
     if incoming_topic == topics[0]:
 	Leds.leds.mode = 1
         Leds.leds.color = str(msg.payload.decode('UTF-8'))
-        Leds.solidColor(STRIP)
+        displayMode(STRIP)
         print(Leds.leds.color)
+	print(Leds.leds.mode)
 
     # Animation
     # Directly goes to animated mood mode.
     elif incoming_topic == topics[1]:
 	Leds.leds.mode = 2
         Leds.leds.animation = str(msg.payload.decode('UTF-8'))
+	displayMode(STRIP)
         # TODO: CALL ANIMATION FUNCTION
         print(Leds.leds.animation)
+	print(Leds.leds.mode)
 
     # Habits
     # Any message to the topic means to turn on habits.
