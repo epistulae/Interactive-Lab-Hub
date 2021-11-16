@@ -167,11 +167,11 @@ def fastClearDisplay(strip, leds):
 # Mood lighting: Solid = 1
 # Mood lighting: Animated = 2
 # More can be added. Update mode_count to match and add appropriate handler here.
-def displayMode(strip, leds, pinpricks, debug=False):
+def displayMode(strip, leds, habits, pinpricks, debug=False):
     # All modes have white pinpricks.
     leds.lights = True
     if leds.mode is 0:
-        displayHabits(strip)
+        displayHabits(strip, habits)
     elif leds.mode is 1:
         solidColor(strip, pinpricks)
     elif leds.mode is 2:
@@ -187,9 +187,9 @@ def cycleMode(strip, leds, debug=False):
     displayMode(strip, debug)
 
 # Start display.
-def initDisplay(strip, leds, pinpricks, debug=False):
+def initDisplay(strip, leds, habits, pinpricks, debug=False):
     displayPinpricks(strip, pinpricks)
-    displayMode(strip, leds, pinpricks, debug)
+    displayMode(strip, leds, habits, pinpricks, debug)
     leds.lights = True
 
 # Switch LED display on and off.
