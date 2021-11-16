@@ -2,6 +2,7 @@
 
 from enum import Enum
 from rpi_ws281x import *
+import stars as Stars
 
 # LED strip configuration:
 LED_COUNT      = 200      # Number of LED pixels.
