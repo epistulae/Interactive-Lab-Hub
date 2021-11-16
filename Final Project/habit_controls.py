@@ -1,43 +1,59 @@
 #!/usr/bin/env python3
 
+import led_controls as Leds
 import stars as Stars
 import time
 
 class State:
     def __init__(self):
         self.day = time.localtime()[2]
-        self.habit_a = Stars.HABIT_A
+        self.first = Stars.HABIT_A
+        self.second = Stars.HABIT_B
 
-STATE = State()
+habits = State()
+
+def flipFirstHabit(strip):
+    constellation = habits.first.cur_constellation
+    star = habits.first.cur_star
+    habits.first.constellations[constellation][star].complete = not habits.first.constellations[constellation][star].complete
+    Leds.updateStar(strip, habits.first.constellations[constellation][star])
+    # debugHabits()
+    
+def flipSecondHabit(strip):
+    constellation = habits.second.cur_constellation
+    star = habits.second.cur_star
+    habits.second.constellations[constellation][star].complete = not habits.second.constellations[constellation][star].complete
+    Leds.updateStar(strip, habits.second.constellations[constellation][star])
+    # debugHabits()
 
 def nextDay():
     day = time.localtime()[2]
     
-    if day is not STATE.day:
-        STATE.day = day
+    if day is not habits.day:
+        habits.day = day
         # Habit A
-        if Stars.HABIT_A.cur_star + 1 is len(Stars.HABIT_A.constellations[Stars.HABIT_A.cur_constellation]):
+        if habits.first.cur_star + 1 is len(habits.first.constellations[habits.first.cur_constellation]):
             # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
-            Stars.HABIT_A.cur_constellation += 1
-            Stars.HABIT_A.cur_star = 0
+            habits.first.cur_constellation += 1
+            habits.first.cur_star = 0
         else:
             # Next star
-            Stars.HABIT_A.cur_star += 1
+            habits.first.cur_star += 1
 
         # Habit B
-        if Stars.HABIT_B.cur_star + 1 is len(Stars.HABIT_B.constellations[Stars.HABIT_B.cur_constellation]):
+        if habits.second.cur_star + 1 is len(habits.second.constellations[habits.second.cur_constellation]):
             # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
-            Stars.HABIT_B.cur_constellation += 1
-            Stars.HABIT_B.cur_star = 0
+            habits.second.cur_constellation += 1
+            habits.second.cur_star = 0
         else:
             # Next star
-            Stars.HABIT_B.cur_star += 1
+            habits.second.cur_star += 1
 
 def debugHabits():
     print("========================================")
     print("Habits debugging")
     count_c = 0
-    for constellation in STATE.habit_a.constellations:
+    for constellation in habits.second.constellations:
         print("Habit A Constellation " + str(count_c))
         count_s = 0
         for star in constellation:
@@ -45,7 +61,7 @@ def debugHabits():
             count_s += 1
         count_c += 1
     count_c = 0
-    for constellation in Stars.HABIT_B.constellations:
+    for constellation in habits.second.constellations:
         print("Habit B Constellation " + str(count_c))
         count_s = 0
         for star in constellation:
