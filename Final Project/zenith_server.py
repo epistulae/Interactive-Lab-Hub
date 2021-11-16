@@ -85,7 +85,7 @@ i2c = busio.I2C(board.SCL, board.SDA)
 mpr121 = adafruit_mpr121.MPR121(i2c)
 
 # Leds
-Leds.displayHabits(STRIP)
+Leds.initDisplay(STRIP)
 
 try:
     while True:
@@ -101,7 +101,6 @@ try:
                 # Turn on lights
                 print("turning on lights")
                 Leds.initDisplay(STRIP)
-                Leds.STATE.lights = True
                 print("New state: " + str(Leds.STATE.lights))
                 
         # Assume lights are on
@@ -113,14 +112,11 @@ try:
         elif mpr121[2].value:
             print("Habit A")
             Habits.flipFirstHabit(STRIP)
-            Habits.debugHabits()
         elif mpr121[8].value:
             print("Habit B")
             Habits.flipSecondHabit(STRIP)
-            Habits.debugHabits()
 	
-        if mpr121[11].value:
-            Habits.nextDay()
+        Habits.nextDay()
         time.sleep(0.5)
     print("outside" + Leds.STATE.color)
         
