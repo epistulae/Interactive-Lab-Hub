@@ -13,7 +13,8 @@ class State:
         self.lights = True # True = on, False = off
         self.mode = 0 
         self.mode_count = 3
-        self.color = "candlelight"
+        self.color = "rose"
+        self.animation = "cool"
 
 leds = State()
 
@@ -51,7 +52,10 @@ def cycleMode(strip):
         displayHabits(strip)
     elif leds.mode is 1:
         # Rainbow
-        print("Rainbow")
+        print("Solid mood mode")
+    elif leds.mode is 2:
+        print("Animated mood mode")
+        
 
 def displayPinpricks(strip):
     for led in Stars.PINPRICKS:
