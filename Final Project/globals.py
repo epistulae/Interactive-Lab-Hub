@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import habit_controls as Habits
 import led_controls as Leds
 
