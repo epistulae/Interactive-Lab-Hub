@@ -5,6 +5,11 @@ import led_controls as Leds
 import paho.mqtt.client as mqtt
 import uuid
 
+HOST = '100.64.1.201'
+PORT = 7827
+USER = 'cynthia'
+PASS = 'RoomOfRequirement'
+
 DEBUG = False
 STRIP = None
 
@@ -64,11 +69,9 @@ client = mqtt.Client(str(uuid.uuid1()))
 # configure network encryption etc
 # client.tls_set()
 # this is the username and pw we have setup for the class
-client.username_pw_set('cynthia', 'RoomOfRequirement')
+client.username_pw_set(USER, PASS)
 client.on_connect = on_connect
-client.connect(
-    '100.64.1.201',
-    port=7827)
+client.connect(HOST, port=PORT)
 
 def subscribing():
     client.on_message = on_message
