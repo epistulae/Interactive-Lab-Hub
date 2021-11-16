@@ -5,6 +5,8 @@ from rpi_ws281x import *
 import stars as Stars
 import time
 
+import habit_controls as Habits
+
 class State:
     def __init__(self):
         self.lights = True # True = on, False = off
@@ -23,6 +25,11 @@ class Colors(Enum):
     PINPRICK = Color(255, 245, 222)
     RED = Color(235, 52, 52)
 
+#
+#    
+# HABIT MODE FUNCTIONS
+#
+#
 def updateStar(strip, star):
     led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
     # Star
@@ -36,6 +43,8 @@ def updateStar(strip, star):
             for led in leds:
                 strip.setPixelColor(led, led_color)
     strip.show()
+    Habits.debugHabits()
+    print("Current star status: " + str(update))
 
 # Show state of habits
 def displayHabits(strip):
@@ -46,8 +55,6 @@ def displayHabits(strip):
     # Habit A
     for constellation in Stars.HABIT_A.constellations:
         for star in constellation:
-#             print("displayed star: " + str(star_count))
-#             star_count += 1
             led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
             # Star
             strip.setPixelColor(star.index, led_color)
@@ -63,8 +70,6 @@ def displayHabits(strip):
     # Habit B
     for constellation in Stars.HABIT_B.constellations:
         for star in constellation:
-#             print("displayed star: " + str(star_count))
-#             star_count += 1
             led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
             # Star
             strip.setPixelColor(star.index, led_color)
