@@ -34,7 +34,7 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 #
 # MQTT : Remote inputs
 #
-topics = ["Color/", "Animation/", "Mode/", "Lights/"]
+topics = ["Color/", "Animation/", "Habits/", "Lights/"]
 
 def on_connect(client, userdata, flags, rc):
     print("connected with result code " + str(rc))
@@ -50,20 +50,25 @@ def on_message(client, userdata, msg):
     
     # Color 
     # Input is the same Leds module's Colors enum. 
+    # Directly goes to solid color mood mode.
     if incoming_topic == topics[0]:
         Leds.leds.color = str(msg.payload.decode('UTF-8'))
+        Leds.solidColor(STRIP)
         print(Leds.leds.color)
 
     # Animation
-    # Input is the same Leds module's Animations enum. 
+    # Directly goes to animated mood mode.
     elif incoming_topic == topics[1]:
         Leds.leds.animation = str(msg.payload.decode('UTF-8'))
+        # TODO: CALL ANIMATION FUNCTION
         print(Leds.leds.animation)
 
-    # Mode
-    # Input range is from 0 to (number of modes - 1)
+    # Habits
+    # Any message to the topic means to turn on habits.
     elif incoming_topic == topics[2]:
-        Leds.leds.mode = int(msg.payload.decode('UTF-8'))
+        if Leds.leds.mode is not 0
+            Leds.leds.mode = 0
+            Leds.displayHabits(STRIP)
         print(Leds.leds.mode)
         
     # Lights
