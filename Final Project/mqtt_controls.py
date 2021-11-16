@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
-import globals
+import globals as Globals
 import habit_controls as Habits
 import led_controls as Leds
 import paho.mqtt.client as mqtt
 import uuid
-import main
+
 
 HOST = '100.64.1.201'
 PORT = 7827
