@@ -23,38 +23,38 @@ def on_message(client, userdata, msg):
     if incoming_topic == topics[0]:
         Globals.leds.mode = 1
         Globals.leds.color = str(msg.payload.decode('UTF-8'))
-        Leds.displayMode(Globals.STRIP, Globals.DEBUG)
+        Leds.displayMode(Globals.STRIP, Globals.leds, Globals.DEBUG)
 
     # Animation
     # Directly goes to animated mood mode.
     elif incoming_topic == topics[1]:
         Globals.leds.mode = 2
         Globals.leds.animation = str(msg.payload.decode('UTF-8'))
-        Leds.displayMode(Globals.STRIP, Globals.DEBUG)
+        Leds.displayMode(Globals.STRIP, Globals.leds, Globals.DEBUG)
 	
     # Lights
     # Any message to the topic means to flip lights.
     elif incoming_topic == topics[2]:
-        Leds.lightFlip(Globals.STRIP, Globals.DEBUG)
+        Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.DEBUG)
 	
     # Habits
     # Any message to the topic means to turn on habits.
     elif incoming_topic == topics[3]:
         if Leds.leds.mode is not 0:
             Globals.leds.mode = 0
-            Leds.displayMode(Globals.STRIP, Globals.DEBUG)
+            Leds.displayMode(Globals.STRIP, Globals.leds, Globals.DEBUG)
         
     # Flip first habit (any message)
     elif incoming_topic == topics[4]:
-        Habits.flipFirstHabit(Globals.STRIP, Globals.DEBUG)
+        Habits.flipFirstHabit(Globals.STRIP, Globals.habits, Globals.DEBUG)
 
     # Flip second habit (any message)
     elif incoming_topic == topics[5]:
-        Habits.flipSecondHabit(Globals.STRIP, Globals.DEBUG)
+        Habits.flipSecondHabit(Globals.STRIP, Globals.habits, Globals.DEBUG)
     
     # Request remote state data
     elif incoming_topic == topics[6]:
-        val = str(int(Leds.leds.lights)) + " " + str(int(Habits.habits.first_complete)) + " " + str(int(Habits.habits.second_complete))
+        val = str(int(Globals.leds.lights)) + " " + str(int(Globals.habits.first_complete)) + " " + str(int(Globals.habits.second_complete))
         client.publish('remote/info', val)
 
 # Every client needs a random ID
