@@ -10,7 +10,6 @@ import led_controls as Leds
 import mqtt_controls as Mqtt
 import multiprocessing
 from rpi_ws281x import *
-import stars as Stars
 import time
 
 # Configs and inits
