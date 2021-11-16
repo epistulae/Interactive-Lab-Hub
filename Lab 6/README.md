@@ -178,7 +178,20 @@ For two users, since Zenith tracks two habits, each user can use one habit, and 
 
 Please see code here: [main.py](https://github.com/epistulae/Interactive-Lab-Hub/blob/Fall2021/Final%20Project/main.py) and [mqtt_controls.py](https://github.com/epistulae/Interactive-Lab-Hub/blob/Fall2021/Final%20Project/mqtt_controls.py)
 
-**\*\*\*4. Document the working prototype in use.\*\*\*** It may be helpful to record a Zoom session where you should the input in one location clearly causing response in another location.
+**\*\*\*4. Document the working prototype in use.\*\*\*** 
+
+Had some trouble getting a video of the app interaction since I'm using my phone to film, but here is my simulating the interaction with the MQTT explorer. 
+Also, there's a minor bug from the multithreading where the certain values are not synced across the two threads (capacitive and remote) so I need to fix that later. As I noted in the video, the leds can't display the changes since the power source is still on its way, but the logic to do that is already there.
+
+Simulating the app:
+
+https://user-images.githubusercontent.com/14368010/142050131-d80e3008-17bf-4dff-9319-8c933b9ae391.mp4
+
+Touch sensors:
+
+https://user-images.githubusercontent.com/14368010/142050081-3d653d4f-9779-4b17-875c-af68b3d00584.mp4
+
+
 
 <!--**\*\*\*5. BONUS (Wendy didn't approve this so you should probably ignore it)\*\*\*** get the whole class to run your code and make your distributed system BIGGER.-->
 
