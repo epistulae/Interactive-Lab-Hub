@@ -17,11 +17,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-d', '--debug', action='store_true', help='print debugging statements')
 args = parser.parse_args()
 
-DEBUG = False
-
 if args.debug:
-    DEBUG = True
-    Mqtt.DEBUG = True
+    Globals.DEBUG = True
 
 LED_COUNT      = 200      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
@@ -33,7 +30,7 @@ LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
 STRIP = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 STRIP.begin()
-Mqtt.STRIP = STRIP
+Globals.STRIP = STRIP
 
 i2c = busio.I2C(board.SCL, board.SDA)
 mpr121 = adafruit_mpr121.MPR121(i2c)
@@ -45,18 +42,18 @@ appListener.start()
 # Main Server: Capacity Inputs
 #
 try:
-    Leds.initDisplay(STRIP)
+    Leds.initDisplay(Globals.STRIP)
     while True:
         if mpr121[0].value:
-            Leds.lightFlip(STRIP, DEBUG)
+            Leds.lightFlip(Globals.STRIP, Globals.DEBUG)
             Mqtt.client.publish('remote/lights', "0")
         elif mpr121[5].value:
-            Leds.cycleMode(STRIP, DEBUG)
+            Leds.cycleMode(Globals.STRIP, Globals.DEBUG)
         elif mpr121[2].value:
-            Habits.flipFirstHabit(STRIP, DEBUG)
+            Habits.flipFirstHabit(Globals.STRIP, Globals.DEBUG)
             Mqtt.client.publish('remote/habits/first', "0")
         elif mpr121[8].value:
-            Habits.flipSecondHabit(STRIP, DEBUG)
+            Habits.flipSecondHabit(Globals.STRIP, Globals.DEBUG)
             Mqtt.client.publish('remote/habits/second', "0")
 
         Habits.nextDay()
