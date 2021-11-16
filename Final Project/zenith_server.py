@@ -42,7 +42,7 @@ def displayMode(strip):
     # All modes have white pinpricks
     if STATE.mode is 0:
         print("Habits Mode")
-        displayHabits(strip)
+        Leds.displayHabits(strip)
     elif STATE.mode is 1:
         # Rainbow
         print("Rainbow")
