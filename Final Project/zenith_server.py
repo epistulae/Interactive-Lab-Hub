@@ -29,10 +29,10 @@ STRIP.begin()
 def displayMode(strip):
     print("Show display mood")
     # All modes have white pinpricks
-    if Habits.STATE.mode is 0:
+    if Leds.STATE.mode is 0:
         print("Habits Mode")
         Leds.displayHabits(strip)
-    elif Habits.STATE.mode is 1:
+    elif Leds.STATE.mode is 1:
         # Rainbow
         print("Rainbow")
 
@@ -54,8 +54,8 @@ def on_message(client, userdata, msg):
 	print(str(msg.topic))
 	print(str(str(msg.topic) is "Colors/"))
 	if str(msg.topic) is not "Colors/":
-		Habits.STATE.color = str(msg.payload.decode('UTF-8'))
-		print(Habits.STATE.color)
+		Leds.STATE.color = str(msg.payload.decode('UTF-8'))
+		print(Leds.STATE.color)
 
 	# if msg.topic == 'IDD/some/other/topic': do thing
 
@@ -92,26 +92,26 @@ try:
         # Inputs
         if mpr121[0].value:
             print("Lights on off")
-            if Habits.STATE.lights:
+            if Leds.STATE.lights:
                 print("Closing lights")
                 # Close lights
                 Leds.colorWipe(STRIP, Color(0,0,0), 10)
-                Habits.STATE.lights = False
-                print("New state: " + str(Habits.STATE.lights))
+                Leds.STATE.lights = False
+                print("New state: " + str(Leds.STATE.lights))
             else:
                 # Turn on lights
                 print("turning on lights")
-                Habits.STATE.lights = True
-                print("New state: " + str(Habits.STATE.lights))
-                Habits.STATE.mode = 0 # Always turn lights on to habit mode
+                Leds.STATE.lights = True
+                print("New state: " + str(Leds.STATE.lights))
+                Leds.STATE.mode = 0 # Always turn lights on to habit mode
                 Leds.displayHabits(STRIP)
                 
         # Assume lights are on
         elif mpr121[5].value:
             # Mode change
-            Habits.STATE.mode = (Habits.STATE.mode + 1) % Habits.STATE.mode_count
+            Leds.STATE.mode = (Leds.STATE.mode + 1) % Leds.STATE.mode_count
             displayMode(STRIP)
-            print("Mode: " + str(STATE.mode))
+            print("Mode: " + str(Leds.STATE.mode))
         elif mpr121[2].value:
             print("Habit A")
             constellation = Stars.HABIT_A.cur_constellation
@@ -129,7 +129,7 @@ try:
 
         Habits.nextDay()
         time.sleep(0.5)
-    print("outside" + Habits.STATE.color)
+    print("outside" + Leds.STATE.color)
         
 except KeyboardInterrupt:
     sub.terminate()
