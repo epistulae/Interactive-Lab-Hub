@@ -14,6 +14,17 @@ import paho.mqtt.client as mqtt
 import uuid
 import multiprocessing
 
+class State:
+    def __init__(self):
+        self.lights = True # True = on, False = off
+        self.day = time.localtime()[2]
+        # Habit = 0
+	# Mood lighting = 1
+	# More can be added. Update mode_count to match and add appropriate handlers.
+        self.mode = 0 
+        self.mode_count = 2
+        self.color = "Rainbow"
+
 # Configs and inits
 LED_COUNT      = 200      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
@@ -26,17 +37,6 @@ LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 STRIP = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 STRIP.begin()
 STATE = State()
-
-class State:
-    def __init__(self):
-        self.lights = True # True = on, False = off
-        self.day = time.localtime()[2]
-        # Habit = 0
-	# Mood lighting = 1
-	# More can be added. Update mode_count to match and add appropriate handlers.
-        self.mode = 0 
-        self.mode_count = 2
-        self.color = "Rainbow"
 
 class Colors(Enum):
     INCOMPLETE = Color(237, 108, 2)
