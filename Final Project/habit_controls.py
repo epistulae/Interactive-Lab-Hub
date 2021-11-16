@@ -17,14 +17,14 @@ def flipFirstHabit(strip):
     star = habits.first.cur_star
     habits.first.constellations[constellation][star].complete = not habits.first.constellations[constellation][star].complete
     Leds.updateStar(strip, habits.first.constellations[constellation][star])
-    # debugHabits()
+    debugHabits()
     
 def flipSecondHabit(strip):
     constellation = habits.second.cur_constellation
     star = habits.second.cur_star
     habits.second.constellations[constellation][star].complete = not habits.second.constellations[constellation][star].complete
     Leds.updateStar(strip, habits.second.constellations[constellation][star])
-    # debugHabits()
+    debugHabits()
 
 def nextDay():
     day = time.localtime()[2]
@@ -52,19 +52,21 @@ def nextDay():
 def debugHabits():
     print("========================================")
     print("Habits debugging")
+    habit_star = 0
     count_c = 0
     for constellation in habits.first.constellations:
-        print("Habit A Constellation " + str(count_c))
+        print("\nHabit A Constellation " + str(count_c))
         count_s = 0
         for star in constellation:
-            print("Star " + str(count_s) + " complete: " + str(star.complete))
+            print("Habit star: " + str(habit_star) + " | Constellation star: " + str(count_s) + " | Complete: " + str(star.complete))
             count_s += 1
         count_c += 1
+    habit_star = 0
     count_c = 0
     for constellation in habits.second.constellations:
-        print("Habit B Constellation " + str(count_c))
+        print("\nHabit B Constellation " + str(count_c))
         count_s = 0
         for star in constellation:
-            print("Star " + str(count_s) + " complete: " + str(star.complete))
+            print("Habit star: " + str(habit_star) + " | Constellation star: " + str(count_s) + " | Complete: " + str(star.complete))
             count_s += 1
         count_c += 1
