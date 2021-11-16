@@ -7,38 +7,42 @@ import time
 
 import habit_controls as Habits
 
+# Tracks state of LED lights
 class State:
     def __init__(self):
         self.lights = True # True = on, False = off
-        # Habit = 0
-	    # Mood lighting = 1
-	    # More can be added. Update mode_count to match and add appropriate handlers.
         self.mode = 0 
         self.mode_count = 2
         self.color = "Rainbow"
 
-STATE = State()
-        
+leds = State()
+
+# All color values
 class Colors(Enum):
     INCOMPLETE = Color(237, 108, 2)
     COMPLETE = Color(20, 164, 217)
     PINPRICK = Color(255, 245, 222)
     RED = Color(235, 52, 52)
 
+# Cycle through available modes. 
+# Habit = 0
+# Mood lighting = 1
+# More can be added. Update mode_count to match and add appropriate handler here.
 def cycleMode(strip):
     # All modes have white pinpricks
     print("Display mode")
-    STATE.mode = (STATE.mode + 1) % STATE.mode_count
-    if STATE.mode is 0:
+    leds.mode = (leds.mode + 1) % leds.mode_count
+    if leds.mode is 0:
         print("Habits Mode")
         displayHabits(strip)
-    elif STATE.mode is 1:
+    elif leds.mode is 1:
         # Rainbow
         print("Rainbow")
 
 # 
 # HABIT MODE FUNCTIONS
 #
+# Update one star in the constellation and color in connections to other stars.
 def updateStar(strip, star):
     led_color = Colors.COMPLETE.value if star.complete else Colors.INCOMPLETE.value
     # Star
@@ -53,7 +57,7 @@ def updateStar(strip, star):
                 strip.setPixelColor(led, led_color)
     strip.show()
 
-# Show state of habits
+# Light up LEDs for both habits.
 def displayHabits(strip):
     for led in Stars.PINPRICKS:
         strip.setPixelColor(led, Colors.PINPRICK.value)
@@ -133,35 +137,38 @@ def rainbow(strip, wait_ms=20, iterations=1):
 #
 # GENERAL DISPLAY FUNCTIONS
 #
+# Start display. Always inits to display habits.
 def initDisplay(strip):
-	# Display always inits to display habits.
-    STATE.mode = 0
+    leds.mode = 0
     displayHabits(strip)
-    STATE.lights = True
-    
+    leds.lights = True
+
+# Close LEDs in a slow snake. For aestetics.
 def slowClearDisplay(strip):
     blank = Color(0,0,0)
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, blank)
         strip.show()
         time.sleep(10/1000.0)
-    STATE.lights = False
+    leds.lights = False
 
+# Close LEDs all at once. For debugging.6
 def fastClearDisplay(strip):
     blank = Color(0,0,0)
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, blank)
     strip.show()
-    STATE.lights = False
+    leds.lights = False
 
+# Switch LED display on and off.
 def lightFlip(strip):
-    if STATE.lights:
+    if leds.lights:
         print("Closing lights")
         # Close lights
         fastClearDisplay(strip)
-        print("New state: " + str(STATE.lights))
+        print("New state: " + str(leds.lights))
     else:
         # Turn on lights
         print("turning on lights")
         initDisplay(strip)
-        print("New state: " + str(STATE.lights))
+        print("New state: " + str(leds.lights))
