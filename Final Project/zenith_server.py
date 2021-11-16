@@ -114,17 +114,11 @@ try:
             print("Mode: " + str(Leds.STATE.mode))
         elif mpr121[2].value:
             print("Habit A")
-            constellation = Stars.HABIT_A.cur_constellation
-            star = Stars.HABIT_A.cur_star
-            Stars.HABIT_A.constellations[constellation][star].complete = not Stars.HABIT_A.constellations[constellation][star].complete
-            Leds.updateStar(STRIP, Stars.HABIT_A.constellations[constellation][star])
+            flipFirstHabit(STRIP)
             Habits.debugHabits()
         elif mpr121[8].value:
             print("Habit B")
-            constellation = Stars.HABIT_B.cur_constellation
-            star = Stars.HABIT_B.cur_star
-            Stars.HABIT_B.constellations[constellation][star].complete = not Stars.HABIT_B.constellations[constellation][star].complete
-            Leds.updateStar(STRIP, Stars.HABIT_B.constellations[constellation][star])
+            flipSecondHabit(STRIP)
             Habits.debugHabits()
 
         Habits.nextDay()
@@ -133,4 +127,4 @@ try:
         
 except KeyboardInterrupt:
     sub.terminate()
-    Leds.slowClearDisplay(STRIP)
+    Leds.fastClearDisplay(STRIP)
