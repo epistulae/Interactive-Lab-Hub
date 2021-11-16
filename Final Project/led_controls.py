@@ -26,7 +26,7 @@ class Colors(Enum):
     rose = Color(235, 52, 52)
     sunset = Color(235, 137, 52)
     buttercup = Color(235, 201, 52)
-    candlelight = Color(230 210 161)
+    candlelight = Color(230, 210, 161)
     spring = Color(168, 235, 52)
     forest = Color(27, 153, 23)
     turquoise = Color(21 187 183)
