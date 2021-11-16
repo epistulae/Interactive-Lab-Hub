@@ -44,8 +44,8 @@ def on_message(client, userdata, msg):
 	print(str(msg.topic))
 	print(str(str(msg.topic) is "Colors/"))
 	if str(msg.topic) is not "Colors/":
-		Leds.STATE.color = str(msg.payload.decode('UTF-8'))
-		print(Leds.STATE.color)
+		Leds.leds.color = str(msg.payload.decode('UTF-8'))
+		print(Leds.led.color)
 
 	# if msg.topic == 'IDD/some/other/topic': do thing
 
