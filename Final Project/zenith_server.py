@@ -36,6 +36,7 @@ LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
 STRIP = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 STRIP.begin()
+Mqtt.STRIP = STRIP
 
 i2c = busio.I2C(board.SCL, board.SDA)
 mpr121 = adafruit_mpr121.MPR121(i2c)
