@@ -17,6 +17,15 @@ import multiprocessing
 #
 # Configs and inits
 #
+parser = argparse.ArgumentParser()
+parser.add_argument('-d', '--debug', action='store_true', help='print debugging statements')
+args = parser.parse_args()
+
+DEBUG = False
+
+if args.debug:
+    DEBUG = True
+
 LED_COUNT      = 200      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
@@ -41,11 +50,7 @@ def on_connect(client, userdata, flags, rc):
     for topic in topics:
         client.subscribe(topic)
 
-# this is the callback that gets called each time a message is recived
 def on_message(client, userdata, msg):
-    print("topic: " + str(msg.topic) + " msg: " + str(msg.payload.decode('UTF-8')))
-    print(str(msg.topic))
-    print(str(str(msg.topic) == topics[0]))
     incoming_topic = str(msg.topic)
     
     # Color 
@@ -54,7 +59,7 @@ def on_message(client, userdata, msg):
     if incoming_topic == topics[0]:
         Leds.leds.mode = 1
         Leds.leds.color = str(msg.payload.decode('UTF-8'))
-        Leds.displayMode(STRIP)
+        Leds.displayMode(STRIP, DEBUG)
         print(Leds.leds.color)
         print(Leds.leds.mode)
 
@@ -63,10 +68,7 @@ def on_message(client, userdata, msg):
     elif incoming_topic == topics[1]:
         Leds.leds.mode = 2
         Leds.leds.animation = str(msg.payload.decode('UTF-8'))
-        Leds.displayMode(STRIP)
-        # TODO: CALL ANIMATION FUNCTION
-        print(Leds.leds.animation)
-        print(Leds.leds.mode)
+        Leds.displayMode(STRIP, DEBUG)
 	
     # Lights
     # Any message to the topic means to flip lights.
@@ -78,18 +80,15 @@ def on_message(client, userdata, msg):
     elif incoming_topic == topics[3]:
         if Leds.leds.mode is not 0:
             Leds.leds.mode = 0
-            Leds.displayHabits(STRIP)
-        print(Leds.leds.mode)
+            Leds.displayMode(STRIP, DEBUG)
         
-    # Flip first habit
+    # Flip first habit (any message)
     elif incoming_topic == topics[4]:
-        print("Habit A")
-        Habits.flipFirstHabit(STRIP)
+        Habits.flipFirstHabit(STRIP, DEBUG)
 
-    # Flip second habit
-    elif incoming_topic == topics[4]:
-        print("Habit B")
-        Habits.flipSecondHabit(STRIP)
+    # Flip second habit (any message)
+    elif incoming_topic == topics[5]:
+        Habits.flipSecondHabit(STRIP, DEBUG)
 
 # Every client needs a random ID
 client = mqtt.Client(str(uuid.uuid1()))
@@ -116,20 +115,16 @@ try:
     Leds.initDisplay(STRIP)
     while True:
         if mpr121[0].value:
-            print("Lights on off")
-            Leds.lightFlip(STRIP)
+            Leds.lightFlip(STRIP, DEBUG)
 
         # Turns lights on if off
         elif mpr121[5].value:
             # Mode change
-            Leds.cycleMode(STRIP)
-            print("Mode: " + str(Leds.STATE.mode))
+            Leds.cycleMode(STRIP, DEBUG)
         elif mpr121[2].value:
-            print("Habit A")
-            Habits.flipFirstHabit(STRIP)
+            Habits.flipFirstHabit(STRIP, DEBUG)
         elif mpr121[8].value:
-            print("Habit B")
-            Habits.flipSecondHabit(STRIP)
+            Habits.flipSecondHabit(STRIP, DEBUG)
 	
         Habits.nextDay()
         time.sleep(0.5) # Prevent multiple triggers for one touch
