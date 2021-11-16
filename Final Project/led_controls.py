@@ -62,12 +62,12 @@ def displayHabits(strip, habits, debug=False):
             strip.setPixelColor(star.index, led_color)
             update = star.complete 
             # Connectors
-#             for prior in star.prior_stars:
-#                 if update:
-#                     led_color = Colors.complete.value if prior[0].complete else Colors.incomplete.value
-#                 leds = prior[1]
-#                 for led in leds:
-#                     strip.setPixelColor(led, led_color)
+            for prior in star.prior_stars:
+                if update:
+                    led_color = Colors.complete.value if not prior[0].complete else Colors.incomplete.value
+                leds = prior[1]
+                for led in leds:
+                    strip.setPixelColor(led, led_color)
     strip.show()
     
     if debug:
