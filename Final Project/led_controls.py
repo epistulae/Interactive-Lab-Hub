@@ -158,10 +158,10 @@ def lightFlip(strip):
     if STATE.lights:
         print("Closing lights")
         # Close lights
-        fastClearDisplay(STRIP)
+        fastClearDisplay(strip)
         print("New state: " + str(STATE.lights))
     else:
         # Turn on lights
         print("turning on lights")
-        Leds.initDisplay(STRIP)
+        Leds.initDisplay(strip)
         print("New state: " + str(STATE.lights))
