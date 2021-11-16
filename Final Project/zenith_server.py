@@ -77,22 +77,13 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 # Leds
 Leds.initDisplay(STRIP)
 
+# Main Server, Capacity Inputs
 try:
     while True:
-        # Inputs
         if mpr121[0].value:
             print("Lights on off")
-            if Leds.STATE.lights:
-                print("Closing lights")
-                # Close lights
-                Leds.fastClearDisplay(STRIP)
-                print("New state: " + str(Leds.STATE.lights))
-            else:
-                # Turn on lights
-                print("turning on lights")
-                Leds.initDisplay(STRIP)
-                print("New state: " + str(Leds.STATE.lights))
-                
+            Leds.lightFlip(STRIP)
+
         # Assume lights are on
         elif mpr121[5].value:
             # Mode change
