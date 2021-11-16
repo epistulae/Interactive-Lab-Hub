@@ -163,5 +163,5 @@ def lightFlip(strip):
     else:
         # Turn on lights
         print("turning on lights")
-        Leds.initDisplay(strip)
+        initDisplay(strip)
         print("New state: " + str(STATE.lights))
