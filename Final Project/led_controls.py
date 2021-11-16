@@ -189,7 +189,7 @@ def cycleMode(strip, leds, debug=False):
 # Start display.
 def initDisplay(strip, leds, pinpricks, debug=False):
     displayPinpricks(strip, pinpricks)
-    displayMode(strip, debug)
+    displayMode(strip, leds, pinpricks, debug)
     leds.lights = True
 
 # Switch LED display on and off.
