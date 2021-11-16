@@ -28,7 +28,7 @@ class Colors(Enum):
     spring = Color(168, 235, 52)
     forest = Color(27, 153, 23)
     aqua = Color(21, 187, 183)
-    royal = Color(25, 25, 255)
+    royal = Color(98, 0, 255)
     amethyst = Color(168, 57, 237)
     sakura = Color(245, 120, 189)
     blank = Color(0, 0, 0)
