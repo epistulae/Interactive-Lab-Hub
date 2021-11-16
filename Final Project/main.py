@@ -38,11 +38,15 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 appListener = multiprocessing.Process(target=Mqtt.subscribing, args=())
 appListener.start()
 
+for i in range(10):
+    STRIP.setPixelColor(i, Color(235,52,52))
+STRIP.show()
+
 #
 # Main Server: Capacity Inputs
 #
 try:
-    Leds.initDisplay(Globals.STRIP)
+    Leds.initDisplay(Globals.STRIP, Globals.leds, Globals.pinpricks)
     while True:
         if mpr121[0].value:
             Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.DEBUG)
