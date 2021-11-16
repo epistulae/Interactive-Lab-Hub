@@ -85,6 +85,11 @@ Once connected, you should be able to see all the messages under the IDD topic. 
   ```
 
 **\*\*\*Consider how you might use this messaging system on interactive devices, and draw/write down 5 ideas here.\*\*\***
+- Control a robot
+- Home security (Including temperature/water sensors that when triggered sends you an alert when sensing flooding and extreme temperatures.)
+- Remote pet feeder
+- Light control (I'm doing this for this lab/as part of my final project.)
+- Maybe traffic tracking in a city (Cameras send images to be parsed and analyzed by a server so people can see how bad traffic is.)
 
 ### Part C
 ### Streaming a Sensor
@@ -106,6 +111,9 @@ Plug in the capacitive sensor board with the Qwiic connector. Use the alligator 
  ```
 
 **\*\*\*Include a picture of your setup here: what did you see on MQTT Explorer?\*\*\***
+<img width="628" alt="Screen Shot 2021-11-16 at 12 45 21 PM" src="https://user-images.githubusercontent.com/14368010/142038024-23e06bd5-106a-4c05-a08e-c142b2b70d0b.png">
+Note, I was playing around with how it would look with my project so I was testing colors with the capacitive sensor.
+
 
 **\*\*\*Pick another part in your kit and try to implement the data streaming with it.\*\*\***
 
@@ -145,13 +153,24 @@ Of course not! You can go to [https://one-true-colornet.glitch.me/](https://one-
 ### Part E
 ### Make it your own
 
-Find at least one class (more are okay) partner, and design a distributed application together based on the exercise we asked you to do in this lab.
+Note: I did this on my own. I implemented the MQTT interaction my final project would need to be remotely controlled. Code is in my [Final Project](https://github.com/epistulae/Interactive-Lab-Hub/tree/Fall2021/Final%20Project) repom, specifically in the [main.py](https://github.com/epistulae/Interactive-Lab-Hub/blob/Fall2021/Final%20Project/main.py) and [mqtt_controls.py]() files. I also built a Swift application to control this via an application.
 
-**\*\*\*1. Explain your design\*\*\*** For example, if you made a remote controlled banana piano, explain why anyone would want such a thing.
 
-**\*\*\*2. Diagram the architecture of the system.\*\*\*** Be clear to document where input, output and computation occur, and label all parts and connections. For example, where is the banana, who is the banana player, where does the sound get played, and who is listening to the banana music?
+**\*\*\*1. Explain your design\*\*\*** 
 
-**\*\*\*3. Build a working prototype of the system.\*\*\*** Do think about the user interface: if someone encountered these bananas somewhere in the wild, would they know how to interact with them? Should they know what to expect?
+This interaction is part of [Zenith](https://github.com/epistulae/Interactive-Lab-Hub/blob/Fall2021/Final%20Project/README.md), my final project. Zenith is an interactive wall art piece that doubles as a habit tracker and mood lighting. 
+
+General Goals of the product:
+- Visual indicator of goal progress.
+- Highly visible reminder to stay on track of habits.
+- Aestetically pleasing addition to living space.
+
+
+**\*\*\*2. Diagram the architecture of the system.\*\*\*** 
+
+
+**\*\*\*3. Build a working prototype of the system.\*\*\*** 
+Please see code here: [main.py](https://github.com/epistulae/Interactive-Lab-Hub/blob/Fall2021/Final%20Project/main.py) and [mqtt_controls.py](https://github.com/epistulae/Interactive-Lab-Hub/blob/Fall2021/Final%20Project/mqtt_controls.py)
 
 **\*\*\*4. Document the working prototype in use.\*\*\*** It may be helpful to record a Zoom session where you should the input in one location clearly causing response in another location.
 
