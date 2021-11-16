@@ -11,5 +11,5 @@ PASS = 'RoomOfRequirement'
 DEBUG = False
 STRIP = None
 
-leds = Leds.leds
-habits = Habits.habits
+leds = Leds.State()
+habits = Habits.State()
