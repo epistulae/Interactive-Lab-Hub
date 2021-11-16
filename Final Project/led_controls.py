@@ -38,29 +38,11 @@ class Colors(Enum):
     sakura = Color(245, 120, 189)
     blank = Color(0,0,0)
 
-# Cycle through available modes. 
-# Habit = 0
-# Mood lighting: Solid = 1
-# Mood lighting: Animated = 2
-# More can be added. Update mode_count to match and add appropriate handler here.
-def cycleMode(strip):
-    # All modes have white pinpricks
-    print("Display mode")
-    leds.mode = (leds.mode + 1) % leds.mode_count
-    if leds.mode is 0:
-        print("Habits Mode")
-        displayHabits(strip)
-    elif leds.mode is 1:
-        # Rainbow
-        print("Solid mood mode")
-    elif leds.mode is 2:
-        print("Animated mood mode")
-        
-
-def displayPinpricks(strip):
-    for led in Stars.PINPRICKS:
-        strip.setPixelColor(led, Colors.pinprick.value)
-    strip.show()
+# All animation types.
+class Animations(Enum):
+    rainbow = 0
+    cool = 1
+    fire = 2
 
 # 
 # HABIT MODE FUNCTIONS
@@ -162,8 +144,14 @@ def rainbow(strip, wait_ms=20, iterations=1):
         time.sleep(wait_ms/1000.0)
 
 #
-# GENERAL DISPLAY FUNCTIONS
+# GENERAL FUNCTIONS
 #
+# Display just the pinpricks.
+def displayPinpricks(strip):
+    for led in Stars.PINPRICKS:
+        strip.setPixelColor(led, Colors.pinprick.value)
+    strip.show()
+
 # Start display. Always inits to display habits.
 def initDisplay(strip):
     leds.mode = 0
@@ -198,3 +186,21 @@ def lightFlip(strip):
         print("turning on lights")
         initDisplay(strip)
         print("New state: " + str(leds.lights))
+
+# Cycle through available modes. 
+# Habit = 0
+# Mood lighting: Solid = 1
+# Mood lighting: Animated = 2
+# More can be added. Update mode_count to match and add appropriate handler here.
+def cycleMode(strip):
+    # All modes have white pinpricks.
+    print("Display mode")
+    leds.mode = (leds.mode + 1) % leds.mode_count
+    if leds.mode is 0:
+        print("Habits Mode")
+        displayHabits(strip)
+    elif leds.mode is 1:
+        print("Solid mood mode")
+        solidColor(strip)
+    elif leds.mode is 2:
+        print("Animated mood mode")
