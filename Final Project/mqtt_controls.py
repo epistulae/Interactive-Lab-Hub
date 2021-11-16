@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import globals as Globals
+import global_vars as Globals
 import habit_controls as Habits
 import led_controls as Leds
 import paho.mqtt.client as mqtt
@@ -21,15 +21,15 @@ def on_message(client, userdata, msg):
     # Input is the same Leds module's Colors enum. 
     # Directly goes to solid color mood mode.
     if incoming_topic == topics[0]:
-        Leds.leds.mode = 1
-        Leds.leds.color = str(msg.payload.decode('UTF-8'))
+        Globals.leds.mode = 1
+        Globals.leds.color = str(msg.payload.decode('UTF-8'))
         Leds.displayMode(Globals.STRIP, Globals.DEBUG)
 
     # Animation
     # Directly goes to animated mood mode.
     elif incoming_topic == topics[1]:
-        Leds.leds.mode = 2
-        Leds.leds.animation = str(msg.payload.decode('UTF-8'))
+        Globals.leds.mode = 2
+        Globals.leds.animation = str(msg.payload.decode('UTF-8'))
         Leds.displayMode(Globals.STRIP, Globals.DEBUG)
 	
     # Lights
@@ -41,7 +41,7 @@ def on_message(client, userdata, msg):
     # Any message to the topic means to turn on habits.
     elif incoming_topic == topics[3]:
         if Leds.leds.mode is not 0:
-            Leds.leds.mode = 0
+            Globals.leds.mode = 0
             Leds.displayMode(Globals.STRIP, Globals.DEBUG)
         
     # Flip first habit (any message)
