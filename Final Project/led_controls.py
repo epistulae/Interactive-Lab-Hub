@@ -156,13 +156,6 @@ def displayPinpricks(strip):
         strip.setPixelColor(led, Colors.pinprick.value)
     strip.show()
 
-# Start display. Always inits to display habits.
-def initDisplay(strip):
-    leds.mode = 0
-    displayPinpricks(strip)
-    displayHabits(strip)
-    leds.lights = True
-
 # Close LEDs in a slow snake. For aestetics.
 def slowClearDisplay(strip):
     for i in range(strip.numPixels()):
@@ -201,6 +194,12 @@ def cycleMode(strip):
     print("Cycle mode")
     leds.mode = (leds.mode + 1) % leds.mode_count
     displayMode(strip)
+
+# Start display. Always inits to display habits.
+def initDisplay(strip):
+    displayPinpricks(strip)
+    displayMode(strip)
+    leds.lights = True
 
 # Switch LED display on and off.
 def lightFlip(strip):
