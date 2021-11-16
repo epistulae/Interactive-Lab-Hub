@@ -4,6 +4,7 @@ import habit_controls as Habits
 import led_controls as Leds
 import paho.mqtt.client as mqtt
 import uuid
+import main
 
 HOST = '100.64.1.201'
 PORT = 7827
