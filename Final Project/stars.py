@@ -13,7 +13,7 @@ class Habit:
         self.cur_constellation = 0
         self.cur_star = 0
         
-PINPRICKS = [0, 58, 59, 60, 64, 76, 77, 98, 99, 100, 101, 122, 123, 124, 125, 130, 142, 143] 
+PINPRICKS = [0, 58, 59, 60, 64, 76, 77, 98, 99, 100, 101, 122, 123, 124, 125, 130, 142, 143, 146, 147, 182, 183, 184, 185, 197, 198, 199, 214, 227, 228] 
 
 # Constellation Graphs
 hourglass_1 = Star(1)
@@ -151,45 +151,45 @@ SERPENS = [serpens_1, serpens_2, serpens_3, serpens_4, serpens_5, serpens_6]
 
 # -------------------------------------------------------
 
-narwhale_1 = Star(0)
+narwhale_1 = Star(226)
 
-narwhale_2 = Star(0)
+narwhale_2 = Star(224)
 
-narwhale_3 = Star(0)
+narwhale_3 = Star(221)
 
-narwhale_4 = Star(0)
+narwhale_4 = Star(205)
 
-narwhale_5 = Star(0)
+narwhale_5 = Star(210)
 
-narwhale_6 = Star(0)
+narwhale_6 = Star(213)
 
 NARWHALE = [narwhale_1, narwhale_2, narwhale_3, narwhale_4, narwhale_5, narwhale_6]
 
 # -------------------------------------------------------
 
-draco_1 = Star(0)
+draco_1 = Star(96)
 
-draco_2 = Star(0)
+draco_2 = Star(94)
 
-draco_3 = Star(0)
+draco_3 = Star(92)
 
-draco_4 = Star(0)
+draco_4 = Star(188)
 
-draco_5 = Star(0)
+draco_5 = Star(186)
 
-draco_6 = Star(0)
+draco_6 = Star(180)
 
-draco_7 = Star(0)
+draco_7 = Star(177)
 
-draco_8 = Star(0)
+draco_8 = Star(175)
 
-draco_9 = Star(0)
+draco_9 = Star(173)
 
-draco_10 = Star(0)
+draco_10 = Star(171)
 
-draco_11 = Star(0)
+draco_11 = Star(167)
 
-draco_12 = Star(0)
+draco_12 = Star(163)
 
 draco_13 = Star(144)
 draco_13.prior_stars.append((draco_12, [145]))
@@ -198,15 +198,15 @@ DRACO = [draco_1, draco_2, draco_3, draco_4, draco_5, draco_6, draco_7, draco_8,
 
 # -------------------------------------------------------
 
-shield_1 = Star(0)
+shield_1 = Star(156)
 
-shield_2 = Star(0)
+shield_2 = Star(159)
 
-shield_3 = Star(0)
+shield_3 = Star(148)
 
-shield_4 = Star(0)
+shield_4 = Star(153)
 
-shield_5 = Star(0)
+shield_5 = Star(154)
 
 SHIELD = [shield_1, shield_2, shield_3, shield_4, shield_5]
 
