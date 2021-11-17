@@ -80,8 +80,8 @@ def displayHabits(strip, habits, debug=False):
 def solidColor(strip, leds):
     color = Colors[leds.color].value
     for i in range(strip.numPixels()):
-        if i not in Stars.PINPRICKS:
-            strip.setPixelColor(i, color)
+        #if i not in Stars.PINPRICKS:
+        strip.setPixelColor(i, color)
     strip.show()
 
 def colorWipe(strip, color, wait_ms=50):
