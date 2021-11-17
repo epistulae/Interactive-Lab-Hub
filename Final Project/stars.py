@@ -155,7 +155,7 @@ narwhale_1 = Star(226)
 
 narwhale_2 = Star(224)
 
-narwhale_3 = Star(221)
+narwhale_3 = Star(202)
 
 narwhale_4 = Star(205)
 
