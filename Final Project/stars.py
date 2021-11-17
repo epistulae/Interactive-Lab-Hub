@@ -176,26 +176,38 @@ NARWHALE = [narwhale_1, narwhale_2, narwhale_3, narwhale_4, narwhale_5, narwhale
 draco_1 = Star(197)
 
 draco_2 = Star(195)
+draco_2.prior_stars.append((draco_1, [196]))
 
 draco_3 = Star(193)
+draco_3.prior_stars.append((draco_1, [198]))
+draco_3.prior_stars.append((draco_2, [194]))
 
 draco_4 = Star(189)
+draco_4.prior_stars.append((draco_3, [190, 191, 192]))
 
 draco_5 = Star(187)
+draco_5.prior_stars.append((draco_4, [188]))
 
 draco_6 = Star(181)
+draco_6.prior_stars.append((draco_5, [182]))
 
 draco_7 = Star(178)
+draco_7.prior_stars.append((draco_6, [179, 180]))
 
 draco_8 = Star(176)
+draco_8.prior_stars.append((draco_7, [177]))
 
 draco_9 = Star(173)
+draco_9.prior_stars.append((draco_8, [175]))
 
 draco_10 = Star(171)
+draco_10.prior_stars.append((draco_9, [172]))
 
 draco_11 = Star(167)
+draco_11.prior_stars.append((draco_10, [168, 169, 170]))
 
 draco_12 = Star(163)
+draco_12.prior_stars.append((draco_11, [164, 165, 166]))
 
 draco_13 = Star(144)
 draco_13.prior_stars.append((draco_12, [145]))
@@ -213,7 +225,7 @@ shield_3 = Star(148)
 shield_3.prior_stars.append((shield_2, [160, 161, 162]))
 
 shield_4 = Star(152)
-shield_4.prior_stars.append((shield_3, [149, 150]))
+shield_4.prior_stars.append((shield_3, [149, 150, 151]))
 
 shield_5 = Star(153)
 
