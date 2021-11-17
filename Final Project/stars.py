@@ -163,7 +163,7 @@ narwhale_4 = Star(206)
 narwhale_4.prior_stars.append((narwhale_3, [202, 203, 204, 205]))
 
 narwhale_5 = Star(211)
-narwhale_5.prior_stars.append((narwhale_3, [216, 217, 218, 219]))
+narwhale_5.prior_stars.append((narwhale_3, [216, 217, 218, 219, 220, 221]))
 narwhale_5.prior_stars.append((narwhale_4, [207, 208, 209, 210]))
 
 narwhale_6 = Star(214)
