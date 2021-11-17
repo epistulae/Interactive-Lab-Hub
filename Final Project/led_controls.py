@@ -19,7 +19,7 @@ class State:
 
 # All color values
 class Colors(Enum):
-    incomplete = Color(219, 150, 0)
+    incomplete = Color(78, 0, 222)
     complete = Color(81, 224, 105)
     #complete = Color(20, 164, 217)
     pinprick = Color(255, 245, 222)
