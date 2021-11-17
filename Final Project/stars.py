@@ -134,9 +134,9 @@ serpens_1 = Star(140)
 serpens_2 = Star(137)
 serpens_2.prior_stars.append((serpens_1, [138, 139]))
 
-serpens_3 = Star(136)
+serpens_3 = Star(135)
 serpens_3.prior_stars.append((serpens_1, [141]))
-#serpens_3.prior_stars.append((serpens_2, [136]))
+serpens_3.prior_stars.append((serpens_2, [136]))
 
 serpens_4 = Star(133)
 serpens_4.prior_stars.append((serpens_3, [127, 128]))
@@ -154,14 +154,20 @@ SERPENS = [serpens_1, serpens_2, serpens_3, serpens_4, serpens_5, serpens_6]
 narwhale_1 = Star(226)
 
 narwhale_2 = Star(224)
+narwhale_2.prior_stars.append((narwhale_1, [225]))
 
 narwhale_3 = Star(201)
+narwhale_3.prior_stars.append((narwhale_2, [222, 223]))
 
 narwhale_4 = Star(206)
+narwhale_4.prior_stars.append((narwhale_3, [202, 203, 204, 205]))
 
 narwhale_5 = Star(211)
+narwhale_5.prior_stars.append((narwhale_3, [216, 217, 218, 219]))
+narwhale_5.prior_stars.append((narwhale_4, [207, 208, 209, 210]))
 
 narwhale_6 = Star(214)
+narwhale_6.prior_stars.append((narwhale_5, [212, 213]))
 
 NARWHALE = [narwhale_1, narwhale_2, narwhale_3, narwhale_4, narwhale_5, narwhale_6]
 
