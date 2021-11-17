@@ -35,8 +35,8 @@ Globals.STRIP = STRIP
 i2c = busio.I2C(board.SCL, board.SDA)
 mpr121 = adafruit_mpr121.MPR121(i2c)
 
-appListener = multiprocessing.Process(target=Mqtt.subscribing, args=())
-appListener.start()
+# Spawns listener thread
+Mqtt.subscribing()
 
 #
 # Main Server: Capacity Inputs
@@ -60,5 +60,5 @@ try:
         time.sleep(0.5) # Prevent multiple triggers for one touch
         
 except KeyboardInterrupt:
-    appListener.terminate()
+    Mqtt.stop()
     Leds.slowClearDisplay(STRIP, Globals.leds)
