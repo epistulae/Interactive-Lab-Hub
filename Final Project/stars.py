@@ -167,17 +167,17 @@ NARWHALE = [narwhale_1, narwhale_2, narwhale_3, narwhale_4, narwhale_5, narwhale
 
 # -------------------------------------------------------
 
-draco_1 = Star(96)
+draco_1 = Star(197)
 
-draco_2 = Star(94)
+draco_2 = Star(195)
 
-draco_3 = Star(92)
+draco_3 = Star(193)
 
-draco_4 = Star(188)
+draco_4 = Star(189)
 
-draco_5 = Star(186)
+draco_5 = Star(187)
 
-draco_6 = Star(180)
+draco_6 = Star(181)
 
 draco_7 = Star(178)
 
