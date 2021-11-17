@@ -52,7 +52,7 @@ def displayHabits(strip, habits, debug=False):
                     led_color = Colors.complete.value if prior[0].complete else Colors.incomplete.value
                 leds = prior[1]
                 for led in leds:
-                    strip.setPixelColor(led, Colors.complete.value)
+                    strip.setPixelColor(led, led_color)
 
     # Second habit
     for constellation in habits.second.constellations:
@@ -67,7 +67,7 @@ def displayHabits(strip, habits, debug=False):
                     led_color = Colors.complete.value if prior[0].complete else Colors.incomplete.value
                 leds = prior[1]
                 for led in leds:
-                    strip.setPixelColor(led, Colors.complete.value)
+                    strip.setPixelColor(led, led_color)
     strip.show()
     
     if debug:
