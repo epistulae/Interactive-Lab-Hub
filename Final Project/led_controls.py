@@ -129,7 +129,7 @@ def rainbow(strip, wait_ms=20, iterations=1):
 # Display just the pinpricks.
 def displayPinpricks(strip):
     for led in Stars.PINPRICKS:
-        strip.setPixelColor(led, Colors.pinprick.value)
+        strip.setPixelColor(led, Colors.creamsicle.value)
     strip.show()
 
 # Close LEDs in a slow snake. For aestetics.
