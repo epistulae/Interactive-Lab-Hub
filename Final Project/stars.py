@@ -139,7 +139,7 @@ serpens_3.prior_stars.append((serpens_1, [141]))
 serpens_3.prior_stars.append((serpens_2, [136]))
 
 serpens_4 = Star(133)
-serpens_4.prior_stars.append((serpens_3, [127, 128]))
+serpens_4.prior_stars.append((serpens_3, [134]))
 
 serpens_5 = Star(129)
 serpens_5.prior_stars.append((serpens_4, [131, 132]))
