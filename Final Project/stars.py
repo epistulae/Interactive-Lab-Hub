@@ -207,12 +207,17 @@ DRACO = [draco_1, draco_2, draco_3, draco_4, draco_5, draco_6, draco_7, draco_8,
 shield_1 = Star(156)
 
 shield_2 = Star(159)
+shield_2.prior_stars.append((shield_1, [157, 158]))
 
 shield_3 = Star(148)
+shield_3.prior_stars.append((shield_2, [160, 161, 162]))
 
 shield_4 = Star(152)
+shield_4.prior_stars.append((shield_3, [149, 150]))
 
 shield_5 = Star(153)
+
+shield_1.prior_stars.append((shield_5, [154, 155]))
 
 SHIELD = [shield_1, shield_2, shield_3, shield_4, shield_5]
 
