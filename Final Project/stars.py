@@ -204,9 +204,9 @@ shield_2 = Star(159)
 
 shield_3 = Star(148)
 
-shield_4 = Star(153)
+shield_4 = Star(152)
 
-shield_5 = Star(154)
+shield_5 = Star(153)
 
 SHIELD = [shield_1, shield_2, shield_3, shield_4, shield_5]
 
