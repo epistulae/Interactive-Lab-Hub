@@ -129,22 +129,22 @@ ORION = [orion_1, orion_2, orion_3, orion_4, orion_5, orion_6, orion_7, orion_8]
 
 # -------------------------------------------------------
 
-serpens_1 = Star(40)
+serpens_1 = Star(140)
 
-serpens_2 = Star(37)
+serpens_2 = Star(137)
 serpens_2.prior_stars.append((serpens_1, [138, 139]))
 
-serpens_3 = Star(35)
+serpens_3 = Star(135)
 serpens_3.prior_stars.append((serpens_1, [141]))
 serpens_3.prior_stars.append((serpens_2, [136]))
 
-serpens_4 = Star(33)
+serpens_4 = Star(133)
 serpens_4.prior_stars.append((serpens_3, [127, 128]))
 
-serpens_5 = Star(29)
+serpens_5 = Star(129)
 serpens_5.prior_stars.append((serpens_4, [131, 132]))
 
-serpens_6 = Star(26)
+serpens_6 = Star(126)
 serpens_6.prior_stars.append((serpens_5, [127, 128]))
 
 SERPENS = [serpens_1, serpens_2, serpens_3, serpens_4, serpens_5, serpens_6]
