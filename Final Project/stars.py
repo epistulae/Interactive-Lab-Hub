@@ -234,5 +234,5 @@ shield_1.prior_stars.append((shield_5, [154, 155]))
 SHIELD = [shield_1, shield_2, shield_3, shield_4, shield_5]
 
 # Habit Constants
-FIRST = Habit([NARWHALE, SERPENS, DRACO, SHIELD]) # narwhale, serpens, draco, shield
+FIRST = Habit([NARWHALE, SERPENS, DRACO, SHIELD])
 SECOND = Habit([HOURGLASS, TEAPOT, TRIANGLE, ORION, BUTTERFLY])
