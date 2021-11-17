@@ -179,7 +179,7 @@ draco_5 = Star(186)
 
 draco_6 = Star(180)
 
-draco_7 = Star(177)
+draco_7 = Star(178)
 
 draco_8 = Star(176)
 
