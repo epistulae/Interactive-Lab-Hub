@@ -68,4 +68,7 @@ client.connect(Globals.HOST, port=Globals.PORT)
 
 def subscribing():
     client.on_message = on_message
-    client.loop_forever()
+    client.loop_start()
+
+def stop():
+    client.loop_stop()
