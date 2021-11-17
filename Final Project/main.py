@@ -61,4 +61,4 @@ try:
         
 except KeyboardInterrupt:
     appListener.terminate()
-    Leds.fastClearDisplay(STRIP, Globals.leds)
+    Leds.slowClearDisplay(STRIP, Globals.leds)
