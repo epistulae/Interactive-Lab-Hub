@@ -13,7 +13,7 @@ class Habit:
         self.cur_constellation = 0
         self.cur_star = 0
         
-PINPRICKS = [0, 58, 59, 60, 64, 76, 77, 98, 99, 100, 101, 122, 123, 124, 125, 130, 142, 143, 146, 147, 183, 184, 185, 186, 199, 200, 201, 214, 227, 228] 
+PINPRICKS = [0, 58, 59, 60, 64, 76, 77, 98, 99, 100, 101, 122, 123, 124, 125, 130, 142, 143, 146, 147, 175, 183, 184, 185, 186, 199, 200, 215, 227, 228] 
 
 # Constellation Graphs
 hourglass_1 = Star(1)
@@ -155,13 +155,13 @@ narwhale_1 = Star(226)
 
 narwhale_2 = Star(224)
 
-narwhale_3 = Star(202)
+narwhale_3 = Star(201)
 
-narwhale_4 = Star(205)
+narwhale_4 = Star(206)
 
-narwhale_5 = Star(210)
+narwhale_5 = Star(211)
 
-narwhale_6 = Star(213)
+narwhale_6 = Star(214)
 
 NARWHALE = [narwhale_1, narwhale_2, narwhale_3, narwhale_4, narwhale_5, narwhale_6]
 
