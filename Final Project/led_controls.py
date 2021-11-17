@@ -19,11 +19,12 @@ class State:
 
 # All color values
 class Colors(Enum):
-    incomplete = Color(237, 108, 2)
+    incomplete = Color(108, 77, 100)
     complete = Color(20, 164, 217)
     pinprick = Color(255, 245, 222)
     rose = Color(255, 20, 20)
-    sunset = Color(235, 137, 52)
+    sunset = Color(237, 108, 2)
+    creamsicle = Color(235, 137, 52)
     buttercup = Color(255, 191, 28)
     spring = Color(168, 235, 52)
     forest = Color(27, 153, 23)
