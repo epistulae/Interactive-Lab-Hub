@@ -37,7 +37,7 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 
 # Spawns listener thread
 Mqtt.subscribing()
-
+print("entering")
 #
 # Main Server: Capacity Inputs
 #
