@@ -43,10 +43,7 @@ def on_message(client, userdata, msg):
         # If animating, stop thread then shut down lights.
         if (Globals.leds.mode is 2) and (Globals.leds.lights):
             Globals.leds.intercept = True
-            print("intercepted")
-            while Globals.leds.intercept:
-                print("slept")
-                time.sleep(0.1)
+            time.sleep(2)
         Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.DEBUG)
 	
     # Habits
