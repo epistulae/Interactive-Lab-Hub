@@ -129,8 +129,8 @@ def rainbow(strip, leds, wait_ms=20):
 
 def animate(strip, leds):
     if leds.animation == "rainbow":
-        threading.Thread(target=rainbow, args=(strip, leds,))
-        
+        t = threading.Thread(target=rainbow, args=(strip, leds,))
+        t.start()
 
 #
 # GENERAL FUNCTIONS
