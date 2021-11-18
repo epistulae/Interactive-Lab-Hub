@@ -75,6 +75,30 @@ def displayHabits(strip, habits, debug=False):
     
     if debug:
         debugLeds()
+        
+#
+# GENERAL FUNCTIONS
+#
+# Display just the pinpricks.
+def displayPinpricks(strip):
+    for led in Stars.PINPRICKS:
+        strip.setPixelColor(led, Colors.pinprick.value)
+    strip.show()
+
+# Close LEDs in a slow snake. For aestetics.
+def slowClearDisplay(strip, leds):
+    for i in range(strip.numPixels()):
+        strip.setPixelColor(i, Colors.blank.value)
+        strip.show()
+        time.sleep(10/1000.0)
+    leds.lights = False
+
+# Close LEDs all at once. For debugging.6
+def fastClearDisplay(strip, leds):
+    for i in range(strip.numPixels()):
+        strip.setPixelColor(i, Colors.blank.value)
+    strip.show()
+    leds.lights = False
     
 #    
 # COLORING FUNCTIONS
@@ -137,6 +161,9 @@ def twinkle(strip, leds):
     green = 0
     blue = 255
     
+    fastClearDisplay(strip, leds)
+    displayPinpricks(strip)
+    
     while leds.mode is 2:
         randStars = random.sample(Stars.STARS, 20)
         for k in range(256):
@@ -173,29 +200,8 @@ def animate(strip, leds):
         t.start()
 
 #
-# GENERAL FUNCTIONS
+# EXTERNAL FUNCTIONS
 #
-# Display just the pinpricks.
-def displayPinpricks(strip):
-    for led in Stars.PINPRICKS:
-        strip.setPixelColor(led, Colors.pinprick.value)
-    strip.show()
-
-# Close LEDs in a slow snake. For aestetics.
-def slowClearDisplay(strip, leds):
-    for i in range(strip.numPixels()):
-        strip.setPixelColor(i, Colors.blank.value)
-        strip.show()
-        time.sleep(10/1000.0)
-    leds.lights = False
-
-# Close LEDs all at once. For debugging.6
-def fastClearDisplay(strip, leds):
-    for i in range(strip.numPixels()):
-        strip.setPixelColor(i, Colors.blank.value)
-    strip.show()
-    leds.lights = False
-
 # Habit = 0
 # Mood lighting: Solid = 1
 # Mood lighting: Animated = 2
