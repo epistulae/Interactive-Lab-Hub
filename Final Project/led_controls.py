@@ -157,7 +157,7 @@ def rainbow(strip, leds, wait_ms=20):
     leds.intercept = False
 
 def twinkle(strip, leds):
-    # Color: royal
+    # Color: candlelight yellow (not in enum)
     red = 255
     green = 207
     blue = 64
@@ -192,12 +192,50 @@ def twinkle(strip, leds):
         else:
             break
     leds.intercept = False
-                
+    
+def rainbowTwinkle(strip, leds):
+    fastClearDisplay(strip, leds)
+    displayPinpricks(strip)
+    
+    while (leds.mode is 2) and (not leds.intercept):
+        randStars = random.sample(Stars.STARS, 20)
+        red = random.randrange(256)
+        green = random.randrange(256)
+        blue = random.randrange(256)
+        for k in range(256):
+            if (leds.mode is 2) and (not leds.intercept):
+                r = int((k/256)*red)
+                g = int((k/256)*green)
+                b = int((k/256)*blue)
+                for star in randStars:
+                    strip.setPixelColor(star, Color(r, g, b))
+                strip.show()
+            else:
+                break
+
+        if (leds.mode is 2) and (not leds.intercept):
+            for k in reversed(range(256)):
+                if (leds.mode is 2) and (not leds.intercept):
+                    r = int((k/256)*red)
+                    g = int((k/256)*green)
+                    b = int((k/256)*blue)
+                    for star in randStars:
+                        strip.setPixelColor(star, Color(r, g, b))
+                    strip.show()
+                else:
+                    break
+        else:
+            break
+    leds.intercept = False
+    
 def animate(strip, leds):
     if leds.animation == "rainbow":
         t = threading.Thread(target=rainbow, args=(strip, leds,))
         t.start()
     elif leds.animation == "twinkle":
+        t = threading.Thread(target=twinkle, args=(strip, leds,))
+        t.start()
+    elif leds.animation == "rainbow twinkle"
         t = threading.Thread(target=twinkle, args=(strip, leds,))
         t.start()
 
