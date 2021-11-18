@@ -159,10 +159,10 @@ def rainbow(strip, leds, wait_ms=20):
 
 def twinkle(strip, leds):
     # Color: royal
-    red = 98
-    green = 0
-    blue = 255
-    
+    red = 255
+    green = 207
+    blue = 64
+
     fastClearDisplay(strip, leds)
     displayPinpricks(strip)
     
