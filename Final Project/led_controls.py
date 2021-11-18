@@ -18,6 +18,7 @@ class State:
         self.mode_count = 3
         self.color = "rose"
         self.animation = "cool"
+        self.intercept = False
 
 # All color values
 class Colors(Enum):
@@ -142,9 +143,9 @@ def wheel(pos):
 
 def rainbow(strip, leds, wait_ms=20):
     # Currently changing across all pixels, change this to per constellation
-    while leds.mode is 2:
+    while (leds.mode is 2) and (not leds.intercept):
         for j in range(256):
-            if leds.mode is 2:
+            if (leds.mode is 2) and (not leds.intercept):
                 for i in range(strip.numPixels()):
                     if leds.mode is 2:
                         strip.setPixelColor(i, wheel((i+j) & 255))
@@ -154,6 +155,7 @@ def rainbow(strip, leds, wait_ms=20):
                 time.sleep(wait_ms/1000.0)
             else:
                 break
+    leds.intercept = False
 
 def twinkle(strip, leds):
     # Color: royal
@@ -164,10 +166,10 @@ def twinkle(strip, leds):
     fastClearDisplay(strip, leds)
     displayPinpricks(strip)
     
-    while leds.mode is 2:
+    while (leds.mode is 2) and (not leds.intercept):
         randStars = random.sample(Stars.STARS, 20)
         for k in range(256):
-            if leds.mode is 2:
+            if (leds.mode is 2) and (not leds.intercept):
                 r = int((k/256)*red)
                 g = int((k/256)*green)
                 b = int((k/256)*blue)
@@ -177,9 +179,9 @@ def twinkle(strip, leds):
             else:
                 break
 
-        if leds.mode is 2:
+        if (leds.mode is 2) and (not leds.intercept):
             for k in reversed(range(256)):
-                if leds.mode is 2:
+                if (leds.mode is 2) and (not leds.intercept):
                     r = int((k/256)*red)
                     g = int((k/256)*green)
                     b = int((k/256)*blue)
@@ -190,6 +192,7 @@ def twinkle(strip, leds):
                     break
         else:
             break
+    leds.intercept = False
                 
 def animate(strip, leds):
     if leds.animation == "rainbow":
