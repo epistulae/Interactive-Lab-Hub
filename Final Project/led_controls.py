@@ -235,7 +235,7 @@ def animate(strip, leds):
     elif leds.animation == "twinkle":
         t = threading.Thread(target=twinkle, args=(strip, leds,))
         t.start()
-    elif leds.animation == "rainbow twinkle"
+    elif leds.animation == "rainbow twinkle":
         t = threading.Thread(target=twinkle, args=(strip, leds,))
         t.start()
 
