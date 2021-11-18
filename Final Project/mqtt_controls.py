@@ -28,6 +28,10 @@ def on_message(client, userdata, msg):
     # Animation
     # Directly goes to animated mood mode.
     elif incoming_topic == topics[1]:
+        # Already animating
+	    if Globals.leds.mode = 2:
+            Globals.leds.intercept = True
+
         Globals.leds.mode = 2
         Globals.leds.animation = str(msg.payload.decode('UTF-8'))
         Leds.displayMode(Globals.STRIP, Globals.leds, Globals.pinpricks, Globals.DEBUG)
