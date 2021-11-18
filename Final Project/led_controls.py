@@ -24,7 +24,6 @@ class State:
 class Colors(Enum):
     incomplete = Color(230, 21, 83)
     complete = Color(81, 224, 105)
-    #complete = Color(20, 164, 217)
     pinprick = Color(255, 245, 222)
     rose = Color(255, 20, 20)
     sunset = Color(237, 108, 2)
