@@ -26,7 +26,6 @@ class Colors(Enum):
     rose = Color(255, 20, 20)
     sunset = Color(237, 108, 2)
     creamsicle = Color(235, 137, 52)
-    buttercup = Color(255, 191, 28)
     spring = Color(168, 235, 52)
     forest = Color(27, 153, 23)
     aqua = Color(21, 187, 183)
