@@ -141,7 +141,7 @@ def animate(strip, leds):
 # Display just the pinpricks.
 def displayPinpricks(strip):
     for led in Stars.PINPRICKS:
-        strip.setPixelColor(led, Colors.creamsicle.value)
+        strip.setPixelColor(led, Colors.pinprick.value)
     strip.show()
 
 # Close LEDs in a slow snake. For aestetics.
