@@ -1,12 +1,12 @@
 # Zenith
 
-Habit building is hard. It takes determination and perseverance, and having daily reminders help. Unfortunately, most habit tracking apps are cluttered or easily forgotten. 
+Habit building is hard. It takes determination, perseverance, and some daily reminders. Unfortunately, most habit tracking apps are cluttered or easily forgotten. 
 
-Introducing Zenith, habit tracker where you light your way through the stars. This functional decor tracks up to two habits over 30 days, giving you a visual reminder to complete your goals. When inspiration strikes, don't wait til next Monday, next month, or even next year. Zenith doesn't label by the calendar so it's easy to start tracking your goals whenever. 
+Introducing Zenith, a habit tracker where you light your way through the stars. This functional decor tracks up to two habits over 30 days, giving you a visual reminder to complete your goals. When inspiration strikes, don't wait til next Monday, next month, or even next year. Zenith doesn't label by the calendar so it's easy to start tracking your goals whenever. 
 
 Zenith is also great for when it's time to relax. Just switch over to colored or animation mode for interesting mood lighting. 
 
-Basic controls for habit tracking are on the frame, along with mode cycling and an on-off switch for the lights. The full suite of controls are available on the companion mobile app. Remember to log your activity every day either physcially or through the app! Once it's past midnight, you won't be able to give yourself credit. 
+Basic controls for habit tracking are on the frame, along with mode cycling and an on-off switch for the lights. The full suite of controls are available on the companion mobile app. Remember to log your activity every day! Once it's past midnight, you won't be able to give yourself credit. 
 
 **Other functions:**
 - (TODO) Do not disturb times: Set times when Zenith's lights should automatically turn off or on.
