@@ -4,7 +4,7 @@ import global_vars as Globals
 import habit_controls as Habits
 import led_controls as Leds
 import paho.mqtt.client as mqtt
-from time import sleep
+import time
 import uuid
 
 topics = ["pi/color/", "pi/animation/", "pi/lights/", "pi/habits/", "pi/habits/first", "pi/habits/second", "pi/info"]
@@ -44,7 +44,7 @@ def on_message(client, userdata, msg):
         if (Globals.leds.mode is 2) and (Globals.leds.lights):
             Globals.leds.intercept = True
             while Globals.leds.intercept:
-                sleep(0.1)
+                time.sleep(0.1)
         Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.DEBUG)
 	
     # Habits
