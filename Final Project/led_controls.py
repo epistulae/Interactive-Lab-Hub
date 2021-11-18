@@ -255,4 +255,5 @@ def debugLeds(leds):
     print("Mode: " + str(leds.mode))
     print("Color: " + str(leds.color))
     print("Animation: " + str(leds.animation))
+    print("Intercept: " + str(leds.intercept))
     print("\n")
