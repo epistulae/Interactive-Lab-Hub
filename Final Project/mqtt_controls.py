@@ -29,7 +29,7 @@ def on_message(client, userdata, msg):
     # Directly goes to animated mood mode.
     elif incoming_topic == topics[1]:
         # Already animating
-	    if Globals.leds.mode is 2:
+        if Globals.leds.mode is 2:
             Globals.leds.intercept = True
 
         Globals.leds.mode = 2
