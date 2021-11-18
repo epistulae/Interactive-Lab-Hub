@@ -4,6 +4,7 @@ from enum import Enum
 from rpi_ws281x import *
 import stars as Stars
 import time
+import threading
 
 # Tracks state of LED lights
 class State:
@@ -125,7 +126,7 @@ def rainbow(strip, leds, wait_ms=20):
 
 def animate(strip, leds):
     if leds.animation == "rainbow":
-        rainbow(strip, leds)
+        threading.Thread(target=rainbow, args=(strip, leds,))
         
 
 #
