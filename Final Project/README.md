@@ -162,8 +162,13 @@ I also tested a couple different transluscent acrylics. 1/4" glossy white, 1/8" 
 
 <img width="603" alt="Screen Shot 2021-11-18 at 4 09 00 PM" src="https://user-images.githubusercontent.com/14368010/142497081-2cce337f-c126-47b3-8a79-41cecf35e918.png">
 
-I decided on 1/8" matte for the stars and constellation lines. The pinprick stars use the 1/8" glossy.
+I decided on 1/8" glossy for the stars and constellation lines. This allows the etched quotes to show up better and when the lights are off, light bounces off the glossy white in a very lovely faint twinkle.
 
+#### Completed Acrylic
+
+On a whim, I decided to add my signature to the lower right hand corner the same way I would sign artwork. The signature was vectorized and then etched at half power of the cutting. Note: signature vector is filled with grey, not black, which would be deeper. See exact colors in the Adobe Illustrator files.
+
+<img width="954" alt="Screen Shot 2021-11-18 at 4 40 32 PM" src="https://user-images.githubusercontent.com/14368010/142501177-2442308c-310a-4b60-8aad-f8ca5e029afd.png">
 
 
 ### Laser Cutting: Frame
