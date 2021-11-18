@@ -114,19 +114,19 @@ def wheel(pos):
         pos -= 170
         return Color(0, pos * 3, 255 - pos * 3)
 
-def rainbow(strip, wait_ms=20, iterations=100):
+def rainbow(strip, leds, wait_ms=20):
     """Draw rainbow that fades across all pixels at once."""
-    for j in range(256*iterations):
-        for i in range(strip.numPixels()):
-            strip.setPixelColor(i, wheel((i+j) & 255))
-        strip.show()
-        time.sleep(wait_ms/1000.0)
+    while leds.mode is 2:
+        for j in range(256):
+            for i in range(strip.numPixels()):
+                strip.setPixelColor(i, wheel((i+j) & 255))
+            strip.show()
+            time.sleep(wait_ms/1000.0)
+    break # exits function and thread.
 
 def animate(strip, leds):
-    print("in func")
     if leds.animation == "rainbow":
-        print("yes match")
-        rainbow(strip)
+        rainbow(strip, leds)
         
 
 #
