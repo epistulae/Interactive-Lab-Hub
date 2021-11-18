@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from enum import Enum
+import random
 from rpi_ws281x import *
 import stars as Stars
 import time
@@ -116,7 +117,7 @@ def wheel(pos):
         return Color(0, pos * 3, 255 - pos * 3)
 
 def rainbow(strip, leds, wait_ms=20):
-    """Draw rainbow that fades across all pixels at once."""
+    # Currently changing across all pixels, change this to per constellation
     while leds.mode is 2:
         for j in range(256):
             if leds.mode is 2:
@@ -130,9 +131,45 @@ def rainbow(strip, leds, wait_ms=20):
             else:
                 break
 
+def twinkle(strip, leds):
+    # Color: royal
+    red = 98
+    green = 0
+    blue = 255
+    
+    while leds.mode is 2:
+        randStars = random.sample(Stars.STARS, 20)
+        for k in range(256):
+            if leds.mode is 2:
+                r = int((k/256)*red)
+                g = int((k/256)*green)
+                b = int((k/256)*blue)
+                for star in randStars:
+                    strip.setPixelColor(star, Color(r, g, b))
+                strip.show()
+            else:
+                break
+
+        if leds.mode is 2:
+            for k in reversed(range(256)):
+                if leds.mode is 2:
+                    r = int((k/256)*red)
+                    g = int((k/256)*green)
+                    b = int((k/256)*blue)
+                    for star in randStars:
+                        strip.setPixelColor(star, Color(r, g, b))
+                    strip.show()
+                else:
+                    break
+        else:
+            break
+                
 def animate(strip, leds):
     if leds.animation == "rainbow":
         t = threading.Thread(target=rainbow, args=(strip, leds,))
+        t.start()
+    elif leds.animation == "twinkle":
+        t = threading.Thread(target=twinkle, args=(strip, leds,))
         t.start()
 
 #
