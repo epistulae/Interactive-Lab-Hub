@@ -40,8 +40,8 @@ def on_message(client, userdata, msg):
     # Any message to the topic means to flip lights.
     elif incoming_topic == topics[2]:
         # If animating, stop thread and shut down lights.
-	if (Globals.leds.mode is 2) and (Globals.leds.lights):
-	    Globals.leds.intercept = True
+        if (Globals.leds.mode is 2) and (Globals.leds.lights):
+            Globals.leds.intercept = True
         Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.DEBUG)
 	
     # Habits
