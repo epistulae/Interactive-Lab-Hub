@@ -25,7 +25,6 @@ Coming soon: Zenith will be able to connect to your Spotify account and visualiz
     - [Prototyping](#prototyping)
     - [Laser Cutting: Star Map](#laser-cutting-star-map)
     - [Laser Cutting: Frame](#laser-cutting-frame)
-    - [Design Choices](#design-choices)
 - [Constuction](#construction)
 - [Software Implementation](#software-implementation)
     - [Physical](#physical)
@@ -172,10 +171,22 @@ On a whim, I decided to add my signature to the lower right hand corner the same
 
 
 ### Laser Cutting: Frame
-### Design Choices
+Note: when building Zenith, the frame was the last thing I did. I layed out the leds and tested those with a basic functionality software before moving onto the frame.
 
+The frame is 3/32" (2.5mm) birch plywood (I see 5 visible layers from the side). The wood is painted with a mix of mars black and burnt umber in a 1 to 2 ratio. Mars black is a very blue toned back so it tones down the warming burnt umber for a very deep, neutral brown.
 
 ## Construction
+
+I tested having the LEDs directly against the constellations. I expected it will not be enough diffusion, and indeed you can very clearly see the distinct LEDs. 
+
+<img width="691" alt="Screen Shot 2021-11-18 at 4 54 48 PM" src="https://user-images.githubusercontent.com/14368010/142503066-bcd969f7-8b94-4283-99c1-927474022cc3.png">
+
+
+After just manually testing the distance the LEDs should be, around 7/16" is a pretty good distance. I tested a couple different spacer designs and the final iteration worked well, so I printed out enough for the whole design. The final one has slightly chubbier legs to make it easier to glue, and more of a tab on top to completely cover the width of the strip.
+
+<img width="524" alt="Screen Shot 2021-11-18 at 4 55 10 PM" src="https://user-images.githubusercontent.com/14368010/142503111-4011ff97-50a2-4808-ab1b-115731e956ea.png">
+
+First couple of contellations:
 
 ## Software Implementation
 ### Physical
