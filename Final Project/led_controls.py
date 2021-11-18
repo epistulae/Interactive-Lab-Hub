@@ -122,7 +122,6 @@ def rainbow(strip, leds, wait_ms=20):
                 strip.setPixelColor(i, wheel((i+j) & 255))
             strip.show()
             time.sleep(wait_ms/1000.0)
-    break # exits function and thread.
 
 def animate(strip, leds):
     if leds.animation == "rainbow":
