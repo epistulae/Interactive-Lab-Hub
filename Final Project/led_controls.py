@@ -123,11 +123,11 @@ def rainbow(strip, leds, wait_ms=20):
                 for i in range(strip.numPixels()):
                     if leds.mode is 2:
                         strip.setPixelColor(i, wheel((i+j) & 255))
-                    else
+                    else:
                         break
                 strip.show()
                 time.sleep(wait_ms/1000.0)
-            else
+            else:
                 break
 
 def animate(strip, leds):
