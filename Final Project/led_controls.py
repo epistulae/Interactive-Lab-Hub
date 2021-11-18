@@ -122,6 +122,10 @@ def rainbow(strip, wait_ms=20, iterations=1):
         strip.show()
         time.sleep(wait_ms/1000.0)
 
+def animate(strip, leds):
+    if leds.animation is "rainbow":
+        rainbow(strip)
+
 #
 # GENERAL FUNCTIONS
 #
@@ -159,7 +163,7 @@ def displayMode(strip, leds, habits, debug=False):
     elif leds.mode is 1:
         solidColor(strip, leds)
     elif leds.mode is 2:
-        A = 1
+        animate(strip, leds)
 
     if debug:
         debugLeds(leds)
