@@ -123,8 +123,11 @@ def rainbow(strip, wait_ms=20, iterations=1):
         time.sleep(wait_ms/1000.0)
 
 def animate(strip, leds):
+    print("in func")
     if leds.animation is "rainbow":
+        print("yes match")
         rainbow(strip)
+        
 
 #
 # GENERAL FUNCTIONS
