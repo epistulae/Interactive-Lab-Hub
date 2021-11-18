@@ -124,7 +124,7 @@ def rainbow(strip, wait_ms=20, iterations=1):
 
 def animate(strip, leds):
     print("in func")
-    if leds.animation is "rainbow":
+    if leds.animation == "rainbow":
         print("yes match")
         rainbow(strip)
         
