@@ -49,6 +49,8 @@ try:
             Mqtt.client.publish('remote/lights', "0")
         elif mpr121[5].value:
             Leds.cycleMode(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
+        elif mpr121[11].value:
+            Leds.cycleColor(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
         elif mpr121[2].value:
             Habits.flipFirstHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
             Mqtt.client.publish('remote/habits/first', "0")
