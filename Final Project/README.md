@@ -202,5 +202,5 @@ Though it was more effort to raise the LEDs, it make a clear difference.
 
 ## Reflection
 
-Roughly estimating wattage for LED power consumption wasn't the best idea. Zenith currently uses a 5V 15A power supply for a max 75W power. The website suggested 5V 20A but the ones I saw on Amazon were too bulky so I opted for slightly less. On the other hand, this was sort of a happy accident, because I get lovely gradients without manually programming them in.
+Handwaving how much power the LEDs consumed at different colors wasn't the best idea. Zenith currently uses a 5V 15A power supply for a max 75W power. The website suggested 5V 20A, but the ones I saw on Amazon were too bulky so I opted for slightly less. On the other hand, this was sort of a happy accident, because I get lovely gradients without manually programming them in.
 
