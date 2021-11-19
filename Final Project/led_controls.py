@@ -7,6 +7,43 @@ import stars as Stars
 import time
 import threading
 
+# All color values
+class Colors(Enum):
+    incomplete = Color(230, 21, 83)
+    complete = Color(81, 224, 105)
+    pinprick = Color(255, 245, 222)
+    rose = Color(255, 20, 20)
+    sunset = Color(237, 108, 2)
+    spring = Color(168, 235, 52)
+    forest = Color(27, 153, 23)
+    aqua = Color(21, 187, 183)
+    royal = Color(98, 0, 255)
+    amethyst = Color(168, 57, 237)
+    sakura = Color(255, 87, 179)
+    blank = Color(0, 0, 0)
+
+# All color ranges
+# Array in pairs of RGB ranges [r1, r2, g1, g2, b1, b2]
+class ColorRanges(Enum):
+    rainbow = [0, 256, 0, 256, 0, 256]
+    starlight = [255, 256, 195, 241, 64, 65]
+    fire = [255, 256, 18, 256, 18, 19]
+    ocean = [31, 32, 50, 220, 255, 256]
+    mystery = [98, 180, 50, 51, 255, 256]
+    
+# All color palettes (5 colors)
+class ColorPalettes(Enum):
+    #[Color(), Color(), Color(), Color(), Color()]
+    pink_holiday = [Color(157, 203, 255), Color(191, 226, 254), Color(254, 205, 203), Color(223, 126, 137), Color(141, 28, 26)]
+
+class Animation:
+    def __init__(self, name, style, color_range, palette=False, color_palette=None):
+        self.name = name
+        self.style = style # solid v varied
+        self.color_range = color_range #  ColorRanges enum entry name
+        self.palette = palette # Whether or not to use color palette instead
+        self.color_palette = color_palette # Specific color palette
+
 # Tracks state of LED lights
 class State:
     def __init__(self):
@@ -16,26 +53,10 @@ class State:
         # Mood lighting: Animated = 2
         self.mode = 0 
         self.mode_count = 3
-        self.color = "rose"
-        self.animation = "cool"
+        self.color = "rose" # Colors enum entry name
+        self.animation = Animation("twinkle", "solid", "rainbow)
         self.intercept = False
-
-# All color values
-class Colors(Enum):
-    incomplete = Color(230, 21, 83)
-    complete = Color(81, 224, 105)
-    pinprick = Color(255, 245, 222)
-    rose = Color(255, 20, 20)
-    sunset = Color(237, 108, 2)
-    creamsicle = Color(235, 137, 52)
-    spring = Color(168, 235, 52)
-    forest = Color(27, 153, 23)
-    aqua = Color(21, 187, 183)
-    royal = Color(98, 0, 255)
-    amethyst = Color(168, 57, 237)
-    sakura = Color(245, 120, 189)
-    blank = Color(0, 0, 0)
-
+        
 # 
 # HABIT MODE FUNCTIONS
 #
@@ -156,17 +177,29 @@ def rainbow(strip, leds, wait_ms=20):
                 break
     leds.intercept = False
 
-def twinkle(strip, leds):
-    # Color: candlelight yellow (not in enum)
-    red = 255
-    green = 207
-    blue = 64
-
+# Solid color twinkle. 
+# Even when we randomize color, at any one time, all stars are the same color.
+# x1 to x2 is the range to randomly generate color values.
+# randrange generates from x1 (inclusive) upto x2 (exclusive).
+# if x2 = x1+1, this the generated value will always be x1
+def solidTwinkleRange(strip, leds):
     fastClearDisplay(strip, leds)
     displayPinpricks(strip)
+
+    color_range = ColorRanges[leds.animation.self.color_range].value
+    r1 = color_range[0]
+    r2 = color_range[1]
+    g1 = color_range[2]
+    g2 = color_range[3]
+    b1 = color_range[4]
+    b2 = lcolor_range[5]
     
     while (leds.mode is 2) and (not leds.intercept):
         randStars = random.sample(Stars.STARS, 20)
+        
+        red = random.randrange(r1, r2)
+        green = random.randrange(g1, g2)
+        blue = random.randrange(b1, b2)
         for k in range(256):
             if (leds.mode is 2) and (not leds.intercept):
                 r = int((k/256)*red)
@@ -192,23 +225,36 @@ def twinkle(strip, leds):
         else:
             break
     leds.intercept = False
-    
-def rainbowTwinkle(strip, leds):
+
+# Varied color twinkle. 
+# Stars can have different colors even when showing up at the same time.
+# x1 to x2 is the range to randomly generate color values.
+# randrange generates from x1 (inclusive) upto x2 (exclusive).
+# if x2 = x1+1, this the generated value will always be x1
+def variedTwinkleRange(strip, leds):
     fastClearDisplay(strip, leds)
     displayPinpricks(strip)
+
+    color_range = ColorRanges[leds.animation.self.color_range].value
+    r1 = color_range[0]
+    r2 = color_range[1]
+    g1 = color_range[2]
+    g2 = color_range[3]
+    b1 = color_range[4]
+    b2 = lcolor_range[5]
     
     while (leds.mode is 2) and (not leds.intercept):
         randStars = random.sample(Stars.STARS, 20)
-        red = random.randrange(256)
-        green = random.randrange(256)
-        blue = random.randrange(256)
+        
+        # Generate set of random numbers
+        reds = [random.randrange(r1, r2) for _ in range(20)]
+        greens = [random.randrange(g1, g2) for _ in range(20)]
+        blues = [random.randrange(b1, b2) for _ in range(20)]
+        
         for k in range(256):
             if (leds.mode is 2) and (not leds.intercept):
-                r = int((k/256)*red)
-                g = int((k/256)*green)
-                b = int((k/256)*blue)
-                for star in randStars:
-                    strip.setPixelColor(star, Color(r, g, b))
+                for i, star in enumerate(randStars):
+                    strip.setPixelColor(star, Color(int((k/256)*reds[i]), int((k/256)*greens[i]), int((k/256)*blues[i])))
                 strip.show()
             else:
                 break
@@ -216,27 +262,35 @@ def rainbowTwinkle(strip, leds):
         if (leds.mode is 2) and (not leds.intercept):
             for k in reversed(range(256)):
                 if (leds.mode is 2) and (not leds.intercept):
-                    r = int((k/256)*red)
-                    g = int((k/256)*green)
-                    b = int((k/256)*blue)
-                    for star in randStars:
-                        strip.setPixelColor(star, Color(r, g, b))
-                    strip.show()
+                for i, star in enumerate(randStars):
+                    strip.setPixelColor(star, Color(int((k/256)*reds[i]), int((k/256)*greens[i]), int((k/256)*blues[i])))
+                strip.show()
                 else:
                     break
         else:
             break
     leds.intercept = False
-    
+
 def animate(strip, leds):
-    if leds.animation == "rainbow":
+    if leds.animation.name == "twinkle":
+        if leds.animation.style == "solid":
+            if leds.animation.palette:
+                # Twinkle with color palette
+                print("Palette")
+            else:
+                # Twinkle with range
+                t = threading.Thread(target=solidTwinkleRange, args=(strip, leds,))
+                t.start()
+        elif leds.animation.style == "varied":
+            if leds.animation.palette:
+                # Twinkle with color palette
+                print("Palette")
+            else:
+                # Twinkle with range
+                t = threading.Thread(target=variedTwinkleRange, args=(strip, leds,))
+                t.start()
+    elif leds.animation.name == "rainbow":
         t = threading.Thread(target=rainbow, args=(strip, leds,))
-        t.start()
-    elif leds.animation == "twinkle":
-        t = threading.Thread(target=twinkle, args=(strip, leds,))
-        t.start()
-    elif leds.animation == "rainbow twinkle":
-        t = threading.Thread(target=rainbowTwinkle, args=(strip, leds,))
         t.start()
 
 #
@@ -291,6 +345,7 @@ def debugLeds(leds):
     print("Light on: " + str(leds.lights))
     print("Mode: " + str(leds.mode))
     print("Color: " + str(leds.color))
-    print("Animation: " + str(leds.animation))
+    print("Animation: " + str(leds.animation.name) + " " + str(leds.animation.style))
+    print("Animation Color: " + str(leds.animation.color_range) + " Palette: " + str(leds.animation.palette) + " " + str(leds.animation.color_palette))
     print("Intercept: " + str(leds.intercept))
     print("\n")
