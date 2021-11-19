@@ -319,6 +319,39 @@ def cycleMode(strip, leds, habits, debug=False):
     # All modes have white pinpricks.
     leds.mode = (leds.mode + 1) % leds.mode_count
     displayMode(strip, leds, habits, debug)
+    
+# Cycle through available colors for current mode. 
+def cycleColor(strip, leds, habits, debug=False):
+    if leds.mode is 1:
+        # Solid: go through Colors enums
+        colors = [c.name for c in Color]
+        i = colors.index(leds.color)
+        n = (i+1) % len(colors)
+        leds.color = colors[n]
+    elif leds.mode is 2:
+        # Animated: go through ColorRanges followed by ColorPalettes enums.
+        colors = [r.name for r in ColorRanges] + [p.name for p in ColorPalettes]
+        n = 0
+        if leds.animation.palette:
+            # Currently a palette
+            i = colors.index(leds.color_palette)
+            n = (i+1) % len(colors)
+        else:
+            # Currently a range
+            i = colors.index(leds.color_range)
+            n = (i+1) % len(colors)
+        
+        if n >= len(ColorRanges):
+            # New color is a palette
+            leds.animation.palette = True
+            leds.animation.color_palette = colors[n]
+        else:
+            # New color is a range
+            leds.animation.palette = False
+            leds.animation.color_range = colors[n]
+            
+    
+    displayMode(strip, leds, habits, debug)
 
 # Start display.
 def initDisplay(strip, leds, habits, debug=False):
