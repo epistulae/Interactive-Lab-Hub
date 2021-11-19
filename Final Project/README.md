@@ -186,10 +186,21 @@ After just manually testing the distance the LEDs should be, around 7/16" is a p
 
 <img width="524" alt="Screen Shot 2021-11-18 at 4 55 10 PM" src="https://user-images.githubusercontent.com/14368010/142503111-4011ff97-50a2-4808-ab1b-115731e956ea.png">
 
-First couple of contellations:
+Though it was more effort to raise the LEDs, it make a clear difference. 
+
+<img width="286" alt="Screen Shot 2021-11-19 at 3 12 02 AM" src="https://user-images.githubusercontent.com/14368010/142588268-6ad9cd23-56ac-4db8-ace7-cf83cf35c5f4.png">
+
+#### Progress shots:
+<img width="871" alt="Screen Shot 2021-11-19 at 3 02 27 AM" src="https://user-images.githubusercontent.com/14368010/142587103-bb48c48a-262a-456b-8209-c615800f780b.png">
+
+<img width="869" alt="Screen Shot 2021-11-19 at 3 10 16 AM" src="https://user-images.githubusercontent.com/14368010/142588023-9ae1b727-b375-4131-a167-5d6bb16f1a14.png">
+
 
 ## Software Implementation
 ### Physical
 ### Remote
 
 ## Reflection
+
+Roughly estimating wattage for LED power consumption wasn't the best idea. Zenith currently uses a 5V 15A power supply for a max 75W power. The website suggested 5V 20A but the ones I saw on Amazon were too bulky so I opted for slightly less. On the other hand, this was sort of a happy accident, because I get lovely gradients without manually programming them in.
+
