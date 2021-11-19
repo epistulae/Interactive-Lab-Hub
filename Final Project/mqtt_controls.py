@@ -34,7 +34,15 @@ def on_message(client, userdata, msg):
             Globals.leds.intercept = True
 
         Globals.leds.mode = 2
-        Globals.leds.animation = str(msg.payload.decode('UTF-8'))
+        message = str(msg.payload.decode('UTF-8'))
+        animation_vars = message.split(",")
+        if len(animation_var) is 3:
+            # Color range
+            Globals.leds.animation = Leds.Animation(animation_vars[0], animation_vars[1], animation_vars[2])
+        else: # lenth 4
+            # Color palette
+            Globals.leds.animation = Leds.Animation(animation_vars[0], animation_vars[1], animation_vars[2], True, animation_vars[3])
+
         Leds.displayMode(Globals.STRIP, Globals.leds, Globals.pinpricks, Globals.DEBUG)
 	
     # Lights
