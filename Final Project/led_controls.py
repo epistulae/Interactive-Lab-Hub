@@ -245,7 +245,7 @@ def variedTwinkleRange(strip, leds):
     g1 = color_range[2]
     g2 = color_range[3]
     b1 = color_range[4]
-    b2 = lcolor_range[5]
+    b2 = color_range[5]
     
     while (leds.mode is 2) and (not leds.intercept):
         randStars = random.sample(Stars.STARS, 20)
