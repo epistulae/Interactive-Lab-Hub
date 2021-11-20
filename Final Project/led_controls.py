@@ -324,7 +324,7 @@ def cycleMode(strip, leds, habits, debug=False):
 def cycleColor(strip, leds, habits, debug=False):
     if leds.mode is 1:
         # Solid: go through Colors enums
-        colors = [c.name for c in Color]
+        colors = [c.name for c in Colors]
         i = colors.index(leds.color)
         n = (i+1) % len(colors)
         leds.color = colors[n]
