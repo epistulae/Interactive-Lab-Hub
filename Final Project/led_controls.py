@@ -28,9 +28,10 @@ class Colors(Enum):
     blank = Color(0, 0, 0)
     
 # All color palettes (5 colors)
+# Each color is stored as a (R, G, B) tuple.
 class ColorPalettes(Enum):
-    #[Color(), Color(), Color(), Color(), Color()]
-    pink_holiday = [Color(157, 203, 255), Color(191, 226, 254), Color(254, 205, 203), Color(223, 126, 137), Color(141, 28, 26)]
+    #[(), (), (), (), ()]
+    pink_holiday = [(157, 203, 255), (191, 226, 254), (254, 205, 203), (223, 126, 137), (141, 28, 26)]
 
 class Animation:
     def __init__(self, name, style, color_range, palette=False, color_palette=None):
@@ -220,26 +221,17 @@ def solidTwinkle(strip, leds):
     fastClearDisplay(strip, leds)
     displayPinpricks(strip)
 
-    palette = ColorPalettes[leds.animation.palette].value
-    color_range = ColorRanges[leds.animation.color_range].value
-    r1 = color_range[0]
-    r2 = color_range[1]
-    g1 = color_range[2]
-    g2 = color_range[3]
-    b1 = color_range[4]
-    b2 = color_range[5]
+    palette = ColorPalettes[leds.animation.palette].value # len 5
     
     while (leds.mode is 2) and (not leds.intercept):
         randStars = random.sample(Stars.STARS, 20)
         
-        red = random.randrange(r1, r2)
-        green = random.randrange(g1, g2)
-        blue = random.randrange(b1, b2)
+        color = palette[random.randrange(5)]
         for k in range(256):
             if (leds.mode is 2) and (not leds.intercept):
-                r = int((k/256)*red)
-                g = int((k/256)*green)
-                b = int((k/256)*blue)
+                r = int((k/256)*color[0])
+                g = int((k/256)*color[1])
+                b = int((k/256)*color[2])
                 for star in randStars:
                     strip.setPixelColor(star, Color(r, g, b))
                 strip.show()
@@ -249,9 +241,9 @@ def solidTwinkle(strip, leds):
         if (leds.mode is 2) and (not leds.intercept):
             for k in reversed(range(256)):
                 if (leds.mode is 2) and (not leds.intercept):
-                    r = int((k/256)*red)
-                    g = int((k/256)*green)
-                    b = int((k/256)*blue)
+                    r = int((k/256)*color[0])
+                    g = int((k/256)*color[1])
+                    b = int((k/256)*color[2])
                     for star in randStars:
                         strip.setPixelColor(star, Color(r, g, b))
                     strip.show()
@@ -266,27 +258,19 @@ def solidTwinkle(strip, leds):
 def variedTwinkle(strip, leds):
     fastClearDisplay(strip, leds)
     displayPinpricks(strip)
-
-    color_range = ColorRanges[leds.animation.color_range].value
-    r1 = color_range[0]
-    r2 = color_range[1]
-    g1 = color_range[2]
-    g2 = color_range[3]
-    b1 = color_range[4]
-    b2 = color_range[5]
+    
+    palette = ColorPalettes[leds.animation.palette].value # len 5
     
     while (leds.mode is 2) and (not leds.intercept):
         randStars = random.sample(Stars.STARS, 20)
         
-        # Generate set of random numbers
-        reds = [random.randrange(r1, r2) for _ in range(20)]
-        greens = [random.randrange(g1, g2) for _ in range(20)]
-        blues = [random.randrange(b1, b2) for _ in range(20)]
+        # Star colors, picked from the palette
+        colors = [random.choice(palette) for _ in range(20)]
         
         for k in range(256):
             if (leds.mode is 2) and (not leds.intercept):
                 for i, star in enumerate(randStars):
-                    strip.setPixelColor(star, Color(int((k/256)*reds[i]), int((k/256)*greens[i]), int((k/256)*blues[i])))
+                    strip.setPixelColor(star, Color(int((k/256)*colors[i][0]), int((k/256)*colors[i][1]), int((k/256)*colors[i][2])))
                 strip.show()
             else:
                 break
@@ -295,7 +279,7 @@ def variedTwinkle(strip, leds):
             for k in reversed(range(256)):
                 if (leds.mode is 2) and (not leds.intercept):
                     for i, star in enumerate(randStars):
-                        strip.setPixelColor(star, Color(int((k/256)*reds[i]), int((k/256)*greens[i]), int((k/256)*blues[i])))
+                        strip.setPixelColor(star, Color(int((k/256)*colors[i][0]), int((k/256)*colors[i][1]), int((k/256)*colors[i][2])))
                     strip.show()
                 else:
                     break
