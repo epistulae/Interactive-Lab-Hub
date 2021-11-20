@@ -36,7 +36,7 @@ def on_message(client, userdata, msg):
         Globals.leds.mode = 2
         message = str(msg.payload.decode('UTF-8'))
         animation_vars = message.split(",")
-        if len(animation_var) is 3:
+        if len(animation_vars) is 3:
             # Color range
             Globals.leds.animation = Leds.Animation(animation_vars[0], animation_vars[1], animation_vars[2])
         else: # lenth 4
