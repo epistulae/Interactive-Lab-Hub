@@ -46,7 +46,7 @@ try:
     while True:
         if mpr121[0].value:
             # If already animating
-            if Globals.leds.mode is 2:
+            if (Globals.leds.mode is 2) and Globals.leds.lights:
                 Globals.leds.intercept = True
                 time.sleep(5)
             Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
@@ -70,7 +70,7 @@ try:
         
 except KeyboardInterrupt:
     Mqtt.stop()
-    if Globals.leds.mode is 2:
+    if (Globals.leds.mode is 2) and Globals.leds.lights:
         Globals.leds.intercept = True
         time.sleep(5)
     Leds.slowClearDisplay(STRIP, Globals.leds)
