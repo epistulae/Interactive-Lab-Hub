@@ -58,7 +58,7 @@ class State:
         self.mode = 0 
         self.mode_count = 3
         self.color = "rose" # Colors enum entry name
-        self.animation = Animation("twinkle", "solid", "rainbow")
+        self.animation = Animation("rainbow", "solid", "rainbow")
         self.intercept = False
         
 # 
