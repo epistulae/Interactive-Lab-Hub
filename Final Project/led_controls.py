@@ -262,9 +262,9 @@ def variedTwinkleRange(strip, leds):
         if (leds.mode is 2) and (not leds.intercept):
             for k in reversed(range(256)):
                 if (leds.mode is 2) and (not leds.intercept):
-                for i, star in enumerate(randStars):
-                    strip.setPixelColor(star, Color(int((k/256)*reds[i]), int((k/256)*greens[i]), int((k/256)*blues[i])))
-                strip.show()
+                    for i, star in enumerate(randStars):
+                        strip.setPixelColor(star, Color(int((k/256)*reds[i]), int((k/256)*greens[i]), int((k/256)*blues[i])))
+                    strip.show()
                 else:
                     break
         else:
