@@ -393,6 +393,6 @@ def debugLeds(leds):
     print("Mode: " + str(leds.mode))
     print("Color: " + str(leds.color))
     print("Animation: " + str(leds.animation.name) + " " + str(leds.animation.style))
-    print("Animation Color: " + str(leds.animation.color_range) + " Palette: " + str(leds.animation.palette) + " " + str(leds.animation.color_palette))
+    print("Animation Palette: " + str(leds.animation.palette))
     print("Intercept: " + str(leds.intercept))
     print("\n")
