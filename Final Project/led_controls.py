@@ -31,9 +31,9 @@ class Colors(Enum):
 class ColorRanges(Enum):
     rainbow = [0, 256, 0, 256, 0, 256]
     starlight = [255, 256, 195, 241, 64, 65]
-    fire = [255, 256, 18, 256, 18, 19]
-    ocean = [31, 32, 50, 220, 255, 256]
-    mystery = [98, 180, 50, 51, 255, 256]
+    fire = [255, 256, 100, 256, 18, 19]
+    ocean = [31, 32, 50, 256, 255, 256]
+    mystery = [98, 256, 50, 51, 255, 256]
     
 # All color palettes (5 colors)
 class ColorPalettes(Enum):
