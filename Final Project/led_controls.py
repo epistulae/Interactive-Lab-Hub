@@ -26,15 +26,6 @@ class Colors(Enum):
     
     # Lights off
     blank = Color(0, 0, 0)
-
-# All color ranges
-# Array in pairs of RGB ranges [r1, r2, g1, g2, b1, b2]
-class ColorRanges(Enum):
-    rainbow = [0, 256, 0, 256, 0, 256]
-    starlight = [255, 256, 195, 241, 64, 65]
-    fire = [255, 256, 100, 256, 18, 19]
-    ocean = [31, 32, 50, 256, 255, 256]
-    mystery = [98, 256, 50, 51, 255, 256]
     
 # All color palettes (5 colors)
 class ColorPalettes(Enum):
@@ -45,9 +36,7 @@ class Animation:
     def __init__(self, name, style, color_range, palette=False, color_palette=None):
         self.name = name
         self.style = style # solid v varied
-        self.color_range = color_range #  ColorRanges enum entry name
-        self.palette = palette # Whether or not to use color palette instead
-        self.color_palette = color_palette # Specific color palette
+        self.palette = palette # Specific color palette
 
 # Tracks state of LED lights
 class State:
@@ -59,7 +48,7 @@ class State:
         self.mode = 0 
         self.mode_count = 3
         self.color = "rose" # Colors enum entry name
-        self.animation = Animation("rainbow", "solid", "rainbow")
+        self.animation = Animation("twinkle", "solid", "rainbow")
         self.intercept = False
         
 # 
@@ -184,13 +173,83 @@ def rainbow(strip, leds, wait_ms=20):
 
 # Solid color twinkle. 
 # Even when we randomize color, at any one time, all stars are the same color.
-# x1 to x2 is the range to randomly generate color values.
-# randrange generates from x1 (inclusive) upto x2 (exclusive).
-# if x2 = x1+1, this the generated value will always be x1
-def solidTwinkleRange(strip, leds):
+def solidRainbowTwinkle(strip, leds):
+    fastClearDisplay(strip, leds)
+    displayPinpricks(strip)
+    
+    while (leds.mode is 2) and (not leds.intercept):
+        randStars = random.sample(Stars.STARS, 20)
+        
+        red = random.randrange(256)
+        green = random.randrange(256)
+        blue = random.randrange(256)
+        for k in range(256):
+            if (leds.mode is 2) and (not leds.intercept):
+                r = int((k/256)*red)
+                g = int((k/256)*green)
+                b = int((k/256)*blue)
+                for star in randStars:
+                    strip.setPixelColor(star, Color(r, g, b))
+                strip.show()
+            else:
+                break
+
+        if (leds.mode is 2) and (not leds.intercept):
+            for k in reversed(range(256)):
+                if (leds.mode is 2) and (not leds.intercept):
+                    r = int((k/256)*red)
+                    g = int((k/256)*green)
+                    b = int((k/256)*blue)
+                    for star in randStars:
+                        strip.setPixelColor(star, Color(r, g, b))
+                    strip.show()
+                else:
+                    break
+        else:
+            break
+    leds.intercept = False
+
+# Varied color twinkle. 
+# Stars can have different colors even when showing up at the same time.
+def variedRainbowTwinkle(strip, leds):
+    fastClearDisplay(strip, leds)
+    displayPinpricks(strip)
+    
+    while (leds.mode is 2) and (not leds.intercept):
+        randStars = random.sample(Stars.STARS, 20)
+        
+        # Generate set of random numbers
+        reds = [random.randrange(256) for _ in range(20)]
+        greens = [random.randrange(256) for _ in range(20)]
+        blues = [random.randrange(256) for _ in range(20)]
+        
+        for k in range(256):
+            if (leds.mode is 2) and (not leds.intercept):
+                for i, star in enumerate(randStars):
+                    strip.setPixelColor(star, Color(int((k/256)*reds[i]), int((k/256)*greens[i]), int((k/256)*blues[i])))
+                strip.show()
+            else:
+                break
+
+        if (leds.mode is 2) and (not leds.intercept):
+            for k in reversed(range(256)):
+                if (leds.mode is 2) and (not leds.intercept):
+                    for i, star in enumerate(randStars):
+                        strip.setPixelColor(star, Color(int((k/256)*reds[i]), int((k/256)*greens[i]), int((k/256)*blues[i])))
+                    strip.show()
+                else:
+                    break
+        else:
+            break
+    leds.intercept = False
+    
+# Solid color twinkle. 
+# Even when we randomize color, at any one time, all stars are the same color.
+def solidTwinkle(strip, leds):
     fastClearDisplay(strip, leds)
     displayPinpricks(strip)
 
+    palette = ColorPalettes[leds.animation.palette].value
     color_range = ColorRanges[leds.animation.color_range].value
     r1 = color_range[0]
     r2 = color_range[1]
@@ -233,10 +292,7 @@ def solidTwinkleRange(strip, leds):
 
 # Varied color twinkle. 
 # Stars can have different colors even when showing up at the same time.
-# x1 to x2 is the range to randomly generate color values.
-# randrange generates from x1 (inclusive) upto x2 (exclusive).
-# if x2 = x1+1, this the generated value will always be x1
-def variedTwinkleRange(strip, leds):
+def variedTwinkle(strip, leds):
     fastClearDisplay(strip, leds)
     displayPinpricks(strip)
 
@@ -279,20 +335,22 @@ def variedTwinkleRange(strip, leds):
 def animate(strip, leds):
     if leds.animation.name == "twinkle":
         if leds.animation.style == "solid":
-            if leds.animation.palette:
-                # Twinkle with color palette
-                print("Palette")
+            if leds.animation.palette == "rainbow":
+                # Rainbow twinkle
+                t = threading.Thread(target=solidRainbowTwinkle, args=(strip, leds,))
+                t.start()
             else:
-                # Twinkle with range
-                t = threading.Thread(target=solidTwinkleRange, args=(strip, leds,))
+                # Palette Twinkle
+                t = threading.Thread(target=solidTwinkle, args=(strip, leds,))
                 t.start()
         elif leds.animation.style == "varied":
-            if leds.animation.palette:
-                # Twinkle with color palette
-                print("Palette")
+            if leds.animation.palette == "rainbow":
+                # Rainbow twinkle
+                t = threading.Thread(target=variedRainbowTwinkle, args=(strip, leds,))
+                t.start()
             else:
-                # Twinkle with range
-                t = threading.Thread(target=variedTwinkleRange, args=(strip, leds,))
+                # Palette Twinkle
+                t = threading.Thread(target=variedTwinkle, args=(strip, leds,))
                 t.start()
     elif leds.animation.name == "rainbow":
         t = threading.Thread(target=rainbow, args=(strip, leds,))
@@ -328,33 +386,17 @@ def cycleMode(strip, leds, habits, debug=False):
 # Cycle through available colors for current mode. 
 def cycleColor(strip, leds, habits, debug=False):
     if leds.mode is 1:
-        # Solid: go through Colors enums
+        # Solid: go through Colors enum
         colors = [c.name for c in Colors]
         i = colors.index(leds.color)
         n = (i+1) % (len(colors)-4)
         leds.color = colors[n]
     elif leds.mode is 2:
-        # Animated: go through ColorRanges followed by ColorPalettes enums.
-        colors = [r.name for r in ColorRanges] + [p.name for p in ColorPalettes]
-        n = 0
-        if leds.animation.palette:
-            # Currently a palette
-            i = colors.index(leds.animation.color_palette)
-            n = (i+1) % len(colors)
-        else:
-            # Currently a range
-            i = colors.index(leds.animation.color_range)
-            n = (i+1) % len(colors)
-        
-        if n >= len(ColorRanges):
-            # New color is a palette
-            leds.animation.palette = True
-            leds.animation.color_palette = colors[n]
-        else:
-            # New color is a range
-            leds.animation.palette = False
-            leds.animation.color_range = colors[n]
-            
+        # Animated: go through ColorPalettes enum
+        colors = [p.name for p in ColorPalettes]
+        i = colors.index(leds.animation.palette)
+        n = (i+1) % len(colors)
+        leds.animation.palette = colors[n]
     
     displayMode(strip, leds, habits, debug)
 
