@@ -190,7 +190,7 @@ def solidTwinkleRange(strip, leds):
     fastClearDisplay(strip, leds)
     displayPinpricks(strip)
 
-    color_range = ColorRanges[leds.animation.self.color_range].value
+    color_range = ColorRanges[leds.animation.color_range].value
     r1 = color_range[0]
     r2 = color_range[1]
     g1 = color_range[2]
@@ -239,7 +239,7 @@ def variedTwinkleRange(strip, leds):
     fastClearDisplay(strip, leds)
     displayPinpricks(strip)
 
-    color_range = ColorRanges[leds.animation.self.color_range].value
+    color_range = ColorRanges[leds.animation.color_range].value
     r1 = color_range[0]
     r2 = color_range[1]
     g1 = color_range[2]
