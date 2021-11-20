@@ -9,9 +9,6 @@ import threading
 
 # All color values
 class Colors(Enum):
-    incomplete = Color(230, 21, 83)
-    complete = Color(81, 224, 105)
-    pinprick = Color(255, 245, 222)
     rose = Color(255, 20, 20)
     sunset = Color(237, 108, 2)
     spring = Color(168, 235, 52)
@@ -20,6 +17,13 @@ class Colors(Enum):
     royal = Color(98, 0, 255)
     amethyst = Color(168, 57, 237)
     sakura = Color(255, 87, 179)
+    
+    # Habit colors
+    incomplete = Color(230, 21, 83)
+    complete = Color(81, 224, 105)
+    pinprick = Color(255, 245, 222)
+    
+    # Lights off
     blank = Color(0, 0, 0)
 
 # All color ranges
@@ -326,7 +330,7 @@ def cycleColor(strip, leds, habits, debug=False):
         # Solid: go through Colors enums
         colors = [c.name for c in Colors]
         i = colors.index(leds.color)
-        n = (i+1) % len(colors)
+        n = (i+1) % (len(colors)-4)
         leds.color = colors[n]
     elif leds.mode is 2:
         # Animated: go through ColorRanges followed by ColorPalettes enums.
