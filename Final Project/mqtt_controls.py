@@ -7,7 +7,7 @@ import paho.mqtt.client as mqtt
 import time
 import uuid
 
-topics = ["pi/color/", "pi/animation/", "pi/lights/", "pi/habits/", "pi/habits/first", "pi/habits/second", "pi/info"]
+topics = ["pi/color/", "pi/animation/", "pi/lights/", "pi/habits/", "pi/habits/first", "pi/habits/second", "pi/habits/info"]
 
 def on_connect(client, userdata, flags, rc):
     if Globals.DEBUG:
@@ -36,18 +36,16 @@ def on_message(client, userdata, msg):
         Globals.leds.mode = 2
         message = str(msg.payload.decode('UTF-8'))
         animation_vars = message.split(",")
-        if len(animation_vars) is 3:
-            # Color range
-            Globals.leds.animation = Leds.Animation(animation_vars[0], animation_vars[1], animation_vars[2])
-        else: # lenth 4
-            # Color palette
-            Globals.leds.animation = Leds.Animation(animation_vars[0], animation_vars[1], animation_vars[2], True, animation_vars[3])
+        Globals.leds.animation = Leds.Animation(animation_vars[0], animation_vars[1], animation_vars[2])
 
         Leds.displayMode(Globals.STRIP, Globals.leds, Globals.pinpricks, Globals.DEBUG)
 	
     # Lights
     # Any message to the topic means to flip lights.
     elif incoming_topic == topics[2]:
+        if (Globals.leds.mode is 2) and Globals.leds.lights:
+            Globals.leds.intercept = True
+            time.sleep(5)
         Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.DEBUG)
 	
     # Habits
@@ -68,7 +66,7 @@ def on_message(client, userdata, msg):
     # Request remote state data
     elif incoming_topic == topics[6]:
         val = str(int(Globals.leds.lights)) + " " + str(int(Globals.habits.first_complete)) + " " + str(int(Globals.habits.second_complete))
-        client.publish('remote/info', val)
+        client.publish('remote/habits/info', val)
 
 # Every client needs a random ID
 client = mqtt.Client(str(uuid.uuid1()))
