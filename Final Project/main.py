@@ -45,11 +45,18 @@ try:
     Leds.initDisplay(Globals.STRIP, Globals.leds, Globals.habits)
     while True:
         if mpr121[0].value:
+            # If already animating
+            if Globals.leds.mode is 2:
+                Globals.leds.intercept = True
+                time.sleep(5)
             Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
             Mqtt.client.publish('remote/lights', "0")
         elif mpr121[5].value:
+            # If already animating
+            if Globals.leds.mode is 2:
+                Globals.leds.intercept = True
             Leds.cycleMode(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
-        elif mpr121[9].value:
+        elif mpr121[6].value:
             # If already animating
             if Globals.leds.mode is 2:
                 Globals.leds.intercept = True
