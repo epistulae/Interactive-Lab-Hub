@@ -49,7 +49,7 @@ try:
             Mqtt.client.publish('remote/lights', "0")
         elif mpr121[5].value:
             Leds.cycleMode(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
-        elif mpr121[11].value:
+        elif mpr121[9].value:
             # If already animating
             if Globals.leds.mode is 2:
                 Globals.leds.intercept = True
