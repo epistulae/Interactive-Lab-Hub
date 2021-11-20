@@ -338,11 +338,11 @@ def cycleColor(strip, leds, habits, debug=False):
         n = 0
         if leds.animation.palette:
             # Currently a palette
-            i = colors.index(leds.color_palette)
+            i = colors.index(leds.animation.color_palette)
             n = (i+1) % len(colors)
         else:
             # Currently a range
-            i = colors.index(leds.color_range)
+            i = colors.index(leds.animation.color_range)
             n = (i+1) % len(colors)
         
         if n >= len(ColorRanges):
