@@ -50,6 +50,9 @@ try:
         elif mpr121[5].value:
             Leds.cycleMode(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
         elif mpr121[11].value:
+            # If already animating
+            if Globals.leds.mode is 2:
+                Globals.leds.intercept = True
             Leds.cycleColor(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
         elif mpr121[2].value:
             Habits.flipFirstHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
