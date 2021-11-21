@@ -41,15 +41,21 @@ def flipSecondHabit(strip, habits, leds, debug=False):
     if debug:
         debugHabits(habits)
         
-def resetHabitA(habits):
+def resetFirstHabit(strip, habits, leds, debug=False):
     for constellation in habits.second.constellations:
         for star in constellation:
             star.complete = False
+    Leds.displayHabits(strip, habits)
+    if debug:
+        debugHabits(habits)
     
-def resetHabitB(habits):
+def resetSecondHabit(strip, habits, leds, debug=False):
     for constellation in habits.second.constellations:
         for star in constellation:
             star.complete = False
+    Leds.displayHabits(strip, habits)
+    if debug:
+        debugHabits(habits)
 
 # Check whether or not it's a new day and update the state if it is.
 def nextDay(habits):
