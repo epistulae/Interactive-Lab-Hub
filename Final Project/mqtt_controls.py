@@ -77,11 +77,8 @@ def on_message(client, userdata, msg):
     elif incoming_topic == topics[6]:
         Habits.debugToNextDay(Globals.habits)
         
-# Every client needs a random ID
 client = mqtt.Client(str(uuid.uuid1()))
-# configure network encryption etc
 # client.tls_set()
-# this is the username and pw we have setup for the class
 client.username_pw_set(Globals.USER, Globals.PASS)
 client.on_connect = on_connect
 client.connect(Globals.HOST, port=Globals.PORT)
