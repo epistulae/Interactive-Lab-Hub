@@ -71,7 +71,7 @@ def on_message(client, userdata, msg):
         if message == "flip":
             Habits.flipSecondHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
         elif message == "clear":
-            Habits.resetHabitA(Globals.habits)   
+            Habits.resetHabitB(Globals.habits)   
         
     # Next day for debugging only
     elif incoming_topic == topics[6]:
