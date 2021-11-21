@@ -82,7 +82,8 @@ def nextDay(habits):
             habits.second.cur_star += 1
 
 def debugToNextDay(habits):
-    habits.day += 1
+    habits.day = habits.day + 1
+    print(str(habits.day))
     # Habit A
     if habits.first.cur_star + 1 is len(habits.first.constellations[habits.first.cur_constellation]):
         # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
