@@ -25,7 +25,7 @@ def on_message(client, userdata, msg):
     if incoming_topic == topics[0]:
         Globals.leds.mode = 1
         Globals.leds.color = message
-        Leds.displayMode(Globals.STRIP, Globals.leds, Globals.pinpricks, Globals.DEBUG)
+        Leds.displayMode(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
 
     # Animation
     # Directly goes to animated mood mode.
@@ -41,7 +41,7 @@ def on_message(client, userdata, msg):
         animation_vars = message.split(",")
         Globals.leds.animation = Leds.Animation(animation_vars[0], animation_vars[1], animation_vars[2])
 
-        Leds.displayMode(Globals.STRIP, Globals.leds, Globals.pinpricks, Globals.DEBUG)
+        Leds.displayMode(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
 	
     # Lights
     # Any message to the topic means to flip lights.
