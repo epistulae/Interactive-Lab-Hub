@@ -34,7 +34,7 @@ class ColorPalettes(Enum):
     pink_holiday = [(157, 203, 255), (191, 226, 254), (254, 205, 203), (223, 126, 137), (141, 28, 26)]
 
 class Animation:
-    def __init__(self, name, style, color_range, palette=False, color_palette=None):
+    def __init__(self, name, style, palette):
         self.name = name
         self.style = style # solid v varied
         self.palette = palette # Specific color palette
