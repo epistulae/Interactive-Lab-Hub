@@ -415,7 +415,7 @@ def animate(strip, leds, habits):
                 t = threading.Thread(target=variedTwinkle, args=(strip, leds,))
                 t.start()
     elif leds.animation.name == "fade":
-        f leds.animation.style == "solid":
+        if leds.animation.style == "solid":
             if leds.animation.palette == "rainbow":
                 # Rainbow Fade
 #                 t = threading.Thread(target=solidRainbowTwinkle, args=(strip, leds, habits,))
