@@ -165,7 +165,6 @@ def rainbow(strip, leds, wait_ms=20):
 # Solid color twinkle. 
 # Even when we randomize color, at any one time, all stars are the same color.
 def solidRainbowTwinkle(strip, leds):
-    fastClearDisplay(strip, leds)
     displayPinpricks(strip)
     
     while (leds.mode is 2) and (not leds.intercept):
@@ -203,7 +202,6 @@ def solidRainbowTwinkle(strip, leds):
 # Varied color twinkle. 
 # Stars can have different colors even when showing up at the same time.
 def variedRainbowTwinkle(strip, leds):
-    fastClearDisplay(strip, leds)
     displayPinpricks(strip)
     
     while (leds.mode is 2) and (not leds.intercept):
@@ -237,7 +235,6 @@ def variedRainbowTwinkle(strip, leds):
 # Solid color twinkle. 
 # Even when we randomize color, at any one time, all stars are the same color.
 def solidTwinkle(strip, leds):
-    fastClearDisplay(strip, leds)
     displayPinpricks(strip)
 
     palette = ColorPalettes[leds.animation.palette].value # len 5
@@ -275,7 +272,6 @@ def solidTwinkle(strip, leds):
 # Varied color twinkle. 
 # Stars can have different colors even when showing up at the same time.
 def variedTwinkle(strip, leds):
-    fastClearDisplay(strip, leds)
     displayPinpricks(strip)
     
     palette = ColorPalettes[leds.animation.palette].value # len 5
@@ -307,7 +303,6 @@ def variedTwinkle(strip, leds):
     leds.intercept = False
 
 def solidFade(strip, leds, habits):
-    fastClearDisplay(strip, leds)
     displayPinpricks(strip)
     
     palette = ColorPalettes[leds.animation.palette].value
@@ -350,7 +345,6 @@ def solidFade(strip, leds, habits):
     leds.intercept = False
 
 def variedFade(strip, leds, habits):
-    fastClearDisplay(strip, leds)
     displayPinpricks(strip)
     
     palette = ColorPalettes[leds.animation.palette].value
