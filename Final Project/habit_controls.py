@@ -15,28 +15,28 @@ class State:
 
 # Flip completeness for today's tracking of the first habit.
 def flipFirstHabit(strip, habits, leds, debug=False):
+    if not leds.lights:
+        leds.lights = True
+    if leds.mode is not 0:
+        leds.mode = 0
     habits.first_complete = not habits.first_complete
     constellation = habits.first.cur_constellation
     star = habits.first.cur_star
     habits.first.constellations[constellation][star].complete = not habits.first.constellations[constellation][star].complete
-    if not leds.lights and not (leds.mode is 0):
-        # Not on and not on habits
-        leds.lights = True
-        leds.mode = 0
     Leds.displayHabits(strip, habits)
     if debug:
         debugHabits(habits)
 
 # Flip completeness for today's tracking of the second habit.
 def flipSecondHabit(strip, habits, leds, debug=False):
+    if not leds.lights:
+        leds.lights = True
+    if leds.mode is not 0:
+        leds.mode = 0
     habits.second_complete = not habits.second_complete
     constellation = habits.second.cur_constellation
     star = habits.second.cur_star
     habits.second.constellations[constellation][star].complete = not habits.second.constellations[constellation][star].complete
-    if not leds.lights and not (leds.mode is 0):
-        # Not on and not on habits
-        leds.lights = True
-        leds.mode = 0
     Leds.displayHabits(strip, habits)
     if debug:
         debugHabits(habits)
