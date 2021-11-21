@@ -306,7 +306,95 @@ def variedTwinkle(strip, leds):
             break
     leds.intercept = False
 
-def animate(strip, leds):
+def solidFade(strip, leds, habits):
+    fastClearDisplay(strip, leds)
+    displayPinpricks(strip)
+    
+    palette = ColorPalettes[leds.animation.palette].value
+    all_constellations = habits.first.constellations + habits.second.constellations
+    
+    while (leds.mode is 2) and (not leds.intercept):
+        colors = random.choice(palette)
+        for k in range(256):
+            if (leds.mode is 2) and (not leds.intercept):
+                for constellation in all_constellations:
+                    led_color = Color(int((k/256)*colors[0]), int((k/256)*colors[1]), int((k/256)*colors[2]))
+                    for star in constellation:
+                        strip.setPixelColor(star.index, led_color)
+                        # Connectors
+                        for prior in star.prior_stars:
+                            connectors = prior[1]
+                            for pixel in connectors:
+                                strip.setPixelColor(led, led_color)
+                strip.show()
+            else:
+                break
+                
+        if (leds.mode is 2) and (not leds.intercept):
+            for k in reversed(range(256)):
+                if (leds.mode is 2) and (not leds.intercept):
+                    for i, constellation in enumerate(all_constellations):
+                        led_color = Color(int((k/256)*colors[0]), int((k/256)*colors[1]), int((k/256)*colors[2]))
+                        for star in constellation:
+                            strip.setPixelColor(star.index, led_color)
+                            # Connectors
+                            for prior in star.prior_stars:
+                                connectors = prior[1]
+                                for pixel in connectors:
+                                    strip.setPixelColor(led, led_color)
+                    strip.show()
+                else:
+                    break
+        else:
+            break
+    leds.intercept = False
+
+def variedFade(strip, leds, habits):
+    fastClearDisplay(strip, leds)
+    displayPinpricks(strip)
+    
+    palette = ColorPalettes[leds.animation.palette].value
+    all_constellations = habits.first.constellations + habits.second.constellations
+    
+    # Constellation colors, picked from the palette
+    colors = [random.choice(palette) for _ in range(len(all_constellations))]
+    
+    while (leds.mode is 2) and (not leds.intercept):
+        for k in range(256):
+            if (leds.mode is 2) and (not leds.intercept):
+                for i, constellation in enumerate(all_constellations):
+                    led_color = Color(int((k/256)*colors[i][0]), int((k/256)*colors[i][1]), int((k/256)*colors[i][2]))
+                    for star in constellation:
+                        strip.setPixelColor(star.index, led_color)
+                        # Connectors
+                        for prior in star.prior_stars:
+                            connectors = prior[1]
+                            for pixel in connectors:
+                                strip.setPixelColor(led, led_color)
+                strip.show()
+            else:
+                break
+                
+        if (leds.mode is 2) and (not leds.intercept):
+            for k in reversed(range(256)):
+                if (leds.mode is 2) and (not leds.intercept):
+                    for i, constellation in enumerate(all_constellations):
+                        led_color = Color(int((k/256)*colors[i][0]), int((k/256)*colors[i][1]), int((k/256)*colors[i][2]))
+                        for star in constellation:
+                            strip.setPixelColor(star.index, led_color)
+                            # Connectors
+                            for prior in star.prior_stars:
+                                connectors = prior[1]
+                                for pixel in connectors:
+                                    strip.setPixelColor(led, led_color)
+                    strip.show()
+                else:
+                    break
+        else:
+            break
+    leds.intercept = False
+    
+def animate(strip, leds, habits):
     if leds.animation.name == "twinkle":
         if leds.animation.style == "solid":
             if leds.animation.palette == "rainbow":
@@ -325,6 +413,27 @@ def animate(strip, leds):
             else:
                 # Palette Twinkle
                 t = threading.Thread(target=variedTwinkle, args=(strip, leds,))
+                t.start()
+    elif leds.animation.name == "fade":
+        f leds.animation.style == "solid":
+            if leds.animation.palette == "rainbow":
+                # Rainbow Fade
+#                 t = threading.Thread(target=solidRainbowTwinkle, args=(strip, leds, habits,))
+#                 t.start()
+                A=1
+            else:
+                # Palette Twinkle
+                t = threading.Thread(target=solidFade, args=(strip, leds, habits,))
+                t.start()
+        elif leds.animation.style == "varied":
+            if leds.animation.palette == "rainbow":
+                # Rainbow Fade
+#                 t = threading.Thread(target=fadeRainbowVaried, args=(strip, leds, habits,))
+#                 t.start()
+                A=1
+            else:
+                # Palette Fade
+                t = threading.Thread(target=variedFade, args=(strip, leds, habits,))
                 t.start()
     elif leds.animation.name == "rainbow":
         t = threading.Thread(target=rainbow, args=(strip, leds,))
@@ -346,7 +455,7 @@ def displayMode(strip, leds, habits, debug=False):
     elif leds.mode is 1:
         solidColor(strip, leds)
     elif leds.mode is 2:
-        animate(strip, leds)
+        animate(strip, leds, habits)
 
     if debug:
         debugLeds(leds)
