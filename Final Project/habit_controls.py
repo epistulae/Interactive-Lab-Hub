@@ -77,23 +77,23 @@ def nextDay(habits):
 
 def debugToNextDay(habits):
     habits.day += 1
-        # Habit A
-        if habits.first.cur_star + 1 is len(habits.first.constellations[habits.first.cur_constellation]):
-            # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
-            habits.first.cur_constellation += 1
-            habits.first.cur_star = 0
-        else:
-            # Next star
-            habits.first.cur_star += 1
+    # Habit A
+    if habits.first.cur_star + 1 is len(habits.first.constellations[habits.first.cur_constellation]):
+        # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
+        habits.first.cur_constellation += 1
+        habits.first.cur_star = 0
+    else:
+        # Next star
+        habits.first.cur_star += 1
 
-        # Habit B
-        if habits.second.cur_star + 1 is len(habits.second.constellations[habits.second.cur_constellation]):
-            # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
-            habits.second.cur_constellation += 1
-            habits.second.cur_star = 0
-        else:
-            # Next star
-            habits.second.cur_star += 1
+    # Habit B
+    if habits.second.cur_star + 1 is len(habits.second.constellations[habits.second.cur_constellation]):
+        # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
+        habits.second.cur_constellation += 1
+        habits.second.cur_star = 0
+    else:
+        # Next star
+        habits.second.cur_star += 1
     
 def debugHabits(habits):
     print("========================================")
