@@ -49,7 +49,7 @@ def on_message(client, userdata, msg):
         if (Globals.leds.mode is 2) and Globals.leds.lights:
             Globals.leds.intercept = True
             time.sleep(3)
-        Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.DEBUG)
+        Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
 	
     # Habits
     # Any message to the topic means to turn on habits.
