@@ -414,27 +414,27 @@ def animate(strip, leds, habits):
                 # Palette Twinkle
                 t = threading.Thread(target=variedTwinkle, args=(strip, leds,))
                 t.start()
-    elif leds.animation.name == "fade":
-        if leds.animation.style == "solid":
-            if leds.animation.palette == "rainbow":
-                # Rainbow Fade
-#                 t = threading.Thread(target=solidRainbowTwinkle, args=(strip, leds, habits,))
+#     elif leds.animation.name == "fade":
+#         if leds.animation.style == "solid":
+#             if leds.animation.palette == "rainbow":
+#                 # Rainbow Fade
+# #                 t = threading.Thread(target=solidRainbowTwinkle, args=(strip, leds, habits,))
+# #                 t.start()
+#                 A=1
+#             else:
+#                 # Palette Twinkle
+#                 t = threading.Thread(target=solidFade, args=(strip, leds, habits,))
 #                 t.start()
-                A=1
-            else:
-                # Palette Twinkle
-                t = threading.Thread(target=solidFade, args=(strip, leds, habits,))
-                t.start()
-        elif leds.animation.style == "varied":
-            if leds.animation.palette == "rainbow":
-                # Rainbow Fade
-#                 t = threading.Thread(target=fadeRainbowVaried, args=(strip, leds, habits,))
+#         elif leds.animation.style == "varied":
+#             if leds.animation.palette == "rainbow":
+#                 # Rainbow Fade
+# #                 t = threading.Thread(target=fadeRainbowVaried, args=(strip, leds, habits,))
+# #                 t.start()
+#                 A=1
+#             else:
+#                 # Palette Fade
+#                 t = threading.Thread(target=variedFade, args=(strip, leds, habits,))
 #                 t.start()
-                A=1
-            else:
-                # Palette Fade
-                t = threading.Thread(target=variedFade, args=(strip, leds, habits,))
-                t.start()
     elif leds.animation.name == "rainbow":
         t = threading.Thread(target=rainbow, args=(strip, leds,))
         t.start()
