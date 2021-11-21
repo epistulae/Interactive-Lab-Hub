@@ -60,7 +60,7 @@ def on_message(client, userdata, msg):
             client.publish('remote/habits/info', val)
         elif Globals.leds.mode is not 0:
             Globals.leds.mode = 0
-            Leds.displayMode(Globals.STRIP, Globals.leds, Globals.pinpricks, Globals.DEBUG)
+            Leds.displayMode(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
         
     # First habit
     elif incoming_topic == topics[4]:
