@@ -58,7 +58,7 @@ def on_message(client, userdata, msg):
             # Request habit state data
             val = str(int(Globals.leds.lights)) + " " + str(int(Globals.habits.first_complete)) + " " + str(int(Globals.habits.second_complete))
             client.publish('remote/habits/info', val)
-        elif Leds.leds.mode is not 0:
+        elif Globals.leds.mode is not 0:
             Globals.leds.mode = 0
             Leds.displayMode(Globals.STRIP, Globals.leds, Globals.pinpricks, Globals.DEBUG)
         
