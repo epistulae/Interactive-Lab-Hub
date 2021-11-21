@@ -30,6 +30,9 @@ def on_message(client, userdata, msg):
     # Animation
     # Directly goes to animated mood mode.
     elif incoming_topic == topics[1]:
+	Leds.fastClearDisplay(Globals.STRIP, Globals.leds)
+	Globals.leds.lights = True
+
         # Already animating
         if Globals.leds.mode is 2:
             Globals.leds.intercept = True
