@@ -238,6 +238,9 @@ def solidTwinkle(strip, leds):
     displayPinpricks(strip)
 
     palette = ColorPalettes[leds.animation.palette].value # len 5
+    r = 21
+    g = 187
+    b = 183
     
     while (leds.mode is 2) and (not leds.intercept):
         randStars = random.sample(Stars.STARS, 20)
@@ -245,9 +248,9 @@ def solidTwinkle(strip, leds):
         color = palette[random.randrange(5)]
         for k in range(256):
             if (leds.mode is 2) and (not leds.intercept):
-                r = int((k/256)*color[0])
-                g = int((k/256)*color[1])
-                b = int((k/256)*color[2])
+                r = int((k/256)*r)
+                g = int((k/256)*g)
+                b = int((k/256)*b)
                 for star in randStars:
                     strip.setPixelColor(star, Color(r, g, b))
                 strip.show()
@@ -257,9 +260,9 @@ def solidTwinkle(strip, leds):
         if (leds.mode is 2) and (not leds.intercept):
             for k in reversed(range(256)):
                 if (leds.mode is 2) and (not leds.intercept):
-                    r = int((k/256)*color[0])
-                    g = int((k/256)*color[1])
-                    b = int((k/256)*color[2])
+                    r = int((k/256)*r)
+                    g = int((k/256)*g)
+                    b = int((k/256)*b)
                     for star in randStars:
                         strip.setPixelColor(star, Color(r, g, b))
                     strip.show()
