@@ -7,7 +7,7 @@ import paho.mqtt.client as mqtt
 import time
 import uuid
 
-topics = ["pi/color/", "pi/animation/", "pi/lights/", "pi/habits/", "pi/habits/first", "pi/habits/second", "pi/habits/info"]
+topics = ["pi/color/", "pi/animation/", "pi/lights/", "pi/habits/", "pi/habits/first", "pi/habits/second", "pi/debug/nextday"]
 
 def on_connect(client, userdata, flags, rc):
     if Globals.DEBUG:
@@ -17,13 +17,14 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     incoming_topic = str(msg.topic)
+    message = str(msg.payload.decode('UTF-8'))
     
     # Color 
     # Input is the same Leds module's Colors enum. 
     # Directly goes to solid color mood mode.
     if incoming_topic == topics[0]:
         Globals.leds.mode = 1
-        Globals.leds.color = str(msg.payload.decode('UTF-8'))
+        Globals.leds.color = message
         Leds.displayMode(Globals.STRIP, Globals.leds, Globals.pinpricks, Globals.DEBUG)
 
     # Animation
@@ -34,7 +35,6 @@ def on_message(client, userdata, msg):
             Globals.leds.intercept = True
 
         Globals.leds.mode = 2
-        message = str(msg.payload.decode('UTF-8'))
         animation_vars = message.split(",")
         Globals.leds.animation = Leds.Animation(animation_vars[0], animation_vars[1], animation_vars[2])
 
@@ -51,23 +51,32 @@ def on_message(client, userdata, msg):
     # Habits
     # Any message to the topic means to turn on habits.
     elif incoming_topic == topics[3]:
-        if Leds.leds.mode is not 0:
+        if message == "info":
+            # Request habit state data
+            val = str(int(Globals.leds.lights)) + " " + str(int(Globals.habits.first_complete)) + " " + str(int(Globals.habits.second_complete))
+            client.publish('remote/habits/info', val)
+        elif Leds.leds.mode is not 0:
             Globals.leds.mode = 0
             Leds.displayMode(Globals.STRIP, Globals.leds, Globals.pinpricks, Globals.DEBUG)
         
-    # Flip first habit (any message)
+    # First habit
     elif incoming_topic == topics[4]:
-        Habits.flipFirstHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
+        if message == "flip":
+            Habits.flipFirstHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
+        elif message == "clear":
+            Habits.resetHabitA(Globals.habits)
 
-    # Flip second habit (any message)
+    # Second habit
     elif incoming_topic == topics[5]:
-        Habits.flipSecondHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
-    
-    # Request remote state data
+        if message == "flip":
+            Habits.flipSecondHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
+        elif message == "clear":
+            Habits.resetHabitA(Globals.habits)   
+        
+    # Next day for debugging only
     elif incoming_topic == topics[6]:
-        val = str(int(Globals.leds.lights)) + " " + str(int(Globals.habits.first_complete)) + " " + str(int(Globals.habits.second_complete))
-        client.publish('remote/habits/info', val)
-
+        Habits.debugToNextDay(Globals.habits)
+        
 # Every client needs a random ID
 client = mqtt.Client(str(uuid.uuid1()))
 # configure network encryption etc
