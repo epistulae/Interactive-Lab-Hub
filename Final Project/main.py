@@ -48,7 +48,7 @@ try:
             # If already animating
             if (Globals.leds.mode is 2) and Globals.leds.lights:
                 Globals.leds.intercept = True
-                time.sleep(5)
+                time.sleep(3)
             Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
             Mqtt.client.publish('remote/lights', "0")
         elif mpr121[6].value:
@@ -59,7 +59,7 @@ try:
             # If already animating
             if Globals.leds.mode is 2:
                 Globals.leds.intercept = True
-                time.sleep(1)
+                time.sleep(3)
                 Leds.fastClearDisplay(Globals.STRIP, Globals.leds)
                 Globals.leds.lights = True
             Leds.cycleColor(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
@@ -77,5 +77,5 @@ except KeyboardInterrupt:
     Mqtt.stop()
     if (Globals.leds.mode is 2) and Globals.leds.lights:
         Globals.leds.intercept = True
-        time.sleep(5)
+        time.sleep(3)
     Leds.slowClearDisplay(STRIP, Globals.leds)
