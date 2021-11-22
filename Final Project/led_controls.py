@@ -344,7 +344,7 @@ def syncopatedTwinkle(strip, leds):
                         bright[i] += 3
                     else:
                         bright[i] -= 3
-                        if bright[i] < 0:
+                        if bright[i] <= 0:
                             # New star
                             bright[i] = 0
                             randStars[i] = random.choice(list(set(Stars.STARS) - set(randStars)))
