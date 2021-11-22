@@ -352,7 +352,7 @@ def syncopatedTwinkle(strip, leds):
             else:
                 break
         strip.show()
-        time.sleep(20/1000.0)
+        time.sleep(40/1000.0)
     leds.intercept = False
 
 # def solidFade(strip, leds, habits):
