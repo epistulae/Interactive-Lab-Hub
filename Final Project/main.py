@@ -49,7 +49,7 @@ try:
     second = list(map(int, tracking_file.readline().split(" ")))
 
     tracking_file.close()
-    Habits.readInput(tracking_day, first, second)
+    Habits.readInput(Globals.habits, tracking_day, first, second)
     Leds.initDisplay(Globals.STRIP, Globals.leds, Globals.habits)
     while True:
         if mpr121[0].value:
