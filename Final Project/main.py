@@ -46,6 +46,7 @@ try:
 
     tracking_day = int(tracking_file.readline())
     first = list(map(int, tracking_file.readline().split(" ")))
+    print(str(first))
     second = list(map(int, tracking_file.readline().split(" ")))
 
     tracking_file.close()
