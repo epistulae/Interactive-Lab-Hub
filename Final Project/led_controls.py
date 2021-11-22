@@ -12,9 +12,9 @@ class Colors(Enum):
     rose = Color(255, 20, 20)
     fire = Color(255, 245, 222)
     meadow = Color(168, 235, 52)
+    spring = Color(81, 224, 105)
     forest = Color(27, 153, 23)
     beach = Color(105, 130, 255)
-    spring = Color(81, 224, 105)
     aqua = Color(21, 187, 183)
     royal = Color(98, 0, 255)
     amethyst = Color(168, 57, 237)
@@ -22,7 +22,7 @@ class Colors(Enum):
     
     # Habit colors
     incomplete = Color(237, 108, 2)
-    complete = Color(81, 224, 105)
+    complete = Color(21, 187, 183)
     pinprick = Color(255, 245, 222)
     
     # Lights off
