@@ -108,12 +108,12 @@ def nextDay(habits):
         tracking_file = open("tracking.txt","w")
         tracking_file.write(str(habits.tracking_day)+"\n")
         first = []
-            for constellation in habits.first.constellations:
-                first += [int(star.complete) for star in constellation]
+        for constellation in habits.first.constellations:
+            first += [int(star.complete) for star in constellation]
         tracking_file.write(' '.join([str(star) for star in first])+"\n")
         second = []
-            for constellation in habits.second.constellations:
-                second += [int(star.complete) for star in constellation]
+        for constellation in habits.second.constellations:
+            second += [int(star.complete) for star in constellation]
         tracking_file.write(' '.join([str(star) for star in second])+"\n")
 
 def debugToNextDay(habits):
