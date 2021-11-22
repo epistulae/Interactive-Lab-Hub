@@ -38,6 +38,14 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 # Spawns listener thread
 Mqtt.subscribing()
 
+def doNotDistrub(leds):
+    if int(time.localtime()[4]) > 10:
+        # If already animating
+        if (Globals.leds.mode is 2) and Globals.leds.lights:
+            Globals.leds.intercept = True
+            time.sleep(3)
+        Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
+
 #
 # Main Server: Capacity Inputs
 #
@@ -70,6 +78,7 @@ try:
             Habits.flipSecondHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
             Mqtt.client.publish('remote/habits/second', "0")
 
+        doNotDistrub(Globals.leds)
         Habits.nextDay(Globals.habits)
         time.sleep(0.5) # Prevent multiple triggers for one touch
         
