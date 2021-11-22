@@ -329,7 +329,7 @@ def solidFade(strip, leds, habits):
                         for prior in star.prior_stars:
                             connectors = prior[1]
                             for pixel in connectors:
-                                strip.setPixelColor(led, led_color)
+                                strip.setPixelColor(pixel, led_color)
                 strip.show()
                 time.sleep(20/1000.0)
             else:
@@ -347,7 +347,7 @@ def solidFade(strip, leds, habits):
                             for prior in star.prior_stars:
                                 connectors = prior[1]
                                 for pixel in connectors:
-                                    strip.setPixelColor(led, led_color)
+                                    strip.setPixelColor(pixel, led_color)
                     strip.show()
                     time.sleep(20/1000.0)
                 else:
