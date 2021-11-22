@@ -314,8 +314,6 @@ def variedTwinkle(strip, leds):
 # Varied color twinkle. 
 # Stars can have different colors, showing up a varying times.
 def syncopatedTwinkle(strip, leds):
-    displayPinpricks(strip)
-    
     palette = ColorPalettes[leds.animation.palette].value # len 5
     
     # Initial state
