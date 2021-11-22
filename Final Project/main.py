@@ -42,6 +42,14 @@ Mqtt.subscribing()
 # Main Server: Capacity Inputs
 #
 try:
+    tracking_file = open("tracking.txt","r")
+
+    tracking_day = int(tracking_file.readline())
+    first = list(map(int, tracking_file.readline().split(" ")))
+    second = list(map(int, tracking_file.readline().split(" ")))
+
+    tracking_file.close()
+    Habits.readInput(tracking_day, first, second)
     Leds.initDisplay(Globals.STRIP, Globals.leds, Globals.habits)
     while True:
         if mpr121[0].value:
