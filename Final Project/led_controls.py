@@ -60,8 +60,9 @@ class State:
 # HABIT MODE FUNCTIONS
 #
 # Light up LEDs for both habits.
-def displayHabits(strip, habits, debug=False):
-
+def displayHabits(strip, habits, debug=False): 
+    displayPinpricks(strip)
+    
     # First
     for constellation in habits.first.constellations:
         for star in constellation:
@@ -435,7 +436,6 @@ def animate(strip, leds, habits):
 def displayMode(strip, leds, habits, debug=False):
     # All modes have white pinpricks.
     leds.lights = True
-    displayPinpricks(strip)
     if leds.mode is 0:
         displayHabits(strip, habits)
     elif leds.mode is 1:
