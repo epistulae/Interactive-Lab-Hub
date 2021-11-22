@@ -21,7 +21,7 @@ class Colors(Enum):
     sakura = Color(255, 87, 179)
     
     # Habit colors
-    incomplete = Color(237, 108, 2)
+    incomplete = Color(0, 115, 191)
     complete = Color(21, 187, 183)
     pinprick = Color(255, 245, 222)
     
