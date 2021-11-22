@@ -331,9 +331,11 @@ def solidFade(strip, leds, habits):
                             for pixel in connectors:
                                 strip.setPixelColor(led, led_color)
                 strip.show()
+                time.sleep(20/1000.0)
             else:
                 break
-                
+        
+        time.sleep(2)
         if (leds.mode is 2) and (not leds.intercept):
             for k in reversed(range(256)):
                 if (leds.mode is 2) and (not leds.intercept):
@@ -347,6 +349,7 @@ def solidFade(strip, leds, habits):
                                 for pixel in connectors:
                                     strip.setPixelColor(led, led_color)
                     strip.show()
+                    time.sleep(20/1000.0)
                 else:
                     break
         else:
@@ -417,27 +420,27 @@ def animate(strip, leds, habits):
                 # Palette Twinkle
                 t = threading.Thread(target=variedTwinkle, args=(strip, leds,))
                 t.start()
-#     elif leds.animation.name == "fade":
-#         if leds.animation.style == "solid":
-#             if leds.animation.palette == "rainbow":
-#                 # Rainbow Fade
-# #                 t = threading.Thread(target=solidRainbowTwinkle, args=(strip, leds, habits,))
-# #                 t.start()
-#                 A=1
-#             else:
-#                 # Palette Twinkle
-#                 t = threading.Thread(target=solidFade, args=(strip, leds, habits,))
+    elif leds.animation.name == "fade":
+        if leds.animation.style == "solid":
+            if leds.animation.palette == "rainbow":
+                # Rainbow Fade
+#                 t = threading.Thread(target=solidRainbowTwinkle, args=(strip, leds, habits,))
 #                 t.start()
-#         elif leds.animation.style == "varied":
-#             if leds.animation.palette == "rainbow":
-#                 # Rainbow Fade
-# #                 t = threading.Thread(target=fadeRainbowVaried, args=(strip, leds, habits,))
-# #                 t.start()
-#                 A=1
-#             else:
-#                 # Palette Fade
-#                 t = threading.Thread(target=variedFade, args=(strip, leds, habits,))
+                A=1
+            else:
+                # Palette Fade
+                t = threading.Thread(target=solidFade, args=(strip, leds, habits,))
+                t.start()
+        elif leds.animation.style == "varied":
+            if leds.animation.palette == "rainbow":
+                # Rainbow Fade
+#                 t = threading.Thread(target=fadeRainbowVaried, args=(strip, leds, habits,))
 #                 t.start()
+                A=1
+            else:
+                # Palette Fade
+                t = threading.Thread(target=variedFade, args=(strip, leds, habits,))
+                t.start()
     elif leds.animation.name == "rainbow":
         t = threading.Thread(target=rainbow, args=(strip, leds,))
         t.start()
