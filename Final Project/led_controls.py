@@ -14,13 +14,14 @@ class Colors(Enum):
     orange = Color(237, 108, 2)
     spring = Color(168, 235, 52)
     forest = Color(27, 153, 23)
+    beach = Color(105, 130, 255)
     aqua = Color(21, 187, 183)
     royal = Color(98, 0, 255)
     amethyst = Color(168, 57, 237)
     sakura = Color(255, 87, 179)
     
     # Habit colors
-    incomplete = Color(105, 130, 255)
+    incomplete = Color(237, 108, 2)
     complete = Color(81, 224, 105)
     pinprick = Color(255, 245, 222)
     
