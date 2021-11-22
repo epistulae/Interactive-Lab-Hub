@@ -39,12 +39,12 @@ mpr121 = adafruit_mpr121.MPR121(i2c)
 Mqtt.subscribing()
 
 def doNotDistrub(leds):
-    if int(time.localtime()[4]) > 10:
-        # If already animating
-        if (Globals.leds.mode is 2) and Globals.leds.lights:
-            Globals.leds.intercept = True
-            time.sleep(3)
-        Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
+    if int(time.localtime()[3]) > 22:
+        if Globals.leds.lights:
+            if (Globals.leds.mode is 2) and Globals.leds.lights:
+                Globals.leds.intercept = True
+                time.sleep(3)
+            Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
 
 #
 # Main Server: Capacity Inputs
