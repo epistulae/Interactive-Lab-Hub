@@ -48,6 +48,16 @@ def flipFirstHabit(strip, habits, leds, debug=False):
     Leds.displayHabits(strip, habits)
     if debug:
         debugHabits(habits)
+        tracking_file = open("tracking.txt","w")
+        tracking_file.write(str(habits.tracking_day)+"\n")
+        first = []
+            for constellation in habits.first.constellations:
+                first += [int(star.complete) for star in constellation]
+        tracking_file.write(' '.join([str(star) for star in first])+"\n")
+        second = []
+            for constellation in habits.second.constellations:
+                second += [int(star.complete) for star in constellation]
+        tracking_file.write(' '.join([str(star) for star in second])+"\n")
 
 # Flip completeness for today's tracking of the second habit.
 def flipSecondHabit(strip, habits, leds, debug=False):
@@ -103,6 +113,18 @@ def nextDay(habits):
         else:
             # Next star
             habits.second.cur_star += 1
+        
+        # Save to file once per day
+#         tracking_file = open("tracking.txt","w")
+#         tracking_file.write(str(habits.tracking_day)+"\n")
+#         first = []
+#             for constellation in habits.first.constellations:
+#                 first += [int(star.complete) for star in constellation]
+#         tracking_file.write(' '.join([str(star) for star in first])+"\n")
+#         second = []
+#             for constellation in habits.second.constellations:
+#                 second += [int(star.complete) for star in constellation]
+#         tracking_file.write(' '.join([str(star) for star in second])+"\n")
 
 def debugToNextDay(habits):
     habits.day = habits.day + 1
