@@ -173,27 +173,28 @@ def solidRainbowTwinkle(strip, leds):
         red = random.randrange(256)
         green = random.randrange(256)
         blue = random.randrange(256)
-        for k in range(0, 256, 3):
+        for k in range(0, 256, 5):
             if (leds.mode is 2) and (not leds.intercept):
                 r = int((k/256)*red)
                 g = int((k/256)*green)
                 b = int((k/256)*blue)
                 for star in randStars:
                     strip.setPixelColor(star, Color(r, g, b))
-                time.sleep(10/1000.0)
+                time.sleep(20/1000.0)
                 strip.show()
             else:
                 break
 
+        time.sleep(2)
         if (leds.mode is 2) and (not leds.intercept):
-            for k in reversed(range(0, 256, 3)):
+            for k in reversed(range(0, 256, 5)):
                 if (leds.mode is 2) and (not leds.intercept):
                     r = int((k/256)*red)
                     g = int((k/256)*green)
                     b = int((k/256)*blue)
                     for star in randStars:
                         strip.setPixelColor(star, Color(r, g, b))
-                    time.sleep(10/1000.0)
+                    time.sleep(20/1000.0)
                     strip.show()
                 else:
                     break
