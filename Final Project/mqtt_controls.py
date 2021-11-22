@@ -36,6 +36,7 @@ def on_message(client, userdata, msg):
         # Already animating
         if Globals.leds.mode is 2:
             Globals.leds.intercept = True
+            time.sleep(3)
 
         Globals.leds.mode = 2
         animation_vars = message.split(",")
