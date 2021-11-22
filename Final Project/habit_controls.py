@@ -30,8 +30,8 @@ def readInput(habits, day, first, second):
         if day > len(constellation):
             day = day - len(constellation)
         else:
-            habits.first.cur_constellation = constellation
-            habits.first.cur_star = constellation[day-1]
+            habits.second.cur_constellation = constellation
+            habits.second.cur_star = constellation[day-1]
         for star in constellation:
             star.complete = bool(second.pop(0))
     
