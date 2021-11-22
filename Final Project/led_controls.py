@@ -325,7 +325,7 @@ def syncopatedTwinkle(strip, leds):
         colors = [random.choice(palette) for _ in range(20)]
         timing = [random.randrange(0, 256, 5) for _ in range(20)]
         
-        for k in range(0, 256, 5):
+        for k in range(0, 256, 3):
             if (leds.mode is 2) and (not leds.intercept):
                 for i, star in enumerate(randStars):
                     brightness = ((k+timing[i]) % 256)/256
@@ -335,9 +335,8 @@ def syncopatedTwinkle(strip, leds):
             else:
                 break
 
-        time.sleep(2)
         if (leds.mode is 2) and (not leds.intercept):
-            for k in reversed(range(0, 256, 5)):
+            for k in reversed(range(0, 256, 3)):
                 if (leds.mode is 2) and (not leds.intercept):
                     for i, star in enumerate(randStars):
                         brightness = ((k+timing[i]) % 256)/256
