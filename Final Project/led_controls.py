@@ -318,35 +318,41 @@ def syncopatedTwinkle(strip, leds):
     
     palette = ColorPalettes[leds.animation.palette].value # len 5
     
+    # Initial state
+    colors = [random.choice(palette) for _ in range(20)]
+    bright = [random.randrange(0, 256, 3) for _ in range(20)]
+    randStars = random.sample(Stars.STARS, 20)
+    direction = [0 for _ in range(20)]
+    
     while (leds.mode is 2) and (not leds.intercept):
-        randStars = random.sample(Stars.STARS, 20)
-        
-        # Star colors, picked from the palette
-        colors = [random.choice(palette) for _ in range(20)]
-        timing = [random.randrange(0, 256, 5) for _ in range(20)]
-        
-        for k in range(0, 256, 3):
+        for i, star in enumerate(randStars):
             if (leds.mode is 2) and (not leds.intercept):
-                for i, star in enumerate(randStars):
-                    brightness = ((k+timing[i]) % 256)/256
-                    strip.setPixelColor(star, Color(int(brightness*colors[i][0]), int(brightness*colors[i][1]), int(brightness*colors[i][2])))
-                strip.show()
-                time.sleep(20/1000.0)
+                brightness = k+bright[i]/256
+                strip.setPixelColor(star, Color(int(brightness*colors[i][0]), int(brightness*colors[i][1]), int(brightness*colors[i][2])))
+                if direction[i] is 0:
+                    # Increment
+                    if bright[i] is 255:
+                        direction[i] = 1
+                        bright[i] -= 3
+                    else:
+                        bright[i] += 3
+                        if bright[i] > 255:
+                            bright[i] = 255
+                else:
+                    if bright[i] is 0:
+                        direction[i] = 0
+                        bright[i] += 3
+                    else:
+                        bright[i] -= 3
+                        if bright[i] < 0:
+                            # New star
+                            bright[i] = 0
+                            randStars[i] = random.choice(list(set(Stars.STARS) - set(randStars)))
+                            colors[i] = random.choice(palette)
             else:
                 break
-
-        if (leds.mode is 2) and (not leds.intercept):
-            for k in reversed(range(0, 256, 3)):
-                if (leds.mode is 2) and (not leds.intercept):
-                    for i, star in enumerate(randStars):
-                        brightness = ((k+timing[i]) % 256)/256
-                        strip.setPixelColor(star, Color(int(brightness*colors[i][0]), int(brightness*colors[i][1]), int(brightness*colors[i][2])))
-                    strip.show()
-                    time.sleep(20/1000.0)
-                else:
-                    break
-        else:
-            break
+        strip.show()
+        time.sleep(20/1000.0)
     leds.intercept = False
 
 # def solidFade(strip, leds, habits):
