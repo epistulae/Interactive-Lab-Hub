@@ -33,7 +33,7 @@ def readInput(habits, day, first, second):
             habits.first.cur_constellation = constellation
             habits.first.cur_star = constellation[day-1]
         for star in constellation:
-            star.complete = bool(first.pop(0))
+            star.complete = bool(second.pop(0))
     
 # Flip completeness for today's tracking of the first habit.
 def flipFirstHabit(strip, habits, leds, debug=False):
