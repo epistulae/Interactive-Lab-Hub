@@ -16,22 +16,22 @@ class State:
 
 def readInput(habits, day, first, second):
     habits.tracking_day = day
-    for constellation in habits.first.constellations:
+    for i, constellation in enumerate(habits.first.constellations):
         if day > len(constellation):
             day = day - len(constellation)
         else:
-            habits.first.cur_constellation = constellation
-            habits.first.cur_star = constellation[day-1]
+            habits.first.cur_constellation = i
+            habits.first.cur_star = day-1
         for star in constellation:
             star.complete = bool(first.pop(0))
             
     day = habits.tracking_day
-    for constellation in habits.second.constellations:
+    for i, constellation in enumerate(habits.second.constellations):
         if day > len(constellation):
             day = day - len(constellation)
         else:
-            habits.second.cur_constellation = constellation
-            habits.second.cur_star = constellation[day-1]
+            habits.second.cur_constellation = i
+            habits.second.cur_star = day-1
         for star in constellation:
             star.complete = bool(second.pop(0))
     
