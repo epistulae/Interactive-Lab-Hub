@@ -8,11 +8,33 @@ import time
 class State:
     def __init__(self):
         self.day = time.localtime()[2]
+        self.tracking_day = 0
         self.first = Stars.FIRST
         self.second = Stars.SECOND
         self.first_complete = False
         self.second_complete = False
 
+def readInput(habits, day, first, second):
+    habits.tracking_day = day
+    for constellation in habits.first.constellations:
+        if day > len(constellation):
+            day = day - len(constellation)
+        else:
+            habits.first.cur_constellation = constellation
+            habits.first.cur_star = constellation[day-1]
+        for star in constellation:
+            star.complete = bool(first.pop(0))
+            
+    day = habits.tracking_day
+    for constellation in habits.second.constellations:
+        if day > len(constellation):
+            day = day - len(constellation)
+        else:
+            habits.first.cur_constellation = constellation
+            habits.first.cur_star = constellation[day-1]
+        for star in constellation:
+            star.complete = bool(first.pop(0))
+    
 # Flip completeness for today's tracking of the first habit.
 def flipFirstHabit(strip, habits, leds, debug=False):
     if not leds.lights:
@@ -63,6 +85,7 @@ def nextDay(habits):
 
     if day is not habits.day:
         habits.day = day
+        habits.tracking_day += 1
         # Habit A
         if habits.first.cur_star + 1 is len(habits.first.constellations[habits.first.cur_constellation]):
             # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
