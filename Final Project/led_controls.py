@@ -180,8 +180,8 @@ def solidRainbowTwinkle(strip, leds):
                 b = int((k/256)*blue)
                 for star in randStars:
                     strip.setPixelColor(star, Color(r, g, b))
-                time.sleep(20/1000.0)
                 strip.show()
+                time.sleep(20/1000.0)
             else:
                 break
 
@@ -194,8 +194,8 @@ def solidRainbowTwinkle(strip, leds):
                     b = int((k/256)*blue)
                     for star in randStars:
                         strip.setPixelColor(star, Color(r, g, b))
-                    time.sleep(20/1000.0)
                     strip.show()
+                    time.sleep(20/1000.0)
                 else:
                     break
         else:
@@ -215,20 +215,23 @@ def variedRainbowTwinkle(strip, leds):
         greens = [random.randrange(256) for _ in range(20)]
         blues = [random.randrange(256) for _ in range(20)]
         
-        for k in range(256):
+        for k in range(0, 256, 5):
             if (leds.mode is 2) and (not leds.intercept):
                 for i, star in enumerate(randStars):
                     strip.setPixelColor(star, Color(int((k/256)*reds[i]), int((k/256)*greens[i]), int((k/256)*blues[i])))
                 strip.show()
+                time.sleep(20/1000.0)
             else:
                 break
 
+        time.sleep(2)
         if (leds.mode is 2) and (not leds.intercept):
-            for k in reversed(range(256)):
+            for k in reversed(range(0, 256, 5)):
                 if (leds.mode is 2) and (not leds.intercept):
                     for i, star in enumerate(randStars):
                         strip.setPixelColor(star, Color(int((k/256)*reds[i]), int((k/256)*greens[i]), int((k/256)*blues[i])))
                     strip.show()
+                    time.sleep(20/1000.0)
                 else:
                     break
         else:
@@ -246,28 +249,29 @@ def solidTwinkle(strip, leds):
         randStars = random.sample(Stars.STARS, random.randrange(15,31))
         
         color = palette[random.randrange(5)]
-        for k in range(256):
+        for k in range(0, 256, 5):
             if (leds.mode is 2) and (not leds.intercept):
-                r = int((k/256)*r)
-                g = int((k/256)*g)
-                b = int((k/256)*b)
+                r = int((k/256)*color[0])
+                g = int((k/256)*color[1])
+                b = int((k/256)*color[2])
                 for star in randStars:
                     strip.setPixelColor(star, Color(r, g, b))
-                time.sleep(10/1000.0)
                 strip.show()
+                time.sleep(20/1000.0)
             else:
                 break
 
+        time.sleep(2)
         if (leds.mode is 2) and (not leds.intercept):
-            for k in reversed(range(256)):
+            for k in reversed(range(0, 256, 5)):
                 if (leds.mode is 2) and (not leds.intercept):
-                    r = int((k/256)*r)
-                    g = int((k/256)*g)
-                    b = int((k/256)*b)
+                    r = int((k/256)*color[0])
+                    g = int((k/256)*color[1])
+                    b = int((k/256)*color[2])
                     for star in randStars:
                         strip.setPixelColor(star, Color(r, g, b))
-                    time.sleep(10/1000.0)
                     strip.show()
+                    time.sleep(20/1000.0)
                 else:
                     break
         else:
@@ -287,20 +291,23 @@ def variedTwinkle(strip, leds):
         # Star colors, picked from the palette
         colors = [random.choice(palette) for _ in range(20)]
         
-        for k in range(256):
+        for k in range(0, 256, 5):
             if (leds.mode is 2) and (not leds.intercept):
                 for i, star in enumerate(randStars):
                     strip.setPixelColor(star, Color(int((k/256)*colors[i][0]), int((k/256)*colors[i][1]), int((k/256)*colors[i][2])))
                 strip.show()
+                time.sleep(20/1000.0)
             else:
                 break
 
+        time.sleep(2)
         if (leds.mode is 2) and (not leds.intercept):
-            for k in reversed(range(256)):
+            for k in reversed(range(0, 256, 5)):
                 if (leds.mode is 2) and (not leds.intercept):
                     for i, star in enumerate(randStars):
                         strip.setPixelColor(star, Color(int((k/256)*colors[i][0]), int((k/256)*colors[i][1]), int((k/256)*colors[i][2])))
                     strip.show()
+                    time.sleep(20/1000.0)
                 else:
                     break
         else:
