@@ -327,7 +327,7 @@ def syncopatedTwinkle(strip, leds):
     while (leds.mode is 2) and (not leds.intercept):
         for i, star in enumerate(randStars):
             if (leds.mode is 2) and (not leds.intercept):
-                brightness = k+bright[i]/256
+                brightness = bright[i]/256
                 strip.setPixelColor(star, Color(int(brightness*colors[i][0]), int(brightness*colors[i][1]), int(brightness*colors[i][2])))
                 if direction[i] is 0:
                     # Increment
