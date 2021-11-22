@@ -331,13 +331,13 @@ def syncopatedTwinkle(strip, leds):
                 strip.setPixelColor(star, Color(int(brightness*colors[i][0]), int(brightness*colors[i][1]), int(brightness*colors[i][2])))
                 if direction[i] is 0:
                     # Increment
-                    if bright[i] is 255:
+                    if bright[i] is 200:
                         direction[i] = 1
                         bright[i] -= 3
                     else:
                         bright[i] += 3
-                        if bright[i] > 255:
-                            bright[i] = 255
+                        if bright[i] > 200:
+                            bright[i] = 200
                 else:
                     if bright[i] is 0:
                         direction[i] = 0
