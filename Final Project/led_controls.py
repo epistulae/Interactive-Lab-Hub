@@ -319,7 +319,7 @@ def solidFade(strip, leds, habits):
     
     while (leds.mode is 2) and (not leds.intercept):
         colors = random.choice(palette)
-        for k in range(256):
+        for k in range(0, 256, 5):
             if (leds.mode is 2) and (not leds.intercept):
                 for constellation in all_constellations:
                     led_color = Color(int((k/256)*colors[0]), int((k/256)*colors[1]), int((k/256)*colors[2]))
@@ -337,7 +337,7 @@ def solidFade(strip, leds, habits):
         
         time.sleep(2)
         if (leds.mode is 2) and (not leds.intercept):
-            for k in reversed(range(256)):
+            for k in reversed(range(0, 256, 5)):
                 if (leds.mode is 2) and (not leds.intercept):
                     for i, constellation in enumerate(all_constellations):
                         led_color = Color(int((k/256)*colors[0]), int((k/256)*colors[1]), int((k/256)*colors[2]))
