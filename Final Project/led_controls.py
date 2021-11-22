@@ -11,10 +11,10 @@ import threading
 class Colors(Enum):
     rose = Color(255, 20, 20)
     fire = Color(255, 245, 222)
-    orange = Color(237, 108, 2)
-    spring = Color(168, 235, 52)
+    meadow = Color(168, 235, 52)
     forest = Color(27, 153, 23)
     beach = Color(105, 130, 255)
+    spring = Color(81, 224, 105)
     aqua = Color(21, 187, 183)
     royal = Color(98, 0, 255)
     amethyst = Color(168, 57, 237)
