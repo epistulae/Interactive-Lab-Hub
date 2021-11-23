@@ -24,6 +24,7 @@ def readInput(habits, day, first, second):
             if unset:
                 habits.first.cur_constellation = i
                 habits.first.cur_star = day-1
+                unset = False
         for star in constellation:
             star.complete = bool(first.pop(0))
             
@@ -36,6 +37,7 @@ def readInput(habits, day, first, second):
             if unset:
                 habits.second.cur_constellation = i
                 habits.second.cur_star = day-1
+                unset = False
         for star in constellation:
             star.complete = bool(second.pop(0))
     
