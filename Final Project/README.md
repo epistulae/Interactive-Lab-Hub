@@ -11,10 +11,9 @@ Basic controls for habit tracking are on the frame, along with mode cycling and 
 **Other functions:**
 - (TODO) Do not disturb times: Set times when Zenith's lights should automatically turn off or on.
 - Remote color and animation: Choose between a set of colors and animations.
-- (TODO) Persistent mode: Save your habit tracking data and export to the app and see how you're doing over time.
-- (TODO) Single vs duo habit mode: Only want to track one habit for longer? Switch to single habit mode to track one habit over 60 days instead of 2 habits over thirty. Note: Only available if you have not started tracking yet. If you've already begun, you'll have to start anew.
+- Data Persistence: Tracking data is saved daily, so you can pick up where you left off.
 
-Coming soon: Zenith will be able to connect to your Spotify account and visualize the current track.
+Coming soon: Zenith will be able to connect to a Spotify account and visualize the current track.
 
 ## Demo
 
@@ -173,7 +172,15 @@ On a whim, I decided to add my signature to the lower right hand corner the same
 ### Laser Cutting: Frame
 Note: when building Zenith, the frame was the last thing I did. I layed out the leds and tested those with a basic functionality software before moving onto the frame.
 
-The frame is 3/32" (2.5mm) birch plywood (I see 5 visible layers from the side). The wood is painted with a mix of mars black and burnt umber in a 1 to 2 ratio. Mars black is a very blue toned back so it tones down the warming burnt umber for a very deep, neutral brown.
+The frame is 3/32" (2.5mm) birch plywood (I see 5 visible layers from the side). The wood is painted with a mix of mars black and burnt umber in a 1 to 2 ratio. Mars black is a very blue toned back so it tones down the warming burnt umber for a very deep, neutral brown. The wood is painted and finished with a couple thin layers of Mod Podge before being laser cut.
+
+The top and bottom have a moon phases design cut out to facilitate airflow if the piece is being hung on a wall. Both sides of the frame have a notch on the bottom for power wires (to be used depending on where the nearest power outlets are).
+
+The right side of the frame has 5 stars cut out for the 5 capacitive buttons: First habit, second habit, color cycle, mode cycle, and lights on/off. The buttons are black acrylic, etched with the labels, and bordered with copper tape, which continues to the back of the button and is soldered to wires connecting to the capacitive touch sensor. The buttons flush with the side of the frame and glued in. The capacitive touch sensor is held in place by an acrylic bracket glued into the board. Because the wires are soldered on, the sensor itself is held in place. To remove the sensor, you'd have to un-solder the wires. (Though why you'd do that is another question.)
+
+#### Progress shots:
+
+<img width="480" alt="Screen Shot 2021-11-22 at 11 24 23 PM" src="https://user-images.githubusercontent.com/14368010/142971088-90cab1fd-503c-413d-9aac-4689501ab882.png">
 
 ## Construction
 
