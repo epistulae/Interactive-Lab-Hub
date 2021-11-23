@@ -14,10 +14,10 @@ class Colors(Enum):
     meadow = Color(168, 235, 52)
     spring = Color(81, 224, 105)
     forest = Color(27, 153, 23)
-    beach = Color(105, 130, 255)
+    ocean = Color(105, 130, 255)
     aqua = Color(21, 187, 183)
     royal = Color(98, 0, 255)
-    amethyst = Color(168, 57, 237)
+    quartz = Color(168, 57, 237)
     sakura = Color(255, 87, 179)
     
     # Habit colors
@@ -32,6 +32,7 @@ class Colors(Enum):
 # Each color is stored as a (R, G, B) tuple.
 class ColorPalettes(Enum):
     #[(), (), (), (), ()]
+    starlight = [(237, 227, 88), (201, 197, 135), (230, 210, 161), (255, 205, 84), (255, 248, 196)]
     teal_petal = [(191, 62, 39), (239, 124, 79), (203, 149, 115), (150, 214, 227), (57, 147, 153)]
     citrus = [(196, 60, 22), (253, 154, 126), (255, 203, 143), (252, 181, 0), (220, 107, 2)]
     tropical = [(255, 106, 0), (255, 202, 42), (102, 176, 22), (155, 216, 218), (188, 206, 209)]
