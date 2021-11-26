@@ -145,7 +145,7 @@ Clearly, the initial design of using quotes directly as lines is not a good idea
 
 #### Full Constellation Map Design
 
-Here are the Adobe Illustrator Iterations of the constellations design. While the shapes are filled, they had outline strokes (0.001) and it was printed (laser cut) with vector only. Placement and sizing achieve by tracking over reference photos. The final adobe illustrator file, along with pdf print files, are available in the [design]() folder. I added pinprick stars after thinking just the constellations looked a bit bland.
+Here are the Adobe Illustrator Iterations of the constellations design. While the shapes are filled, they had outline strokes (0.001) and it was printed (laser cut) with vector only. Placement and sizing achieve by tracking over reference photos. The final adobe illustrator file, along with pdf print files, are available in the [ai (Adobe Illustrator)](/Final%20Project/ai) folder. I added pinprick stars after thinking just the constellations looked a bit bland.
 
 <img width="821" alt="Screen Shot 2021-11-18 at 3 53 27 PM" src="https://user-images.githubusercontent.com/14368010/142494990-bad40880-ffc3-4ec5-82c2-22852db77f5c.png">
 
@@ -205,7 +205,13 @@ Though it was more effort to raise the LEDs, it make a clear difference.
 
 ## Software Implementation
 ### Physical
+
+
 ### Remote
+
+<img width="695" alt="Screen Shot 2021-11-25 at 2 06 23 AM" src="https://user-images.githubusercontent.com/14368010/143641924-739d1137-3ac6-4242-82df-6add5ce5e1d6.png">
+<img width="696" alt="Screen Shot 2021-11-25 at 3 06 40 AM" src="https://user-images.githubusercontent.com/14368010/143641960-c0f00a86-c11e-4dcc-bbb7-7d15d26e0c81.png">
+
 
 ## Reflection
 
