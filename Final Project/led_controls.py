@@ -458,6 +458,8 @@ def cycleColor(strip, leds, habits, debug=False):
         n = (i+1) % (len(colors)-4)
         leds.color = colors[n]
     elif leds.mode is 2:
+        if leds.animation.name == "rainbow":
+            return
         # Animated: go through ColorPalettes enum
         colors = [p.name for p in ColorPalettes]
         new_color = ""
