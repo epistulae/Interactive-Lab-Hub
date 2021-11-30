@@ -10,15 +10,14 @@ import threading
 # All color values
 class Colors(Enum):
     rose = Color(255, 20, 20)
-    fire = Color(255, 245, 222)
     meadow = Color(168, 235, 52)
-    spring = Color(81, 224, 105)
     forest = Color(27, 153, 23)
-    ocean = Color(105, 130, 255)
+    periwinkle = Color(105, 130, 255)
+    teal = Color(81, 224, 105)
     aqua = Color(21, 187, 183)
-    royal = Color(98, 0, 255)
-    quartz = Color(168, 57, 237)
+    amethyst = Color(168, 57, 237)
     sakura = Color(255, 87, 179)
+    starlight = Color(252, 247, 202)
     
     # Habit colors
     incomplete = Color(237, 88, 2)
