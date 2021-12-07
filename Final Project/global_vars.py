@@ -4,7 +4,7 @@ import habit_controls as Habits
 import led_controls as Leds
 import stars as Stars
 
-HOST = '100.64.1.201'
+HOST = '10.56.135.100'
 PORT = 7827
 USER = 'cynthia'
 PASS = 'RoomOfRequirement'
