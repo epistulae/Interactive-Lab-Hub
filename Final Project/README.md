@@ -225,10 +225,18 @@ Note: lights on and off is not adjusting brightness, but rather the color. Light
 ### Remote
 
 The first remote UI looked like this: 
+
 <img width="695" alt="Screen Shot 2021-11-25 at 2 06 23 AM" src="https://user-images.githubusercontent.com/14368010/143641924-739d1137-3ac6-4242-82df-6add5ce5e1d6.png">
 <img width="696" alt="Screen Shot 2021-11-25 at 3 06 40 AM" src="https://user-images.githubusercontent.com/14368010/143641960-c0f00a86-c11e-4dcc-bbb7-7d15d26e0c81.png">
 
 The program is just a simple computer python program with a UI to toggle lights, the two habits, and choose a current color or animation. The UI is built with tkinter. The UI is a little finiky, so I've drafted iOS UI on Figma, with intention to create a mobile app. This is because control via a phone seems more simple than needing to open the computer every time.
+
+### UI Prototype:
+
+<img width="257" alt="Screen Shot 2021-12-14 at 5 11 18 PM" src="https://user-images.githubusercontent.com/14368010/146087470-6ec11161-e6af-4a16-8cc9-a19442305832.png">
+
+<img width="253" alt="Screen Shot 2021-12-14 at 5 25 32 PM" src="https://user-images.githubusercontent.com/14368010/146089157-87397a9a-b4b4-480f-ad16-341eea8b8ad3.png">
+
 
 ## Reflection
 
