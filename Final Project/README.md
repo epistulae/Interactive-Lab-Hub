@@ -9,13 +9,13 @@ Zenith is also great for when it's time to relax. Just switch over to colored or
 Basic controls for habit tracking are on the frame, along with mode cycling and an on-off switch for the lights. The full suite of controls are available on the companion mobile app. Remember to log your activity every day! Once it's past midnight, you won't be able to give yourself credit. 
 
 **Other functions:**
-- (TODO) Do not disturb times: Set times when Zenith's lights should automatically turn off or on.
-- Remote color and animation: Choose between a set of colors and animations.
+- Do not disturb times: Set times when Zenith's lights should automatically turn off or on.
+- Remote control: Remotely toggle habits, turn on and off lights, and choose between a set of colors and animations.
 - Data Persistence: Tracking data is saved daily, so you can pick up where you left off.
 
-Coming soon: Zenith will be able to connect to a Spotify account and visualize the current track.
-
 ## Demo
+
+Note: A newer, longer full demo unfortunately was corrupted and I'm unable to record a new full one since I'm already at home. 
 
 ## Table of Contents
 - [Timeline](#timeline)
@@ -205,13 +205,21 @@ Though it was more effort to raise the LEDs, it make a clear difference.
 
 ## Software Implementation
 ### Physical
+The software on the pi is multithreaded into an executor thread and listener thread. The listener listens to a set of MQTT channels and triggers relevant functions on the executor thread (via global shared variables) once a new message is published. This thread will terminate on program termination, and does self cleanup.
 
+The executor thread controls the leds and 'listens' to the physical capacitive inputs. The thread is in a while True loop that, upon program termination, saves the current system state (lights status, current color mode, animation, habits, etc.) and gracefully exits.
+
+The executor thread also loops with brief 0.25s pauses to limit duplicate capacitive signal inputs.
+
+The overall program is run on a screen and asyncronously, so that connection need to be maintained, and the pi can run continuously on its own.
 
 ### Remote
 
+The first remote UI looked like this: 
 <img width="695" alt="Screen Shot 2021-11-25 at 2 06 23 AM" src="https://user-images.githubusercontent.com/14368010/143641924-739d1137-3ac6-4242-82df-6add5ce5e1d6.png">
 <img width="696" alt="Screen Shot 2021-11-25 at 3 06 40 AM" src="https://user-images.githubusercontent.com/14368010/143641960-c0f00a86-c11e-4dcc-bbb7-7d15d26e0c81.png">
 
+The program is just a simple computer python program with a UI to toggle lights, the two habits, and choose a current color or animation. The UI is built with tkinter. The UI is a little finiky, so I've drafted iOS UI on Figma, with intention to create a mobile app. This is because control via a phone seems more simple than needing to open the computer every time.
 
 ## Reflection
 
