@@ -202,6 +202,10 @@ Though it was more effort to raise the LEDs, it make a clear difference.
 
 <img width="869" alt="Screen Shot 2021-11-19 at 3 10 16 AM" src="https://user-images.githubusercontent.com/14368010/142588023-9ae1b727-b375-4131-a167-5d6bb16f1a14.png">
 
+#### Power Supply:
+Zenith uses a 5V15A power supply. Initially, this was only connected to the start of the LEDs. This meant that by the time power gets to the end of the 200+ LEDs used, it's only providing about 3.2V of power. This lead of light flickering and also inconsistent color and color degredation along the length of the LEDs, even when using <10% brightness.
+
+This was resolved by splicing the power supply wires and connected it to the LEDs at 3 points, roughly evenly spaces throughout the length. This allowed for consistent power across the whole strip. Also, the power supply was prepared with 4 possible points, so if the lights wear out or it seems like another connection would be useful, I could add another connection.
 
 ## Software Implementation
 ### Physical
@@ -223,5 +227,14 @@ The program is just a simple computer python program with a UI to toggle lights,
 
 ## Reflection
 
+**Initial:**
 Handwaving how much power the LEDs consumed at different colors wasn't the best idea. Zenith currently uses a 5V 15A power supply for a max 75W power. The website suggested 5V 20A, but the ones I saw on Amazon were too bulky so I opted for slightly less. On the other hand, this was sort of a happy accident, because I get lovely gradients without manually programming them in.
 
+**Final Reflections:**
+This was a very long project. 
+
+The physical construction took some time, and I needed to learn/become more familar with Adobe Illustrator, laser cutting, and woodworking. Material selection and testing was also time consuming and I had to pivot at times when the acrylic and wood did not cut as I expected them to. I also got a sheet of copper I originally was going to make the buttons out of. However, I was inprecise with power tools and the laser cutter in the Maker Space is not powerful enough to cut metal sheets, so I had to pivot to using copper tape around acrylic.
+
+The power supply was a big headache. In the future, I would like to work with the power supply input wires directly (making sure nothing is plugged in and I'm doing it safely). Converters easily burn out with extended use and lead to some scary situations where I thought perhaps I accidentlly shorted the LEDs or they burned out somewhere. Using multicolored wires would also be helpful. I used only black copper wires and had to meticulously double check every time I soldered to make sure I'm connecting the right things. And finally, wire strippers exist. I did not know this while connecting my LEDs in the design, and I spent a long time using an exacto knife manually stripping the wires.
+
+The implementation was the easier part of the project. Outside some minor threading issues and animation debugging, everything worked smoothly.
