@@ -218,6 +218,10 @@ The executor thread also loops with brief 0.25s pauses to limit duplicate capaci
 
 The overall program is run on a screen and asyncronously, so that connection need to be maintained, and the pi can run continuously on its own.
 
+The program tracks live time (based on current time zone) and automatically shifts to a new day once it's midnight. The program saves the habit state to a file on the pi on a new day or when the program is terminated. This file is also pushed to github once a day at midnight. Both these things happen even if Zenith has lights off or if it's in another mode. 
+
+Note: lights on and off is not adjusting brightness, but rather the color. Lights off is (0,0,0) or black. The LEDs interpret lower saturation and color as brightness. The overall max brightness of the strip is set on startup of the program, and cannot be changes dynamically for this style of LED strip. 
+
 ### Remote
 
 The first remote UI looked like this: 
