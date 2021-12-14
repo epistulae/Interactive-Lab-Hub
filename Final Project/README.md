@@ -233,9 +233,7 @@ The program is just a simple computer python program with a UI to toggle lights,
 
 ### UI Prototype:
 
-<img width="257" alt="Screen Shot 2021-12-14 at 5 11 18 PM" src="https://user-images.githubusercontent.com/14368010/146087470-6ec11161-e6af-4a16-8cc9-a19442305832.png">
-
-<img width="253" alt="Screen Shot 2021-12-14 at 5 25 32 PM" src="https://user-images.githubusercontent.com/14368010/146089157-87397a9a-b4b4-480f-ad16-341eea8b8ad3.png">
+<img width="257" alt="Screen Shot 2021-12-14 at 5 11 18 PM" src="https://user-images.githubusercontent.com/14368010/146087470-6ec11161-e6af-4a16-8cc9-a19442305832.png"><img width="253" alt="Screen Shot 2021-12-14 at 5 25 32 PM" src="https://user-images.githubusercontent.com/14368010/146089157-87397a9a-b4b4-480f-ad16-341eea8b8ad3.png">
 
 
 ## Reflection
