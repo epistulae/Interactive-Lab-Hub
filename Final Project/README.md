@@ -14,8 +14,9 @@ Basic controls for habit tracking are on the frame, along with mode cycling and 
 - Data Persistence: Tracking data is saved daily, so you can pick up where you left off.
 
 ## Demo
+https://user-images.githubusercontent.com/14368010/146085819-48d36a0b-3214-4883-92e4-1e7ee595d174.mov
 
-Note: A newer, longer full demo unfortunately was corrupted and I'm unable to record a new full one since I'm already at home. 
+Note: A longer, better flushed out full demo unfortunately was corrupted and I'm unable to record a new full one since I'm already at home. 
 
 ## Table of Contents
 - [Timeline](#timeline)
@@ -233,8 +234,15 @@ Handwaving how much power the LEDs consumed at different colors wasn't the best 
 **Final Reflections:**
 This was a very long project. 
 
-The physical construction took some time, and I needed to learn/become more familar with Adobe Illustrator, laser cutting, and woodworking. Material selection and testing was also time consuming and I had to pivot at times when the acrylic and wood did not cut as I expected them to. I also got a sheet of copper I originally was going to make the buttons out of. However, I was inprecise with power tools and the laser cutter in the Maker Space is not powerful enough to cut metal sheets, so I had to pivot to using copper tape around acrylic.
+For the physical construstion:
+- The physical construction took some time, and I needed to learn/become more familar with Adobe Illustrator, laser cutting, and woodworking. Material selection and testing was also time consuming and I had to pivot at times when the acrylic and wood did not cut as I expected them to. I also got a sheet of copper I originally was going to make the buttons out of. However, I was inprecise with power tools and the laser cutter in the Maker Space is not powerful enough to cut metal sheets, so I had to pivot to using copper tape around acrylic. 
 
-The power supply was a big headache. In the future, I would like to work with the power supply input wires directly (making sure nothing is plugged in and I'm doing it safely). Converters easily burn out with extended use and lead to some scary situations where I thought perhaps I accidentlly shorted the LEDs or they burned out somewhere. Using multicolored wires would also be helpful. I used only black copper wires and had to meticulously double check every time I soldered to make sure I'm connecting the right things. And finally, wire strippers exist. I did not know this while connecting my LEDs in the design, and I spent a long time using an exacto knife manually stripping the wires.
+- When laser cutting acrylic, the outlines are slightly larger than the actual design because the acrylic is melted. In order to compensate, the latter cutouts are increased by 0.002 inches in all directions. This allowed for a perfect sizing so I could pressure fit all the star inserts (though I still used superglue to secure everything). Note: this applies to the 1/8" acrylic, at 1/4, the size increase may need to be 0.003 or 0.004 to compensate for the higher laser power.
 
-The implementation was the easier part of the project. Outside some minor threading issues and animation debugging, everything worked smoothly.
+- When supergluing two relatively smooth surfaces, lightly sanding the sections that will be glued together leads to a stronger bond. 
+
+- And finally, always save scraps when working with acrylic. Little pieces like the light diffusion bridges or the supporting triangles can be cut out of  scraps.
+
+- The power supply was a big headache. In the future, I would like to work with the power supply input wires directly (making sure nothing is plugged in and I'm doing it safely). Converters easily burn out with extended use and lead to some scary situations where I thought perhaps I accidentlly shorted the LEDs or they burned out somewhere. Using multicolored wires would also be helpful. I used only black copper wires and had to meticulously double check every time I soldered to make sure I'm connecting the right things. And finally, wire strippers exist. I did not know this while connecting my LEDs in the design, and I spent a long time using an exacto knife manually stripping the wires.
+
+The software implementation was the easier part of the project. Outside some minor threading issues and animation debugging, everything worked smoothly.
