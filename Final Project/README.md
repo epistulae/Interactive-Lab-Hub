@@ -179,6 +179,8 @@ The top and bottom have a moon phases design cut out to facilitate airflow if th
 
 The right side of the frame has 5 stars cut out for the 5 capacitive buttons: First habit, second habit, color cycle, mode cycle, and lights on/off. The buttons are black acrylic, etched with the labels, and bordered with copper tape, which continues to the back of the button and is soldered to wires connecting to the capacitive touch sensor. The buttons flush with the side of the frame and glued in. The capacitive touch sensor is held in place by an acrylic bracket glued into the board. Because the wires are soldered on, the sensor itself is held in place. To remove the sensor, you'd have to un-solder the wires. (Though why you'd do that is another question.)
 
+This positioning with the 5 input stars was the most intuitive to the friends I had tested a pencil and paper prototype with.
+
 #### Progress shots:
 
 <img width="480" alt="Screen Shot 2021-11-22 at 11 24 23 PM" src="https://user-images.githubusercontent.com/14368010/142971088-90cab1fd-503c-413d-9aac-4689501ab882.png">
