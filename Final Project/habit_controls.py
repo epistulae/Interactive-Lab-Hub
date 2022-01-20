@@ -22,7 +22,6 @@ def readInput(habits, day, first, second):
             day = day - len(constellation)
         else:
             if unset:
-                print("set first")
                 habits.first.cur_constellation = i
                 habits.first.cur_star = day-1
                 unset = False
