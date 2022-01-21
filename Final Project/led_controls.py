@@ -130,6 +130,8 @@ def solidColor(strip, leds):
     for i in range(strip.numPixels()):
         #if i not in Stars.PINPRICKS:
         strip.setPixelColor(i, color)
+    for led in Stars.PINPRICKS:
+        strip.setPixelColor(led, Colors.pinprick.value)
     strip.show()
 
 def wheel(pos):
