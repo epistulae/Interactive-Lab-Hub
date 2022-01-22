@@ -42,13 +42,17 @@ Mqtt.subscribing()
 # Main Server: Capacity Inputs
 #
 try:
-    tracking_file = open("tracking.txt","r")
+#     tracking_file = open("tracking.txt","r")
 
-    tracking_day = int(tracking_file.readline())
-    first = list(map(int, tracking_file.readline().split(" ")))
-    second = list(map(int, tracking_file.readline().split(" ")))
+#     tracking_day = int(tracking_file.readline())
+#     first = list(map(int, tracking_file.readline().split(" ")))
+#     second = list(map(int, tracking_file.readline().split(" ")))
+    
+    tracking_day = 1
+    first = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    second = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-    tracking_file.close()
+#    tracking_file.close()
     Habits.readInput(Globals.habits, tracking_day, first, second)
 
     Leds.initDisplay(Globals.STRIP, Globals.leds, Globals.habits)
