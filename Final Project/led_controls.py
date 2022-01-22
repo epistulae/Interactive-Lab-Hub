@@ -51,10 +51,10 @@ class State:
         # Habit = 0
         # Mood lighting: Solid = 1
         # Mood lighting: Animated = 2
-        self.mode = 0 
+        self.mode = 1
         self.mode_count = 3
-        self.color = "rose" # Colors enum entry name
-        self.animation = Animation("twinkle", "solid", "rainbow")
+        self.color = "periwinkle" # Colors enum entry name
+        self.animation = Animation("twinkle", "syncopated", "ocean")
         self.intercept = False
         
 # 
@@ -127,6 +127,7 @@ def fastClearDisplay(strip, leds):
 #
 # Define functions which light LEDs in various ways.
 def solidColor(strip, leds):
+    # White pinpricks
     color = Colors[leds.color].value
     for i in range(strip.numPixels()):
         if i not in Stars.PINPRICKS:
@@ -166,7 +167,6 @@ def rainbow(strip, leds, wait_ms=20):
 # Solid color twinkle. 
 # Even when we randomize color, at any one time, all stars are the same color.
 def solidRainbowTwinkle(strip, leds):
-    
     while (leds.mode is 2) and (not leds.intercept):
         randStars = random.sample(Stars.STARS, 20)
         
@@ -205,7 +205,6 @@ def solidRainbowTwinkle(strip, leds):
 # Varied color twinkle. 
 # Stars can have different colors even when showing up at the same time.
 def variedRainbowTwinkle(strip, leds):
-    
     while (leds.mode is 2) and (not leds.intercept):
         randStars = random.sample(Stars.STARS, 20)
         
@@ -240,28 +239,14 @@ def variedRainbowTwinkle(strip, leds):
 # Solid color twinkle. 
 # Even when we randomize color, at any one time, all stars are the same color.
 def solidTwinkle(strip, leds):
+    try:
+        palette = ColorPalettes[leds.animation.palette].value # len 5
 
-    palette = ColorPalettes[leds.animation.palette].value # len 5
-    
-    while (leds.mode is 2) and (not leds.intercept):
-        randStars = random.sample(Stars.STARS, random.randrange(15,31))
-        
-        color = palette[random.randrange(5)]
-        for k in range(0, 256, 5):
-            if (leds.mode is 2) and (not leds.intercept):
-                r = int((k/256)*color[0])
-                g = int((k/256)*color[1])
-                b = int((k/256)*color[2])
-                for star in randStars:
-                    strip.setPixelColor(star, Color(r, g, b))
-                strip.show()
-                time.sleep(20/1000.0)
-            else:
-                break
+        while (leds.mode is 2) and (not leds.intercept):
+            randStars = random.sample(Stars.STARS, random.randrange(15,31))
 
-        time.sleep(2)
-        if (leds.mode is 2) and (not leds.intercept):
-            for k in reversed(range(0, 256, 5)):
+            color = palette[random.randrange(5)]
+            for k in range(0, 256, 5):
                 if (leds.mode is 2) and (not leds.intercept):
                     r = int((k/256)*color[0])
                     g = int((k/256)*color[1])
@@ -272,34 +257,37 @@ def solidTwinkle(strip, leds):
                     time.sleep(20/1000.0)
                 else:
                     break
-        else:
-            break
-    leds.intercept = False
+
+            time.sleep(2)
+            if (leds.mode is 2) and (not leds.intercept):
+                for k in reversed(range(0, 256, 5)):
+                    if (leds.mode is 2) and (not leds.intercept):
+                        r = int((k/256)*color[0])
+                        g = int((k/256)*color[1])
+                        b = int((k/256)*color[2])
+                        for star in randStars:
+                            strip.setPixelColor(star, Color(r, g, b))
+                        strip.show()
+                        time.sleep(20/1000.0)
+                    else:
+                        break
+            else:
+                break
+        leds.intercept = False
 
 # Varied color twinkle. 
 # Stars can have different colors even when showing up at the same time.
 def variedTwinkle(strip, leds):
-    
-    palette = ColorPalettes[leds.animation.palette].value # len 5
-    
-    while (leds.mode is 2) and (not leds.intercept):
-        randStars = random.sample(Stars.STARS, 20)
-        
-        # Star colors, picked from the palette
-        colors = [random.choice(palette) for _ in range(20)]
-        
-        for k in range(0, 256, 5):
-            if (leds.mode is 2) and (not leds.intercept):
-                for i, star in enumerate(randStars):
-                    strip.setPixelColor(star, Color(int((k/256)*colors[i][0]), int((k/256)*colors[i][1]), int((k/256)*colors[i][2])))
-                strip.show()
-                time.sleep(20/1000.0)
-            else:
-                break
+    try:
+        palette = ColorPalettes[leds.animation.palette].value # len 5
 
-        time.sleep(2)
-        if (leds.mode is 2) and (not leds.intercept):
-            for k in reversed(range(0, 256, 5)):
+        while (leds.mode is 2) and (not leds.intercept):
+            randStars = random.sample(Stars.STARS, 20)
+
+            # Star colors, picked from the palette
+            colors = [random.choice(palette) for _ in range(20)]
+
+            for k in range(0, 256, 5):
                 if (leds.mode is 2) and (not leds.intercept):
                     for i, star in enumerate(randStars):
                         strip.setPixelColor(star, Color(int((k/256)*colors[i][0]), int((k/256)*colors[i][1]), int((k/256)*colors[i][2])))
@@ -307,51 +295,63 @@ def variedTwinkle(strip, leds):
                     time.sleep(20/1000.0)
                 else:
                     break
-        else:
-            break
-    leds.intercept = False
+
+            time.sleep(2)
+            if (leds.mode is 2) and (not leds.intercept):
+                for k in reversed(range(0, 256, 5)):
+                    if (leds.mode is 2) and (not leds.intercept):
+                        for i, star in enumerate(randStars):
+                            strip.setPixelColor(star, Color(int((k/256)*colors[i][0]), int((k/256)*colors[i][1]), int((k/256)*colors[i][2])))
+                        strip.show()
+                        time.sleep(20/1000.0)
+                    else:
+                        break
+            else:
+                break
+        leds.intercept = False
     
 # Varied color twinkle. 
 # Stars can have different colors, showing up a varying times.
 def syncopatedTwinkle(strip, leds):
-    palette = ColorPalettes[leds.animation.palette].value # len 5
-    
-    # Initial state
-    colors = [random.choice(palette) for _ in range(20)]
-    bright = [random.randrange(0, 256, 3) for _ in range(20)]
-    randStars = random.sample(Stars.STARS, 20)
-    direction = [0 for _ in range(20)]
-    
-    while (leds.mode is 2) and (not leds.intercept):
-        for i, star in enumerate(randStars):
-            if (leds.mode is 2) and (not leds.intercept):
-                brightness = bright[i]/256
-                strip.setPixelColor(star, Color(int(brightness*colors[i][0]), int(brightness*colors[i][1]), int(brightness*colors[i][2])))
-                if direction[i] is 0:
-                    # Increment
-                    if bright[i] is 200:
-                        direction[i] = 1
-                        bright[i] -= 3
+    try:
+        palette = ColorPalettes[leds.animation.palette].value # len 5
+
+        # Initial state
+        colors = [random.choice(palette) for _ in range(20)]
+        bright = [random.randrange(0, 256, 3) for _ in range(20)]
+        randStars = random.sample(Stars.STARS, 20)
+        direction = [0 for _ in range(20)]
+
+        while (leds.mode is 2) and (not leds.intercept):
+            for i, star in enumerate(randStars):
+                if (leds.mode is 2) and (not leds.intercept):
+                    brightness = bright[i]/256
+                    strip.setPixelColor(star, Color(int(brightness*colors[i][0]), int(brightness*colors[i][1]), int(brightness*colors[i][2])))
+                    if direction[i] is 0:
+                        # Increment
+                        if bright[i] is 200:
+                            direction[i] = 1
+                            bright[i] -= 3
+                        else:
+                            bright[i] += 3
+                            if bright[i] > 200:
+                                bright[i] = 200
                     else:
-                        bright[i] += 3
-                        if bright[i] > 200:
-                            bright[i] = 200
+                        if bright[i] is 0:
+                            direction[i] = 0
+                            bright[i] += 3
+                        else:
+                            bright[i] -= 3
+                            if bright[i] <= 0:
+                                # New star
+                                bright[i] = 0
+                                randStars[i] = random.choice(list(set(Stars.STARS) - set(randStars)))
+                                colors[i] = random.choice(palette)
                 else:
-                    if bright[i] is 0:
-                        direction[i] = 0
-                        bright[i] += 3
-                    else:
-                        bright[i] -= 3
-                        if bright[i] <= 0:
-                            # New star
-                            bright[i] = 0
-                            randStars[i] = random.choice(list(set(Stars.STARS) - set(randStars)))
-                            colors[i] = random.choice(palette)
-            else:
-                break
-        strip.show()
-        time.sleep(40/1000.0)
-    leds.intercept = False
+                    break
+            strip.show()
+            time.sleep(40/1000.0)
+        leds.intercept = False
 
 def animate(strip, leds, habits):
     if leds.animation.name == "twinkle":
