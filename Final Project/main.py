@@ -48,7 +48,7 @@ try:
 #     first = list(map(int, tracking_file.readline().split(" ")))
 #     second = list(map(int, tracking_file.readline().split(" ")))
     
-    tracking_day = 1
+    tracking_day = 2
     first = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     second = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
