@@ -17,26 +17,27 @@ class State:
 def readInput(habits, day, first, second):
     habits.tracking_day = day
     unset = True
+    track = day
     for i, constellation in enumerate(habits.first.constellations):
-        if day > len(constellation):
-            day = day - len(constellation)
+        if track > len(constellation):
+            track = track - len(constellation)
         else:
             if unset:
                 habits.first.cur_constellation = i
-                habits.first.cur_star = day-1
+                habits.first.cur_star = track-1
                 unset = False
         for star in constellation:
             star.complete = bool(first.pop(0))
-            
-    day = habits.tracking_day
+
     unset = True
+    track = day
     for i, constellation in enumerate(habits.second.constellations):
-        if day > len(constellation):
-            day = day - len(constellation)
+        if track > len(constellation):
+            track = track - len(constellation)
         else:
             if unset:
                 habits.second.cur_constellation = i
-                habits.second.cur_star = day-1
+                habits.second.cur_star = track-1
                 unset = False
         for star in constellation:
             star.complete = bool(second.pop(0))
