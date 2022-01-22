@@ -10,6 +10,7 @@ import threading
 # All color values
 class Colors(Enum):
     rose = Color(255, 20, 20)
+    marigold = Color(237, 88, 2)
     meadow = Color(168, 235, 52)
     forest = Color(27, 153, 23)
     periwinkle = Color(105, 130, 255)
@@ -128,10 +129,10 @@ def fastClearDisplay(strip, leds):
 def solidColor(strip, leds):
     color = Colors[leds.color].value
     for i in range(strip.numPixels()):
-        #if i not in Stars.PINPRICKS:
-        strip.setPixelColor(i, color)
-    for led in Stars.PINPRICKS:
-        strip.setPixelColor(led, Colors.pinprick.value)
+        if i not in Stars.PINPRICKS:
+            strip.setPixelColor(i, color)
+        else:
+            strip.setPixelColor(i, Colors.pinprick.value)
     strip.show()
 
 def wheel(pos):
@@ -351,51 +352,6 @@ def syncopatedTwinkle(strip, leds):
         strip.show()
         time.sleep(40/1000.0)
     leds.intercept = False
-
-# def solidFade(strip, leds, habits):
-#     displayPinpricks(strip)
-    
-#     palette = ColorPalettes[leds.animation.palette].value
-#     all_constellations = habits.first.constellations + habits.second.constellations
-    
-#     while (leds.mode is 2) and (not leds.intercept):
-#         colors = random.choice(palette)
-#         for k in range(0, 256, 5):
-#             if (leds.mode is 2) and (not leds.intercept):
-#                 for constellation in all_constellations:
-#                     led_color = Color(int((k/256)*colors[0]), int((k/256)*colors[1]), int((k/256)*colors[2]))
-#                     for star in constellation:
-#                         strip.setPixelColor(star.index, led_color)
-#                         # Connectors
-#                         for prior in star.prior_stars:
-#                             connectors = prior[1]
-#                             for pixel in connectors:
-#                                 strip.setPixelColor(pixel, led_color)
-#                 strip.show()
-#                 time.sleep(20/1000.0)
-#             else:
-#                 break
-        
-#         time.sleep(2)
-#         if (leds.mode is 2) and (not leds.intercept):
-#             for k in reversed(range(0, 256, 5)):
-#                 if (leds.mode is 2) and (not leds.intercept):
-#                     for i, constellation in enumerate(all_constellations):
-#                         led_color = Color(int((k/256)*colors[0]), int((k/256)*colors[1]), int((k/256)*colors[2]))
-#                         for star in constellation:
-#                             strip.setPixelColor(star.index, led_color)
-#                             # Connectors
-#                             for prior in star.prior_stars:
-#                                 connectors = prior[1]
-#                                 for pixel in connectors:
-#                                     strip.setPixelColor(pixel, led_color)
-#                     strip.show()
-#                     time.sleep(20/1000.0)
-#                 else:
-#                     break
-#         else:
-#             break
-#     leds.intercept = False
 
 def animate(strip, leds, habits):
     if leds.animation.name == "twinkle":
