@@ -274,6 +274,8 @@ def solidTwinkle(strip, leds):
             else:
                 break
         leds.intercept = False
+    except:
+        print("An error occurred")
 
 # Varied color twinkle. 
 # Stars can have different colors even when showing up at the same time.
@@ -309,7 +311,9 @@ def variedTwinkle(strip, leds):
             else:
                 break
         leds.intercept = False
-    
+    except:
+        print("An error occurred")
+
 # Varied color twinkle. 
 # Stars can have different colors, showing up a varying times.
 def syncopatedTwinkle(strip, leds):
@@ -352,6 +356,8 @@ def syncopatedTwinkle(strip, leds):
             strip.show()
             time.sleep(40/1000.0)
         leds.intercept = False
+    except:
+        print("An error occurred")
 
 def animate(strip, leds, habits):
     if leds.animation.name == "twinkle":
