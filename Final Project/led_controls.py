@@ -53,7 +53,7 @@ class State:
         # Habit = 0
         # Mood lighting: Solid = 1
         # Mood lighting: Animated = 2
-        self.mode = 2
+        self.mode = 1
         self.mode_count = 3
         self.color = "meadow" # Colors enum entry name
         self.animation = Animation("twinkle", "syncopated", "succulent")
