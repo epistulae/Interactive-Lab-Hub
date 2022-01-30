@@ -38,6 +38,7 @@ class ColorPalettes(Enum):
     tropical = [(255, 106, 0), (255, 202, 42), (102, 176, 22), (155, 216, 218), (188, 206, 209)]
     ocean = [(218, 228, 229), (156, 236, 240), (105, 195, 255), (105, 130, 255), (43, 74, 74)]
     la_vie_en_rose = [(244, 198, 177), (238, 199, 197), (193, 111, 120), (114, 34, 39), (209, 69, 102)]
+    succulent = [(138,161,95), (210,214,168), (135,160,139), (92,113,94), (58,83,53)]
 
 class Animation:
     def __init__(self, name, style, palette):
@@ -55,7 +56,7 @@ class State:
         self.mode = 2
         self.mode_count = 3
         self.color = "meadow" # Colors enum entry name
-        self.animation = Animation("twinkle", "syncopated", "la_vie_en_rose")
+        self.animation = Animation("twinkle", "syncopated", "succulent")
         self.intercept = False
         
 # 
