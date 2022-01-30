@@ -48,9 +48,9 @@ try:
 #     first = list(map(int, tracking_file.readline().split(" ")))
 #     second = list(map(int, tracking_file.readline().split(" ")))
     
-    tracking_day = 2
-    first = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    second = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    tracking_day = 9
+    first = [1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    second = [1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 #    tracking_file.close()
     Habits.readInput(Globals.habits, tracking_day, first, second)
