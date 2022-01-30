@@ -37,6 +37,7 @@ class ColorPalettes(Enum):
     citrus = [(196, 60, 22), (253, 154, 126), (255, 203, 143), (252, 181, 0), (220, 107, 2)]
     tropical = [(255, 106, 0), (255, 202, 42), (102, 176, 22), (155, 216, 218), (188, 206, 209)]
     ocean = [(218, 228, 229), (156, 236, 240), (105, 195, 255), (105, 130, 255), (43, 74, 74)]
+    la_vie_en_rose = [(244, 198, 177), (238, 199, 197), (193, 111, 120), (114, 34, 39), (250, 40, 25)]
 
 class Animation:
     def __init__(self, name, style, palette):
@@ -51,10 +52,10 @@ class State:
         # Habit = 0
         # Mood lighting: Solid = 1
         # Mood lighting: Animated = 2
-        self.mode = 1
+        self.mode = 2
         self.mode_count = 3
         self.color = "meadow" # Colors enum entry name
-        self.animation = Animation("twinkle", "syncopated", "ocean")
+        self.animation = Animation("twinkle", "syncopated", "la_vie_en_rose")
         self.intercept = False
         
 # 
@@ -422,16 +423,13 @@ def cycleColor(strip, leds, habits, debug=False):
         n = (i+1) % (len(colors)-4)
         leds.color = colors[n]
     elif leds.mode is 2:
-        print("Cycling")
         if leds.animation.name == "rainbow":
             return
         # Animated: go through ColorPalettes enum
         colors = [p.name for p in ColorPalettes]
-        print(colors)
         new_color = ""
         i = colors.index(leds.animation.palette)
         n = (i+1) % (len(colors))
-        print(n)
         leds.animation.palette = colors[n]
 #         if leds.animation.palette == "rainbow":
 #             new_color = colors[0]
