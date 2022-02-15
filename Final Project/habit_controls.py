@@ -9,13 +9,15 @@ class State:
     def __init__(self):
         self.day = time.localtime()[2]
         self.tracking_day = 0
+        self.tracking_day_second = 0
         self.first = Stars.FIRST
         self.second = Stars.SECOND
         self.first_complete = False
         self.second_complete = False
 
-def readInput(habits, day, first, second):
+def readInput(habits, day, day_second, first, second):
     habits.tracking_day = day
+    habits.tracking_day_second = day_second
     unset = True
     track = day
     for i, constellation in enumerate(habits.first.constellations):
@@ -30,7 +32,7 @@ def readInput(habits, day, first, second):
             star.complete = bool(first.pop(0))
 
     unset = True
-    track = day
+    track = day_second
     for i, constellation in enumerate(habits.second.constellations):
         if track > len(constellation):
             track = track - len(constellation)
@@ -70,21 +72,15 @@ def flipSecondHabit(strip, habits, leds, debug=False):
     if debug:
         debugHabits(habits)
         
-def resetFirstHabit(strip, habits, leds, debug=False):
-    for constellation in habits.second.constellations:
+def resetFirstHabit(habits):
+    for constellation in habits.first.constellations:
         for star in constellation:
             star.complete = False
-    Leds.displayHabits(strip, habits)
-    if debug:
-        debugHabits(habits)
     
-def resetSecondHabit(strip, habits, leds, debug=False):
+def resetSecondHabit(habits):
     for constellation in habits.second.constellations:
         for star in constellation:
             star.complete = False
-    Leds.displayHabits(strip, habits)
-    if debug:
-        debugHabits(habits)
 
 # Check whether or not it's a new day and update the state if it is.
 def nextDay(habits):
@@ -92,36 +88,62 @@ def nextDay(habits):
 
     if day is not habits.day:
         habits.day = day
-        habits.tracking_day += 1
-        # Habit A
-        if habits.first.cur_star + 1 is len(habits.first.constellations[habits.first.cur_constellation]):
-            # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
-            habits.first.cur_constellation += 1
-            habits.first.cur_star = 0
-        else:
-            # Next star
-            habits.first.cur_star += 1
+        
+        next_first = True
+        if habits.tracking_day == 1 and not habits.first_complete:
+            # First day and not started
+            next_first = False
 
+        # Habit A
+        if next_first:
+            habits.tracking_day += 1
+            
+            if habits.tracking_day <= 30:
+                if habits.first.cur_star + 1 is len(habits.first.constellations[habits.first.cur_constellation]):
+                    # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
+                    habits.first.cur_constellation += 1
+                    habits.first.cur_star = 0
+                else:
+                    # Next star
+                    habits.first.cur_star += 1
+            else:
+                resetFirstHabit(habits)
+                habits.second.cur_constellation = 0
+                habits.second.cur_star = 0
+
+        next_second = True
+        if habits.tracking_day_second == 1 and not habits.second_complete:
+            # First day and not started
+            next_second = False
+        
         # Habit B
-        if habits.second.cur_star + 1 is len(habits.second.constellations[habits.second.cur_constellation]):
-            # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
-            habits.second.cur_constellation += 1
-            habits.second.cur_star = 0
-        else:
-            # Next star
-            habits.second.cur_star += 1
+        if next_second:
+            habits.tracking_day_second += 1
+            
+            if habits.tracking_day_second <= 30:
+                if habits.second.cur_star + 1 is len(habits.second.constellations[habits.second.cur_constellation]):
+                    # Next constellation (assumes not final star overall, if it was, I'd wipe the state)
+                    habits.second.cur_constellation += 1
+                    habits.second.cur_star = 0
+                else:
+                    # Next star
+                    habits.second.cur_star += 1
+            else:
+                resetSecondHabit(habits)
+                habits.second.cur_constellation = 0
+                habits.second.cur_star = 0
         
         # Save to file once per day
-        tracking_file = open("tracking.txt","w")
-        tracking_file.write(str(habits.tracking_day)+"\n")
-        first = []
-        for constellation in habits.first.constellations:
-            first += [int(star.complete) for star in constellation]
-        tracking_file.write(' '.join([str(star) for star in first])+"\n")
-        second = []
-        for constellation in habits.second.constellations:
-            second += [int(star.complete) for star in constellation]
-        tracking_file.write(' '.join([str(star) for star in second])+"\n")
+#         tracking_file = open("tracking.txt","w")
+#         tracking_file.write(str(habits.tracking_day)+"\n")
+#         first = []
+#         for constellation in habits.first.constellations:
+#             first += [int(star.complete) for star in constellation]
+#         tracking_file.write(' '.join([str(star) for star in first])+"\n")
+#         second = []
+#         for constellation in habits.second.constellations:
+#             second += [int(star.complete) for star in constellation]
+#         tracking_file.write(' '.join([str(star) for star in second])+"\n")
 
 def debugToNextDay(habits):
     habits.day = habits.day + 1
