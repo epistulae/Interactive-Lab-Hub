@@ -48,12 +48,13 @@ try:
 #     first = list(map(int, tracking_file.readline().split(" ")))
 #     second = list(map(int, tracking_file.readline().split(" ")))
     
-    tracking_day = 9
-    first = [1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    second = [1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    tracking_day = 25
+    tracking_day_second = 1
+    first = [1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0]
+    second = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 #    tracking_file.close()
-    Habits.readInput(Globals.habits, tracking_day, first, second)
+    Habits.readInput(Globals.habits, tracking_day, tracking_day_second, first, second)
 
     Leds.initDisplay(Globals.STRIP, Globals.leds, Globals.habits)
     while True:
