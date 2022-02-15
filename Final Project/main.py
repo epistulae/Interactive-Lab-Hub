@@ -64,7 +64,7 @@ try:
                 Globals.leds.intercept = True
                 time.sleep(3)
             Leds.lightFlip(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
-            Mqtt.client.publish('remote/lights', "0")
+#             Mqtt.client.publish('remote/lights', "0")
         elif mpr121[6].value:
             Leds.fastClearDisplay(Globals.STRIP, Globals.leds)
             Globals.leds.lights = True
@@ -79,10 +79,10 @@ try:
             Leds.cycleColor(Globals.STRIP, Globals.leds, Globals.habits, Globals.DEBUG)
         elif mpr121[2].value:
             Habits.flipFirstHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
-            Mqtt.client.publish('remote/habits/first', "0")
+#             Mqtt.client.publish('remote/habits/first', "0")
         elif mpr121[8].value:
             Habits.flipSecondHabit(Globals.STRIP, Globals.habits, Globals.leds, Globals.DEBUG)
-            Mqtt.client.publish('remote/habits/second', "0")
+#             Mqtt.client.publish('remote/habits/second', "0")
 
         Habits.nextDay(Globals.habits)
         time.sleep(0.5) # Prevent multiple triggers for one touch
