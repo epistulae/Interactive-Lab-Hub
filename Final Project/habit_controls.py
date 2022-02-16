@@ -8,8 +8,8 @@ import time
 class State:
     def __init__(self):
         self.day = time.localtime()[2]
-        self.tracking_day = 0
-        self.tracking_day_second = 0
+        self.tracking_day = 1
+        self.tracking_day_second = 1
         self.first = Stars.FIRST
         self.second = Stars.SECOND
         self.first_complete = False
@@ -112,9 +112,9 @@ def nextDay(habits):
                 habits.second.cur_star = 0
 
         next_second = True
-        if habits.tracking_day_second == 1 and not habits.second_complete:
-            # First day and not started
-            next_second = False
+        if habits.tracking_day_second == 1:
+            # First day
+            next_second = habits.second_complete
         
         # Habit B
         if next_second:
