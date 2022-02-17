@@ -12,8 +12,6 @@ class State:
         self.tracking_day_second = 1
         self.first = Stars.FIRST
         self.second = Stars.SECOND
-        self.first_complete = False
-        self.second_complete = False
 
 def readInput(habits, day, day_second, first, second):
     habits.tracking_day = day
