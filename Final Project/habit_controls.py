@@ -50,7 +50,6 @@ def flipFirstHabit(strip, habits, leds, debug=False):
         leds.lights = True
     if leds.mode is not 0:
         leds.mode = 0
-    habits.first_complete = not habits.first_complete
     constellation = habits.first.cur_constellation
     star = habits.first.cur_star
     habits.first.constellations[constellation][star].complete = not habits.first.constellations[constellation][star].complete
@@ -64,7 +63,6 @@ def flipSecondHabit(strip, habits, leds, debug=False):
         leds.lights = True
     if leds.mode is not 0:
         leds.mode = 0
-    habits.second_complete = not habits.second_complete
     constellation = habits.second.cur_constellation
     star = habits.second.cur_star
     habits.second.constellations[constellation][star].complete = not habits.second.constellations[constellation][star].complete
@@ -90,7 +88,7 @@ def nextDay(habits):
         habits.day = day
         
         next_first = True
-        if habits.tracking_day == 1 and not habits.first_complete:
+        if habits.tracking_day == 1 and not habits.second.constellations[constellation][star].complete:
             # First day and not started
             next_first = False
 
@@ -108,13 +106,14 @@ def nextDay(habits):
                     habits.first.cur_star += 1
             else:
                 resetFirstHabit(habits)
-                habits.second.cur_constellation = 0
-                habits.second.cur_star = 0
+                habits.first.cur_constellation = 0
+                habits.first.cur_star = 0
+                habits.tracking_day = 1
 
         next_second = True
-        if habits.tracking_day_second == 1:
+        if habits.tracking_day_second == 1 not habits.second.constellations[constellation][star].complete:
             # First day
-            next_second = habits.second_complete
+            next_second = False
         
         # Habit B
         if next_second:
@@ -132,6 +131,7 @@ def nextDay(habits):
                 resetSecondHabit(habits)
                 habits.second.cur_constellation = 0
                 habits.second.cur_star = 0
+                habits.tracking_day_second = 1
         
         # Save to file once per day
 #         tracking_file = open("tracking.txt","w")
