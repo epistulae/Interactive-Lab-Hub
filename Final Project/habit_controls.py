@@ -109,7 +109,7 @@ def nextDay(habits):
                 habits.tracking_day = 1
 
         next_second = True
-        if habits.tracking_day_second == 1 not habits.second.constellations[habits.second.cur_constellation][habits.second.cur_star].complete:
+        if habits.tracking_day_second == 1 and not habits.second.constellations[habits.second.cur_constellation][habits.second.cur_star].complete:
             # First day
             next_second = False
         
