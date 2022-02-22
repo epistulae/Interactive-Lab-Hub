@@ -48,10 +48,10 @@ try:
 #     first = list(map(int, tracking_file.readline().split(" ")))
 #     second = list(map(int, tracking_file.readline().split(" ")))
     
-    tracking_day = 27
-    tracking_day_second = 1
-    first = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,0,0,0]
-    second = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    tracking_day = 2
+    tracking_day_second = 3
+    first = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    second = [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 #    tracking_file.close()
     Habits.readInput(Globals.habits, tracking_day, tracking_day_second, first, second)
